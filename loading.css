@@ -1,0 +1,20 @@
+.loading{
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	width: 10%;                              
+ 	height: 20%;                            
+ 	border-radius: 50%;
+	background: #000000;                           
+	animation: circle 4s; 
+	animation-fill-mode: both;
+	z-index: -1;
+}
+@keyframes circle{
+	from{	
+transform: scale(0.1,0.1);
+	}
+	to{
+transform: scale(20,20);
+	}
+}
