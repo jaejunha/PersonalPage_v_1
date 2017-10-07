@@ -6,7 +6,6 @@
 	vertical-align: middle;
 	font-size: 20pt;
 	color:#dddddd;
-	border-radius: 5px;
 	opacity: 0;
 	animation: appear 5s;
 	animation-fill-mode:both
