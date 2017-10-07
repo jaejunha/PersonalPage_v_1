@@ -1,19 +1,21 @@
 ﻿header{
-	background: #ffffff;
+	background: #2A2A2A;
 	position: relative;
-	text-align: right;
+	text-align: center;
 	line-height: 60px;
 	vertical-align: middle;
-	font-size: 24pt;
+	font-size: 20pt;
 	color:#dddddd;
 	border-radius: 5px;
 	opacity: 0;
-	animation: expand 2s;
+	animation: appear 5s;
 	animation-fill-mode:both
 }
 
 header > a{
 	text-decoration: none;
+	margin-left: 40px;
+	margin-right: 40px;
 	color:#dddddd;
 }
 header > a:hover{
@@ -29,21 +31,17 @@ header > label.right{
 	width: 48px;
 	height: 48px;
 	border-radius:24px;
-	background: url('../img/Min_Picture.jpg');
+	background-image:url('../img/Min_Picture.jpg');
+	background-position: left top;
+	background-size: 48px 48px;
 	text-indent: 99999px;
 }
 
-@keyframes expand{
-	20%{	
-		opacity: 0;
-		transform: translateX(-200%);
-	}
+@keyframes appear{
 	40%{	
-		opacity: 0.5;
-		transform: translateX(-99%);
+		opacity: 0;
 	}
 	100%{
 		opacity: 1;
-		transform: translateX(0%);
 	}
 }

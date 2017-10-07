@@ -6,34 +6,33 @@
 	width: 180px;
 	margin-top: 5px;
 	float: right;
-	font-family: "맑은 고딕";
 }
 #triangle{	
 	position: relative;
   	width: 0px;
 	height: 0px;
  	border-top:10px solid none;
-  	border-bottom:10px solid #dddddd;	
+  	border-bottom:10px solid #2A2A2A;	
   	border-right: 10px solid transparent;
   	border-left: 10px solid  transparent;
 	left: 140px;
 }
 #contact_content{
-	background: #ffffff;
+	background: #666666;
 	height: 120px;
 	border-radius:5px;
 }
 #contact_content > #upper{
 	padding-top: 5px;
 	padding-left: 5px;
-	background: #dddddd;	
+	background: #2A2A2A;	
 	height: 30px;
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 }
 #contact_content > #upper > #text{
 	font-size: 15pt;
-	color: #666666;
+	color: #ffffff;
 }
 #contact_content > #body{
 	padding: 10px;
@@ -44,6 +43,6 @@
 	height: 12px;
 }
 .mail{
-	color: #666666;
+	color: #ffffff;
 	font-size: 8pt;
 }
