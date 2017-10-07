@@ -1,5 +1,5 @@
 ﻿header{
-	background: #2A2A2A;
+	background-color: #2a2a2a;
 	position: relative;
 	text-align: center;
 	line-height: 60px;
@@ -7,7 +7,7 @@
 	font-size: 20pt;
 	color:#dddddd;
 	opacity: 0;
-	animation: appear 5s;
+	animation: appear 10s;
 	animation-fill-mode:both
 }
 
@@ -37,8 +37,11 @@ header > label.right{
 }
 
 @keyframes appear{
-	40%{	
+	30%{	
 		opacity: 0;
+	}
+	40%{
+		opacity: 1;
 	}
 	100%{
 		opacity: 1;

@@ -1,0 +1,57 @@
+#bird{
+	position:absolute;
+	transition-origin: 50% 0%;
+	width:376px;
+	height:475px;
+	left:50%;
+	margin-left:-188px;
+	top:-50%;         
+	animation: bird 10s; 
+	animation-fill-mode: both;
+	z-index:-1;
+}
+#gradation{
+	position:absolute;
+	top: 30%;
+	left:50%;
+	transition-origin: 0% 0%;
+	margin-left:-375px;
+	margin-top:50px;
+	width: 750px;                          
+ 	height: 600px;                                 
+	animation: gradation 10s; 
+	animation-fill-mode: both;
+	z-index: -1;
+}
+@keyframes bird{
+	0%{	
+		top:100%;  
+	}
+	20%{
+		top:40%;
+	}
+	40%{
+		top:40%;
+		opacity:1;
+	}
+	100%{
+		top:40%;
+		opacity:1;
+	}
+}
+@keyframes gradation{
+	0%{
+		opacity:0;
+	}
+	15%{
+		opacity:0;
+	}
+	20%{	
+		opacity:1;
+		transform: scale(1.2,1.2);
+	}
+	100%{
+		transform: scale(2,2);
+		opacity:0.8;
+	}
+}

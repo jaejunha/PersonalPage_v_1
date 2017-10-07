@@ -14,8 +14,6 @@
 >http://ghchart.rshah.org
 - Mariad set pro(font)
 >https://www.download-free-fonts.com/download/95207/8b2417096e64009225f53bc241379cb9
-- Role model
->https://www.apple.com/mac-pro
 - Jquery
 >https://jquery.com/download/
 - Mariad set pro(font)
