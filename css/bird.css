@@ -25,33 +25,66 @@
 }
 @keyframes bird{
 	0%{	
-		top:100%;  
+		top:100%;
+		left:50%;  
 	}
-	20%{
-		top:40%;
+	20%{	
+		top:40%;	
+		left:50%;
+	}
+	35%{
+		top:40%;	
+		left:50%;
+		opacity:1;
+	}
+	39%{
+		top:40%;	
+		left:50%;
+		opacity:1;
 	}
 	40%{
 		top:40%;
+		left:30%;
 		opacity:1;
 	}
 	100%{
 		top:40%;
+		left:30%;
 		opacity:1;
 	}
 }
 @keyframes gradation{
 	0%{
 		opacity:0;
+		left:50%;
 	}
 	15%{
 		opacity:0;
+		left:50%;
 	}
 	20%{	
-		opacity:1;
+		opacity:0.8;
+		left:50%;
 		transform: scale(1.2,1.2);
+	}
+	35%{
+		opacity:0.6;
+		left:50%;
+		transform: scale(2,2);
+	}
+	39%{
+		transform: scale(2,2);
+		left:50%;
+		opacity:0.6;
+	}
+	40%{
+		transform: scale(2,2);
+		left:30%;
+		opacity:0.6;
 	}
 	100%{
 		transform: scale(2,2);
-		opacity:0.8;
+		left:30%;
+		opacity:0.6;
 	}
 }

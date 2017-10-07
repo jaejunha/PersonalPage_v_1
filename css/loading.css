@@ -3,16 +3,16 @@
 	left: 45%;
 	top: 40%;
 	width: 10%;                              
- 	height: 20%;                            
- 	border-radius: 50%;
-	background: #000000;                           
+ 	height: 20%;        
+	background: #000000;                      
+ 	border-radius: 50%;                        
 	animation: circle 10s; 
 	animation-fill-mode: both;
 	z-index: -1;
 }
 @keyframes circle{
 	0%{	
-		transform: scale(0.1,0.1);
+		transform: scale(0,0);
 	}
 	40%{
 		transform: scale(20,20);
