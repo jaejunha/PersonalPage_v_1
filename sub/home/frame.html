@@ -11,9 +11,11 @@
 </style>
 <script type="text/javascript">
 	var init = 1;
-	var from = 1;
+	var from = 1;	//0:activity	1:favorite
 	$(document).ready( function() {
 		$('#left_content').load('sub/home/intro.html');
+		$('#right_content').load('sub/home/intro.html');
+		$('#right_content').css('opacity','0');
 		setTimeout(function(){
 		if(init==1)
 			from=switch_screen(init--,from,'activity');

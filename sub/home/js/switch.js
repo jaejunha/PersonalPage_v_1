@@ -1,59 +1,70 @@
 function switch_screen(init,from,to){
-	var left_loc = -$(window).width()+100;
-	var center_loc = 100;
-	var right_loc = $(window).width()+100;
+	var size = $(window).width();
+	var margin = 100;
+	var right = $('#right_content');
+	var left = $('#left_content');
+	var activity = $('#activity');
+	var favorite = $('#favorite');
 
-	if(init == 1){	
-		if(to == 'activity')
-			$('#right_content').load('sub/home/activity.html');
-		else
-			$('#right_content').load('sub/home/favorite.html');
-		$('#right_content').css('position','absolute');		//위치 이동 금지
-		$('#right_content').css('left',right_loc+'px');	
-		$('#left_content').animate({ opacity:0},1500);
-		$('#right_content').animate({ left:center_loc+'px'},1500);
+
+	if(init == 1){		
+		right.css('opacity','1');
+		if(to == 'activity'){		
+			left.css('position','absolute');	//위치 이동 금지
+			left.load('sub/home/activity.html');
+			left.css('left',size+margin+'px');	
+			right.animate({ opacity:0},1500);
+			left.animate({ left:margin+'px'},1500);
+		}
+		else{
+			right.css('position','absolute');		//위치 이동 금지
+			right.load('sub/home/favorite.html');
+			right.css('left',size+margin+'px');	
+			left.animate({ opacity:0},1500);
+			right.animate({ left:margin+'px'},1500);
+		}
 		setTimeout(function(){
-			$('#left_content').css('position','absolute');	//위치 이동 금지
-			$('#left_content').css('opacity','1');		//위치 이동 금지
-			$('#left_content').load('sub/home/activity.html');
-			$('#right_content').load('sub/home/favorite.html');
 			if(to == 'activity'){
-				$('#left_content').css('left',center_loc+'px');
-				$('#right_content').css('left',right_loc+'px');
+				right.css('position','absolute');		//위치 이동 금지
+				right.css('left',size+margin+'px');
+				right.load('sub/home/favorite.html');
 			}
-			else{
-				$('#left_content').css('left',left_loc+'px');
-				$('#right_content').css('left',center_loc+'px');
+			else{			
+				left.css('position','absolute');	//위치 이동 금지
+				left.css('left',-size+margin+'px');
+				left.load('sub/home/activity.html');
 			}
-		}, 2000);
+		}, 1600);
 		if(to == 'activity'){
-			$('#activity').css('color','#ffffff');
-			$('#favorite').css('color','#aaaaaa');
+			activity.css('color','#ffffff');
+			favorite.css('color','#aaaaaa');
 			return 0;
 		}
 		else{
-			$('#activity').css('color','#aaaaaa');
-			$('#favorite').css('color','#ffffff');
+			activity.css('color','#aaaaaa');
+			favorite.css('color','#ffffff');
 			return 1;
 		}
        	}
 	else{
+		right.css('opacity','1');		//위치 이동 금지
+		left.css('opacity','1');		//위치 이동 금지
 		if(to == 'activity'){
 			if(from == 0)
 				return 0;
-			$('#left_content').animate({ left:center_loc+'px'},1500);
-			$('#right_content').animate({ left:right_loc+'px'},1500);
-			$('#activity').css('color','#ffffff');
-			$('#favorite').css('color','#aaaaaa');
+			left.animate({ left:margin+'px'},1500);
+			right.animate({ left:size+margin+'px'},1500);
+			activity.css('color','#ffffff');
+			favorite.css('color','#aaaaaa');
 			return 0;
 		}
 		else{
 			if(from == 1)
 				return 1;
-			$('#left_content').animate({ left:left_loc+'px'},1500);
-			$('#right_content').animate({ left:center_loc+'px'},1500);
-			$('#activity').css('color','#aaaaaa');
-			$('#favorite').css('color','#ffffff');
+			left.animate({ left:-size+margin+'px'},1500);
+			right.animate({ left:margin+'px'},1500);
+			activity.css('color','#aaaaaa');
+			favorite.css('color','#ffffff');
 			return 1;
 		}
 	}
