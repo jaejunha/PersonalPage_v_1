@@ -1,3 +1,4 @@
+
 #bird{
 	position:absolute;
 	transition-origin: 50% 0%;
@@ -6,7 +7,7 @@
 	left:50%;
 	margin-left:-188px;
 	top:-50%;         
-	animation: bird 10s; 
+	animation: appear_bird 10s; 
 	animation-fill-mode: both;
 	z-index:-1;
 }
@@ -19,11 +20,11 @@
 	margin-top:50px;
 	width: 750px;                          
  	height: 600px;                                 
-	animation: gradation 10s; 
+	animation: appear_gradation 10s; 
 	animation-fill-mode: both;
 	z-index: -1;
 }
-@keyframes bird{
+@keyframes appear_bird{
 	0%{	
 		top:100%;
 		left:50%;  
@@ -37,12 +38,7 @@
 		left:50%;
 		opacity:1;
 	}
-	39%{
-		top:40%;	
-		left:50%;
-		opacity:1;
-	}
-	40%{
+	36%{
 		top:40%;
 		left:30%;
 		opacity:1;
@@ -53,7 +49,7 @@
 		opacity:1;
 	}
 }
-@keyframes gradation{
+@keyframes appear_gradation{
 	0%{
 		opacity:0;
 		left:50%;
@@ -67,17 +63,12 @@
 		left:50%;
 		transform: scale(1.2,1.2);
 	}
-	35%{
+	37.5%{
 		opacity:0.6;
 		left:50%;
 		transform: scale(2,2);
 	}
 	39%{
-		transform: scale(2,2);
-		left:50%;
-		opacity:0.6;
-	}
-	40%{
 		transform: scale(2,2);
 		left:30%;
 		opacity:0.6;

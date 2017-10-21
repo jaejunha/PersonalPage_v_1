@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="sub/home/css/menu.css"/>
+<script type="text/javascript" src="sub/home/js/switch.js"></script>
+<style>
+	body{
+		background:#000000;
+		color:#ffffff;
+	}
+</style>
+<script type="text/javascript">
+	var init = 1;
+	var from = 1;
+	$(document).ready( function() {
+		$('#left_content').load('sub/home/intro.html');
+	});
+</script>
+</head>
+<body>	
+	<font id="title">Dreamline91's Page</font>
+	<a id="favorite" href="javascript:from = switch_screen(init--,from,'favorite')">Favorite</a>
+	<a id="activity" href="javascript:from = switch_screen(init--,from,'activity')">Activity</a>
+	<hr/>
+	<div id="left_content"></div>
+	<div id="right_content"></div>
+</body>
+</html>

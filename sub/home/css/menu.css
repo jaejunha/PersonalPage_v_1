@@ -1,0 +1,48 @@
+#title{
+	font-family: Modeka;
+	font-size: 30pt;
+	width:300px;
+	animation: appear_tab 10s; 
+	animation-fill-mode: both;  
+	}
+#activity, #favorite{
+	font-size:15pt;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:35px;
+	float:right;
+	animation: appear_tab 10s; 
+	animation-fill-mode: both;   
+}
+
+hr { 
+	border: solid 1px #aaaaaa;
+	margin-top:20px;
+	animation: appear_tab 10s; 
+	animation-fill-mode: both; 
+}
+
+a{
+	opacity: 0.5;
+	text-decoration: none;
+	color: #aaaaaa;
+}
+a:hover{
+	opacity: 1;
+	text-decoration: underline;
+	color: #ffffff;
+}
+@keyframes appear_tab{
+	0%{
+		opacity:0;
+	}
+	25%{
+		opacity:0;
+	}
+	35%{
+		opacity:1;
+	}
+	100%{
+		opacity:1;
+	}
+}
