@@ -14,6 +14,10 @@
 	var from = 1;
 	$(document).ready( function() {
 		$('#left_content').load('sub/home/intro.html');
+		setTimeout(function(){
+		if(init==1)
+			from=switch_screen(init--,from,'activity');
+		}, 15000);
 	});
 </script>
 </head>
