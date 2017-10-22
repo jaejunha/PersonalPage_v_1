@@ -6,16 +6,25 @@
 <script>
 $(document).ready( function() {
 	new GitHubCalendar(".calendar", "jaejunha");
+	$('#main').css('width',$(window).width()-200);
 });
 </script>
 </head>
 <body>
-<!-- Prepare a container for your calendar. -->
-<p>
-<div class="calendar" style="background-color: rgba(255,255,255,0.5);">
-    <!-- Loading stuff -->
-    Loading the data just for you.
-</div>
-</p>
+	<p id="main">
+	I will explane my kewords.(fade in animation)<br>
+	Need reposition
+	<div style="float:left; width:45%;">
+		<span style="font-size:20pt;">GitHub Record</span>
+		<br>
+		<br>
+		<div class="calendar" style="background-color: rgba(255,255,255,0.5);"></div><br>
+		<span style="font-size:15pt; text-align:justify;">I tried to write code everyday and use github to track my records. Git is very convenient SCM.</span><br>
+	</div>
+	<div style="float:left; width:45%; margin-left:10%;">
+		<span style="font-size:20pt;">Exercise Record</span>
+		<br>
+	</div>
+	</p>
 </body>
 </html>

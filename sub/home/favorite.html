@@ -1,3 +1,107 @@
-<p>
-<font color="#ffffff">fav</font>
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/github-calendar.min.js"></script>
+<link rel="stylesheet" href="css/github-calendar.css"/>
+<script>
+$(document).ready( function() {
+	new GitHubCalendar(".calendar", "jaejunha");
+	var size = $(window).width()-200;
+	$('#main').css('width',size);
+
+	$('a').css('text-decoration','none');
+
+	$('.icon').css('width',0.16*size);
+	$('.icon').css('height',0.18*size);
+	$('.icon').css('float','left');
+	$('.icon').css('background-color','rgba(255,255,255,0.2)');
+
+	$('.desc').css('width',0.16*size);
+	$('.desc').css('height',0.03*size);	
+	$('.desc').css('top',0.07*size+'px');	
+	$('.desc').css('position','relative');
+	$('.desc').css('background-color','rgba(255,255,255,0.75)');
+	$('.desc').css('text-align','center');
+	$('.desc').css('vertical-align','middle');
+	$('.desc').css('display','table-cell');
+	$('.desc').css('color','#555555');
+	$('.desc').css('font-size','15pt');
+
+	$('.gradation').css('width',0.16*size);
+	$('.gradation').css('height',0.12*size);		
+	$('.gradation').css('position','relative');	
+	$('.gradation').css('top',-0.11*size+'px');	
+	$('.gradation').css('background','-webkit-linear-gradient(top, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0) 100%)');
+	$('.gradation').css('z-index','1');
+	
+	$('.icon img').css('width',0.08*size);
+	$('.icon img').css('height',0.08*size);	
+	$('.icon img').css('position','relative');	
+	$('.icon img').css('top',0.04*size+'px');
+	$('.icon img').css('left',0.04*size+'px');
+	$('.icon img').css('z-index','0');	
+});
+</script>
+</head>
+<body>
+	<p id="main">
+		<span style="font-size:20pt;">My favorite sites</span>
+		<a href="https://www.google.com" target="_blank">
+			<div class="icon">
+				<img src="img/google.png">
+				<div class="desc"><font>Google</font></div>
+				<div class="gradation"></div>
+			</div>
+		</a>
+		<a href="https://github.com/jaejunha" target="_blank">
+		<div class="icon" style="margin-left:12%;">
+			<img src="img/github.png">
+			<div class="desc"><font>Github</font></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="http://portal.ajou.ac.kr" target="_blank">
+		<div class="icon" style="margin-left:12%;">
+			<img src="img/ajou.png">
+			<div class="desc"><font>Ajou Portal</font></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="https://www.naver.com" target="_blank">
+		<div class="icon" style="margin-left:12%;">
+			<img src="img/naver.png">
+			<div class="desc"><font>Naver</font></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="" target="_blank">
+		<div class="icon" style="margin-top:2%;  background-color: rgba(255,255,255,0.2);">
+			<img src="">
+			<div class="desc"></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="" target="_blank">
+		<div class="icon" style="margin-top:2%; margin-left:12%;">
+			<img src="">
+			<div class="desc"></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="" target="_blank">
+		<div class="icon" style="margin-top:2%;  margin-left:12%;">
+			<img src="">
+			<div class="desc"></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+		<a href="" target="_blank">
+		<div class="icon" style="margin-top:2%;  margin-left:12%;">
+			<img src="">
+			<div class="desc"></div>
+			<div class="gradation"></div>
+		</div>
+		</a>
+	</p>
+</body>
+</html>
