@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="sub/home/css/bird.css"/>
-<link rel="stylesheet" type="text/css" href="sub/home/css/introduce.css"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/bird.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/introduce.css' %}"/>
 <style>
 	body{
 		background:#000000;
@@ -23,8 +24,8 @@
 	<p id="third">
 	<font>A list of my interest is </font><font>Programming</font><font> / </font><font>Hacking</font><font> / </font><font>Drawing</font><font> / </font><font>Marathon</font><font> / </font><font>Foreign language</font><font> / </font><font> Meditation </font> 
 	</p>	
-	<img id="character" src="personal/img/character.png">
-	<img id="gradation" src="img/gradation.png"/>
-	<img id="bird" src="personal/img/bird.png"/>
+	<img id="character" src="{% static 'personal/img/character.png' %}">
+	<img id="gradation" src="{% static 'img/gradation.png' %}"/>
+	<img id="bird" src="{% static 'personal/img/bird.png' %}"/>
 </body>
 </html>

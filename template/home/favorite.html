@@ -1,11 +1,9 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="js/github-calendar.min.js"></script>
-<link rel="stylesheet" href="css/github-calendar.css"/>
 <script>
 $(document).ready( function() {
-	new GitHubCalendar(".calendar", "jaejunha");
 	var size = $(window).width()-200;
 	$('#main').css('width',size);
 
@@ -48,35 +46,35 @@ $(document).ready( function() {
 		<span style="font-size:20pt;">My favorite sites</span>
 		<a href="https://www.google.com" target="_blank">
 			<div class="icon">
-				<img src="img/google.png">
+				<img src="{% static 'img/google.png' %}">
 				<div class="desc"><font>Google</font></div>
 				<div class="gradation"></div>
 			</div>
 		</a>
 		<a href="https://github.com/jaejunha" target="_blank">
 		<div class="icon" style="margin-left:12%;">
-			<img src="img/github.png">
+			<img src="{% static 'img/github.png' %}">
 			<div class="desc"><font>Github</font></div>
 			<div class="gradation"></div>
 		</div>
 		</a>
 		<a href="http://portal.ajou.ac.kr" target="_blank">
 		<div class="icon" style="margin-left:12%;">
-			<img src="img/ajou.png">
+			<img src="{% static 'img/ajou.png' %}">
 			<div class="desc"><font>Ajou Portal</font></div>
 			<div class="gradation"></div>
 		</div>
 		</a>
 		<a href="https://www.naver.com" target="_blank">
 		<div class="icon" style="margin-left:12%;">
-			<img src="img/naver.png">
+			<img src="{% static 'img/naver.png' %}">
 			<div class="desc"><font>Naver</font></div>
 			<div class="gradation"></div>
 		</div>
 		</a>
 		<a href="https://drive.google.com/" target="_blank">
 		<div class="icon" style="margin-top:2%;  background-color: rgba(255,255,255,0.2);">
-			<img src="img/drive.png">
+			<img src="{% static 'img/drive.png' %}">
 			<div class="desc"><font>Google Drive</font></div>
 			<div class="gradation"></div>
 		</div>

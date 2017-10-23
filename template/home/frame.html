@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="sub/home/css/menu.css"/>
-<script type="text/javascript" src="sub/home/js/switch.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/menu.css' %}"/>
+<script type="text/javascript" src="{% static 'js/home/switch.js' %}"></script>
 <style>
 	body{
 		background:#000000;
@@ -14,16 +15,16 @@
 	var from = 1;	//0:activity	1:favorite
 	$(document).ready( function() {
 		var size = $(window).width();
-		$('#intro_content').load('sub/home/intro.html');
-		$('#favorite_content').load('sub/home/favorite.html');
+		$('#intro_content').load('home/intro');
+		$('#favorite_content').load('home/favorite');
 		$('#favorite_content').css('position','absolute');
 		$('#favorite_content').css('left',size+'px');
-		$('#activity_content').load('sub/home/activity.html');
+		$('#activity_content').load('home/activity');
 		$('#activity_content').css('position','absolute');
 		$('#activity_content').css('left',size+'px');
 
 		if(window.Worker){
-			var w = new Worker("sub/home/js/worker.js");
+			var w = new Worker("{% static 'js/home/worker.js' %}");
 		        w.onmessage = function(event) {
 			if(init==1)
 				from=switch_screen(init--,from,'activity');

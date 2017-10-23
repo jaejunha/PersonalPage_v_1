@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="js/github-calendar.min.js"></script>
-<link rel="stylesheet" href="css/github-calendar.css"/>
+<script type="text/javascript" src="{% static 'js/github-calendar.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/github-calendar.css' %}"/>
 <script>
 $(document).ready( function() {
 	new GitHubCalendar(".calendar", "jaejunha");

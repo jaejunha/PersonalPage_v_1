@@ -1,2 +1,3 @@
-personal/*
-*.lnk
+static/personal/*
+*.sqlite3
+*.pyc
