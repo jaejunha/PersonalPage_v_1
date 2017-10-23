@@ -13,13 +13,23 @@
 	var init = 1;
 	var from = 1;	//0:activity	1:favorite
 	$(document).ready( function() {
-		$('#left_content').load('sub/home/intro.html');
-		$('#right_content').load('sub/home/intro.html');
-		$('#right_content').css('opacity','0');
-		setTimeout(function(){
-		if(init==1)
-			from=switch_screen(init--,from,'activity');
-		}, 15000);
+		var size = $(window).width();
+		$('#intro_content').load('sub/home/intro.html');
+		$('#favorite_content').load('sub/home/favorite.html');
+		$('#favorite_content').css('position','absolute');
+		$('#favorite_content').css('left',size+'px');
+		$('#activity_content').load('sub/home/activity.html');
+		$('#activity_content').css('position','absolute');
+		$('#activity_content').css('left',size+'px');
+
+		if(window.Worker){
+			var w = new Worker("sub/home/js/worker.js");
+		        w.onmessage = function(event) {
+			if(init==1)
+				from=switch_screen(init--,from,'activity');
+        		};
+			w.postMessage("Hello");
+		}
 	});
 </script>
 </head>
@@ -28,7 +38,8 @@
 	<a id="favorite" href="javascript:from = switch_screen(init--,from,'favorite')">Favorite</a>
 	<a id="activity" href="javascript:from = switch_screen(init--,from,'activity')">Activity</a>
 	<hr/>
-	<div id="left_content"></div>
-	<div id="right_content"></div>
+	<div id="intro_content"></div>
+	<div id="favorite_content"></div>
+	<div id="activity_content"></div>
 </body>
 </html>

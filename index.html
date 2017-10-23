@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>dreamline91's page</title>
-	 	<link rel="shortcut icon" type="image/x-icon" href="img/bird.png"/>
+	 	<link rel="shortcut icon" type="image/x-icon" href="personal/img/bird.png"/>
 		<style>
 		html{
 			width:100%;
@@ -22,19 +22,22 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css"/>
 		<link rel="stylesheet" type="text/css" href="css/contact.css"/>
 		<link rel="stylesheet" type="text/css" href="css/loading.css"/>
+		<link rel="stylesheet" type="text/css" href="css/butterfly.css"/>
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="js/butterfly.js"></script>
 		<script type="text/javascript">
 			var cur = 0;	//0:home
 			$(document).ready( function() {
 				$('#content').load('sub/home/frame.html');
 				$('#home').css('color','#ffffff');
+				butterfly();
 			});
 		</script>
 	</head>
 	<body>
 		<div style="position:absolute; background:#ffffff; width:100%; height:100%; z-index:-1;"></div>
 		<div id="loading"></div>
-		<img id="background" src="img/background.jpg"/>	
+		<img id="background" src="personal/img/background.jpg"/>	
 		<div id="header">
 			<input id="contact" type="checkbox" />
 			<div id = "wrap">
@@ -66,9 +69,7 @@
 		<br>
 		<br>
 <!--		<font color="#ffffff" size="20pt">
-			activity/favorite
 			6 keywords and contiribution chart<br>
-			left sub menu like github; include main picture, my words, favorite site<br>
 			munu style : Local<br>
 			need customize<br>
 		</font> -->
