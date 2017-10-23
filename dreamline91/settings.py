@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dreamline91.apps.Dreamline91Config',
 ]
 
 MIDDLEWARE = [

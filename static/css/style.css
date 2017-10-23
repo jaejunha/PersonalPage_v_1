@@ -1,0 +1,14 @@
+#title{
+	font-family: Modeka;
+	font-size: 30pt;
+	width:300px;
+	animation: appear_tab 10s; 
+	animation-fill-mode: both;  
+	}
+
+hr { 
+	border: solid 1px #aaaaaa;
+	margin-top:20px;
+	animation: appear_tab 10s; 
+	animation-fill-mode: both; 
+}

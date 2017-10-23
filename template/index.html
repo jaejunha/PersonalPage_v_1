@@ -24,11 +24,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}"/>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/loading.css' %}"/>
 		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/switch.js' %}"></script>
 		<script type="text/javascript">
-			var cur = 0;	//0:home
 			$(document).ready( function() {
-				$('#content').load('home/frame');
-				$('#home').css('color','#ffffff');
+				switch_menu('home');
 			});
 		</script>
 	</head>
@@ -40,11 +39,11 @@
 			<input id="contact" type="checkbox" />
 			<div id = "wrap">
 				<header>
-					<a id="home" href="/">Home</a>
+					<a href="javascript:switch_menu('home')">Home</a>
 					<a href=#>About Me</a>
-					<a href="">Education</a>
+					<a href="javascript:switch_menu('education')">Education</a>
 					<a href="">Portfolio</a>
-					<a href="D:/GitHub" target="_blank">Local</a>
+					<a href="javascript:switch_menu('local')">Local</a>
 					<a href="personal/personal.html">Memo</a>
 					<label class="right" for="contact"></label>
 				</header>

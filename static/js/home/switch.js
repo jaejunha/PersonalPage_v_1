@@ -7,9 +7,8 @@ function switch_screen(init,from,to){
 	var activity = $('#activity');
 	var favorite = $('#favorite');
 
-
 	if(init == 1){		
-		intro_content.animate({ opacity:0},1500);
+		intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
 		if(to == 'activity'){			
 			activity_content.animate({ left:margin+'px'},1500);
 		}
