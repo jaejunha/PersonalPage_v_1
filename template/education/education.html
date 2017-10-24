@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load staticfiles %}
 <html>
 <head>
@@ -8,10 +8,20 @@
 		background:#000000;
 		color:#ffffff;
 	}
+	pre {	white-space: pre-wrap;
+		font-size:15pt; 
+		font-family:myriad-set-pro;
+		margin-bottom:-10pt;
+	}
 </style>
 </head>
 <body>	
 	<font id="title">Education</font>
 	<hr/>
+	{% autoescape off %}
+	{% for d in data %}
+    		<pre>{{ d }}</pre>
+	{% endfor %}
+	{% endautoescape %}
 </body>
 </html>

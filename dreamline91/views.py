@@ -20,9 +20,17 @@ def home_activity(request):
 	return render(request,'home/activity.html')
 
 def education(request):
-	return render(request,'education/education.html')
+	f = open('static/personal/txt/education.txt','r')
+	data = []
+	while True:
+		line = f.readline()
+		data.append(line)
+		if not line:
+			break
+	f.close()
+	return render(request,'education/education.html', {'data': data})
 
 def local(request):
-	p = popen('start D:\\GitHub');
+	p = os.popen('start D:\\GitHub');
 	p.wait()
 	return null;
