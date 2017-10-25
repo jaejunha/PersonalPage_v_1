@@ -22,6 +22,7 @@ urlpatterns = [
 	url(r'^home/intro', views.home_intro, name='home_intro'),
 	url(r'^home/activity', views.home_activity, name='home_activity'),
 	url(r'^home/favorite', views.home_favorite, name='home_favorite'),
+	url(r'^about', views.about, name='about'),
 	url(r'^education', views.education, name='education'),
 	url(r'^local', views.local, name='local'),
 ]

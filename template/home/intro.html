@@ -10,6 +10,35 @@
 		color:#ffffff;
 	}
 </style>
+<script type="text/javascript">
+	
+	$(document).ready( function() {
+		//delete animation
+		if(home < 0){
+			$('#bird').css('animation','appear_bird 0s');
+			$('#bird').css('top','40%');
+			$('#bird').css('left','30%');
+			$('#bird').css('opacity','1');
+			$('#gradation').css('animation','appear_gradation 0s');
+			$('#gradation').css('transform','scale(2,2)');
+			$('#gradation').css('left','30%');
+			$('#gradation').css('opacity','0.6');
+			$('#first').css('animation','appear_introduce 0s');
+			$('#first').css('opacity','1');
+			$('#second').css('animation','appear_introduce 0s');
+			$('#second').css('opacity','1');
+			$('#third').css('animation','appear_introduce 0s');
+			$('#third').css('opacity','1');
+			$('#character').css('animation','appear_introduce 0s');
+			$('#character').css('opacity','1');
+		}
+	});
+	$(window).resize(function (){
+		if(from == 0)
+			resize('frame');
+	});
+
+</script>
 </head>
 <body>	
 	<p id="first">

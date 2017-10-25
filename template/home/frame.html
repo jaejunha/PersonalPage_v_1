@@ -4,6 +4,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home/menu.css' %}"/>
 <script type="text/javascript" src="{% static 'js/home/switch.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/home/resize.js' %}"></script>
 <style>
 	body{
 		background:#000000;
@@ -12,7 +13,7 @@
 </style>
 <script type="text/javascript">
 	var init = 1;
-	var from = 1;	//0:activity	1:favorite
+	var from = 0;	//0:activity	1:favorite
 	$(document).ready( function() {
 		var size = $(window).width();
 		$('#intro_content').load('home/intro');
@@ -26,12 +27,33 @@
 		if(window.Worker){
 			var w = new Worker("{% static 'js/home/worker.js' %}");
 		        w.onmessage = function(event) {
-			if(init==1)
+			if(init == 1 && home >= 0)
 				from=switch_screen(init--,from,'activity');
         		};
 			w.postMessage("Hello");
 		}
+		if(from == 0)
+			resize('frame');
+
+		
+		//delete animation
+		if(home != 1){
+			$('#favorite').css('animation','appear_tab 0s');
+			$('#favorite').css('opacity','1');
+			$('#activity').css('animation','appear_tab 0s');
+			$('#activity').css('opacity','1');
+			$('hr').css('animation','appear_tab 0s');
+			$('hr').css('opacity','1');
+			$('#title').css('animation','appear_tab 0s');
+			$('#bird').css('animation','appear_bird 0s');
+		}
+		home--;
 	});
+	$(window).resize(function (){
+		if(from == 0)
+			resize('frame');
+	});
+
 </script>
 </head>
 <body>	

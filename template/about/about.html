@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<style>
+	body{
+		background:#000000;
+		color:#ffffff;
+	}
+	pre {	white-space: pre-wrap;
+		font-size:15pt; 
+		font-family:myriad-set-pro;
+		margin-bottom:-10pt;
+	}
+	#inner_content{
+		overflow-y:scroll;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready( function() {
+		var size = $(window).height() - $('#inner_content').offset().top;
+		$('#inner_content').css('height',size+'px');
+		$('#inner_content').css('overflow','auto');
+	});
+		</script>
+</head>
+<body>	
+	<font id="title">Me</font>
+	<hr/>
+	<div id="inner_content">
+	{% autoescape off %}
+	{% for d in data %}
+    		<pre>{{ d }}</pre>
+	{% endfor %}
+	{% endautoescape %}
+	</div>
+</body>
+</html>

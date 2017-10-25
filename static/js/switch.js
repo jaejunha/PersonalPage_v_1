@@ -5,6 +5,10 @@ function switch_menu(to){
 			$('#content').load('home/frame');
 			$('header a:nth-child(1)').css('color','#ffffff');
 		}
+		if(to=='about'){
+			$('#content').load('about');
+			$('header a:nth-child(2)').css('color','#ffffff');
+		}
 		if(to=='education'){
 			$('#content').load('education');
 			$('header a:nth-child(3)').css('color','#ffffff');

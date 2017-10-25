@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-import os
+import subprocess
 
 def index(request):
 	return render(request,'index.html')
@@ -19,6 +19,17 @@ def home_favorite(request):
 def home_activity(request):
 	return render(request,'home/activity.html')
 
+def about(request):
+	f = open('static/personal/txt/history.txt','r')
+	data = []
+	while True:
+		line = f.readline()
+		data.append(line)
+		if not line:
+			break
+	f.close()
+	return render(request,'about/about.html', {'data': data})
+
 def education(request):
 	f = open('static/personal/txt/education.txt','r')
 	data = []
@@ -31,6 +42,6 @@ def education(request):
 	return render(request,'education/education.html', {'data': data})
 
 def local(request):
-	p = os.popen('start D:\\GitHub');
+	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
 	p.wait()
-	return null;
+	return null
