@@ -6,7 +6,7 @@ function switch_menu(to){
 			$('header a:nth-child(1)').css('color','#ffffff');
 		}
 		if(to=='about'){
-			$('#content').load('about');
+			$('#content').load('about/frame');
 			$('header a:nth-child(2)').css('color','#ffffff');
 		}
 		if(to=='education'){

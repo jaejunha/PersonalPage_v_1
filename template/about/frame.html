@@ -3,6 +3,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/about/menu.css' %}"/>
+<script type="text/javascript" src="{% static 'js/about/switch.js' %}"></script>
 <style>
 	body{
 		background:#000000;
@@ -14,7 +16,7 @@
 		margin-bottom:-10pt;
 	}
 	#inner_content{
-		overflow-y:scroll;
+		overflow-y:auto;
 	}
 </style>
 <script type="text/javascript">
@@ -22,18 +24,19 @@
 		var size = $(window).height() - $('#inner_content').offset().top;
 		$('#inner_content').css('height',size+'px');
 		$('#inner_content').css('overflow','auto');
+		
+		$('#personal').css('color','#ffffff');
+		$('#personal').css('opacity',1);
+		$('#inner_content').load('about/personal');
 	});
 		</script>
 </head>
 <body>	
 	<font id="title">Me</font>
+	<a id="history" href="javascript:switch_screen('history');">History</a>
+	<a id="bucketlist" href="javascript:switch_screen('bucketlist');">Bucket List</a>
+	<a id="personal" href="javascript:switch_screen('personal');">Personal</a>
 	<hr/>
-	<div id="inner_content">
-	{% autoescape off %}
-	{% for d in data %}
-    		<pre>{{ d }}</pre>
-	{% endfor %}
-	{% endautoescape %}
-	</div>
+	<div id="inner_content"></div>
 </body>
 </html>
