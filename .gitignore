@@ -1,3 +1,5 @@
 static/personal/*
+static/site/*
+ghostdriver.log
 *.sqlite3
 *.pyc

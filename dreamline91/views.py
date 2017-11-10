@@ -2,9 +2,31 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
+from selenium import webdriver 
 import subprocess
+import threading
+ 
+browser = webdriver.PhantomJS() 
 
+def web():
+	global browser
+	#need to read from db
+	browser.get("https://www.google.com/")
+	browser.save_screenshot("static\site\Website1.png")
+	browser.get("https://github.com/jaejunha")
+	browser.save_screenshot("static\site\Website2.png")
+	browser.get("http://portal.ajou.ac.kr")
+	browser.save_screenshot("static\site\Website3.png")
+	browser.get("https://www.naver.com/")
+	browser.save_screenshot("static\site\Website4.png")
+	browser.get("https://drive.google.com")
+	browser.save_screenshot("static\site\Website5.png")
+	browser.get("http://www.chuing.net/")
+	browser.save_screenshot("static\site\Website6.png")
+ 
 def index(request):
+	t = threading.Thread(target=web)
+	t.start()
 	return render(request,'index.html')
 
 def home_frame(request):

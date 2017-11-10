@@ -19,3 +19,7 @@
 >https://jquery.com/download/
 - Mariad set pro(font)
 >https://fontsup.com/ko/font/modeka.html
+- Selenium
+>pip install selenium
+- PhantomJS
+>http://phantomjs.org/download.html
