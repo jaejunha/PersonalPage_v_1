@@ -5,12 +5,17 @@ from django.shortcuts import render
 from selenium import webdriver 
 import subprocess
 import threading
- 
-browser = webdriver.PhantomJS() 
+from PIL import Image
 
 def web():
-	global browser
+	browser = webdriver.PhantomJS() 
+
+
+	
+
 	#need to read from db
+
+	browser.set_window_size(1920, 1080)
 	browser.get("https://www.google.com/")
 	browser.save_screenshot("static\site\Website1.png")
 	browser.get("https://github.com/jaejunha")
@@ -23,6 +28,18 @@ def web():
 	browser.save_screenshot("static\site\Website5.png")
 	browser.get("http://www.chuing.net/")
 	browser.save_screenshot("static\site\Website6.png")
+
+	for i in range(1,7):
+		im = Image.open('static\site\Website'+str(i)+'.png')
+		print 'working'+str(i)
+		if im.size[0]<=im.size[1]:
+			box = (0, 0, im.size[0], im.size[0])
+			region = im.crop(box)
+		else:
+			region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,255))
+			region.paste(im, (0,0,im.size[0],im.size[1]))
+		region.save('static\site\Website'+str(i)+'.png')
+
  
 def index(request):
 	t = threading.Thread(target=web)
