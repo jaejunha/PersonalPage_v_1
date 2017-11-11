@@ -6,6 +6,7 @@
 <script>
 $(document).ready( function() {
 	resize('favorite');
+
 });
 $(window).resize(function (){
 	resize('favorite');
@@ -15,62 +16,31 @@ $(window).resize(function (){
 <body>
 	<p id="main">
 		<span style="font-size:20pt;">My favorite sites</span>
-		<a href="https://www.google.com" target="_blank">
+		{% for data, title in item %}
+		<a href="{{data}}" target="_blank">
+			{% if forloop.first %}
 			<div class="icon">
-				<img src="{% static 'site/Website1.png' %}" alt=""/>
-				<div class="desc"><font>Google</font></div>
+			{% elif forloop.counter == 5 %}
+			<div class="icon" style="margin-top:5%;">
+			{% elif forloop.counter == 2 %}
+			<div class="icon" style="margin-left:12%;">
+			{% elif forloop.counter == 3 %}
+			<div class="icon" style="margin-left:12%;">
+			{% elif forloop.counter == 4 %}
+			<div class="icon" style="margin-left:12%;">
+			{% else %}
+			<div class="icon" style="margin-top:5%; margin-left:12%;">
+			{% endif %}
+    				{% with n=forloop.counter|stringformat:"s" %}
+				{% with 'site/Website'|add:n|add:'.png' as image %}
+				<img src="{% static image %}" alt=""/>
+				{% endwith %}
+				{% endwith %}
+				<div class="desc"><font>{{title}}</font></div>
 				<div class="gradation"></div>	
 			</div>
 		</a>
-		<a href="https://github.com/jaejunha" target="_blank">
-		<div class="icon" style="margin-left:12%;">
-			<img src="{% static 'site/Website2.png' %}" alt=""/>
-			<div class="desc"><font>Github</font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="http://portal.ajou.ac.kr" target="_blank">
-		<div class="icon" style="margin-left:12%;">
-			<img src="{% static 'site/Website3.png' %}" alt=""/>
-			<div class="desc"><font>Ajou Portal</font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="https://www.naver.com" target="_blank">
-		<div class="icon" style="margin-left:12%;">
-			<img src="{% static 'site/Website4.png' %}" alt=""/>
-			<div class="desc"><font>Naver</font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="https://drive.google.com/" target="_blank">
-		<div class="icon" style="margin-top:5%;  background-color: rgba(255,255,255,0.2);">
-			<img src="{% static 'site/Website5.png' %}" alt="">
-			<div class="desc"><font>Google Drive</font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="" target="_blank">
-		<div class="icon" style="margin-top:5%; margin-left:12%;">
-			<img src="{% static 'site/Website6.png' %}" alt=""/>
-			<div class="desc"><font></font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="" target="_blank">
-		<div class="icon" style="margin-top:5%;  margin-left:12%;">
-			<img src="{% static 'site/Website7.png' %}" alt=""/>
-			<div class="desc"><font></font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
-		<a href="" target="_blank">
-		<div class="icon" style="margin-top:5%;  margin-left:12%;">
-			<img src="{% static 'site/Website8.png' %}" alt=""/>
-			<div class="desc"><font></font></div>
-			<div class="gradation"></div>
-		</div>
-		</a>
+		{%endfor%}
 	</p>
 </body>
 </html>

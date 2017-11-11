@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -6,32 +6,30 @@ from selenium import webdriver
 import subprocess
 import threading
 from PIL import Image
+from bs4 import BeautifulSoup
+import requests
+import locale
 
 def web():
+
+	f = open('static/personal/txt/favorite.txt','r')
+	data = []
+	while True:
+		line = f.readline()
+		if line.find('http') == 0:
+			line = line.split('\n')[0]
+			data.append(line)
+		if not line:
+			break
+	f.close()
+
 	browser = webdriver.PhantomJS() 
-
-
-	
-
-	#need to read from db
-
 	browser.set_window_size(1920, 1080)
-	browser.get("https://www.google.com/")
-	browser.save_screenshot("static\site\Website1.png")
-	browser.get("https://github.com/jaejunha")
-	browser.save_screenshot("static\site\Website2.png")
-	browser.get("http://portal.ajou.ac.kr")
-	browser.save_screenshot("static\site\Website3.png")
-	browser.get("https://www.naver.com/")
-	browser.save_screenshot("static\site\Website4.png")
-	browser.get("https://drive.google.com")
-	browser.save_screenshot("static\site\Website5.png")
-	browser.get("http://www.chuing.net/")
-	browser.save_screenshot("static\site\Website6.png")
-
-	for i in range(1,7):
+	i = 1
+	for d in data:
+		browser.get(d)
+		browser.save_screenshot("static\site\Website"+str(i)+".png")
 		im = Image.open('static\site\Website'+str(i)+'.png')
-		print 'working'+str(i)
 		if im.size[0]<=im.size[1]:
 			box = (0, 0, im.size[0], im.size[0])
 			region = im.crop(box)
@@ -39,7 +37,7 @@ def web():
 			region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,255))
 			region.paste(im, (0,0,im.size[0],im.size[1]))
 		region.save('static\site\Website'+str(i)+'.png')
-
+		i = i+1
  
 def index(request):
 	t = threading.Thread(target=web)
@@ -53,7 +51,26 @@ def home_intro(request):
 	return render(request,'home/intro.html')
 
 def home_favorite(request):
-	return render(request,'home/favorite.html')
+	f = open('static/personal/txt/favorite.txt','r')
+	data = []
+	while True:
+		line = f.readline()
+		if line.find('http') == 0:
+			line = line.split('\n')[0]
+			data.append(line)
+			print line
+		if not line:
+			break
+	f.close()
+
+	title = []	
+	for d in data:
+		res = requests.get(d)
+		soup = BeautifulSoup(res.text,"html.parser")
+		title.append(soup.find('title').string)
+
+		item = zip(data, title)
+	return render(request,'home/favorite.html', {'item':item})
 
 def home_activity(request):
 	return render(request,'home/activity.html')
