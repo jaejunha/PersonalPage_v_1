@@ -12,6 +12,22 @@ $(window).resize(function (){
 	resize('favorite');
 });
 </script>
+<style>
+	.title{
+		position: absolute;
+		background-color: #aaaaaa;
+		color: #ffffff;
+		z-index: 2;
+	}
+	.desc{
+		display: table;
+	}
+	.desc div{
+		display: table-cell;
+		vertical-align : middle;
+		text-align:center;
+	}
+</style>
 </head>
 <body>
 	<p id="main">
@@ -36,8 +52,10 @@ $(window).resize(function (){
 				<img src="{% static image %}" alt=""/>
 				{% endwith %}
 				{% endwith %}
-				<div class="desc"><font>{{title}}</font></div>
-				<div class="gradation"></div>	
+				<div class="desc"><div>{{data}}</div></div>
+				<div class="gradation"></div>
+				<img class="favicon" src="" alt=""/>
+				<font class="title">{{title}}</font>	
 			</div>
 		</a>
 		{%endfor%}

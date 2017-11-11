@@ -8,7 +8,6 @@ import threading
 from PIL import Image
 from bs4 import BeautifulSoup
 import requests
-import locale
 
 def web():
 
@@ -28,15 +27,15 @@ def web():
 	i = 1
 	for d in data:
 		browser.get(d)
-		browser.save_screenshot("static\site\Website"+str(i)+".png")
-		im = Image.open('static\site\Website'+str(i)+'.png')
+		browser.save_screenshot("static/site/temp.png")
+		im = Image.open('static/site/temp.png')
 		if im.size[0]<=im.size[1]:
 			box = (0, 0, im.size[0], im.size[0])
 			region = im.crop(box)
 		else:
-			region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,255))
-			region.paste(im, (0,0,im.size[0],im.size[1]))
-		region.save('static\site\Website'+str(i)+'.png')
+			region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,0))
+			region.paste(im, (0,im.size[0]-im.size[1],im.size[0],im.size[0]))
+		region.save('static/site/Website'+str(i)+'.png')
 		i = i+1
  
 def index(request):
@@ -58,7 +57,6 @@ def home_favorite(request):
 		if line.find('http') == 0:
 			line = line.split('\n')[0]
 			data.append(line)
-			print line
 		if not line:
 			break
 	f.close()
