@@ -13,27 +13,29 @@ $(window).resize(function (){
 });
 </script>
 <style>
-	.title{
-		position: absolute;
-		background-color: #aaaaaa;
-		color: #ffffff;
-		z-index: 2;
-	}
 	.desc{
 		display: table;
+		background-color: #cccccc;
+		font-size: 15pt;	
+		color: #ffffff;	
+		z-index: 0;	
 	}
 	.desc div{
 		display: table-cell;
 		vertical-align : middle;
 		text-align:center;
 	}
+	.favi{
+		position: absolute;	
+		display: inline;
+	}
 </style>
 </head>
 <body>
 	<p id="main">
 		<span style="font-size:20pt;">My favorite sites</span>
-		{% for data, title in item %}
-		<a href="{{data}}" target="_blank">
+		{% for url, name in item %}
+		<a href="{{url}}" target="_blank">
 			{% if forloop.first %}
 			<div class="icon">
 			{% elif forloop.counter == 5 %}
@@ -49,13 +51,13 @@ $(window).resize(function (){
 			{% endif %}
     				{% with n=forloop.counter|stringformat:"s" %}
 				{% with 'site/Website'|add:n|add:'.png' as image %}
+				{% with 'site/'|add:n as favi %}
 				<img src="{% static image %}" alt=""/>
+				<div class="desc"><div><img class="favi" src="{% static favi %}" alt=""/>{{name}}</div></div>
 				{% endwith %}
 				{% endwith %}
-				<div class="desc"><div>{{data}}</div></div>
+				{% endwith %}
 				<div class="gradation"></div>
-				<img class="favicon" src="" alt=""/>
-				<font class="title">{{title}}</font>	
 			</div>
 		</a>
 		{%endfor%}
