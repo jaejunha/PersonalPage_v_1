@@ -74,7 +74,7 @@ def web():
 				box = (0, 0, im.size[0], im.size[0])
 				region = im.crop(box)
 			else:
-				region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,255))
+				region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,32))
 				region.paste(im, (0,0,im.size[0],im.size[1]))
 			region.save('static/site/Website'+str(i)+'.png')
 

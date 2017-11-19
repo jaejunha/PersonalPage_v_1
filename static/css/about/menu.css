@@ -21,6 +21,6 @@ hr {
 
 #personal:hover, #bucketlist:hover, #history:hover{
 	opacity: 1;
-	text-decoration: underline;
+	text-decoration: none;
 	color: #ffffff;
 }

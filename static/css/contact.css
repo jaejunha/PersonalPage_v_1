@@ -12,20 +12,20 @@
   	width: 0px;
 	height: 0px;
  	border-top:10px solid none;
-  	border-bottom:10px solid #2A2A2A;	
+  	border-bottom:10px solid rgba(0,0,0,0.6);	
   	border-right: 10px solid transparent;
   	border-left: 10px solid  transparent;
 	left: 140px;
 }
 #contact_content{
-	background: #666666;
+	background: rgba(255,255,255,0.6);
 	height: 120px;
 	border-radius:5px;
 }
 #contact_content > #upper{
 	padding-top: 5px;
 	padding-left: 5px;
-	background: #2A2A2A;	
+	background: rgba(0,0,0,0.6);	
 	height: 30px;
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
