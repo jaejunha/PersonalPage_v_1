@@ -2,11 +2,11 @@
 #bird{
 	position:absolute;
 	transition-origin: 50% 0%;
-	width:376px;
-	height:475px;
+	width:300px;
+	height:380px;
 	left:50%;
-	margin-left:-188px;
-	top:-50%;         
+	margin-left:-150px;
+	top:-40%;         
 	animation: appear_bird 10s; 
 	animation-fill-mode: both;
 	z-index:-1;
@@ -16,10 +16,10 @@
 	top: 30%;
 	left:50%;
 	transition-origin: 0% 0%;
-	margin-left:-375px;
-	margin-top:50px;
-	width: 750px;                          
- 	height: 600px;                                 
+	margin-left:-300px;
+	margin-top:40px;
+	width: 600px;                          
+ 	height: 480px;                                 
 	animation: appear_gradation 10s; 
 	animation-fill-mode: both;
 	z-index: -1;
