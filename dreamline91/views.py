@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from models import *
 import subprocess
- 
+
+def not_found(request):
+	return render(request,'404.html')
+
 def index(request):
 	return render(request,'index.html')
 

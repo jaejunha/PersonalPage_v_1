@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>	
+		<meta name="viewport" content="height=device-height, user-scalable=no">
+		<meta charset="utf-8">
+		<title>dreamline91's page</title>
+	 	<link rel="shortcut icon" type="image/x-icon" href="{% static 'personal/img/bird.png' %}"/>
+		<style>
+		html{
+			width:100%;
+			height:100%;
+		}
+		body{
+			overflow-y:hidden; 
+			overflow-x:hidden;
+			font-family:Myriad Set Pro;
+			width:100%;
+			height:100%;
+			margin:0;
+		}
+		</style>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/loading.css' %}"/>
+		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/switch.js' %}"></script>
+		<script type="text/javascript">
+			var home = 1;
+			$(document).ready( function() {
+				switch_menu('home');
+			});
+		</script>
+	</head>
+	<body>
+		not found
+	</body>
+</html>
