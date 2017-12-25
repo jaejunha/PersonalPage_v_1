@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 	<head>	
-		<meta name="viewport" content="height=device-height, user-scalable=no">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta charset="utf-8">
 		<title>dreamline91's page</title>
 	 	<link rel="shortcut icon" type="image/x-icon" href="{% static 'personal/img/bird.png' %}"/>
@@ -29,9 +29,6 @@
 		<script type="text/javascript">
 			var home = 1;
 			$(document).ready( function() {
-				$('.bar').css('width',screen.width-20);
-				$('#background').css('width',screen.width);
-				$('#background').css('height',screen.height);
 				switch_menu('home');
 			});
 		</script>
@@ -65,7 +62,7 @@
 				</div>
 			</div>
 		</header>
-		<div id="content" style="margin:100px; margin-top:50px;"></div>
+		<div id="content" style="margin:100px; margin-top:50px; min-width:1200px;"></div>
 		<br>
 		<br>
 	</body>

@@ -1,5 +1,7 @@
 ﻿.bar{
+	min-width:1200px;
 	margin-left:10px;
+	margin-right:10px;
 	top:10px;
 	background-color: rgba(255,255,255,0.8);
 	position: relative;
