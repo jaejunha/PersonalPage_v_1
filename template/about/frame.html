@@ -18,12 +18,14 @@
 	#inner_content{
 		overflow-y:auto;
 	}
+	#inner_content::-webkit-scrollbar {
+		display:none;
+	} 
 </style>
 <script type="text/javascript">
 	$(document).ready( function() {
 		var size = $(window).height() - $('#inner_content').offset().top;
 		$('#inner_content').css('height',size+'px');
-		$('#inner_content').css('overflow','auto');
 		
 		$('#personal').css('color','#ffffff');
 		$('#personal').css('opacity',1);

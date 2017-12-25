@@ -29,6 +29,9 @@
 		<script type="text/javascript">
 			var home = 1;
 			$(document).ready( function() {
+				$('.bar').css('width',screen.width-20);
+				$('#background').css('width',screen.width);
+				$('#background').css('height',screen.height);
 				switch_menu('home');
 			});
 		</script>
@@ -37,10 +40,10 @@
 		<div style="position:absolute; background:#ffffff; width:100%; height:100%; z-index:-1;"></div>
 		<div id="loading"></div>
 		<img id="background" src="{% static 'personal/img/background.jpg' %}"/>	
-		<div id="header">
+		<header>
 			<input id="contact" type="checkbox" />
 			<div id = "wrap">
-				<header>
+				<div class="bar">
 					<a href="javascript:switch_menu('home');">Home</a>
 					<a href="javascript:switch_menu('about');">About Me</a>
 					<a href="javascript:switch_menu('education');">Education</a>
@@ -48,7 +51,7 @@
 					<a href="javascript:switch_menu('local');">Local</a>
 					<a href="personal/personal.html">Memo</a>
 					<label class="right" for="contact"></label>
-				</header>
+				</div>
 				<div id="contact_content_wrap">
 					<div id="triangle"></div>
 					<div id="contact_content">
@@ -61,7 +64,7 @@
 					</div>
 				</div>
 			</div>
-		<div>
+		</header>
 		<div id="content" style="margin:100px; margin-top:50px;"></div>
 		<br>
 		<br>

@@ -10,19 +10,30 @@
 		background:#000000;
 		color:#ffffff;
 	}
+	#activity_content{
+		overflow-y:auto;
+	}
+	#activity_content::-webkit-scrollbar {
+		display:none;
+	} 
 </style>
 <script type="text/javascript">
 	var init = 1;
 	var from = 0;	//0:activity	1:favorite
 	$(document).ready( function() {
-		var size = $(window).width();
+		var width = $(window).width();
 		$('#intro_content').load('home/intro');
 		$('#favorite_content').load('home/favorite');
 		$('#favorite_content').css('position','absolute');
-		$('#favorite_content').css('left',size+'px');
+		$('#favorite_content').css('left',width+'px');
 		$('#activity_content').load('home/activity');
 		$('#activity_content').css('position','absolute');
-		$('#activity_content').css('left',size+'px');
+		$('#activity_content').css('left',width+'px');
+		$('#activity_content').css('width',(width-200)+'px');
+
+	
+		var height = $(window).height() - $('#activity_content').offset().top;
+		$('#activity_content').css('height',height+'px');
 
 		if(window.Worker){
 			var w = new Worker("{% static 'js/home/worker.js' %}");
@@ -50,6 +61,16 @@
 		home--;
 	});
 	$(window).resize(function (){
+		if(init == 1){
+		var width = $(window).width();
+			$('#favorite_content').css('left',width+'px');
+			$('#activity_content').css('left',width+'px');
+			$('#activity_content').css('width',(width-200)+'px');
+	
+			var height = $(window).height() - $('#activity_content').offset().top;
+			$('#activity_content').css('height',height+'px');
+		}
+
 		if(from == 0)
 			resize('frame');
 	});
