@@ -15,7 +15,13 @@
 	}
 	#activity_content::-webkit-scrollbar {
 		display:none;
-	} 
+	}
+	#favorite_content{
+		overflow-y:auto;
+	}
+	#favorite_content::-webkit-scrollbar {
+		display:none;
+	}  
 </style>
 <script type="text/javascript">
 	var init = 1;
@@ -34,6 +40,7 @@
 	
 		var height = $(window).height() - $('#activity_content').offset().top;
 		$('#activity_content').css('height',height+'px');
+		$('#favorite_content').css('height',height+'px');
 
 		if(window.Worker){
 			var w = new Worker("{% static 'js/home/worker.js' %}");

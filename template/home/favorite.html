@@ -36,18 +36,10 @@ $(window).resize(function (){
 		<span style="font-size:20pt;">My favorite sites</span>
 		{% for url, name in item %}
 		<a href="{{url}}" target="_blank">
-			{% if forloop.first %}
-			<div class="icon">
-			{% elif forloop.counter == 5 %}
-			<div class="icon" style="margin-top:5%;">
-			{% elif forloop.counter == 2 %}
-			<div class="icon" style="margin-left:12%;">
-			{% elif forloop.counter == 3 %}
-			<div class="icon" style="margin-left:12%;">
-			{% elif forloop.counter == 4 %}
-			<div class="icon" style="margin-left:12%;">
+			{% if forloop.counter <= 4 %}
+			<div class="icon" style="margin-left:4.5%;margin-right:4.5%;">
 			{% else %}
-			<div class="icon" style="margin-top:5%; margin-left:12%;">
+			<div class="icon" style="margin-top:5%; margin-left:4.5%;margin-right:4.5%;">
 			{% endif %}
     				{% with n=forloop.counter|stringformat:"s" %}
 				{% with 'site/Website'|add:n|add:'.png' as image %}
