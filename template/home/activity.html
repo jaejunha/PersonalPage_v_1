@@ -3,11 +3,9 @@
 <html>
 <head>
 <script type="text/javascript" src="{% static 'js/home/resize.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/github-calendar.min.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/github-calendar.css' %}"/>
 <script>
 $(document).ready( function() {
-	new GitHubCalendar(".calendar", "jaejunha");
+        GitHubCalendar(".calendar", "jaejunha");
 	resize('activity');
 });
 $(document).resize( function() {

@@ -1,16 +1,16 @@
 ﻿.bar{
+	position: relative;
 	min-width:1200px;
 	margin-left:10px;
 	margin-right:10px;
+	padding-left:100px;
 	top:10px;
+	line-height:60px;
 	background-color: rgba(255,255,255,0.8);
-	position: relative;
-	line-height: 60px;
+   	vertical-align: middle;
 	border-radius: 5px;
-	vertical-align: middle;
 	font-size: 20pt;
 	color:#dddddd;
-	opacity:0;
 	animation: appear 10s;
 	animation-fill-mode:both
 }
@@ -25,19 +25,16 @@
 	text-decoration: underline; 
 	color: #ffffff
 }
-.bar > label.right{
-	float: right;
-	display: block;
-	margin-top: 6px;
-	margin-left: 6px;
-	margin-right: 6px;
+.logo{
+	position: absolute;
 	width: 48px;
 	height: 48px;
+	top:16px;
+	left:16px;
 	border-radius:24px;
 	background-image:url('../personal/img/min_picture.jpg');
-	background-position: left top;
-	background-size: 48px 48px;
-	text-indent: 99999px;
+	animation: appear 10s;
+	animation-fill-mode:both
 }
 
 @keyframes appear{
