@@ -18,6 +18,7 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
+	url(r'^mobile',views.m_index, name='m_index'),
 	url(r'^home/frame', views.home_frame, name='home_frame'),
 	url(r'^home/intro', views.home_intro, name='home_intro'),
 	url(r'^home/activity', views.home_activity, name='home_activity'),

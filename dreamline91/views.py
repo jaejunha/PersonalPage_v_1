@@ -11,6 +11,9 @@ def not_found(request):
 def index(request):
 	return render(request,'index.html')
 
+def m_index(request):
+	return render(request,'mobile/index.html')
+
 def home_frame(request):
 	return render(request,'home/frame.html')
 
