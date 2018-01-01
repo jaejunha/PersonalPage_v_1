@@ -1,12 +1,64 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+	body{
+		width:100%;
+		height:100%;
+		background:#000000;
+		margin:0;
+		
+		color:#ffffff;
+		font-family: Modeka;
+	}
+	.page{
+		margin:5px;
+	}
+	header{	
+		position:relative;
+		height:40px;
+		line-height:40px;
+		background: rgba(255,255,255,0.8);
+		border-radius: 5px;
+		text-align:center;
+		vertical-align:middle;
+		font-family:Myriad Set Pro;
+	}
+	header img{
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		top:5px;
+		left:5px;
+		border-radius:15px;
+	}
+	font{
+		color:#ffff00;
+	}	
+</style>
 </head>
 <body>
-comming soon...
+<div data-role="page" class="page">
+	<header> 
+		<img src="{% static 'personal/img/min_picture.jpg' %}">
+		Dreamline91's Page
+	</header>
+	<br>Hello, my name is <font>Jae Jun Ha</font><br>
+	Welcome my homepage<br>
+	This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
+	<br>
+	My major is <font>Software</font>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <font>Programming</font> / <font>Drawing</font> / <font>Marathon</font> / <font>Foreign language</font> / <font> Meditation</font>.<br>
+	<br>
+	I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><font>dreamline91@ajou.ac.kr</font></a> 
+	<div data-role="navbar" style="text-align:center;" >
+	<ul>
+		<li>Activity</li>
+                <li>Favorite</li>
+	</ul>
 </body>
 </html>
