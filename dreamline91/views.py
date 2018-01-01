@@ -9,7 +9,25 @@ def not_found(request):
 	return render(request,'404.html')
 
 def index(request):
-	return render(request,'index.html')
+	agent = request.META.get('HTTP_USER_AGENT')
+	if agent.find('Android')>-1:
+		isMobile = True;
+        elif agent.find('webOS')>-1:
+                isMobile = True;
+	elif agent.find('iPhone')>-1:
+		isMobile = True;
+	elif agent.find('iPad')>-1:
+		isMobile = True;
+        elif agent.find('iPod')>-1:
+                isMobile = True;
+        elif agent.find('BlackBerry')>-1:
+                isMobile = True;
+	else:
+		isMobile = False;
+	if isMobile:
+		return render(request,'mobile/index.html')
+	else:
+		return render(request,'index.html')
 
 def m_index(request):
 	return render(request,'mobile/index.html')
