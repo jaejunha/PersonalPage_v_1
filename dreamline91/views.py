@@ -25,12 +25,14 @@ def index(request):
 	else:
 		isMobile = False;
 	if isMobile:
-		return render(request,'mobile/index.html')
+		item = get_favorite()
+		return render(request,'mobile/index.html', {'item':item})
 	else:
 		return render(request,'index.html')
 
 def m_index(request):
-	return render(request,'mobile/index.html')
+	item = get_favorite()
+	return render(request,'mobile/index.html', {'item':item})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -39,13 +41,7 @@ def home_intro(request):
 	return render(request,'home/intro.html')
 
 def home_favorite(request):
-	url = []
-	name = []	
-	result = Favorite.objects.filter()
-	for r in result:
-		url.append(r.url)
-		name.append(r.name)
-	item = zip(url, name)
+	item = get_favorite()
 	return render(request,'home/favorite.html', {'item':item})
 
 def home_activity(request):
@@ -102,3 +98,13 @@ def local(request):
 	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
 	p.wait()
 	return HttpResponse(status=204)
+
+def get_favorite():
+	url = []
+        name = []
+        result = Favorite.objects.filter()
+        for r in result:
+                url.append(r.url)
+                name.append(r.name)
+        item = zip(url, name)
+	return item

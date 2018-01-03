@@ -20,68 +20,24 @@ def web():
 	url = []
 	while True:
 		print 'working...'
-		if url:
-			del url[:]
-		cursor.execute('select * from dreamline91_favorite')
-		rows = cursor.fetchall()
-		for r in rows:
-    			url.append(r[1])
-
+		url = reset_url(url)
 		browser = webdriver.PhantomJS() 
 		browser.set_window_size(1920, 1080)
 		i = 1
 		for u in url:
+			t = ''
 			response = requests.get(u)
 			for l in link.findall(response.text):
 				if l.find('short') >= 0:
 					for h in href.findall(l):
-						t = h[6:].replace('"','')
-						if u.find('https://www.google.com') >= 0:
-							t = 'https://www.google.com'+ h[6:].replace('"','')
-						elif t.find('http') <0:
-							t = u+h[6:].replace('"','')
-						down = file('static/site/'+str(i), "wb")
-    						image = urllib.urlopen(t)
-    						while True:
-     							buf = image.read(100000000)
-        						if len(buf) == 0:
-            							break
-        						down.write(buf)
-    						down.close()
-    						image.close()
-
+						t = process_url(u,h)
+						save_favicon(i,t)
 				elif l.find('icon') >= 0:
 					for h in href.findall(l):
-						t = h[6:].replace('"','')
-						if u.find('https://www.google.com') >= 0:
-							t = 'https://www.google.com'+ h[6:].replace('"','')
-						elif t.find('http') <0:
-							t = u+h[6:].replace('"','')
-						down = file('static/site/'+str(i), "wb")
-    						image = urllib.urlopen(t)
-    						while True:
-     							buf = image.read(100000000)
-        						if len(buf) == 0:
-            							break
-        						down.write(buf)
-    						down.close()
-    						image.close() 
-                                                                            
-			browser.get(u)
-			browser.save_screenshot("static/site/temp.png")
-			im = Image.open('static/site/temp.png')
-			if im.size[0]<=im.size[1]:
-				min = im.size[0]
-				box = (0, 0, im.size[0], im.size[0])
-				region = im.crop(box)
-			else:
-				min = im.size[1]
-				region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,32))
-				region.paste(im, (0,0,im.size[0],im.size[1]))
-				region.thumbnail((min/5, min/5))
-			region.save('static/site/Website'+str(i)+'.png')
-
-   
+						t = process_url(u,h)
+						save_favicon(i,t)
+			print t                       
+			save_capture(browser,u,i)
 			i = i+1
 		time.sleep(3600)
 
@@ -91,3 +47,53 @@ def main():
 
 if __name__ == '__main__':
 	main()
+def reset_url(old_url):
+	url = old_url
+	if url:
+                del url[:]
+        cursor.execute('select * from dreamline91_favorite')
+        rows = cursor.fetchall()
+        for r in rows:
+                url.append(r[1])
+	return url
+
+def process_url(u,h):
+	t = h[6:].replace('"','')
+	if t.find('http') <0:
+                t = u+h[6:].replace('"','')
+
+	if t.find('github.com')>-1 and t.find('?raw=true')>-1:
+		t = t.replace('?raw=true','')
+		user = t.split('github.com/')[1].split('/')[0]
+		path = t.split('blob/')[1]
+		t = 'https://raw.githubusercontent.com/'+user+'/'+user+'.github.io/'+path
+	return t
+
+def save_favicon(i,t):
+	down = file('static/site/'+str(i), "wb")
+        image = urllib.urlopen(t)
+        while True:
+        	buf = image.read(100000000)
+                if len(buf) == 0:
+                	break
+                down.write(buf)
+        down.close()
+        image.close()
+
+
+def save_capture(browser,u,i):
+	print 'working at '+u
+	browser.get(u)
+        browser.save_screenshot("static/site/temp.png")
+       	im = Image.open('static/site/temp.png')
+        if im.size[0]<=im.size[1]:
+        	min = im.size[0]
+                box = (0, 0, im.size[0], im.size[0])
+                region = im.crop(box)
+        else:
+                min = im.size[1]
+               	region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,32))
+                region.paste(im, (0,0,im.size[0],im.size[1]))
+                region.thumbnail((min/5, min/5))
+                region.save('static/site/Website'+str(i)+'.png')
+
