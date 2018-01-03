@@ -28,14 +28,12 @@ def web():
 			t = ''
 			response = requests.get(u)
 			for l in link.findall(response.text):
-				if l.find('short') >= 0:
+				if l.find('icon') >= 0 or l.find('short')>=0:
 					for h in href.findall(l):
 						t = process_url(u,h)
-						save_favicon(i,t)
-				elif l.find('icon') >= 0:
-					for h in href.findall(l):
-						t = process_url(u,h)
-						save_favicon(i,t)
+			if t == '':
+				t = infer_url(u)
+			save_favicon(i,t)
 			print t                       
 			save_capture(browser,u,i)
 			i = i+1
@@ -69,16 +67,30 @@ def process_url(u,h):
 		t = 'https://raw.githubusercontent.com/'+user+'/'+user+'.github.io/'+path
 	return t
 
+def infer_url(u):
+	t=''
+	if u.find('naver.com')>-1:
+		t = u.split('.')[0]+'.naver.com/favicon.ico'
+	elif u.find('google.com')>-1:
+		if u.find('drive')>-1:
+			t = 'https://www.google.com/drive/static/images/drive/favicon.ico'
+		elif u.find('spreadsheets')>-1:
+			t = 'https://ssl.gstatic.com/docs/spreadsheets/favicon_jfk2.png'
+		elif u.find('calendar')>-1:
+			t = 'https://calendar.google.com/googlecalendar/images/favicon_v2014_4.ico'
+	return t
+
 def save_favicon(i,t):
-	down = file('static/site/'+str(i), "wb")
-        image = urllib.urlopen(t)
-        while True:
-        	buf = image.read(100000000)
-                if len(buf) == 0:
-                	break
-                down.write(buf)
-        down.close()
-        image.close()
+	if t:
+		down = file('static/site/'+str(i), "wb")
+       		image = urllib.urlopen(t)
+        	while True:
+        		buf = image.read(100000000)
+                	if len(buf) == 0:
+                		break
+                	down.write(buf)
+        	down.close()
+        	image.close()
 
 
 def save_capture(browser,u,i):
