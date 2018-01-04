@@ -3,7 +3,7 @@
 	font-size: 30pt;
 	width:300px; 
 	}
-#personal, #bucketlist, #history{
+#personal, #history{
 	font-size:15pt;
 	margin-left:10px;
 	margin-right:10px;
@@ -19,8 +19,6 @@ hr {
 	margin-top:20px;
 }
 
-#personal:hover, #bucketlist:hover, #history:hover{
-	opacity: 1;
+#personal:hover, #history:hover{
 	text-decoration: none;
-	color: #ffffff;
 }

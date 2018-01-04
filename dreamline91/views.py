@@ -61,27 +61,8 @@ def about_personal(request):
 	f.close()
 	return render(request,'about/personal.html', {'data': data})
 
-def about_bucketlist(request):
-	f = open('static/personal/txt/bucketlist.txt','r')
-	data = []
-	while True:
-		line = f.readline()
-		data.append(line)
-		if not line:
-			break
-	f.close()
-	return render(request,'about/bucketlist.html', {'data': data})
-
 def about_history(request):
-	f = open('static/personal/txt/history.txt','r')
-	data = []
-	while True:
-		line = f.readline()
-		data.append(line)
-		if not line:
-			break
-	f.close()
-	return render(request,'about/history.html', {'data': data})
+	return render(request,'about/history.html')
 
 def education(request):
 	f = open('static/personal/txt/education.txt','r')
