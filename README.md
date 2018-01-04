@@ -1,6 +1,9 @@
 # PersonalPage
 - This is personal page to introduce myself.
 ---
+<img src="https://github.com/jaejunha/PersonalPage/blob/master/screenshot/20180104.png?raw=true">
+
+---
 # Member
 | Avartar | Name | Role | Activity |
  |:--------:|:--------:|:--------:|:--------:|
@@ -8,6 +11,10 @@
  
  **chart from : http://ghchart.rshah.org**
 
+---
+# Environment
+- Python 2.7
+- Django 1.11.5
 ---
 # Refer
 - Git chart
@@ -21,6 +28,8 @@
 >http//jquerymobile.com
 - Mariad set pro(font)
 >https://fontsup.com/ko/font/modeka.html
+- Modeka
+>https://befonts.com/modeka-font.html
 - Selenium
 >pip install selenium
 - PhantomJS
