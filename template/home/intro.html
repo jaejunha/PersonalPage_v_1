@@ -29,8 +29,8 @@
 			$('#second').css('opacity','1');
 			$('#third').css('animation','appear_introduce 0s');
 			$('#third').css('opacity','1');
-			$('#character').css('animation','appear_introduce 0s');
-			$('#character').css('opacity','1');
+			$('#fourth').css('animation','appear_introduce 0s');
+			$('#fourth').css('opacity','1');
 		}
 	});
 	$(window).resize(function (){
@@ -45,13 +45,17 @@
 	Hello, my name is <font>Jae Jun Ha</font><br>
 	Welcome my homepage<br>
 	</p>
+	<div id="detail">
 	<p id="second">
 	This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
-	<br>
+	</p>
+	<p id="third">
 	My major is <font>Software</font>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <font>Programming</font> / <font>Drawing</font> / <font>Marathon</font> / <font>Foreign language</font> / <font> Meditation</font>.<br>
-	<br>
+	</p>
+	<p id="fourth">
 	I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><font>dreamline91@ajou.ac.kr</font></a> 
-	</p>	
+	</p>
+	</div>	
 	<img id="gradation" src="{% static 'img/gradation.png' %}"/>
 	<img id="bird" src="{% static 'personal/img/bird.png' %}"/>
 </body>

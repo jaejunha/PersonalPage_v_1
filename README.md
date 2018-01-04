@@ -28,7 +28,7 @@
 >http//jquerymobile.com
 - Mariad set pro(font)
 >https://fontsup.com/ko/font/modeka.html
-- Modeka
+- Modeka(font)
 >https://befonts.com/modeka-font.html
 - Selenium
 >pip install selenium

@@ -5,22 +5,39 @@
 	right:0px;
 	font-family: Modeka;
 	margin-top:40px;
-	font-size:30pt;    
-	animation: appear_introduce 10s; 
-	animation-fill-mode: both;       
-	animation-delay:0.5s;  
+	font-size:30pt;           
+	opacity:0;
+	animation: appear_introduce 1s; 
+	animation-delay:4.0s;
+   	-webkit-animation-fill-mode: forwards;
 }
-#second{
+#detail{
 	position:absolute;
-	margin-top:170px;
+	margin-top:160px;
 	margin-right:100px;
 	left:60%;
 	font-family: Modeka;
 	font-size:20pt;   
-	text-align:justify;
-	animation: appear_introduce 10s; 
-	animation-fill-mode: both;        
-	animation-delay:1.1s;  
+	text-align:justify;             
+}
+#second{
+	opacity:0;      
+	animation: appear_introduce 1s; 
+	animation-delay:4.6s;
+   	-webkit-animation-fill-mode: forwards;
+}
+
+#third{
+	opacity:0;      
+	animation: appear_introduce 1s; 
+	animation-delay:5.2s;
+   	-webkit-animation-fill-mode: forwards;
+}
+#fourth{
+	opacity:0;      
+	animation: appear_introduce 1s; 
+	animation-delay:5.8s;
+   	-webkit-animation-fill-mode: forwards;
 }
 p font{    
 	color:#ffff00;  
@@ -29,12 +46,6 @@ p font{
 @keyframes appear_introduce{
 	0%{
 		opacity:0;
-	}
-	35%{
-		opacity:0;
-	}
-	45%{
-		opacity:1;
 	}
 	100%{
 		opacity:1;
