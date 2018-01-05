@@ -2,9 +2,9 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/menu.css' %}"/>
-<script type="text/javascript" src="{% static 'js/home/switch.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/home/resize.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/menu.css' %}?ver=0.1"/>
+<script type="text/javascript" src="{% static 'js/home/switch.js' %}?ver=0.1"></script>
+<script type="text/javascript" src="{% static 'js/home/resize.js' %}?ver=0.1"></script>
 <style>
 	body{
 		background:#000000;
@@ -43,7 +43,7 @@
 		$('#favorite_content').css('height',height+'px');
 
 		if(window.Worker){
-			var w = new Worker("{% static 'js/home/worker.js' %}");
+			var w = new Worker("{% static 'js/home/worker.js' %}?ver=0.1");
 		        w.onmessage = function(event) {
 			if(init == 1 && home >= 0)
 				from=switch_screen(init--,from,'activity');
