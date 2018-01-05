@@ -26,7 +26,6 @@ urlpatterns = [
 	url(r'^about/frame', views.about_frame, name='about_frame'),
 	url(r'^about/personal', views.about_personal, name='about_personal'),
 	url(r'^about/history', views.about_history, name='about_history'),
-	url(r'^education', views.education, name='education'),
 	url(r'^local', views.local, name='local'),
 	url(r'^.+$', views.not_found, name='not_found'),
 ]

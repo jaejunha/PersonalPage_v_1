@@ -64,17 +64,6 @@ def about_personal(request):
 def about_history(request):
 	return render(request,'about/history.html')
 
-def education(request):
-	f = open('static/personal/txt/education.txt','r')
-	data = []
-	while True:
-		line = f.readline()
-		data.append(line)
-		if not line:
-			break
-	f.close()
-	return render(request,'education/education.html', {'data': data})
-
 def local(request):
 	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
 	p.wait()

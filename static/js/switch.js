@@ -9,10 +9,6 @@ function switch_menu(to){
 			$('#content').load('about/frame');
 			$('header a:nth-child(2)').css('color','#ffffff');
 		}
-		if(to=='education'){
-			$('#content').load('education');
-			$('header a:nth-child(3)').css('color','#ffffff');
-		}
 	}else
 		$('#content').load('local');
 }
