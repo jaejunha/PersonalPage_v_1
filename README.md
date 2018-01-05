@@ -19,17 +19,22 @@
 # Refer
 - Git chart
 >http://ghchart.rshah.org
+
 >https://github.com/IonicaBizau/github-calendar
-- Mariad set pro(font)
->https://www.download-free-fonts.com/download/95207/8b2417096e64009225f53bc241379cb9
+- Git activity
+>http://caseyscarborough.com/projects/github-activity/
 - jQuery
 >https://jquery.com/download/
 - jQuery mobile
 >http//jquerymobile.com
+- octicons.css
+>http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
+- mustache.js
+>http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js
 - Mariad set pro(font)
->https://fontsup.com/ko/font/modeka.html
+>https://www.download-free-fonts.com/download/95207/8b2417096e64009225f53bc241379cb9
 - Modeka(font)
->https://befonts.com/modeka-font.html
+>https://fontsup.com/ko/font/modeka.html
 - Selenium
 >pip install selenium
 - PhantomJS

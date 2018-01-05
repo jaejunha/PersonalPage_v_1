@@ -3,174 +3,47 @@
 <html>
 <head>
 <script type="text/javascript" src="{% static 'js/home/resize.js' %}?ver=0.1"></script>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+<link rel="stylesheet" href="{% static 'css/home/github-activity-0.1.5.min.css' %}">
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+<script type="text/javascript" src="{% static 'js/home/github-activity.js' %}"></script>
+
+<style>
+	.feed {
+		width: 700px;
+		height: 500px;
+		margin:0 auto;
+  	}
+</style>
 <script>
 $(document).ready( function() {
         GitHubCalendar(".calendar", "jaejunha");
+	$(".feed").css('width',$('.calendar').width());
+	GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 	resize('activity');
 });
 $(document).resize( function() {
 	resize('activity');
-});
+});
 </script>
 </head>
 <body>
+	
 	<p id="main">
 		<span style="font-size:20pt;">GitHub Record</span>
 		<br>
 		<br>
-		<div class="calendar" style="background-color: rgba(255,255,255,0.5);"></div><br>
-		<span style="font-size:15pt; text-align:justify;">I tried to write code everyday and use github to track my records. Git is very convenient SCM.</span><br>
+		<div>
+			<div class="calendar" style="background-color: rgba(255,255,255,0.5);"></div>
+			<br>
+			<div class="feed"></div>
+			<br>
+			<span style="font-size:15pt; text-align:justify;">I tried to write code everyday and use github to track my records. Git is very convenient SCM.</span><br>
+			</div>
 		<br>
 		<span style="font-size:20pt;">Exercise Record</span>
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
-		t
-		<br>
 	</p>
 </body>
 </html>
