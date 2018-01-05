@@ -51,18 +51,19 @@ def about_frame(request):
 	return render(request,'about/frame.html')
 
 def about_personal(request):
-	f = open('static/personal/txt/personal.txt','r')
-	data = []
-	while True:
-		line = f.readline()
-		data.append(line)
-		if not line:
-			break
-	f.close()
-	return render(request,'about/personal.html', {'data': data})
+	return render(request,'about/personal.html')
 
-def about_history(request):
-	return render(request,'about/history.html')
+def portfolio_frame(request):
+	return render(request,'portfolio/frame.html')
+
+def portfolio_program(request):
+	return render(request,'portfolio/program.html')
+
+def portfolio_art(request):
+	return render(request,'portfolio/art.html')
+
+def portfolio_marathon(request):
+	return render(request,'portfolio/marathon.html')
 
 def local(request):
 	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')

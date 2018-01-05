@@ -25,7 +25,10 @@ urlpatterns = [
 	url(r'^home/favorite', views.home_favorite, name='home_favorite'),
 	url(r'^about/frame', views.about_frame, name='about_frame'),
 	url(r'^about/personal', views.about_personal, name='about_personal'),
-	url(r'^about/history', views.about_history, name='about_history'),
+	url(r'^portfolio/frame', views.portfolio_frame, name='portfolio_frame'),
+	url(r'^portfolio/program', views.portfolio_program, name='portfolio_program'),
+	url(r'^portfolio/art', views.portfolio_art, name='portfolio_art'),
+	url(r'^portfolio/marathon', views.portfolio_marathon, name='portfolio_marathon'),
 	url(r'^local', views.local, name='local'),
 	url(r'^.+$', views.not_found, name='not_found'),
 ]

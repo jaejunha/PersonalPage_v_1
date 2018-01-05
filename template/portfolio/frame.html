@@ -3,7 +3,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/about/menu.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/menu.css' %}"/>
+<script type="text/javascript" src="{% static 'js/portfolio/switch.js' %}"></script>
 <style>
 	body{
 		background:#000000;
@@ -25,12 +26,18 @@
 	$(document).ready( function() {
 		var size = $(window).height() - $('#inner_content').offset().top;
 		$('#inner_content').css('height',size+'px');
-		$('#inner_content').load('about/personal');
+		
+		$('#program').css('color','#ffffff');
+		$('#program').css('opacity',1);
+		$('#inner_content').load('portfolio/program');
 	});
 		</script>
 </head>
 <body>	
-	<font id="title">Me</font>
+	<font id="title">Portfolio</font>
+	<a id="marathon" href="javascript:switch_screen('marathon');">Marathon</a>
+	<a id="art" href="javascript:switch_screen('art');">Art</a>
+	<a id="program" href="javascript:switch_screen('program');">Program</a>
 	<hr/>
 	<div id="inner_content"></div>
 </body>
