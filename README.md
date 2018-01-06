@@ -25,8 +25,6 @@
 >http://caseyscarborough.com/projects/github-activity/
 - jQuery
 >https://jquery.com/download/
-- jQuery mobile
->http//jquerymobile.com
 - octicons.css
 >http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - mustache.js

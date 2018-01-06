@@ -3,9 +3,12 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+<link rel="stylesheet" href="{% static 'css/home/github-activity-0.1.5.min.css' %}">
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+<script type="text/javascript" src="{% static 'js/home/github-activity.js' %}"></script>
 <style>
 	body{
 		width:100%;
@@ -71,12 +74,83 @@
 		display: inline-block;
 		overflow: hidden;
 	}
+	.calendar{
+		margin:0 auto;
+	}
+	.feed {
+		width: 700px;
+		height: 450px;
+		margin:0 auto;
+  	}
+	.me table:nth-of-type(2){
+		table-layout:fixed;
+		width:100%;
+		word-break:break-all;
+	}
+	.me table:nth-of-type(1) tr td:nth-child(1){
+		padding-right:20px;
+		font-weight:bold;
+	}
+	.me table:nth-of-type(2) tr td:nth-child(1){
+                font-weight:bold;
+        }
 </style>
 <script>
+	var activity, me;
+	var scroll;
+	var offset;
+	$(document).ready( function() {
+		setSize();
+		setAlphaAnimation();
+		
+	});
+
+	function setSize(){
+		var width = $(window).width();
+                $('.calendar').css('width',width-10);
+                GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
+                $('.feed').css('width',width-15);
+		$('.me img').css('width',width-10);
+	}
+	
+	function setAlphaAnimation(){
+		/* when refresh occurs, go to top */
+		window.onbeforeunload = function(){
+			$('html').scrollTop(0);
+		};
+
+            	offset = $(window).height()/2;
+
+		activity = $('.activity').offset().top;
+		$('.activity').css('opacity',0);
+		me = $('.me').offset().top;
+                $('.me').css('opacity',0);
+		
+		$(window).scroll(function(){
+          	      scroll = $(this).scrollTop();
+                if( scroll + offset >= activity ) 
+                  	$(".activity").animate({ opacity : "1" },1000);
+                if( scroll + offset >= me )
+                        $(".me").animate({ opacity : "1" },1000);
+
+            	});
+	}
+	function expand(name){
+		var status=$('.'+name+' td:nth-child(1) a').text();
+		if(status.indexOf('+')>-1){
+			$('.'+name+' td:nth-child(1) a').text(status.replace('+','-'));
+			$('.'+name.replace('history','content')).css('display','');
+			$('.'+name.replace('history','content')).css('font-size','10pt');
+		}
+		else{
+			$('.'+name+' td:nth-child(1) a').text(status.replace('-','+'));
+			$('.'+name.replace('history','content')).css('display','none');
+		}
+	}
 </script>
 </head>
 <body>
-<div data-role="page" class="page">
+<div class="page">
 	<header> 
 		<img src="{% static 'personal/img/min_picture.jpg' %}">
 		Dreamline91's Page
@@ -91,7 +165,7 @@
 	<br>
 	<br>
 	<b>My Favorite Site</b><br>
-	<br>
+	<hr>
 	<div class="plate">
 	{% for url, name in item %}
 		<a href="{{url}}" target="_blank">
@@ -105,6 +179,195 @@
 			{% endwith %}
 		</a>
 	{%endfor%}
-	</div>	
+	</div>
+	<br>
+	<div class="activity">
+		<b>My Activity</b><br>
+		<br>
+		GitHub<br>
+		<hr>
+		<div>
+			<img class="calendar" src="http://ghchart.rshah.org/jaejunha" alt="jaejunha's Github chart" /><br>
+			<br>
+			<div class="feed"></div>
+		</div>
+		<br>
+		Excercise<br>
+		<hr>
+	</div>
+	<div class ="me">
+		<b>Me</b><br>
+		<br>
+		Personal Information<br>
+		<hr>
+		<img src="">
+		<table>
+		<tr>
+			<td>Name</td>
+			<td>Jae Jun, Ha</td>
+		</tr>
+		<tr>
+			<td>Birth</td>
+			<td>1991.11.17 AM 06:16</td>
+		</tr>
+		<tr>
+			<td>Family</td>
+			<td>Father, Mother, Young Brother</td>
+		</tr>
+		<tr>
+			<td>Character</td>
+			<td>Timid / Introverted / Idealist / Vagabond</td>
+		</tr>
+		<tr>
+			<td>Physical</td>
+			<td>Rh B+ / 183cm / 60kg</td>
+		</tr>
+		<tr>
+			<td>Hobby</td>
+			<td>Programming / Marathon / Art</td>
+		</tr>
+		<tr>
+			<td>Language</td>
+			<td>Korean</td>
+		</tr>
+		<tr>
+			<td>Dream</td>
+			<td>Freelance Programmer / Artist(hobby) / Marathoner(hobby)</td>
+		</tr>
+		<tr>
+			<td>Now</td>
+			<td>I'm graduate school student</td>
+		</tr>
+		<tr>
+			<td>E.T.C</td>
+			<td>I'm not good at Study / Korean / Speaking / Sport / Music</td>
+		</tr>
+	</table>
+	<br>
+	History<br>
+	<hr>
+	<table>
+		<tr class="history_2018">
+			<td><a href="javascript:expand('history_2018');">+ 2018</a></td>
+			<td><a href="javascript:expand('history_2018');">Postech Graduate School</a></td>
+		</tr>
+		<tr class="history_2017">
+			<td><a href="javascript:expand('history_2017');">+ 2017</a></td>
+			<td><a href="javascript:expand('history_2017');">Ajou University</a></td>
+		</tr>
+		<tr class="content_2017" style="display:none;">
+			<td>&nbsp;&nbsp;Rank</td>
+			<td>1~5/1??(graduate)</td>	
+		</tr>
+		<tr class="history_2015_2016">
+			<td><a href="javascript:expand('history_2015_2016');">+ 2015 ~ 2016</a></td>
+			<td><a href="javascript:expand('history_2015_2016');">Army</a></td>
+		</tr>
+		<tr class="content_2015_2016" style="display:none;">
+			<td>&nbsp;&nbsp;2016</td>
+			<td>Paternal grandfather passed away</td>
+		</tr>
+		<tr class="content_2015_2016" style="display:none;">
+			<td>&nbsp;&nbsp;2016</td>
+			<td>Meditation(2016.3.12)</td>
+		</tr>
+		<tr class="content_2015_2016" style="display:none;">
+			<td>&nbsp;&nbsp;2015</td>
+			<td>5Thanks(2015.4.14)</td>
+		</tr>
+		<tr class="content_2015_2016" style="display:none;">
+			<td>&nbsp;&nbsp;2015</td>
+			<td>Marathon(2015.1.8)</td>
+		</tr>
+		<tr class="content_2015_2016" style="display:none;">
+			<td>&nbsp;&nbsp;2015</td>
+			<td>I joined army at Capital Mechanized Infantry Division 26 Brigade</td>
+		</tr>
+		<tr class="history_2014">
+			<td><a href="javascript:expand('history_2014');">+ 2014</a></td>
+			<td><a href="javascript:expand('history_2014');">Ajou University</a></td>
+		</tr>
+		<tr class="content_2014" style="display:none;">
+			<td>&nbsp;&nbsp;2014</td>
+			<td>I transfered from Korea Univeristy(Se Jong) to Ajou University</td>
+		</tr>
+		<tr class="history_2013">
+			<td><a href="javascript:expand('history_2013');">+ 2013</a></td>
+			<td><a href="javascript:expand('history_2013');">Leave School</a></td>
+		</tr>
+		<tr class="content_2013" style="display:none;">
+			<td>&nbsp;&nbsp;2013</td>
+			<td>I got depression</td>
+		</tr>
+		<tr class="content_2013" style="display:none;">
+			<td>&nbsp;&nbsp;2013</td>
+			<td>Art(2013.3.2)</td>
+		</tr>
+		<tr class="content_2013" style="display:none;">
+			<td>&nbsp;&nbsp;2013</td>
+			<td>I studied at Kyo Dae Kim Young</td>
+		</tr>
+		<tr class="history_2011_2012">
+			<td><a href="javascript:expand('history_2011_2012');">+ 2011 ~ 2012</a></td>
+			<td><a href="javascript:expand('history_2011_2012');">Korea University(Sejong)</a></td>
+		</tr>
+		<tr class="content_2011_2012" style="display:none;">
+			<td>&nbsp;&nbsp;Rank</td>
+			<td>1/60(colleague)</td>	
+		</tr>
+		<tr class="content_2011_2012" style="display:none;">
+			<td>&nbsp;&nbsp;2011</td>
+			<td>Programming(2011.3.2)</td>	
+		</tr>
+		<tr class="history_2010">
+			<td><a href="javascript:expand('history_2010');">+ 2010</a></td>
+			<td><a href="javascript:expand('history_2010');">Prepare Test Again</a></td>
+		</tr>
+		<tr class="content_2010" style="display:none;">
+			<td>&nbsp;&nbsp;2010</td>
+			<td>Before the test day, I went to the Emergency Room</td>
+		</tr>
+		<tr class="content_2010" style="display:none;">
+			<td>&nbsp;&nbsp;2010</td>
+			<td>Paternal grandmother passed away</td>
+		</tr>
+		<tr class="content_2010" style="display:none;">
+			<td>&nbsp;&nbsp;2010</td>
+			<td>I studied at Gang Nam Sky Edu</td>
+		</tr>
+		<tr class="history_2007_2009">
+			<td><a href="javascript:expand('history_2007_2009');">+ 2007~2009</a></td>
+			<td><a href="javascript:expand('history_2007_2009');">Sang Moon High School</a></td>
+		</tr>
+		<tr class="history_2004_2006">
+			<td><a href="javascript:expand('history_2004_2006');">+ 2004~2006</a></td>
+			<td><a href="javascript:expand('history_2004_2006');">In Hun Middle School</a></td>
+		</tr>
+		<tr class="history_1998_2003">
+			<td><a href="javascript:expand('history_1998_2003');">+ 1998~2003</a></td>
+			<td><a href="javascript:expand('history_1998_2003');">Sa Dang Elementary School</a></td>
+		</tr>
+		<tr class="content_1998_2003" style="display:none;">
+			<td>&nbsp;&nbsp;2002</td>
+			<td>Maternal grandfather passed away</td>	
+		</tr>
+		<tr class="content_1998_2003" style="display:none;">
+			<td>&nbsp;&nbsp;2001~2003</td>
+			<td>I did Universe Information Boy Scouts activity</td>	
+		</tr>
+		<tr class="history_1996_1997">
+			<td><a href="javascript:expand('history_1996_1997');">+ 1996~1997</a></td>
+			<td><a href="javascript:expand('history_1996_1997');">Baek Sul Kindergarden</a></td>
+		</tr>
+		<tr class="history_1991">
+			<td><a href="javascript:expand('history_1991');">+ 1991</a></td>
+			<td><a href="javascript:expand('history_1991');">Birth</a></td>
+		</tr>
+		<tr class="content_1991" style="display:none;">
+			<td>&nbsp;&nbsp;1991</td>
+			<td>I was born at Partima Hospital at Dae Gu(91.11.17 AM 06:16)</td>	
+		</tr>
+	</table>
+	</div>
 </body>
 </html>
