@@ -39,7 +39,38 @@
 	}
 	font{
 		color:#ffff00;
-	}	
+	}
+	a{
+		color:#ffffff;
+		text-decoration:none;
+	}
+	a:hover{
+		color:#ffffff;
+		text-decoration:none;
+	}
+	.plate{
+		overflow:hidden;
+		background: rgba(255,255,255,0.5);
+		width:auto;
+		height:auto;
+		border-radius: 5px;
+	}
+	.shortcut{
+		float:left; 
+		margin:10px;
+		text-align:center;
+		width:60px;
+		text-overflow: ellipsis;
+	}
+	.shortcut img{
+		height:60px;
+	}
+	.shortcut span{
+		width:60px;
+		text-overflow: ellipsis;
+		display: inline-block;
+		overflow: hidden;
+	}
 </style>
 <script>
 </script>
@@ -59,18 +90,21 @@
 	I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><font>dreamline91@ajou.ac.kr</font></a> 
 	<br>
 	<br>
-	My Favorite Site<br>
+	<b>My Favorite Site</b><br>
+	<br>
+	<div class="plate">
 	{% for url, name in item %}
 		<a href="{{url}}" target="_blank">
-    				{% with n=forloop.counter|stringformat:"s" %}
-				{% with 'site/'|add:n as favi %}
-				<div style="float:left; margin:10px; width:60px;text-align:center">
-					<img class="favi" src="{% static favi %}" width="60px" height="60px"/>
-					{{name}}
-				</div>
-				{% endwith %}
-				{% endwith %}
+    			{% with n=forloop.counter|stringformat:"s" %}
+			{% with 'site/'|add:n as favi %}
+			<div class="shortcut">
+				<img src="{% static favi %}"/>
+				<span>{{name}}</span>
+			</div>
+			{% endwith %}
+			{% endwith %}
 		</a>
-		{%endfor%}	
+	{%endfor%}
+	</div>	
 </body>
 </html>
