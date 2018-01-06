@@ -96,16 +96,16 @@ def save_favicon(i,t):
 def save_capture(browser,u,i):
 	print 'working at '+u
 	browser.get(u)
-        browser.save_screenshot("static/site/temp.png")
-       	im = Image.open('static/site/temp.png')
+        browser.save_screenshot("static/site/"+str(i)+".png")
+       	im = Image.open('static/site/'+str(i)+'.png')
         if im.size[0]<=im.size[1]:
         	min = im.size[0]
-                box = (0, 0, im.size[0], im.size[0])
+                box = (0, 0, min, min)
                 region = im.crop(box)
         else:
                 min = im.size[1]
                	region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,32))
                 region.paste(im, (0,0,im.size[0],im.size[1]))
-                region.thumbnail((min/5, min/5))
-                region.save('static/site/Website'+str(i)+'.png')
+        region.thumbnail((min/5, min/5))
+        region.save('static/site/Website'+str(i)+'.png')
 
