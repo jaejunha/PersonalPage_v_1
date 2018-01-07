@@ -172,7 +172,7 @@
     			{% with n=forloop.counter|stringformat:"s" %}
 			{% with 'site/'|add:n as favi %}
 			<div class="shortcut">
-				<img src="{% static favi %}"/>
+				<img src="{% static favi %}" onerror="this.src='{% static 'img/alt.png' %}'"/>
 				<span>{{name}}</span>
 			</div>
 			{% endwith %}
