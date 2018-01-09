@@ -19,6 +19,11 @@
 	}
 </style>
 <script>
+	$(document).ready( function() {
+		$("table a").click(function(){
+			expand($(this).parent().parent().attr('class'));
+		});
+	});
 	function expand(name){
 		var status=$('.'+name+' td:nth-child(1) a').text();
 		if(status.indexOf('▶')>-1){
@@ -85,20 +90,20 @@
 	<br>
 	<table>
 		<tr class="history_2018">
-			<td><a href="javascript:expand('history_2018');">▶ 2018</a></td>
-			<td><a href="javascript:expand('history_2018');">Postech Graduate School</a></td>
+			<td><a href="javascript:void(0);">▶ 2018</a></td>
+			<td><a href="javascript:void(0);">Postech Graduate School</a></td>
 		</tr>
 		<tr class="history_2017">
-			<td><a href="javascript:expand('history_2017');">▶ 2017</a></td>
-			<td><a href="javascript:expand('history_2017');">Ajou University</a></td>
+			<td><a href="javascript:void(0);">▶ 2017</a></td>
+			<td><a href="javascript:void(0);">Ajou University</a></td>
 		</tr>
 		<tr class="content_2017" style="display:none;">
 			<td>&nbsp;-&nbsp;Rank</td>
 			<td>1~5/1??(graduate)</td>	
 		</tr>
 		<tr class="history_2015_2016">
-			<td><a href="javascript:expand('history_2015_2016');">▶ 2015 ~ 2016</a></td>
-			<td><a href="javascript:expand('history_2015_2016');">Army</a></td>
+			<td><a href="javascript:void(0);">▶ 2015 ~ 2016</a></td>
+			<td><a href="javascript:void(0);">Army</a></td>
 		</tr>
 		<tr class="content_2015_2016" style="display:none;">
 			<td>&nbsp;-&nbsp;2016</td>
@@ -121,16 +126,16 @@
 			<td>I joined army at Capital Mechanized Infantry Division 26 Brigade</td>
 		</tr>
 		<tr class="history_2014">
-			<td><a href="javascript:expand('history_2014');">▶ 2014</a></td>
-			<td><a href="javascript:expand('history_2014');">Ajou University</a></td>
+			<td><a href="javascript:void(0);">▶ 2014</a></td>
+			<td><a href="javascript:void(0);">Ajou University</a></td>
 		</tr>
 		<tr class="content_2014" style="display:none;">
 			<td>&nbsp;-&nbsp;2014</td>
 			<td>I transfered from Korea Univeristy(Se Jong) to Ajou University</td>
 		</tr>
 		<tr class="history_2013">
-			<td><a href="javascript:expand('history_2013');">▶ 2013</a></td>
-			<td><a href="javascript:expand('history_2013');">Leave School</a></td>
+			<td><a href="javascript:void(0);">▶ 2013</a></td>
+			<td><a href="javascript:void(0);">Leave School</a></td>
 		</tr>
 		<tr class="content_2013" style="display:none;">
 			<td>&nbsp;-&nbsp;2013</td>
@@ -145,8 +150,8 @@
 			<td>I studied at Kyo Dae Kim Young</td>
 		</tr>
 		<tr class="history_2011_2012">
-			<td><a href="javascript:expand('history_2011_2012');">▶ 2011 ~ 2012</a></td>
-			<td><a href="javascript:expand('history_2011_2012');">Korea University(Sejong)</a></td>
+			<td><a href="javascript:void(0);">▶ 2011 ~ 2012</a></td>
+			<td><a href="javascript:void(0);">Korea University(Sejong)</a></td>
 		</tr>
 		<tr class="content_2011_2012" style="display:none;">
 			<td>&nbsp;-&nbsp;Rank</td>
@@ -157,8 +162,8 @@
 			<td>Programming(2011.3.2)</td>	
 		</tr>
 		<tr class="history_2010">
-			<td><a href="javascript:expand('history_2010');">▶ 2010</a></td>
-			<td><a href="javascript:expand('history_2010');">Prepare Test Again</a></td>
+			<td><a href="javascript:void(0);">▶ 2010</a></td>
+			<td><a href="javascript:void(0);">Prepare Test Again</a></td>
 		</tr>
 		<tr class="content_2010" style="display:none;">
 			<td>&nbsp;-&nbsp;2010</td>
@@ -173,16 +178,16 @@
 			<td>I studied at Gang Nam Sky Edu</td>
 		</tr>
 		<tr class="history_2007_2009">
-			<td><a href="javascript:expand('history_2007_2009');">▶ 2007~2009</a></td>
-			<td><a href="javascript:expand('history_2007_2009');">Sang Moon High School</a></td>
+			<td><a href="javascript:void(0);">▶ 2007~2009</a></td>
+			<td><a href="javascript:void(0);">Sang Moon High School</a></td>
 		</tr>
 		<tr class="history_2004_2006">
-			<td><a href="javascript:expand('history_2004_2006');">▶ 2004~2006</a></td>
-			<td><a href="javascript:expand('history_2004_2006');">In Hun Middle School</a></td>
+			<td><a href="javascript:void(0);">▶ 2004~2006</a></td>
+			<td><a href="javascript:void(0);">In Hun Middle School</a></td>
 		</tr>
 		<tr class="history_1998_2003">
-			<td><a href="javascript:expand('history_1998_2003');">▶ 1998~2003</a></td>
-			<td><a href="javascript:expand('history_1998_2003');">Sa Dang Elementary School</a></td>
+			<td><a href="javascript:void(0);">▶ 1998~2003</a></td>
+			<td><a href="javascript:void(0);">Sa Dang Elementary School</a></td>
 		</tr>
 		<tr class="content_1998_2003" style="display:none;">
 			<td>&nbsp;-&nbsp;2002</td>
@@ -193,12 +198,12 @@
 			<td>I did Universe Information Boy Scouts activity</td>	
 		</tr>
 		<tr class="history_1996_1997">
-			<td><a href="javascript:expand('history_1996_1997');">▶ 1996~1997</a></td>
-			<td><a href="javascript:expand('history_1996_1997');">Baek Sul Kindergarden</a></td>
+			<td><a href="javascript:void(0);">▶ 1996~1997</a></td>
+			<td><a href="javascript:void(0);">Baek Sul Kindergarden</a></td>
 		</tr>
 		<tr class="history_1991">
-			<td><a href="javascript:expand('history_1991');">▶ 1991</a></td>
-			<td><a href="javascript:expand('history_1991');">Birth</a></td>
+			<td><a href="javascript:void(0);">▶ 1991</a></td>
+			<td><a href="javascript:void(0);">Birth</a></td>
 		</tr>
 		<tr class="content_1991" style="display:none;">
 			<td>&nbsp;-&nbsp;1991</td>
