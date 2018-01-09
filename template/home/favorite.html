@@ -34,7 +34,7 @@ $(window).resize(function (){
 <body>
 	<p id="main">
 		<span style="font-size:20pt;">My favorite sites</span>
-		{% for url, name in item %}
+		{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
 			{% if forloop.counter <= 4 %}
 			<div class="icon" style="margin-left:4.5%;margin-right:4.5%;">

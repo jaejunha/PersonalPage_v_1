@@ -9,7 +9,8 @@ class Favorite(models.Model):
         return self.name
 
 class Personal(models.Model):
-    bold = models.CharField(max_length=50, primary_key=True)
+    no = models.AutoField(primary_key=True, default=1)
+    bold = models.CharField(max_length=50)
     content = models.CharField(max_length=100)
     def __str__(self):
         return self.bold

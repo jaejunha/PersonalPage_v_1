@@ -172,7 +172,7 @@
 	<b>My Favorite Site</b><br>
 	<hr>
 	<div class="plate">
-	{% for url, name in item %}
+	{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
     			{% with n=forloop.counter|stringformat:"s" %}
 			{% with 'site/'|add:n as favi %}
@@ -207,46 +207,12 @@
 		<hr>
 		<img src="">
 		<table>
+		{% for bold, content in personal %}
 		<tr>
-			<td>Name</td>
-			<td>Jae Jun, Ha</td>
-		</tr>
-		<tr>
-			<td>Birth</td>
-			<td>1991.11.17 AM 06:16</td>
-		</tr>
-		<tr>
-			<td>Family</td>
-			<td>Father, Mother, Young Brother</td>
-		</tr>
-		<tr>
-			<td>Character</td>
-			<td>Timid / Introverted / Idealist / Vagabond</td>
-		</tr>
-		<tr>
-			<td>Physical</td>
-			<td>Rh B+ / 183cm / 60kg</td>
-		</tr>
-		<tr>
-			<td>Hobby</td>
-			<td>Programming / Marathon / Art</td>
-		</tr>
-		<tr>
-			<td>Language</td>
-			<td>Korean</td>
-		</tr>
-		<tr>
-			<td>Dream</td>
-			<td>Freelance Programmer / Artist(hobby) / Marathoner(hobby)</td>
-		</tr>
-		<tr>
-			<td>Now</td>
-			<td>I'm graduate school student</td>
-		</tr>
-		<tr>
-			<td>E.T.C</td>
-			<td>I'm not good at Study / Korean / Speaking / Sport / Music</td>
-		</tr>
+			<td>{{bold}}</td>
+			<td>{{content}}</td>
+		</tr>		
+		{%endfor%}
 	</table>
 	<br>
 	History<br>

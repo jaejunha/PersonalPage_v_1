@@ -25,14 +25,16 @@ def index(request):
 	else:
 		isMobile = False;
 	if isMobile:
-		item = get_favorite()
-		return render(request,'mobile/index.html', {'item':item})
+		favorite = get_favorite()
+		personal = get_about()
+		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal})
 	else:
 		return render(request,'index.html')
 
 def m_index(request):
-	item = get_favorite()
-	return render(request,'mobile/index.html', {'item':item})
+	favorite = get_favorite()
+	personal = get_about()
+	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -41,8 +43,8 @@ def home_intro(request):
 	return render(request,'home/intro.html')
 
 def home_favorite(request):
-	item = get_favorite()
-	return render(request,'home/favorite.html', {'item':item})
+	favorite = get_favorite()
+	return render(request,'home/favorite.html', {'favorite':favorite})
 
 def home_activity(request):
 	return render(request,'home/activity.html')
@@ -51,7 +53,8 @@ def about_frame(request):
 	return render(request,'about/frame.html')
 
 def about_personal(request):
-	return render(request,'about/personal.html')
+	personal = get_about()
+	return render(request,'about/personal.html', {'personal':personal})
 
 def portfolio_frame(request):
 	return render(request,'portfolio/frame.html')
@@ -77,5 +80,16 @@ def get_favorite():
         for r in result:
                 url.append(r.url)
                 name.append(r.name)
-        item = zip(url, name)
-	return item
+        favorite = zip(url, name)
+	return favorite
+
+
+def get_about():
+	bold = []
+        content = []
+        result = Personal.objects.order_by('no')
+        for r in result:
+                bold.append(r.bold)
+                content.append(r.content)
+        personal = zip(bold, content)
+	return personal
