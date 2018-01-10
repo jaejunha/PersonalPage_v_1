@@ -21,7 +21,7 @@ def web():
 	while True:
 		print 'working...'
 		url = reset_url(url)
-		browser = webdriver.PhantomJS() 
+		browser = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
 		browser.set_window_size(1920, 1080)
 		i = 1
 		for u in url:
@@ -96,16 +96,20 @@ def save_favicon(i,t):
 def save_capture(browser,u,i):
 	print 'working at '+u
 	browser.get(u)
+	time.sleep(5)
         browser.save_screenshot("static/site/"+str(i)+".png")
        	im = Image.open('static/site/'+str(i)+'.png')
         if im.size[0]<=im.size[1]:
         	min = im.size[0]
                 box = (0, 0, min, min)
-                region = im.crop(box)
+		region = Image.new("RGBA", (min,min), (255,255,255,255))
+		region.paste(im.crop(box),mask=im.crop(box))
         else:
                 min = im.size[1]
                	region = Image.new("RGBA", (im.size[0], im.size[0]), (255,255,255,32))
-                region.paste(im, (0,0,im.size[0],im.size[1]))
+		temp = Image.new("RGBA", (im.size[0], im.size[1]), (255,255,255,255))
+                region.paste(temp,mask=temp)
+		region.paste(im, (0,0,im.size[0],im.size[1]),mask=im)
         region.thumbnail((min/5, min/5))
         region.save('static/site/Website'+str(i)+'.png')
 
