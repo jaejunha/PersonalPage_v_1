@@ -16,13 +16,10 @@ class Personal(models.Model):
         return self.bold
 
 class History(models.Model):
-    start = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, default=0)
+    start = models.IntegerField()
     finish = models.IntegerField(default=0)
     content = models.CharField(max_length=100)
+    sub = models.IntegerField(default=0)
     def __str__(self):
         return self.start
-
-class HContent(models.Model):
-    year = models.IntegerField(default=0)
-    bold = models.CharField(max_length=20)
-    content = models.CharField(max_length=100)

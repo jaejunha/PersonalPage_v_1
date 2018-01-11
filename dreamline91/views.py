@@ -26,15 +26,17 @@ def index(request):
 		isMobile = False;
 	if isMobile:
 		favorite = get_favorite()
-		personal = get_about()
-		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal})
+		personal = get_personal()
+		history = get_history()
+		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'history':history})
 	else:
 		return render(request,'index.html')
 
 def m_index(request):
 	favorite = get_favorite()
-	personal = get_about()
-	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal})
+	personal = get_personal()
+	history = get_history()
+	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'history':history})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -53,8 +55,9 @@ def about_frame(request):
 	return render(request,'about/frame.html')
 
 def about_personal(request):
-	personal = get_about()
-	return render(request,'about/personal.html', {'personal':personal})
+	personal = get_personal()
+	history = get_history()
+	return render(request,'about/personal.html', {'personal':personal, 'history':history})
 
 def portfolio_frame(request):
 	return render(request,'portfolio/frame.html')
@@ -83,8 +86,7 @@ def get_favorite():
         favorite = zip(url, name)
 	return favorite
 
-
-def get_about():
+def get_personal():
 	bold = []
         content = []
         result = Personal.objects.order_by('no')
@@ -93,3 +95,24 @@ def get_about():
                 content.append(r.content)
         personal = zip(bold, content)
 	return personal
+
+def get_history():
+	bold = []
+        content = []
+	sub = []
+	name = []
+	cur=''
+        result = History.objects.order_by('sub').order_by('-finish')
+        for r in result:
+                bold.append((r.start,r.finish))
+			
+                content.append(r.content)
+		sub.append(r.sub)
+		if r.sub == 0:
+			if r.start == r.finish:
+				cur = str(r.start)
+			else:
+				cur = str(r.start)+'_'+str(r.finish)
+		name.append(cur)
+        history = zip(bold, content,sub,name)
+	return history
