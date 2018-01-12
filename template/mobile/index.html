@@ -94,6 +94,9 @@
 	.me table:nth-of-type(2) tr td:nth-child(1){
                 font-weight:bold;
         }
+	.me table td{
+		vertical-align:top;
+	}
 </style>
 <script>
 	var activity, me;
@@ -228,7 +231,7 @@
 			{% endif %}
 			<td><a href="javascript:void(0);">{{content}}</a></td>
 		{% else %}
-			<tr class="content_{{name}}" style="display:none;">
+			<tr class="content_{{name}}" style="display:none; color:#ffff00;">
 			{% if bold.0 == bold.1 %}
 					<td>&nbsp;&nbsp;{{bold.0}}</td>
 			{% else %}

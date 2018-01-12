@@ -9,6 +9,9 @@
 		font-family:myriad-set-pro;
 		font-size:15pt;
 	}
+	td{
+		vertical-align:top;
+	}
 	tr td:nth-child(1){
 		width:200px;
 		font-weight:bold;
@@ -65,7 +68,7 @@
 			{% endif %}
 			<td><a href="javascript:void(0);">{{content}}</a></td>
 		{% else %}
-			<tr class="content_{{name}}" style="display:none;">
+			<tr class="content_{{name}}" style="display:none; color:#ffff00;">
 			{% if bold.0 == bold.1 %}
 					<td>&nbsp;-&nbsp;{{bold.0}}</td>
 			{% else %}
