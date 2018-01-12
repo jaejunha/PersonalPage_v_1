@@ -44,8 +44,8 @@
 <body>
 	<br>
 	<div>
-	<img src="" width="300px" height="300px" style="float:left;">
-	<table style=" margin-left:350px;">
+	<img src="{% static 'personal/img/profile.jpg' %}" width="300px" height="300px" style="float:left;">
+	<table style="margin-left:350px;">
 	{% for bold, content in personal %}
 		<tr>
 			<td>{{bold}}</td>
@@ -55,8 +55,11 @@
 	</table>
 	</div>
 	<br>
+	<div style="width:300px;text-align:center;">(In 2017, I draw my portrait.)</div>
 	<br>
 	<br>
+	<br>
+	I'll draw happy graph at left of table
 	<table>
 	{% for bold, content, sub, name in history %}
 		{% if sub == 0 %}	

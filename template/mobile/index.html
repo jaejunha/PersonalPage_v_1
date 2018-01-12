@@ -15,9 +15,15 @@
 		height:100%;
 		background:#000000;
 		margin:0;
-		
 		color:#ffffff;
+		font-family:Myriad Set Pro;
+	}
+	.introduce{
 		font-family: Modeka;
+	}
+	.title{
+		font-family: Modeka;
+		font-size:15pt;
 	}
 	.page{
 		margin:5px;
@@ -30,7 +36,7 @@
 		border-radius: 5px;
 		text-align:center;
 		vertical-align:middle;
-		font-family:Myriad Set Pro;
+		font-family: Modeka;
 	}
 	header img{
 		position: absolute;
@@ -85,7 +91,7 @@
 	.me table:nth-of-type(2){
 		table-layout:fixed;
 		width:100%;
-		word-break:break-all;
+		word-break:normal;
 	}
 	.me table:nth-of-type(1) tr td:nth-child(1){
 		padding-right:20px;
@@ -163,16 +169,17 @@
 		<img src="{% static 'personal/img/min_picture.jpg' %}">
 		Dreamline91's Page
 	</header>
-	<br>Hello, my name is <font>Jae Jun Ha</font><br>
-	Welcome my homepage<br>
-	This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
+	<div class="introduce">
+		<br>Hello, my name is <font>Jae Jun Ha</font><br>
+		Welcome my homepage<br>
+		This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
+		<br>
+		My major is <font>Software</font>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <font>Programming</font> / <font>Drawing</font> / <font>Marathon</font> / <font>Foreign language</font> / <font> Meditation</font>.<br>
+		<br>
+		I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><font>dreamline91@ajou.ac.kr</font></a> 
+	</div>
 	<br>
-	My major is <font>Software</font>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <font>Programming</font> / <font>Drawing</font> / <font>Marathon</font> / <font>Foreign language</font> / <font> Meditation</font>.<br>
-	<br>
-	I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><font>dreamline91@ajou.ac.kr</font></a> 
-	<br>
-	<br>
-	<b>My Favorite Site</b><br>
+	<span class="title">My Favorite Site</span><br>
 	<hr>
 	<div class="plate">
 	{% for url, name in favorite %}
@@ -190,8 +197,7 @@
 	</div>
 	<br>
 	<div class="activity">
-		<b>My Activity</b><br>
-		<br>
+		<span class="title">My Activity</span><br>
 		GitHub<br>
 		<hr>
 		<div>
@@ -204,8 +210,7 @@
 		<hr>
 	</div>
 	<div class ="me">
-		<b>Me</b><br>
-		<br>
+		<span class="title">Me</span><br>
 		Personal Information<br>
 		<hr>
 		<img src="">

@@ -22,6 +22,8 @@ This is personal page to introduce myself.
 >background image
 - static/personal/img/bird.png
 >intro bird image
+- static/personal/img/profile.jpg
+>profile image
 ---
 # Install
 - pip install selenium
