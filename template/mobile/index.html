@@ -128,6 +128,7 @@
                 GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
                 $('.feed').css('width',width-15);
 		$('.me img').css('width',width-10);
+		$('.me img').css('height',width-10);
 	}
 	
 	function setAlphaAnimation(){
@@ -216,7 +217,9 @@
 		<span class="title">Me</span><br>
 		Personal Information<br>
 		<hr>
-		<img src="">
+		<img src="{% static 'personal/img/profile.jpg' %}"><br>
+		(In 2017, I draw my portrait)<br>
+		<br>
 		<table>
 		{% for bold, content in personal %}
 		<tr>
