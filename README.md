@@ -42,10 +42,10 @@ This is personal page to introduce myself.
 >http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - mustache.js
 >http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js
-- Mariad set pro(font)
->https://www.download-free-fonts.com/download/95207/8b2417096e64009225f53bc241379cb9
-- Modeka(font)
->https://fontsup.com/ko/font/modeka.html
+- Montserrat(font)
+>https://fonts.googleapis.com/css?family=Montserrat
+- Poiret One(font)
+>https://fonts.googleapis.com/css?family=Poiret+One
 - Selenium
 >pip install selenium
 - PhantomJS
