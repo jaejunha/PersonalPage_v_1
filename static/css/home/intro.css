@@ -1,0 +1,121 @@
+#bird{
+	position:absolute;
+	transition-origin: 50% 0%;
+	width:300px;
+	height:380px;
+	left:50%;
+	margin-left:-150px;
+	top:-100%;         
+	animation: appear_bird 3.6s; 
+	animation-delay: 1.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+	z-index:-1;
+}
+#gradation{
+	position:absolute;
+	top: 30%;
+	left:100%;
+	transition-origin: 0% 0%;
+	margin-left:-300px;
+	margin-top:40px;
+	width: 600px;                          
+ 	height: 480px;                                 
+	animation: appear_gradation 4s; 
+	animation-delay: 1.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+	z-index: -1;
+}
+#first{
+	position: absolute;
+	margin-right:100px;
+	text-align:right;
+	right:0px;
+	font-family: 'Poiret One', cursive;
+	margin-top:40px;
+	font-size:30pt;           
+	opacity:0;
+	animation: appear 1s; 
+	animation-delay:5.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+#detail{
+	position:absolute;
+	margin-top:160px;
+	margin-right:100px;
+	left:60%;
+	font-family: 'Poiret One', cursive; 
+	font-size:20pt;   
+	text-align:justify;             
+}
+#second{
+	opacity:0;      
+	animation: appear 1s; 
+	animation-delay:6.1s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+#third{
+	opacity:0;      
+	animation: appear 1s; 
+	animation-delay:6.7s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+#fourth{
+	opacity:0;      
+	animation: appear 1s; 
+	animation-delay:7.3s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+p font{    
+	color:#ffff00;  
+}	
+@keyframes appear_bird{
+	0%{	
+		top:100%;
+		left:50%;  
+	}
+	55%{	
+		top:40%;	
+		left:50%;
+	}
+	97%{
+		top:40%;	
+		left:50%;
+		opacity:1;
+	}
+	100%{
+		top:40%;
+		left:30%;
+		opacity:1;
+	}
+}
+@keyframes appear_gradation{
+	0%{
+		opacity:0;
+		left:50%;
+	}
+	37%{
+		opacity:0;
+		left:50%;
+	}
+	50%{
+		opacity:0.8;
+		left:50%;
+		transform: scale(1.2,1.2);
+	}
+	93%{
+		opacity:0.6;
+		left:50%;
+		transform: scale(2,2);
+	}
+	100%{
+		transform: scale(2,2);
+		left:30%;
+		opacity:0.6;
+	}
+}

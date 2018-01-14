@@ -21,9 +21,7 @@
 			margin:0;
 		}
 		</style>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/background.css' %}?ver=0.1"/>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}?ver=0.1"/>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/loading.css' %}?ver=0.1"/>   
+		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?ver=0.1"/>   
 		<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
 		<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -35,11 +33,12 @@
 				if(isMobile)
 					location.href='mobile';
 				switch_menu('home');
+				setTimeout(function(){ $("#screen").remove(); }, 1500);
 			});
 		</script>
 	</head>
 	<body>
-		<div style="position:absolute; background:#ffffff; width:100%; height:100%; z-index:-1;"></div>
+		<div id="canvas"></div>
 		<div id="loading"></div>
 		<img id="background" src="{% static 'personal/img/background.jpg' %}"/>	
 		<header>
@@ -57,5 +56,12 @@
 		<div id="content" style="margin:100px; margin-top:50px; min-width:1200px;"></div>
 		<br>
 		<br>
+		<div id="screen">
+			<span>
+				WELCOME<br>
+				TO<br>
+				MY PAGE
+			</span>
+		</div>
 	</body>
 </html>

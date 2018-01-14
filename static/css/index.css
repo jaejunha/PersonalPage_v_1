@@ -1,0 +1,141 @@
+#canvas{
+	position:absolute; 
+	background:#ffffff; 
+	width:100%; 
+	height:100%; 
+	z-index:-1;
+}
+#screen{ 
+	position:absolute; 
+	width:100%; 
+	height:100%;
+	animation: screen 1.5s; 
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+	z-index:1;
+	display:table;
+
+	background:#000000;
+	background-size: 100% 100%;
+}
+#screen span{
+	font-family: 'Poiret One', cursive;
+	color:#ffffff; 
+	text-align:center;
+	font-size:60pt;
+	display:table-cell;
+	vertical-align:middle;
+}
+#loading{
+	opacity:0;
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	width: 10%;                              
+ 	height: 20%;        
+	background: #000000;                      
+ 	border-radius: 50%;                        
+	animation: loading 4s; 
+	animation-delay: 1.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+	z-index: -1;
+}
+
+#background{
+	position:absolute;
+	min-width:1200px;
+	width:100%;
+	height:100%;
+	opacity:0;
+	animation: background 4s; 
+	animation-delay: 1.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+	z-index: -1;
+}
+
+.bar{
+	opacity:0;
+	position: relative;
+	min-width:1200px;
+	margin-left:10px;
+	margin-right:10px;
+	padding-left:100px;
+	top:10px;
+	line-height:60px;
+	background-color: rgba(255,255,255,0.8);
+   	vertical-align: middle;
+	border-radius: 5px;
+	font-size: 20pt;
+	color:#dddddd;
+	animation: appear 1s;
+	animation-delay: 3.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+
+.bar > a{
+	text-decoration: none;
+	margin-left: 40px;
+	margin-right: 40px;
+	color:#555555;
+}
+.bar > a:hover{
+	text-decoration: underline; 
+	color: #ffffff
+}
+.logo{
+	opacity:0;
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	top:16px;
+	left:16px;
+	border-radius:24px;
+	background-image:url('../personal/img/min_picture.jpg');
+	animation: appear 1s;
+	animation-delay: 3.5s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes screen{
+	0%{	
+		top:0%;
+	}	
+	66%{	
+		top:0%;
+	}	
+	100%{
+		top:-100%;
+	}
+}
+
+@keyframes loading{
+	0%{	opacity:1;
+		transform: scale(0,0);
+	}
+	100%{
+		opacity:1;
+		transform: scale(20,20);
+	}
+}
+
+@keyframes background{
+	0%{	
+		opacity:0;
+	}
+	100%{
+		opacity:0.5;
+	}
+}
+
+@keyframes appear{
+	0%{	
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
