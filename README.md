@@ -42,6 +42,8 @@ This is personal page to introduce myself.
 >http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - mustache.js
 >http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js
+- progressbar.js
+>https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js
 - Montserrat(font)
 >https://fonts.googleapis.com/css?family=Montserrat
 - Poiret One(font)

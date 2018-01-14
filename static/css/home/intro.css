@@ -21,7 +21,7 @@
 	margin-top:40px;
 	width: 600px;                          
  	height: 480px;                                 
-	animation: appear_gradation 4s; 
+	animation: appear_gradation 3.6s; 
 	animation-delay: 1.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
@@ -103,12 +103,12 @@ p font{
 		opacity:0;
 		left:50%;
 	}
-	50%{
+	55%{
 		opacity:0.8;
 		left:50%;
 		transform: scale(1.2,1.2);
 	}
-	93%{
+	97%{
 		opacity:0.6;
 		left:50%;
 		transform: scale(2,2);
