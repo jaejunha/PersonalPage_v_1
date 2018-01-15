@@ -38,6 +38,8 @@ This is personal page to introduce myself.
 >http://caseyscarborough.com/projects/github-activity/
 - jQuery
 >https://jquery.com/download/
+- D3
+>http://d3js.org/d3.v3.min.js
 - octicons.css
 >http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - mustache.js

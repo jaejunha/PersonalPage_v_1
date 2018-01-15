@@ -2,6 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <style>
 	body{
 		background:#000000;
@@ -26,6 +27,13 @@
 		$("table a").click(function(){
 			expand($(this).parent().parent().attr('class'));
 		});
+
+		d3.json("{% static 'json/happy.json' %}", function(error, data) {
+			var dataSet = new Array();
+		});
+
+
+
 	});
 	function expand(name){
 		var status=$('.'+name+' td:nth-child(1) a').text();
@@ -59,6 +67,7 @@
 	<br>
 	<br>
 	<br>
+	<svg id="graph"></svg>
 	I'll draw happy graph at left of table
 	<table>
 	{% for bold, content, sub, name in history %}
