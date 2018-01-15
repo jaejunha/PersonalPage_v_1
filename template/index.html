@@ -7,46 +7,12 @@
 		<title>dreamline91's page</title>
 	 	<link rel="shortcut icon" type="image/x-icon" href="{% static 'personal/img/bird.png' %}"/>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One" rel="stylesheet">
-		<style>
-		html{
-			width:100%;
-			height:100%;
-		}
-		body{
-			overflow-y:hidden; 
-			overflow-x:hidden;
-			font-family:'Montserrat', sans-serif;
-			width:100%;
-			height:100%;
-			margin:0;
-		}
-		</style>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?ver=0.2"/>   
+		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?ver=0.3"/>   
 		<link rel="stylesheet" href="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.css"/>
 		<script src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
 		<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="{% static 'js/switch.js' %}?ver=0.1"></script>
-		<script type="text/javascript">
-			var home = 1;
-			$(document).ready( function() {
-				var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
-				if(isMobile)
-					location.href='mobile';
-				switch_menu('home');
-				var bar = new ProgressBar.Circle(container, {
-					strokeWidth: 6,
-  					easing: 'easeInOut',
-  					duration: 1000,
-  					color: '#FFFFFF',
-					trailColor: '#555',
-					trailWidth: 2,
-  					svgStyle: null
-				});
-				bar.animate(1.0);  // Number from 0.0 to 1.0
-				setTimeout(function(){ $("#screen").remove(); }, 1500);
-			});
-		</script>
+		<script type="text/javascript" src="{% static 'js/index.js' %}?ver=0.1"></script>
 	</head>
 	<body>
 		<div id="canvas"></div>

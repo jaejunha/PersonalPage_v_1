@@ -71,7 +71,7 @@
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-p font{    
+p b{    
 	color:#ffff00;  
 }	
 @keyframes appear_bird{
