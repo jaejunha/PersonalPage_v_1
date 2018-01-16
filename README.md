@@ -29,6 +29,9 @@ This is personal page to introduce myself.
 - pip install selenium
 - download PhantomJS from web
 ---
+# Crontab
+0 * * * * foo/update.sh
+---
 # Refer
 - Git chart
 >http://ghchart.rshah.org

@@ -18,26 +18,24 @@ href = re.compile('href="[^"]*"')
 
 def web():
 	url = []
-	while True:
-		print 'working...'
-		url = reset_url(url)
-		browser = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
-		browser.set_window_size(1920, 1080)
-		i = 1
-		for u in url:
-			t = ''
-			response = requests.get(u)
-			for l in link.findall(response.text):
-				if l.find('icon') >= 0 or l.find('short')>=0:
-					for h in href.findall(l):
-						t = process_url(u,h)
-			if t == '':
-				t = infer_url(u)
-			save_favicon(i,t)
-			print t                       
-			save_capture(browser,u,i)
-			i = i+1
-		time.sleep(3600)
+	print 'working...'
+	url = reset_url(url)
+	browser = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
+	browser.set_window_size(1920, 1080)
+	i = 1
+	for u in url:
+		t = ''
+		response = requests.get(u)
+		for l in link.findall(response.text):
+			if l.find('icon') >= 0 or l.find('short')>=0:
+				for h in href.findall(l):
+					t = process_url(u,h)
+		if t == '':
+			t = infer_url(u)
+		save_favicon(i,t)
+		print t                       
+		save_capture(browser,u,i)
+		i = i+1
 
 def main():
 	t = threading.Thread(target=web)
