@@ -2,6 +2,8 @@
 {% load staticfiles %}
 <html>
 <head>
+<script src="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.css" />   
 <style>
 	body{
 		background:#000000;
@@ -13,12 +15,42 @@
 		font-weight:bold;
 		width:200px;
 	}
-	font{
-		color:#ffff00;
-		font-weight:bold;
+	b{
+		color:#ffff00;b
+	}
+	.ui-coverflow-wrapper{
+		height: 350px;
+        	margin-top: 50px;
+	}
+        .ui-state-active{
+       		border: 0px;
+	}
+	#coverflow img{
+		width: 400px;
+		height: 300px;
 	}
 </style>
 <script>
+var portfolio_before = 2;
+var portfolio_now = 2;
+
+$(document).ready(function(){
+	$('#coverflow').coverflow({
+                active: 2,
+                select: function(event, ui){}
+	});
+    
+	$('#coverflow img').click(function() {
+		if( ! $(this).hasClass('ui-state-active')){
+                	return;
+		}
+	//	$('#portfolio .'+portfolio_now).css('display','block');
+	//	$('#portfolio .'+portfolio_now).css('opacity','0');
+	//	$('#portfolio .'+portfolio_now).animate({ opacity : "1" },1000);
+	//	$('#portfolio .'+portfolio_before).css('display','none');
+		portfolio_before = portfolio_now;
+         });
+});
 </script>
 </head>
 <body>
@@ -29,40 +61,50 @@
 		</tr>
 		<tr>
 			<td>Langauage</td>
-			<td><font>C</font> / C++ / <font>Java</font> / <font>Python</font> / JSP / PHP / HTML5+CSS+JS</td>
+			<td><b>C</b> / C++ / <b>Java</b> / <b>Python</b> / JSP / PHP / HTML5+CSS+JS</td>
 		</tr>
 		<tr>
 			<td>Framework</td>
-			<td><font>Django</font></td>
+			<td><b>Django</b></td>
 		</tr>
 		<tr>
 			<td>DB</td>
-			<td><font>MySQL</font> / <font>SQLite</font> / PostgreSQL</td>
+			<td><b>MySQL</b> / <b>SQLite</b> / PostgreSQL</td>
 		</tr>
 		<tr>
 			<td>Library</td>
-			<td><font>Android SDK</font> / <font>OpenGL ES 2.0</font> / OpenCV / Tensorflow / <font>Swing</font> / <font>Win API</font></td>
+			<td><b>Android SDK</b> / <b>OpenGL ES 2.0</b> / OpenCV / Tensorflow / <b>Swing</b> / <b>Win API</b></td>
 		</tr>
 		<tr>
 			<td>Hardware</td>
-			<td><font>Raspberry Pi3</font> / <font>Arduino</font></td>
+			<td><b>Raspberry Pi3</b> / <b>Arduino</b></td>
 		</tr>
 		<tr>
 			<td>OS</td>
-			<td><font>Window</font> / Ubuntu</td>
+			<td><b>Window</b> / Ubuntu</td>
 		</tr>
 		<tr>
 			<td>Editor</td>
-			<td><font>vim</font> / <font>Visual Studio</font> / <font>Eclipse</font> / <font>Android Studio</font> / Atom</td>
+			<td><b>vim</b> / <b>Visual Studio</b> / <b>Eclipse</b> / <b>Android Studio</b> / Atom</td>
 		</tr>
 		<tr>
 			<td>Tool</td>
-			<td><font>GitHub</font> / <font>Wire Shark</font> / <font>Illustrator</font> / <font>Photo Shop</font> / Amazon Web Service</td>
+			<td><b>GitHub</b> / <b>Wire Shark</b> / <b>Illustrator</b> / <b>Photo Shop</b> / Amazon Web Service</td>
 		</tr>
 		<tr>
 			<td>Interest</td>
-			<td><font>Network</font> / <font>Graphics</font></td>
+			<td><b>Network</b> / <b>Graphics</b></td>
 		</tr>
 	</table>
+	<br>
+	<div>
+	       <div id="coverflow">
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=1;"/>
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=2;"/>
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=3;"/>
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=4;"/>
+	       </div>
+	</div>
 </body>
 </html>

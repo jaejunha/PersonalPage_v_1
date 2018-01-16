@@ -40,6 +40,8 @@ This is personal page to introduce myself.
 >https://jquery.com/download/
 - D3
 >http://d3js.org/d3.v3.min.js
+- coverflow
+>https://coverflowjs.github.io/coverflow/
 - octicons.css
 >http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - mustache.js

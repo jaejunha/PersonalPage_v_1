@@ -7,7 +7,9 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One" rel="stylesheet">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
 <link rel="stylesheet" href="{% static 'css/home/github-activity-0.1.5.min.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.css" />   
 
+<script src="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
 <script type="text/javascript" src="{% static 'js/home/github-activity.js' %}"></script>
 <style>
@@ -112,11 +114,20 @@
 		width:100px;
 		vertical-align:top;
 	}
+	.ui-coverflow-wrapper{
+		height:250px;
+	}
+        .ui-state-active{
+       		border: 0px;
+	}
 </style>
 <script>
 	var activity, me;
 	var scroll;
 	var offset;
+
+	var portfolio_before = 2;
+	var portfolio_now = 2;
 
 	$(document).ready( function() {
 		setSize();
@@ -126,6 +137,25 @@
 			expand($(this).parent().parent().attr('class'));
 		});
 		
+		$('#coverflow').coverflow({
+          		active: 2,
+                	select: function(event, ui){}
+		});
+    
+		$('#coverflow img').click(function() {
+			if( ! $(this).hasClass('ui-state-active')){
+                		return;
+			}
+		//	$('#portfolio .'+portfolio_now).css('display','block');
+		//	$('#portfolio .'+portfolio_now).css('opacity','0');
+		//	$('#portfolio .'+portfolio_now).animate({ opacity : "1" },1000);
+		//	$('#portfolio .'+portfolio_before).css('display','none');
+			portfolio_before = portfolio_now;
+		});
+		
+		/* Don't move this function */
+		$('.ui-coverflow-wrapper').css('height',$('#coverflow img').height());
+		/* Don't move this function */
 	});
 
 	function setSize(){
@@ -135,6 +165,7 @@
                 $('.feed').css('width',width-15);
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
+		$('#coverflow img').css('width',width/3);
 	}
 	
 	function setAlphaAnimation(){
@@ -308,6 +339,15 @@
 			</tr>
 		</table>
 		<br>
+		<div>
+	       		<div id="coverflow">
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=1;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=2;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=3;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=4;"/>
+	      		</div>
+		</div>
 		Art<br>
 		<hr>
 		<table>
@@ -329,6 +369,15 @@
 			</tr>
 		</table>
 		<br>
+		<div>
+	       		<div id="coverflow">
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=1;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=2;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=3;"/>
+				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=4;"/>
+	      		</div>
+		</div>
 		Marathon<br>
 		<hr>
 		<table>
