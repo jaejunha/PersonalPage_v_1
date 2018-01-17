@@ -129,7 +129,7 @@
 	var offset;
 
 	var portfolio_before = 2;
-	var portfolio_now = 2;
+	var portfolio_init = 0;
 
 	$(document).ready( function() {
 		setSize();
@@ -141,9 +141,11 @@
 		
 		$('#coverflow').coverflow({
           		active: 2,
-                	select: function(event, ui){}
+                	select: function(event, ui){
+				portfolio_before = ui.index;
+			}
 		});
-    
+    /*
 		$('#coverflow img').click(function() {
 			if( ! $(this).hasClass('ui-state-active')){
                 		return;
@@ -153,7 +155,7 @@
 		//	$('#portfolio .'+portfolio_now).animate({ opacity : "1" },1000);
 		//	$('#portfolio .'+portfolio_before).css('display','none');
 			portfolio_before = portfolio_now;
-		});
+		});*/
 		
 		/* Don't move this function */
 		$('.ui-coverflow-wrapper').css('height',$('#coverflow img').height());
@@ -167,7 +169,7 @@
                 $('.feed').css('width',width-15);
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
-		$('#coverflow img').css('width',width/3);
+		$('#coverflow img').css('width',width/4);
 	}
 	
 	function setAlphaAnimation(){
@@ -343,11 +345,11 @@
 		<br>
 		<div>
 	       		<div id="coverflow">
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=1;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=2;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=3;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=4;"/>
+				<img src="http://placehold.it/400x300"/>
+				<img src="http://placehold.it/400x300"/>
+				<img src="http://placehold.it/400x300"/>
+				<img src="http://placehold.it/400x300"/>
+				<img src="http://placehold.it/400x300"/>
 	      		</div>
 		</div>
 		Art<br>
@@ -372,13 +374,7 @@
 		</table>
 		<br>
 		<div>
-	       		<div id="coverflow">
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=1;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=2;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=3;"/>
-				<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=4;"/>
-	      		</div>
+			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
 		</div>
 		Marathon<br>
 		<hr>
