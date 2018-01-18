@@ -15,7 +15,7 @@ $(document).ready( function() {
 		});
 		
 		bar.animate(1.0);
-		setTimeout(function(){ $("#screen").remove(); }, 1500);
+		setTimeout(function(){$("#screen").remove();}, 1500);
 });
 function switch_menu(to){
 	$('header a').css('color','#555555');
