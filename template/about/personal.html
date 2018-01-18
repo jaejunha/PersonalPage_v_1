@@ -26,14 +26,8 @@
 		$("table a").click(function(){
 			expand($(this).parent().parent().attr('class'));
 		});
-
-		d3.json("{% static 'json/happy.json' %}", function(error, data) {
-			var dataSet = new Array();
-		});
-
-
-
 	});
+
 	function expand(name){
 		var status=$('.'+name+' td:nth-child(1) a').text();
 		if(status.indexOf('▶')>-1){
@@ -64,10 +58,52 @@
 	<br>
 	<div style="width:300px;text-align:center;">(In 2017, I draw my portrait)</div>
 	<br>
+	<span style="font-size:20pt;">Happy Graph</span><br>
 	<br>
+	<div class="ct-chart ct-square" style="height:300px;"></div>
+	<script>
+		var chart = new Chartist.Line('.ct-chart', {
+  		labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'],
+  		
+		// Naming the series with the series object array notation
+  		series: [{
+    			name: 'happy',
+    			data: [3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3]}]}, {
+  		fullWidth: false,
+  // Within the series options you can use the series names
+  // to specify configuration that will only be used for the
+  // specific series.
+  		series: {
+    			'happy': {
+      				lineSmooth: Chartist.Interpolation.simple(),
+      				showArea: true
+    			}
+  		}
+	}, [
+  	// You can even use responsive configuration overrides to
+  	// customize your series configuration even further!
+  	['screen and (max-width: 320px)', {
+    		series: {
+      			'series-1': {
+        		lineSmooth: Chartist.Interpolation.none(),
+        		showArea: false
+      		}
+    	}}]]);
+
+	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
+	$('.ct-chart').on('mouseover', '.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line', function(evt) {
+  		var index = $(this).index()-2;
+  		var label = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
+  		var value = $(this).attr('ct:value');
+		alert(label);
+	});
+	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
+	</script>
+
+
+
+	<span style="font-size:20pt;">History</span><br>
 	<br>
-	<svg id="graph"></svg>
-	I'll draw happy graph at left of table
 	<table>
 	{% for bold, content, sub, name in history %}
 		{% if sub == 0 %}	
