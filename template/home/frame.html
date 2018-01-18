@@ -2,41 +2,15 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/frame.css' %}?ver=0.1"/>
-<script type="text/javascript" src="{% static 'js/home/switch.js' %}?ver=0.1"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/frame.css' %}?ver=0.2"/>
+<script type="text/javascript" src="{% static 'js/home/frame.js' %}?ver=0.1"></script>
 <script type="text/javascript" src="{% static 'js/home/resize.js' %}?ver=0.1"></script>
-<style>
-	body{
-		background:#000000;
-		color:#ffffff;
-	}
-	#activity_content{
-		overflow-x:hidden;
-		overflow-y:auto;
-	}
-	#activity_content::-webkit-scrollbar {
-		width:10px;
-	}
-	#activity_content::-webkit-scrollbar-thumb {
-		background:#fff;
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-		border-radius:10px;
-	}
-	#favorite_content{
-		overflow-y:auto;
-	}
-	#favorite_content::-webkit-scrollbar {
-		width:10px;
-	}  
-	#favorite_content::-webkit-scrollbar-thumb{
-                background:#fff;
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-                border-radius:10px;
-	}
-</style>
 <script type="text/javascript">
 	var init = 1;
 	var from = 0;	//0:activity	1:favorite
+	var blink = 0;	//activity button blink
+	var switch_blink;//blink switch
+
 	$(document).ready( function() {
 		var width = $(window).width();
 		$('#intro_content').load('home/intro');
@@ -56,15 +30,15 @@
 		if(window.Worker){
 			var w = new Worker("{% static 'js/home/worker.js' %}?ver=0.1");
 		        w.onmessage = function(event) {
-			if(init == 1 && home >= 0)
-				from=switch_screen(init--,from,'activity');
+				clearInterval(switch_blink);
+				if(init == 1 && home >= 0)
+					from=switch_screen(init--,from,'activity');
         		};
 			w.postMessage("Hello");
 		}
 		if(from == 0)
 			resize('frame');
 
-		
 		//delete animation
 		if(home != 1){
 			$('#favorite').css('animation','appear_tab 0s');
@@ -75,6 +49,15 @@
 			$('hr').css('opacity','1');
 			$('#title').css('animation','appear_tab 0s');
 			$('#bird').css('animation','appear_bird 0s');
+			clearInterval(switch_blink);
+		}else{
+			switch_blink = setInterval(function() {
+				blink++;
+				if(blink % 2 == 1)
+					$('#activity').css('color','#ffffff');
+				else
+					$('#activity').css('color','#aaaaaa');
+			}, 750);
 		}
 		home--;
 	});

@@ -1,3 +1,30 @@
+body{
+	background:#000000;
+	color:#ffffff;
+}
+#activity_content{
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+#activity_content::-webkit-scrollbar {
+	width:10px;
+}
+#activity_content::-webkit-scrollbar-thumb {
+	background:#fff;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+	border-radius:10px;
+}
+#favorite_content{
+	overflow-y:auto;
+}
+#favorite_content::-webkit-scrollbar {
+	width:10px;
+}  
+#favorite_content::-webkit-scrollbar-thumb{
+	background:#fff;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+	border-radius:10px;
+}
 #title{
 	opacity: 0;
 	font-family: 'Poiret One', cursive; 
@@ -7,7 +34,7 @@
 	animation-delay: 4s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
-	}
+}
 #activity, #favorite{
 	opacity: 0;
 	font-size:15pt;
@@ -22,7 +49,6 @@
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-
 hr { 
 	opacity: 0;
 	border: solid 1px #aaaaaa;
@@ -32,7 +58,6 @@ hr {
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-
 #activity:hover, #favorite:hover{
 	opacity: 1;
 	text-decoration: underline;
