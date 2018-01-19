@@ -9,10 +9,12 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
 <link rel="stylesheet" href="{% static 'css/home/github-activity-0.1.5.min.css' %}">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.css" />   
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.rawgit.com/coverflowjs/coverflow/master/dist/coverflow.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 <script type="text/javascript" src="{% static 'js/home/github-activity.js' %}"></script>
 <style>
 	body{
@@ -122,6 +124,23 @@
         .ui-state-active{
        		border: 0px;
 	}
+	.happy_content{
+		background:rgba(255,255,255,0.5);
+		border:solid 1 white;
+		padding:10px;
+		border-width: 2px;
+		border-color: #fff;
+		border-style: solid;
+		border-radius:5px;
+	}
+	.happy_container{
+		overflow-x:auto;
+		overflow-y:hidden;
+		height:300px;
+	}
+	.happy_content b{
+		color:#fff;
+	}
 </style>
 <script>
 	var activity, me;
@@ -130,6 +149,9 @@
 
 	var portfolio_before = 2;
 	var portfolio_init = 0;
+
+	var year;
+	var value;
 
 	$(document).ready( function() {
 		setSize();
@@ -170,6 +192,7 @@
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
 		$('#coverflow img').css('width',width/4);
+		$('.happy_container').css('width',width-10);
 	}
 	
 	function setAlphaAnimation(){
@@ -270,6 +293,199 @@
 		{%endfor%}
 	</table>
 	<br>
+	Happy Graph(scroll)<br>
+	<hr>
+	<div class="happy_container">
+	<div class="ct-chart ct-square" style="height:300px;width:1000px;background:#fff;"></div>
+	<script>
+		var chart = new Chartist.Line('.ct-chart', {
+  		labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'],
+		// Naming the series with the series object array notation
+  		series: [{
+    			name: 'happy',
+    			data: [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, -1, 3, -1, 3, 1, -2, -2, -3, 3, -3, -2, -3, -2, 2, 2]}]}, {
+  		fullWidth: true,
+  // Within the series options you can use the series names
+  // to specify configuration that will only be used for the
+  // specific series.
+  		series: {
+    			'happy': {
+      				lineSmooth: Chartist.Interpolation.simple(),
+      				showArea: true
+    			}
+  		}
+	}, [
+  	// You can even use responsive configuration overrides to
+  	// customize your series configuration even further!
+  	['screen and (max-width: 320px)', {
+    		series: {
+      			'series-1': {
+        		lineSmooth: Chartist.Interpolation.none(),
+        		showArea: false
+      		}
+    	}}]]);
+	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
+	$('.ct-chart').on('mouseover', '.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line', function(evt) {
+  		var index = $(this).index()-2;
+  		year = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
+  		value = $(this).attr('ct:value');
+		var text = '<b>'+year+'</b><br>Status : ';
+		switch(value){
+			case '-3':
+				text+='<b>WORST</b><br>';
+				break;
+			case '-2':
+				text+='<b>VERY BAD</b><br>';
+				break;
+			case '-1':
+				text+='<b>BAD</b><br>';
+				break;
+			case '0':
+				text+='<b>SO SO</b><br>';
+				break;
+			case '1':
+				text+='<b>GOOD</b><br>';
+				break;
+			case '2':
+				text+='<b>VERY GOOD</b><br>';
+				break;
+			case '3':
+				text+='<b>BEST</b><br>';
+				break;
+		}
+		switch(year*1){
+			case 1991:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1992:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1993:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1994:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1995:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1996:
+				text+='Kindergarden 1nd year<br><br>';
+				text+='I made my first friend: Hyun Ho Kim';
+				break;
+			case 1997:
+				text+='Kindergarden 2nd year<br><br>';
+				text+='I had no memory';
+				break;
+			case 1998:
+				text+='Elemental school 1st grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 1999:
+				text+='Elemental school 2nd grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2000:
+				text+='Elemental school 3rd grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2001:
+				text+='Elemental school 4th grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2002:
+				text+='Elemental school 5th grade<br><br>';
+				text+='2002 world cub in Korea!<br>';
+				text+='I had good friends.'
+				break;
+			case 2003:
+				text+='Elemental school 6th grade<br><br>';
+				text+='I was a final year student.';
+				break;
+			case 2004:
+				text+='Middle school 1st grade<br><br>';
+				text+='I had a lot of good memories of middle school in this year';
+				break;
+			case 2005:
+				text+='Middle school 2nd grade<br><br>';
+				text+='I was not happy from school life';
+				break;
+			case 2006:
+				text+='Middle school 3rd grade<br><br>';
+				text+='I was happy from school life because there was no class.<br>';
+				text+='In addition, I had good friends: Kun Ju, Seo Hyuk, Jung Hyun, Kyung Hwan, Ji Hwan.<br>';
+				break;
+			case 2007:
+				text+='High school 1st grade<br><br>';
+				text+='School life was not bad.';
+				break;
+			case 2008:
+				text+='High school 2nd grade<br><br>';
+				text+='All of things in school life was difficult in terms of relationship.';
+				break;
+			case 2009:
+				text+='High school 3rd grade<br><br>';
+				text+="Because I didn't study, I fail to enter university.";
+				break;
+			case 2010:
+				text+='Nothing<br><br>';
+				text+='I screwed up the test I can take once in a year.<br>';
+				text+='The day before the test, I went to the emergency room.<br>';
+				text+='I threw up 3-times in dawn.<br>';
+				text+='Sharp pencil was very fragile.<br>';
+				break;
+			case 2011:
+				text+='University 1st grade<br><br>';
+				text+='I met good friends.<br>';
+				text+=':Dae Kun, Kyung Kun, Tae Hyung, Sang Hoon, Chang Hee, Jae Won, Jang Min, Ye Hoon.<br>';
+				text+='I started make my code! In addition, I can get good GPA';
+				break;
+			case 2012:
+				text+='University 2nd grade<br><br>';
+				text+='I failed to enter Korea University(An Am campus).<br>';
+				break;
+			case 2013:
+				text+='Nothing<br><br>';
+				text+='Because I was alone, I got depression.<br>';
+				break;
+			case 2014:
+				text+='University 3rd grade<br><br>';
+				text+='I failed to enter Yonsei University.<br>';
+				text+='This period was very hard for me.<br>';
+				text+='In addition, I had a spasm while sleeping. It was my first experience.';
+				break;
+			case 2015:
+				text+='Army 1st year<br><br>';
+				text+='All of things in Army was difficult for me!<br>';
+				break;
+			case 2016:
+				text+='Army 2st year<br><br>';
+				text+='I finished my military service.<br>';
+				text+='I did many things in terms of self development.<br>';
+				break;
+			case 2017:
+				text+='University 4th grade<br><br>';
+				text+='I had the best GPA among 4th grade students.<br>';
+				text+='I was allowed to enter graduage school<br>';
+				break;
+		}
+		$('.happy_content').html(text);
+	});
+	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
+	</script>
+	</div>
+	<br>
+	<div class="happy_content">
+		<b>Alert</b><br>
+		<br>
+		If you want to see content of happy graph<br>
+		Please click point of graph
+	</div><br>
 	History<br>
 	<hr>
 	<table>
