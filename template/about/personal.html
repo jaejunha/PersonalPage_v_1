@@ -20,8 +20,19 @@
 		color:#ffffff;
 		text-decoration: none;	
 	}
+	.happy_content{
+		background:rgba(255,255,255,0.5);
+		border:solid 1 white;
+		padding:10px;
+		border-width: 2px;
+		border-color: #fff;
+		border-style: solid;
+		border-radius:5px;
+	}
 </style>
 <script>
+	var year;
+	var value;
 	$(document).ready( function() {
 		$("table a").click(function(){
 			expand($(this).parent().parent().attr('class'));
@@ -68,7 +79,7 @@
 		// Naming the series with the series object array notation
   		series: [{
     			name: 'happy',
-    			data: [3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3, -3, 3]}]}, {
+    			data: [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, -1, 3, -1, 3, 1, -2, -2, -3, 3, -3, -2, -3, -2, 2, 2]}]}, {
   		fullWidth: false,
   // Within the series options you can use the series names
   // to specify configuration that will only be used for the
@@ -93,15 +104,164 @@
 	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
 	$('.ct-chart').on('mouseover', '.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line', function(evt) {
   		var index = $(this).index()-2;
-  		var label = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
-  		var value = $(this).attr('ct:value');
-		alert(label);
+  		year = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
+  		value = $(this).attr('ct:value');
+		var text = '<b>'+year+'</b><br>Status : ';
+		switch(value){
+			case '-3':
+				text+='<b>WORST</b><br>';
+				break;
+			case '-2':
+				text+='<b>VERY BAD</b><br>';
+				break;
+			case '-1':
+				text+='<b>BAD</b><br>';
+				break;
+			case '0':
+				text+='<b>SO SO</b><br>';
+				break;
+			case '1':
+				text+='<b>GOOD</b><br>';
+				break;
+			case '2':
+				text+='<b>VERY GOOD</b><br>';
+				break;
+			case '3':
+				text+='<b>BEST</b><br>';
+				break;
+		}
+		switch(year*1){
+			case 1991:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1992:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1993:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1994:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1995:
+				text+='Nothing<br><br>';
+				text+='I had no memory';
+				break;
+			case 1996:
+				text+='Kindergarden 1nd year<br><br>';
+				text+='I made my first friend: Hyun Ho Kim';
+				break;
+			case 1997:
+				text+='Kindergarden 2nd year<br><br>';
+				text+='I had no memory';
+				break;
+			case 1998:
+				text+='Elemental school 1st grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 1999:
+				text+='Elemental school 2nd grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2000:
+				text+='Elemental school 3rd grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2001:
+				text+='Elemental school 4th grade<br><br>';
+				text+='I had no memory';
+				break;
+			case 2002:
+				text+='Elemental school 5th grade<br><br>';
+				text+='2002 world cub in Korea!<br>';
+				text+='I had good friends.'
+				break;
+			case 2003:
+				text+='Elemental school 6th grade<br><br>';
+				text+='I was a final year student.';
+				break;
+			case 2004:
+				text+='Middle school 1st grade<br><br>';
+				text+='I had a lot of good memories of middle school in this year';
+				break;
+			case 2005:
+				text+='Middle school 2nd grade<br><br>';
+				text+='I was not happy from school life';
+				break;
+			case 2006:
+				text+='Middle school 3rd grade<br><br>';
+				text+='I was happy from school life because there was no class.<br>';
+				text+='In addition, I had good friends: Kun Ju, Seo Hyuk, Jung Hyun, Kyung Hwan, Ji Hwan.<br>';
+				break;
+			case 2007:
+				text+='High school 1st grade<br><br>';
+				text+='School life was not bad.';
+				break;
+			case 2008:
+				text+='High school 2nd grade<br><br>';
+				text+='All of things in school life was difficult in terms of relationship.';
+				break;
+			case 2009:
+				text+='High school 3rd grade<br><br>';
+				text+="Because I didn't study, I fail to enter university.";
+				break;
+			case 2010:
+				text+='Nothing<br><br>';
+				text+='I screwed up the test I can take once in a year.<br>';
+				text+='The day before the test, I went to the emergency room.<br>';
+				text+='I threw up 3-times in dawn.<br>';
+				text+='Sharp pencil was very fragile.<br>';
+				break;
+			case 2011:
+				text+='University 1st grade<br><br>';
+				text+='I met good friends.<br>';
+				text+=':Dae Kun, Kyung Kun, Tae Hyung, Sang Hoon, Chang Hee, Jae Won, Jang Min, Ye Hoon.<br>';
+				text+='I started make my code! In addition, I can get good GPA';
+				break;
+			case 2012:
+				text+='University 2nd grade<br><br>';
+				text+='I failed to enter Korea University(An Am campus).<br>';
+				break;
+			case 2013:
+				text+='Nothing<br><br>';
+				text+='Because I was alone, I got depression.<br>';
+				break;
+			case 2014:
+				text+='University 3rd grade<br><br>';
+				text+='I failed to enter Yonsei University.<br>';
+				text+='This period was very hard for me.<br>';
+				text+='In addition, I had a spasm while sleeping. It was my first experience.';
+				break;
+			case 2015:
+				text+='Army 1st year<br><br>';
+				text+='All of things in Army was difficult for me!<br>';
+				break;
+			case 2016:
+				text+='Army 2st year<br><br>';
+				text+='I finished my military service.<br>';
+				text+='I did many things in terms of self development.<br>';
+				break;
+			case 2017:
+				text+='University 4th grade<br><br>';
+				text+='I had the best GPA among 4th grade students.<br>';
+				text+='I was allowed to enter graduage school<br>';
+				break;
+		}
+		$('.happy_content').html(text);
 	});
 	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
 	</script>
-
-
-
+	<div class="happy_content">
+		<b>Alert</b><br>
+		<br>
+		If you want to see content of happy graph<br>
+		Please click point of graph
+	</div><br>
+	<br>
 	<span style="font-size:20pt;">History</span><br>
 	<br>
 	<table>
