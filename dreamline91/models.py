@@ -23,3 +23,10 @@ class History(models.Model):
     sub = models.IntegerField(default=0)
     def __str__(self):
         return self.start
+
+class Happy(models.Model):
+    year = models.IntegerField(primary_key=True)
+    company = models.CharField(max_length=50)
+    content = models.TextField(max_length=100)
+    def __str__(self):
+        return self.year
