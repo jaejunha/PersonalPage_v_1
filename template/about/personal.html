@@ -29,6 +29,14 @@
 		border-style: solid;
 		border-radius:5px;
 	}
+	.ct-horizontal, .ct-vertical {
+    		color:#ffffff;
+	}
+	.ct-grid {
+  		stroke: rgba(255,255,255,0.5);
+  		stroke-width: 2px;
+	}
+}
 </style>
 <script>
 	var year;
@@ -103,33 +111,12 @@
 
 	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
 	$('.ct-chart').on('mouseover', '.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line', function(evt) {
+		$('.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line').css('stroke','#ff0000');		
+		$(this).css('stroke','#ffffff');
   		var index = $(this).index()-2;
   		year = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
   		value = $(this).attr('ct:value');
-		var text = '<b>'+year+'</b><br>Status : ';
-		switch(value){
-			case '-3':
-				text+='<b>WORST</b><br>';
-				break;
-			case '-2':
-				text+='<b>VERY BAD</b><br>';
-				break;
-			case '-1':
-				text+='<b>BAD</b><br>';
-				break;
-			case '0':
-				text+='<b>SO SO</b><br>';
-				break;
-			case '1':
-				text+='<b>GOOD</b><br>';
-				break;
-			case '2':
-				text+='<b>VERY GOOD</b><br>';
-				break;
-			case '3':
-				text+='<b>BEST</b><br>';
-				break;
-		}
+		var text = '<b>'+year+'</b><br>';
 		switch(year*1){
 			case 1991:
 				text+='Nothing<br><br>';
