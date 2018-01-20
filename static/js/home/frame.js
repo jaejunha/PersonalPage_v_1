@@ -19,7 +19,7 @@ $(document).ready( function() {
 	$('#favorite_content').css('height',height+'px');
 
 	if(window.Worker){
-		var w = new Worker("{% static 'js/home/worker.js' %}?ver=0.1");
+		var w = new Worker("/static/js/home/worker.js");
         	w.onmessage = function(event) {
 			clearInterval(switch_blink);
 			if(init == 1 && home >= 0)

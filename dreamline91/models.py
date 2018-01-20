@@ -26,6 +26,7 @@ class History(models.Model):
 
 class Happy(models.Model):
     year = models.IntegerField(primary_key=True)
+    value = models.IntegerField(default=0)
     company = models.CharField(max_length=50)
     content = models.TextField(max_length=100)
     def __str__(self):

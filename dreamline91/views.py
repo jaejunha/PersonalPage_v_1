@@ -27,16 +27,18 @@ def index(request):
 	if isMobile:
 		favorite = get_favorite()
 		personal = get_personal()
+		happy = get_happy()
 		history = get_history()
-		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'history':history})
+		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
 	else:
 		return render(request,'index.html')
 
 def m_index(request):
 	favorite = get_favorite()
 	personal = get_personal()
+	happy = get_happy()
 	history = get_history()
-	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'history':history})
+	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -56,8 +58,9 @@ def about_frame(request):
 
 def about_personal(request):
 	personal = get_personal()
+	happy = get_happy()
 	history = get_history()
-	return render(request,'about/personal.html', {'personal':personal, 'history':history})
+	return render(request,'about/personal.html', {'personal':personal, 'happy':happy,  'history':history})
 
 def portfolio_frame(request):
 	return render(request,'portfolio/frame.html')
@@ -95,6 +98,20 @@ def get_personal():
                 content.append(r.content)
         personal = zip(bold, content)
 	return personal
+
+def get_happy():
+	year = []
+	company = []
+        content = []
+	value = []
+        result = Happy.objects.order_by('year')
+        for r in result:
+                year.append(r.year)
+                company.append(r.company)
+                content.append(r.content)
+                value.append(r.value)
+        happy = zip(year, company, content, value)
+	return happy
 
 def get_history():
 	bold = []
