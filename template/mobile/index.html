@@ -119,7 +119,7 @@
 		vertical-align:top;
 	}
 	.ui-coverflow-wrapper{
-		height:250px;
+		margin:auto;
 	}
         .ui-state-active{
        		border: 0px;
@@ -181,6 +181,8 @@
           		active: 2,
                 	select: function(event, ui){
 				portfolio_before = ui.index;
+				var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg";
+				$(".coverflow_img").html("<img src=\""+path+"\"/ width=\"100%\">");
 			}
 		});
 		
@@ -197,6 +199,7 @@
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
 		$('#coverflow img').css('width',width/4);
+		$('#coverflow img').css('height',width/5);
 		$('.happy_container').css('width',width-10);
 	}
 	
@@ -433,6 +436,8 @@
 				<img src="{% static 'personal/img/program/5.jpg' %}"/>
 	      		</div>
 		</div>
+		<br>
+		<div class="coverflow_img"></div>
 		Art<br>
 		<hr>
 		<table>
