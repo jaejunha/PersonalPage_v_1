@@ -9,6 +9,8 @@
 		font-family:'Montserrat', sans-serif;
 		font-size:15pt;
 	}
+	table { width:100%; }
+	table td{ valign:top; }
 	table td:nth-child(1){
 		font-weight:bold;
 		width:200px;
@@ -16,9 +18,25 @@
 	b{
 		color:#ffff00;
 	}
+	.coverflow_upper{
+		display:block;
+		width:70%;
+		height:40px;
+		line-height:40px;
+		margin:auto;
+		text-align:center;
+		background:#dcdcdc;
+		color:#555;
+		font-weight:bold;
+	}
 	.ui-coverflow-wrapper{
+		display:block;
+		margin:auto;
+		padding-top:50px;
+		width:70%;
 		height: 350px;
-        	margin-top: 50px;
+		background: -webkit-radial-gradient(ellipse, rgba(0,0,0,1), rgba(255,255,255,0));
+		background: radial-gradient(ecllipse, rgba(0,0,0,1), rgba(255,255,255,0));
 	}
         .ui-state-active{
        		border: 0px;
@@ -26,10 +44,6 @@
 	#coverflow img{
 		width: 400px;
 		height: 300px;
-	}
-	table { width:100%; }
-	table td{
-		valign:top;
 	}
 	.image{ text-align:center; }
 	.image img{
@@ -46,7 +60,7 @@ $(document).ready(function(){
                 active: 1,
                 select: function(event, ui){
 			portfolio_before = ui.index;
-			$(".desc span:nth-child(1)").text(ui.index+" item");
+			$(".desc .name").text(ui.index+" item");
 		//	$(".desc table tr:nth-child(1) td:nth-child(2)").text(ui.index);
 		}
 	});
@@ -97,6 +111,7 @@ $(document).ready(function(){
 		</tr>
 	</table>
 	<br>
+	<div class="coverflow_upper">My works</div>
 	<div>
 	       <div id="coverflow">
 			<img src="http://placehold.it/400x300"/>
@@ -105,9 +120,11 @@ $(document).ready(function(){
 			<img src="http://placehold.it/400x300"/>
 			<img src="http://placehold.it/400x300"/>
 		</div>
-	</div>
+	</div><br>
+	<span style="font-size:20pt;">Description</span></br>
+	<br>
 	<div class="desc">
-		<span style="font-size:20pt;"></span><br>
+		<span class="name" style="font-size:20pt;"></span><br>
 		<br>
 		<div class="image">
 			<img src="{% static 'img/alt.png' %}">
