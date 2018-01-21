@@ -18,7 +18,6 @@ $(document).ready( function() {
 		setTimeout(function(){$("#screen").remove();}, 1500);
 });
 function switch_menu(to){
-	home--;
 	$('header a').css('color','#555555');
 	if(to=='home'){
 		$('#content').load('home/frame');
