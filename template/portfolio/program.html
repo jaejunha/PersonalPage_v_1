@@ -47,6 +47,7 @@
 	}
 	.image{ text-align:center; }
 	.image img{
+		width:80%;
 		display:block;
 		margin:auto;
 	}
@@ -61,6 +62,8 @@ $(document).ready(function(){
                 select: function(event, ui){
 			portfolio_before = ui.index;
 			$(".desc .name").text(ui.index+" item");
+			var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg";
+			$(".image").html("<img src=\""+path+"\"/>");
 		//	$(".desc table tr:nth-child(1) td:nth-child(2)").text(ui.index);
 		}
 	});
@@ -114,11 +117,11 @@ $(document).ready(function(){
 	<div class="coverflow_upper">My works</div>
 	<div>
 	       <div id="coverflow">
-			<img src="http://placehold.it/400x300"/>
-			<img src="http://placehold.it/400x300"/>
-			<img src="http://placehold.it/400x300"/>
-			<img src="http://placehold.it/400x300"/>
-			<img src="http://placehold.it/400x300"/>
+			<img src="{% static 'personal/img/program/1.jpg' %}"/>
+			<img src="{% static 'personal/img/program/2.jpg' %}"/>
+			<img src="{% static 'personal/img/program/3.jpg' %}"/>
+			<img src="{% static 'personal/img/program/4.jpg' %}"/>
+			<img src="{% static 'personal/img/program/5.jpg' %}"/>
 		</div>
 	</div><br>
 	<span style="font-size:20pt;">Description</span></br>
@@ -149,6 +152,10 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td>Role in Team</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Progress</td>
 				<td></td>
 			</tr>
 			<tr>

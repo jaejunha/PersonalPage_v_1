@@ -154,7 +154,7 @@
 	var scroll;
 	var offset;
 
-	var portfolio_before = 2;
+	var portfolio_before = 1;
 	var portfolio_init = 0;
 
 	var year;
@@ -183,17 +183,6 @@
 				portfolio_before = ui.index;
 			}
 		});
-    /*
-		$('#coverflow img').click(function() {
-			if( ! $(this).hasClass('ui-state-active')){
-                		return;
-			}
-		//	$('#portfolio .'+portfolio_now).css('display','block');
-		//	$('#portfolio .'+portfolio_now).css('opacity','0');
-		//	$('#portfolio .'+portfolio_now).animate({ opacity : "1" },1000);
-		//	$('#portfolio .'+portfolio_before).css('display','none');
-			portfolio_before = portfolio_now;
-		});*/
 		
 		/* Don't move this function */
 		$('.ui-coverflow-wrapper').css('height',$('#coverflow img').height());
@@ -437,11 +426,11 @@
 		<br>
 		<div>
 	       		<div id="coverflow">
-				<img src="http://placehold.it/400x300"/>
-				<img src="http://placehold.it/400x300"/>
-				<img src="http://placehold.it/400x300"/>
-				<img src="http://placehold.it/400x300"/>
-				<img src="http://placehold.it/400x300"/>
+				<img src="{% static 'personal/img/program/1.jpg' %}"/>
+				<img src="{% static 'personal/img/program/2.jpg' %}"/>
+				<img src="{% static 'personal/img/program/3.jpg' %}"/>
+				<img src="{% static 'personal/img/program/4.jpg' %}"/>
+				<img src="{% static 'personal/img/program/5.jpg' %}"/>
 	      		</div>
 		</div>
 		Art<br>
