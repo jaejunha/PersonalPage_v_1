@@ -28,6 +28,12 @@ class Happy(models.Model):
     year = models.IntegerField(primary_key=True)
     value = models.IntegerField(default=0)
     company = models.CharField(max_length=50)
-    content = models.TextField(max_length=100)
+    content = models.TextField()
+    def __str__(self):
+        return self.year
+
+class Intro(models.Model):
+    no = models.IntegerField(primary_key=True)
+    content = models.TextField()
     def __str__(self):
         return self.year

@@ -168,6 +168,9 @@
 		setSize();
 		setAlphaAnimation();
 
+		var text = "<br>{{intro.0}}{{intro.1}}<br>{{intro.2}}<br>{{intro.3}}";
+		$('.introduce').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
+
 		$(".me table:nth-of-type(2) a").click(function(){
 			expand($(this).parent().parent().attr('class'));
 		});
@@ -245,15 +248,7 @@
 		<img src="{% static 'personal/img/min_picture.jpg' %}">
 		Dreamline91's Page
 	</header>
-	<div class="introduce">
-		<br>Hello, my name is <b>Jae Jun Ha</b><br>
-		Welcome to my homepage<br>
-		This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
-		<br>
-		My major is <b>Software</b>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <b>Programming</b> / <b>Drawing</b> / <b>Marathon</b> / <b>Foreign language</b> / <b> Meditation</b>.<br>
-		<br>
-		I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><b>dreamline91@ajou.ac.kr</b></a> 
-	</div>
+	<div class="introduce"></div>
 	<br>
 	<span class="title">My Favorite Site</span><br>
 	<hr>

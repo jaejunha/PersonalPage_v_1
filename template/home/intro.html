@@ -25,6 +25,14 @@
 			$('#fourth').css('animation','appear_introduce 0s');
 			$('#fourth').css('opacity','1');
 		}
+		var text = "{{intro.0}}";
+		$('#first').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
+		text="{{intro.1}}";
+		$('#second').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
+		text="{{intro.2}}";
+		$('#third').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
+		text="{{intro.3}}";
+		$('#fourth').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 	});
 	$(window).resize(function (){
 		if(from == 0)
@@ -34,20 +42,12 @@
 </script>
 </head>
 <body>	
-	<p id="first">
-	Hello, my name is <b>Jae Jun Ha</b><br>
-	Welcome to my homepage<br>
-	</p>
+	<p id="first"></p>
 	<div id="detail">
-	<p id="second">
-	This page is my personal page. So, all of things in this page is my story. It includes my history, my work, my activity and etc...<br>
+	<p id="second"></p>
+	<p id="third"><br>
 	</p>
-	<p id="third">
-	My major is <b>Software</b>, I like it since I was an elementary student. So, I want to be a software specialist. In addition, I want to have ability to draw what I want to express, be a sub-3 marathoner, study English and other languages, be always calm. So, my bucketlist is <b>Programming</b> / <b>Drawing</b> / <b>Marathon</b> / <b>Foreign language</b> / <b> Meditation</b>.<br>
-	</p>
-	<p id="fourth">
-	I' ll study my major at MCNL lab located at Pohang. If you have any question about me, please feel free to contact me : <a href="mailto:dreamline91@ajou.ac.kr"><b>dreamline91@ajou.ac.kr</b></a> 
-	</p>
+	<p id="fourth"></p>
 	</div>	
 	<img id="gradation" src="{% static 'img/gradation.png' %}"/>
 	<img id="bird" src="{% static 'personal/img/bird.png' %}"/>

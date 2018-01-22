@@ -25,26 +25,29 @@ def index(request):
 	else:
 		isMobile = False;
 	if isMobile:
+		intro = get_intro()
 		favorite = get_favorite()
 		personal = get_personal()
 		happy = get_happy()
 		history = get_history()
-		return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
+		return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
 	else:
 		return render(request,'index.html')
 
 def m_index(request):
+	intro = get_intro()
 	favorite = get_favorite()
 	personal = get_personal()
 	happy = get_happy()
 	history = get_history()
-	return render(request,'mobile/index.html', {'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
+	return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
 
 def home_intro(request):
-	return render(request,'home/intro.html')
+	intro = get_intro()
+	return render(request,'home/intro.html', {'intro':intro})
 
 def home_favorite(request):
 	favorite = get_favorite()
@@ -78,6 +81,13 @@ def local(request):
 	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
 	p.wait()
 	return HttpResponse(status=204)
+
+def get_intro():
+	intro = []
+        result = Intro.objects.filter()
+        for r in result:
+		intro.append(r.content)
+	return intro
 
 def get_favorite():
 	url = []
