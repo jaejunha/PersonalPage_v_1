@@ -37,3 +37,10 @@ class Intro(models.Model):
     content = models.TextField()
     def __str__(self):
         return self.year
+
+class Experience(models.Model):
+    type = models.CharField(max_length=20)
+    bold = models.CharField(max_length=20)
+    content = models.TextField()
+    def __str__(self):
+        return self.bold
