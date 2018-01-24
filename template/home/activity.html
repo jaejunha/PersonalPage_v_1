@@ -11,6 +11,42 @@
 		background-color:rgba(255,255,255,0.5);
 		color:#ffffff;
   	}
+	.exercise_calendar{
+		margin:auto;
+		padding:20px;
+		width:700;
+		height:500px;
+		background:#ffffff;
+		color:#565656;
+		border-radius:5px;
+		font-weight:bold;
+		font-size:20pt;
+	}
+	.exercise_calendar tr:nth-child(1){
+		text-align:center;
+		font-size:30pt;
+	}
+	.exercise_calendar tr:nth-child(2){
+		text-align:center;
+		color:#787878;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(1){
+		text-align:left;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(6){
+		color:#3333ff;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(7){
+		color:#ff3333;
+	}
+	.exercise_desc{
+		margin:auto;
+		width:700;
+		height:auto;
+		background-color:rgba(255,255,255,0.5);
+		border-radius:2px;
+		border: 1px solid white;
+	}
 </style>
 <script>
 $(document).ready( function() {
@@ -18,9 +54,19 @@ $(document).ready( function() {
 	$(".feed").css('width',$('.calendar').width());
 	GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 	resize('activity');
+	
+	$(".exercise_calendar").css('width',$('.calendar').width());
+	$(".exercise_desc").css('width',$('.calendar').width());
+
+	var d = new Date();
+	var month=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+	$(".exercise_calendar tr:nth-child(1) td").html(month[d.getMonth()]+" "+d.getFullYear());
 });
 $(document).resize( function() {
 	resize('activity');
+
+	$(".exercise_calendar").css('width',$('.calendar').width());
+	$(".exercise_desc").css('width',$('.calendar').width());
 });
 </script>
 </head>
@@ -39,6 +85,73 @@ $(document).resize( function() {
 			</div>
 		<br>
 		<span style="font-size:20pt;">Exercise Record</span>
+		<br>
+		<br>
+		<table class="exercise_calendar">
+			<tr><td colspan="8">January 2018</td></tr>
+			<tr>
+				<td>Week</td>
+				<td>MON</td>
+				<td>TUE</td>
+				<td>WED</td>
+				<td>THU</td>
+				<td>FRI</td>
+				<td>SAT</td>
+				<td>SUN</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>2</td>
+				<td>4</td>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+		<div class="exercise_desc">fasd</div>
 	</p>
 </body>
 </html>
