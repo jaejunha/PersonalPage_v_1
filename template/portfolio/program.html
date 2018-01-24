@@ -57,6 +57,14 @@ var portfolio_before = 1;
 var portfolio_init = 0;
 
 $(document).ready(function(){
+	var text='';
+	{% for p in program_experience %}
+	text+='<tr><td>';
+	text+="{{p.0}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td><td>';
+	text+="{{p.1}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td></tr>';
+	{% endfor %}
+	$('.experience').html(text);	
+
 	$('#coverflow').coverflow({
                 active: 1,
                 select: function(event, ui){
@@ -71,48 +79,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<table>
-		<tr>
-			<td>Start</td>
-			<td>2011.03.02.Wed</td>
-		</tr>
-		<tr>
-			<td>Langauage</td>
-			<td><b>C</b> / C++ / <b>Java</b> / <b>Python</b> / JSP / PHP / HTML5+CSS+JS</td>
-		</tr>
-		<tr>
-			<td>Framework</td>
-			<td><b>Django</b></td>
-		</tr>
-		<tr>
-			<td>DB</td>
-			<td><b>MySQL</b> / <b>SQLite</b> / PostgreSQL</td>
-		</tr>
-		<tr>
-			<td>Library</td>
-			<td><b>Android SDK</b> / <b>OpenGL ES 2.0</b> / OpenCV / Tensorflow / <b>Swing</b> / <b>Win API</b></td>
-		</tr>
-		<tr>
-			<td>Hardware</td>
-			<td><b>Raspberry Pi3</b> / <b>Arduino</b></td>
-		</tr>
-		<tr>
-			<td>OS</td>
-			<td><b>Window</b> / Ubuntu</td>
-		</tr>
-		<tr>
-			<td>Editor</td>
-			<td><b>vim</b> / <b>Visual Studio</b> / <b>Eclipse</b> / <b>Android Studio</b> / Atom</td>
-		</tr>
-		<tr>
-			<td>Tool</td>
-			<td><b>GitHub</b> / <b>Wire Shark</b> / <b>Illustrator</b> / <b>Photo Shop</b> / Amazon Web Service</td>
-		</tr>
-		<tr>
-			<td>Interest</td>
-			<td><b>Network</b> / <b>Graphics</b></td>
-		</tr>
-	</table>
+	<table class="experience"></table>
 	<br>
 	<div class="coverflow_upper">My works</div>
 	<div>

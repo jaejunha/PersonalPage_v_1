@@ -30,7 +30,10 @@ def index(request):
 		personal = get_personal()
 		happy = get_happy()
 		history = get_history()
-		return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
+		program_experience = get_experience('program')
+		art_experience = get_experience('art')
+		marathon_experience = get_experience('marathon')
+		return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience, 'art_experience':art_experience, 'marathon_experience':marathon_experience})
 	else:
 		return render(request,'index.html')
 
@@ -40,7 +43,10 @@ def m_index(request):
 	personal = get_personal()
 	happy = get_happy()
 	history = get_history()
-	return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history})
+	program_experience = get_experience('program')
+	art_experience = get_experience('art')
+	marathon_experience = get_experience('marathon')
+	return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience, 'art_experience':art_experience, 'marathon_experience':marathon_experience})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -69,13 +75,16 @@ def portfolio_frame(request):
 	return render(request,'portfolio/frame.html')
 
 def portfolio_program(request):
-	return render(request,'portfolio/program.html')
+	program_experience = get_experience('program')
+	return render(request,'portfolio/program.html', {'program_experience':program_experience})
 
 def portfolio_art(request):
-	return render(request,'portfolio/art.html')
+	art_experience = get_experience('art')
+	return render(request,'portfolio/art.html', {'art_experience':art_experience})
 
 def portfolio_marathon(request):
-	return render(request,'portfolio/marathon.html')
+	marathon_experience = get_experience('marathon')
+	return render(request,'portfolio/marathon.html', {'marathon_experience':marathon_experience})
 
 def local(request):
 	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
@@ -143,3 +152,23 @@ def get_history():
 		name.append(cur)
         history = zip(bold, content,sub,name)
 	return history
+
+def get_experience(type):
+	program = []
+	art = []
+	marathon = []
+        result = Experience.objects.filter()
+        for r in result:
+		if r.type == 'program':
+                	program.append((r.bold,r.content))
+		elif r.type == 'art':
+                	art.append((r.bold,r.content))
+		elif r.type == 'marathon':
+                	marathon.append((r.bold,r.content))
+	if type=='program':
+		return program
+	elif type=='art':
+		return art
+	elif type=='marathon':
+		return marathon
+	return []

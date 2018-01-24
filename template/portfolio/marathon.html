@@ -18,42 +18,18 @@
 	}
 </style>
 <script>
+$(document).ready(function(){
+	var text='';
+	{% for m in marathon_experience %}
+	text+='<tr><td>';
+	text+="{{m.0}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td><td>';
+	text+="{{m.1}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td></tr>';
+	{% endfor %}
+	$('.experience').html(text);	
+});
 </script>
 </head>
 <body>
-	<table>
-		<tr>
-			<td>Start</td>
-			<td>2015.01.08.Thu</td>
-		</tr>
-		<tr>
-			<td>Hit Rate</td>
-			<td><b>50~60</b></td>
-		</tr>
-		<tr>
-			<td>Injury</td>
-			<td><b>Knee</b></td>
-		</tr>
-		<tr>
-			<td>Full</td>
-			<td>Yet</td>
-		</tr>
-		<tr>
-			<td>Half</td>
-			<td>Yet</td>
-		</tr>
-		<tr>
-			<td>10 KM</td>
-			<td><b>44min</b></td>
-		</tr>
-		<tr>
-			<td>5 KM</td>
-			<td><b>20min</b></td>
-		</tr>
-		<tr>
-			<td>1 Miles</td>
-			<td>Yet</td>
-		</tr>
-	</table>
+	<table class="experience"></table>
 </body>
 </html>

@@ -18,30 +18,19 @@
 	}
 </style>
 <script>
-
 $(document).ready(function(){
+	var text='';
+	{% for a in art_experience %}
+	text+='<tr><td>';
+	text+="{{a.0}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td><td>';
+	text+="{{a.1}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td></tr>';
+	{% endfor %}
+	$('.experience').html(text);	
 });
 </script>
 </head>
 <body>
-	<table>
-		<tr>
-			<td>Start</td>
-			<td>2013.03.02.Thu</td>
-		</tr>
-		<tr>
-			<td>Area</td>
-			<td><b>Figure Painting</b> / <b>Illust</b></td>
-		</tr>
-		<tr>
-			<td>Software</td>
-			<td><b>Illustrator</b> / <b>Photo Shop</b> / <b>mspaint</b></td>
-		</tr>
-		<tr>
-			<td>Tool</td>
-			<td>Tablet / <b>Sharp Pencil</b> / <b>Conte Pencil</b> / <b>Erase</b> / Stump / <b>Tissue</b> / <b>HB</b> / <b>4B</b> </td>
-		</tr>
-	</table>
+	<table class="experience"></table>
 	<br>
 </body>
 </html>
