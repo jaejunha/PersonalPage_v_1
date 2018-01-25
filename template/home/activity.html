@@ -33,11 +33,20 @@
 	.exercise_calendar tr:nth-child(2) td:nth-child(1){
 		text-align:left;
 	}
-	.exercise_calendar tr:nth-child(2) td:nth-child(6){
-		color:#3333ff;
+	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
+		font-size:15pt;
 	}
 	.exercise_calendar tr:nth-child(2) td:nth-child(7){
+		color:#3333ff;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(8){
 		color:#ff3333;
+	}
+	.exercise_calendar td:nth-child(1){
+		width:9%;
+	}
+	.exercise_calendar td:nth-child(n+2){
+		width:13%;
 	}
 	.exercise_desc{
 		margin:auto;
@@ -60,14 +69,37 @@ $(document).ready( function() {
 
 	var d = new Date();
 	var month=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
-	$(".exercise_calendar tr:nth-child(1) td").html(month[d.getMonth()]+" "+d.getFullYear());
+	var date = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if(isLeap(d.getFullYear())) date[1] = 29;
+	var cal = new Date(d.getFullYear(), d.getMonth() ,1);
+	var start = (cal.getDay()+6)%7+1;
+	var text="<tr><td colspan=\"8\">";
+	text += month[d.getMonth()]+" "+d.getFullYear();
+	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
+	for(var i=0,j=1;j<=date[d.getMonth()];i++){
+		if(i%8==0) text+="<tr>";
+		text+="<td>";
+		if(i%8==0) text+=i/8+1;
+		else{
+			if(i/8<1){
+				if(i%8 >= start) text+=j++;
+			}else 
+				text+=j++;
+		}
+		text+="</td>";
+		if(i%8==7) text+="</tr>";
+	}
+	$(".exercise_calendar").html(text);
 });
 $(document).resize( function() {
 	resize('activity');
 
 	$(".exercise_calendar").css('width',$('.calendar').width());
 	$(".exercise_desc").css('width',$('.calendar').width());
-});
+});
+function isLeap(year){
+	return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+}
 </script>
 </head>
 <body>
@@ -90,15 +122,7 @@ $(document).resize( function() {
 		<table class="exercise_calendar">
 			<tr><td colspan="8">January 2018</td></tr>
 			<tr>
-				<td>Week</td>
-				<td>MON</td>
-				<td>TUE</td>
-				<td>WED</td>
-				<td>THU</td>
-				<td>FRI</td>
-				<td>SAT</td>
-				<td>SUN</td>
-			</tr>
+				
 			<tr>
 				<td>1</td>
 				<td>1</td>
