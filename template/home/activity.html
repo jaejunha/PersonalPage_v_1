@@ -58,6 +58,7 @@
 	}
 </style>
 <script>
+var year, month;
 $(document).ready( function() {
         GitHubCalendar(".calendar", "jaejunha");
 	$(".feed").css('width',$('.calendar').width());
@@ -68,15 +69,29 @@ $(document).ready( function() {
 	$(".exercise_desc").css('width',$('.calendar').width());
 
 	var d = new Date();
-	var month=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
-	var date = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if(isLeap(d.getFullYear())) date[1] = 29;
-	var cal = new Date(d.getFullYear(), d.getMonth() ,1);
+	year = d.getFullYear();
+	month = d.getMonth();
+	make_calendar(year,month);	
+});
+$(document).resize( function() {
+	resize('activity');
+
+	$(".exercise_calendar").css('width',$('.calendar').width());
+	$(".exercise_desc").css('width',$('.calendar').width());
+});
+function isLeap(year){
+	return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+}
+function make_calendar(year, month){
+	var months=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+	var dates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if(isLeap(year)) dates[1] = 29;
+	var cal = new Date(year, month ,1);
 	var start = (cal.getDay()+6)%7+1;
 	var text="<tr><td colspan=\"8\">";
-	text += month[d.getMonth()]+" "+d.getFullYear();
+	text += months[month]+" "+year;
 	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
-	for(var i=0,j=1;j<=date[d.getMonth()];i++){
+	for(var i=0,j=1;j<=dates[month];i++){
 		if(i%8==0) text+="<tr>";
 		text+="<td>";
 		if(i%8==0) text+=i/8+1;
@@ -90,15 +105,6 @@ $(document).ready( function() {
 		if(i%8==7) text+="</tr>";
 	}
 	$(".exercise_calendar").html(text);
-});
-$(document).resize( function() {
-	resize('activity');
-
-	$(".exercise_calendar").css('width',$('.calendar').width());
-	$(".exercise_desc").css('width',$('.calendar').width());
-});
-function isLeap(year){
-	return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
 }
 </script>
 </head>
@@ -119,61 +125,7 @@ function isLeap(year){
 		<span style="font-size:20pt;">Exercise Record</span>
 		<br>
 		<br>
-		<table class="exercise_calendar">
-			<tr><td colspan="8">January 2018</td></tr>
-			<tr>
-				
-			<tr>
-				<td>1</td>
-				<td>1</td>
-				<td>2</td>
-				<td>4</td>
-				<td>3</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
+		<table class="exercise_calendar"></table>
 		<br>
 		<div class="exercise_desc">fasd</div>
 	</p>
