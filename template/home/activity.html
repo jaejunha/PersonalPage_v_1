@@ -22,6 +22,9 @@
 		font-weight:bold;
 		font-size:20pt;
 	}
+	.exercise_calendar a{
+		text-decoration:none;
+	}
 	.exercise_calendar tr:nth-child(1){
 		text-align:center;
 		font-size:30pt;
@@ -35,6 +38,9 @@
 	}
 	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
 		font-size:15pt;
+	}
+	.exercise_calendar tr:nth-child(n+3) td:nth-child(n+1){
+		text-align:center;
 	}
 	.exercise_calendar tr:nth-child(2) td:nth-child(7){
 		color:#3333ff;
@@ -88,8 +94,9 @@ function make_calendar(year, month){
 	if(isLeap(year)) dates[1] = 29;
 	var cal = new Date(year, month ,1);
 	var start = (cal.getDay()+6)%7+1;
-	var text="<tr><td colspan=\"8\">";
-	text += months[month]+" "+year;
+	var text="<tr><td colspan=\"2\"><a href=\"javascript:pre_month();\">\<</a></td>";
+	text += "<td colspan=\"4\">"+months[month]+" "+year+"</td>";
+	text += "<td colspan=\"2\"><a href=\"javascript:post_month();\"\>></a></td>";
 	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
 	for(var i=0,j=1;j<=dates[month];i++){
 		if(i%8==0) text+="<tr>";
@@ -105,6 +112,20 @@ function make_calendar(year, month){
 		if(i%8==7) text+="</tr>";
 	}
 	$(".exercise_calendar").html(text);
+}
+function pre_month(){
+	if(month-- == 0){
+		month = 11;
+		year = year - 1;
+	}
+	make_calendar(year,month);
+}
+function post_month(){
+	if(month++ == 11){
+		month = 0;
+		year = year + 1;
+	}
+	make_calendar(year,month);
 }
 </script>
 </head>

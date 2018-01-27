@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
 from models import *
-import subprocess
 
 def not_found(request):
 	return render(request,'404.html')
@@ -85,11 +84,6 @@ def portfolio_art(request):
 def portfolio_marathon(request):
 	marathon_experience = get_experience('marathon')
 	return render(request,'portfolio/marathon.html', {'marathon_experience':marathon_experience})
-
-def local(request):
-	p = subprocess.Popen('C:\\Windows\\EXPLORER.EXE /n /cwd="D:\\GitHub"')
-	p.wait()
-	return HttpResponse(status=204)
 
 def get_intro():
 	intro = []
