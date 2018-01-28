@@ -11,48 +11,12 @@
 		background-color:rgba(255,255,255,0.5);
 		color:#ffffff;
   	}
-	.exercise_calendar{
+	.exercise{
 		margin:auto;
-		padding:20px;
 		width:700;
 		height:500px;
 		background:#ffffff;
-		color:#565656;
 		border-radius:5px;
-		font-weight:bold;
-		font-size:20pt;
-	}
-	.exercise_calendar a{
-		text-decoration:none;
-	}
-	.exercise_calendar tr:nth-child(1){
-		text-align:center;
-		font-size:30pt;
-	}
-	.exercise_calendar tr:nth-child(2){
-		text-align:center;
-		color:#787878;
-	}
-	.exercise_calendar tr:nth-child(2) td:nth-child(1){
-		text-align:left;
-	}
-	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
-		font-size:15pt;
-	}
-	.exercise_calendar tr:nth-child(n+3) td:nth-child(n+1){
-		text-align:center;
-	}
-	.exercise_calendar tr:nth-child(2) td:nth-child(7){
-		color:#3333ff;
-	}
-	.exercise_calendar tr:nth-child(2) td:nth-child(8){
-		color:#ff3333;
-	}
-	.exercise_calendar td:nth-child(1){
-		width:9%;
-	}
-	.exercise_calendar td:nth-child(n+2){
-		width:13%;
 	}
 	.exercise_desc{
 		margin:auto;
@@ -64,89 +28,42 @@
 	}
 </style>
 <script>
-var year, month;
 $(document).ready( function() {
         GitHubCalendar(".calendar", "jaejunha");
 	$(".feed").css('width',$('.calendar').width());
 	GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 	resize('activity');
-	
-	$(".exercise_calendar").css('width',$('.calendar').width());
-	$(".exercise_desc").css('width',$('.calendar').width());
 
-	var d = new Date();
-	year = d.getFullYear();
-	month = d.getMonth();
-	make_calendar(year,month);	
+	var d = new Date();	
+	$(".exercise").css('width',$('.calendar').width());	
+	$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());	
+	$(".exercise_desc").css('width',$('.calendar').width());	
 });
 $(document).resize( function() {
 	resize('activity');
 
-	$(".exercise_calendar").css('width',$('.calendar').width());
 	$(".exercise_desc").css('width',$('.calendar').width());
-});
-function isLeap(year){
-	return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
-}
-function make_calendar(year, month){
-	var months=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
-	var dates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if(isLeap(year)) dates[1] = 29;
-	var cal = new Date(year, month ,1);
-	var start = (cal.getDay()+6)%7+1;
-	var text="<tr><td colspan=\"2\"><a href=\"javascript:pre_month();\">\<</a></td>";
-	text += "<td colspan=\"4\">"+months[month]+" "+year+"</td>";
-	text += "<td colspan=\"2\"><a href=\"javascript:post_month();\"\>></a></td>";
-	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
-	for(var i=0,j=1;j<=dates[month];i++){
-		if(i%8==0) text+="<tr>";
-		text+="<td>";
-		if(i%8==0) text+=i/8+1;
-		else{
-			if(i/8<1){
-				if(i%8 >= start) text+=j++;
-			}else 
-				text+=j++;
-		}
-		text+="</td>";
-		if(i%8==7) text+="</tr>";
-	}
-	$(".exercise_calendar").html(text);
-}
-function pre_month(){
-	if(month-- == 0){
-		month = 11;
-		year = year - 1;
-	}
-	make_calendar(year,month);
-}
-function post_month(){
-	if(month++ == 11){
-		month = 0;
-		year = year + 1;
-	}
-	make_calendar(year,month);
-}
+});
 </script>
 </head>
 <body>
 	
 	<p id="main">
-		<span style="font-size:20pt;">GitHub Record</span>
+		<span style="font-size:20pt;">GitHub Record</span><br>
 		<br>
+		<span style="font-size:15pt; text-align:justify;">I tried to make code everyday and use github to track my records.</span><br>
 		<br>
 		<div>
 			<div class="calendar" style="background-color: rgba(255,255,255,0.5);"></div>
 			<br>
 			<div class="feed">Fail to load</div>
 			<br>
-			<span style="font-size:15pt; text-align:justify;">I tried to write code everyday and use github to track my records. Git is very convenient SCM.</span><br>
 			</div>
 		<br>
 		<span style="font-size:20pt;">Exercise Record</span>
 		<br>
 		<br>
-		<table class="exercise_calendar"></table>
+		<div class="exercise"></div>
 		<br>
 		<div class="exercise_desc">fasd</div>
 	</p>

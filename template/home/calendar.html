@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<style>
+	body{
+		margin:0;
+	}
+	.exercise_calendar{
+		margin:auto;
+		padding:20px;
+		height:500px;
+		color:#565656;
+		font-weight:bold;
+		font-size:20pt;
+	}
+	.exercise_calendar a{
+		text-decoration:none;
+	}
+	.exercise_calendar tr:nth-child(1){
+		font-size:30pt;
+	}
+	.exercise_calendar tr:nth-child(1)  td:nth-child(1){
+		padding-left:10%;
+	}
+	.exercise_calendar tr:nth-child(1)  td:nth-child(3){
+		padding-right:10%;
+		text-align:right;
+	}
+	.exercise_calendar tr:nth-child(1) td:nth-child(2){
+		padding-left:4%;
+		text-align:center;
+		font-size:30pt;
+	}
+	.exercise_calendar tr:nth-child(2){
+		text-align:center;
+		color:#787878;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(1){
+		text-align:left;
+	}
+	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
+		font-size:15pt;
+	}
+	.exercise_calendar tr:nth-child(n+3) td:nth-child(n+1){
+		text-align:center;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(7){
+		color:#3333ff;
+	}
+	.exercise_calendar tr:nth-child(2) td:nth-child(8){
+		color:#ff3333;
+	}
+	.exercise_calendar td:nth-child(1){
+		width:9%;
+	}
+	.exercise_calendar td:nth-child(n+2){
+		width:13%;
+	}
+</style>
+<script>
+var year, month;
+$(document).ready( function() {
+	$(".exercise_calendar").css('width',$('.calendar').width());
+	
+	year = {{year}};
+	month = {{month}};
+	make_calendar(year,month);	
+});
+$(document).resize( function() {
+	$(".exercise_calendar").css('width',$('.calendar').width());
+});
+function isLeap(year){
+	return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+}
+function make_calendar(year, month){
+	var months=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+	var dates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if(isLeap(year)) dates[1] = 29;
+	var cal = new Date(year, month ,1);
+	var start = (cal.getDay()+6)%7+1;
+	var text="<tr><td colspan=\"2\"><a href=\"javascript:pre_month();\">\<</a></td>";
+	text += "<td colspan=\"4\">"+months[month]+" "+year+"</td>";
+	text += "<td colspan=\"2\"><a href=\"javascript:post_month();\"\>></a></td>";
+	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
+	for(var i=0,j=1;j<=dates[month];i++){
+		if(i%8==0) text+="<tr>";
+		text+="<td>";
+		if(i%8==0) text+=i/8+1;
+		else{
+			if(i/8<1){
+				if(i%8 >= start) text+=j++;
+			}else 
+				text+=j++;
+		}
+		text+="</td>";
+		if(i%8==7) text+="</tr>";
+	}
+	$(".exercise_calendar").html(text);
+}
+function pre_month(){
+	if(month-- == 0){
+		month = 11;
+		year = year - 1;
+	}
+	$(".exercise").load('home/calendar?year='+year+'&month='+month);
+}
+function post_month(){
+	if(month++ == 11){
+		month = 0;
+		year = year + 1;
+	}
+	$(".exercise").load('home/calendar?year='+year+'&month='+month);
+}
+</script>
+</head>
+<body>
+	<table class="exercise_calendar"></table>
+</body>
+</html>

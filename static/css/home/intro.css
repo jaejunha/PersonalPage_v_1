@@ -20,7 +20,8 @@
 	margin-left:-300px;
 	margin-top:40px;
 	width: 600px;                          
- 	height: 480px;                                 
+ 	height: 480px;                               	opacity: 0;  
+
 	animation: appear_gradation 3.6s; 
 	animation-delay: 1.5s;
    	animation-fill-mode: forwards;

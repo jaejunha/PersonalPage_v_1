@@ -61,6 +61,11 @@ def home_favorite(request):
 def home_activity(request):
 	return render(request,'home/activity.html')
 
+def home_calendar(request):
+	year = request.GET.get('year');
+	month = request.GET.get('month');
+	return render(request,'home/calendar.html', {'year':year, 'month':month})
+
 def about_frame(request):
 	return render(request,'about/frame.html')
 

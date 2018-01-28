@@ -23,6 +23,7 @@ urlpatterns = [
 	url(r'^home/intro', views.home_intro, name='home_intro'),
 	url(r'^home/activity', views.home_activity, name='home_activity'),
 	url(r'^home/favorite', views.home_favorite, name='home_favorite'),
+	url(r'^home/calendar', views.home_calendar, name='home_calendar'),
 	url(r'^about/frame', views.about_frame, name='about_frame'),
 	url(r'^about/personal', views.about_personal, name='about_personal'),
 	url(r'^portfolio/frame', views.portfolio_frame, name='portfolio_frame'),
