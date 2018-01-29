@@ -77,26 +77,45 @@ function make_calendar(year, month){
 	var months=["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
 	var dates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	if(isLeap(year)) dates[1] = 29;
+
+	var contents = [];
+	contents.length = dates[month];
+	{% for e in exercise %}
+	contents[{{e.0}}-1]="{{e.1}}";
+	{% endfor %}
+
 	var cal = new Date(year, month ,1);
 	var start = (cal.getDay()+6)%7+1;
 	var text="<tr><td colspan=\"2\"><a href=\"javascript:pre_month();\">\<</a></td>";
 	text += "<td colspan=\"4\">"+months[month]+" "+year+"</td>";
 	text += "<td colspan=\"2\"><a href=\"javascript:post_month();\"\>></a></td>";
 	text += "</td></tr><tr><td></td><td>MON</td><td>TUE</td><td>WED</td><td>THU</td><td>FRI</td><td>SAT</td><td>SUN</td></tr>";
-	for(var i=0,j=1;j<=dates[month];i++){
+	for(var i=0,j=1;j<=contents.length;i++){
 		if(i%8==0) text+="<tr>";
 		text+="<td>";
 		if(i%8==0) text+=i/8+1;
 		else{
 			if(i/8<1){
-				if(i%8 >= start) text+=j++;
-			}else 
+				if(i%8 >= start)	text+=j++;
+			}else
 				text+=j++;
 		}
 		text+="</td>";
 		if(i%8==7) text+="</tr>";
 	}
 	$(".exercise_calendar").html(text);
+
+	for(var i=0,j=1;j<=contents.length;i++){
+		if(i/7<1){
+			if(i%7 >= start){
+				if(contents[j++-1]!=undefined)
+					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#00ff00');
+			}
+		}else{
+			if(contents[j++-1]!=undefined)
+				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#00ff00');
+		}
+	}
 }
 function pre_month(){
 	if(month-- == 0){

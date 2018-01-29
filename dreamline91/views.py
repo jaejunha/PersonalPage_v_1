@@ -64,7 +64,8 @@ def home_activity(request):
 def home_calendar(request):
 	year = request.GET.get('year');
 	month = request.GET.get('month');
-	return render(request,'home/calendar.html', {'year':year, 'month':month})
+	exercise = get_exercise(year,month)
+	return render(request,'home/calendar.html', {'year':year, 'month':month, 'exercise':exercise})
 
 def about_frame(request):
 	return render(request,'about/frame.html')
@@ -96,6 +97,13 @@ def get_intro():
         for r in result:
 		intro.append(r.content)
 	return intro
+
+def get_exercise(year, month):
+	exercise = []
+        result = Exercise.objects.filter(year=year, month=month).order_by('day')
+	for r in result:
+		exercise.append((r.day, r.content))
+	return exercise
 
 def get_favorite():
 	url = []
