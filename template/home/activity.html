@@ -15,16 +15,18 @@
 		margin:auto;
 		width:700;
 		height:500px;
-		background:#ffffff;
-		border-radius:5px;
+		background-color:rgba(255,255,255,0.5);
+		border: 1px solid white;
+		border-radius:3px;
 	}
 	.exercise_desc{
 		margin:auto;
+		margin-bottom:100px;
+		padding:10px;
 		width:700;
 		height:auto;
-		background-color:rgba(255,255,255,0.5);
-		border-radius:2px;
-		border: 1px solid white;
+		background-color:#ffffff;
+		color:#666666;
 	}
 </style>
 <script>
@@ -37,12 +39,12 @@ $(document).ready( function() {
 	var d = new Date();	
 	$(".exercise").css('width',$('.calendar').width());	
 	$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());	
-	$(".exercise_desc").css('width',$('.calendar').width());	
+	$(".exercise_desc").css('width',$('.calendar').width()-16);	
 });
 $(document).resize( function() {
 	resize('activity');
 
-	$(".exercise_desc").css('width',$('.calendar').width());
+	$(".exercise_desc").css('width',$('.calendar').width()-16);
 });
 </script>
 </head>
@@ -60,12 +62,14 @@ $(document).resize( function() {
 			<br>
 			</div>
 		<br>
-		<span style="font-size:20pt;">Exercise Record</span>
+		<span style="font-size:20pt;">Exercise Record</span><br>
+		<br>
+		<span style="font-size:15pt; text-align:justify;">This is exercise calendar to save my trainning record. If my knee is OK, I try to run every day.</span><br>
 		<br>
 		<br>
 		<div class="exercise"></div>
 		<br>
-		<div class="exercise_desc">fasd</div>
+		<div class="exercise_desc">There is no record</div>
 	</p>
 </body>
 </html>

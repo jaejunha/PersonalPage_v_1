@@ -10,12 +10,13 @@
 		margin:auto;
 		padding:20px;
 		height:500px;
-		color:#565656;
+		color:#ffffff;
 		font-weight:bold;
 		font-size:20pt;
 	}
 	.exercise_calendar a{
 		text-decoration:none;
+		color:#565656;
 	}
 	.exercise_calendar tr:nth-child(1){
 		font-size:30pt;
@@ -34,13 +35,14 @@
 	}
 	.exercise_calendar tr:nth-child(2){
 		text-align:center;
-		color:#787878;
+		color:#333333;
 	}
 	.exercise_calendar tr:nth-child(2) td:nth-child(1){
 		text-align:left;
 	}
 	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
 		font-size:15pt;
+		color:#333333;
 	}
 	.exercise_calendar tr:nth-child(n+3) td:nth-child(n+1){
 		text-align:center;
@@ -108,12 +110,28 @@ function make_calendar(year, month){
 	for(var i=0,j=1;j<=contents.length;i++){
 		if(i/7<1){
 			if(i%7 >= start){
-				if(contents[j++-1]!=undefined)
-					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#00ff00');
+				if(contents[j++-1]!=undefined){
+					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#c6e48b');
+					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').hover(function() {
+						$('.exercise_desc').html(year+"."+(month+1)+"."+$(this).text()+"<br><br>"+contents[$(this).text()-1]);
+						document.body.style.cursor="Pointer"
+					}, function(){
+    						$('.exercise_desc').html("There is no record");
+						document.body.style.cursor="Default"
+					});
+				}
 			}
 		}else{
-			if(contents[j++-1]!=undefined)
-				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#00ff00');
+			if(contents[j++-1]!=undefined){
+				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#c6e48b');
+				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').hover(function() {
+					$('.exercise_desc').html(year+"."+(month+1)+"."+$(this).text()+"<br><br>"+contents[$(this).text()-1]);
+					document.body.style.cursor="Pointer"
+				}, function(){
+    					$('.exercise_desc').html("There is no record");
+					document.body.style.cursor="Default"
+				});
+			}
 		}
 	}
 }
