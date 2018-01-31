@@ -1,0 +1,24 @@
+.feed {
+	width: 700px;
+	height: 500px;
+	margin:0 auto;
+	background-color:rgba(255,255,255,0.5);
+	color:#ffffff;
+  }
+	.exercise{
+	margin:auto;
+	width:700;
+	height:500px;
+	background-color:rgba(255,255,255,0.5);
+	border: 1px solid white;
+	border-radius:3px;
+}
+	.exercise_desc{
+	margin:auto;
+	margin-bottom:100px;
+	padding:10px;
+	width:700;
+	height:auto;
+	background-color:#ffffff;
+	color:#666666;
+}

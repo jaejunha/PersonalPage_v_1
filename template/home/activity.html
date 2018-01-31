@@ -2,54 +2,10 @@
 {% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="{% static 'js/home/resize.js' %}?ver=0.1"></script>
-<style>
-	.feed {
-		width: 700px;
-		height: 500px;
-		margin:0 auto;
-		background-color:rgba(255,255,255,0.5);
-		color:#ffffff;
-  	}
-	.exercise{
-		margin:auto;
-		width:700;
-		height:500px;
-		background-color:rgba(255,255,255,0.5);
-		border: 1px solid white;
-		border-radius:3px;
-	}
-	.exercise_desc{
-		margin:auto;
-		margin-bottom:100px;
-		padding:10px;
-		width:700;
-		height:auto;
-		background-color:#ffffff;
-		color:#666666;
-	}
-</style>
-<script>
-$(document).ready( function() {
-        GitHubCalendar(".calendar", "jaejunha");
-	$(".feed").css('width',$('.calendar').width());
-	GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
-	resize('activity');
-
-	var d = new Date();	
-	$(".exercise").css('width',$('.calendar').width());	
-	$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());	
-	$(".exercise_desc").css('width',$('.calendar').width()-16);	
-});
-$(document).resize( function() {
-	resize('activity');
-
-	$(".exercise_desc").css('width',$('.calendar').width()-16);
-});
-</script>
+<script type="text/javascript" src="{% static 'js/home/activity.js' %}?ver=0.1"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/activity.css' %}?ver=0.1"/>  
 </head>
-<body>
-	
+<body>	
 	<p id="main">
 		<span style="font-size:20pt;">GitHub Record</span><br>
 		<br>

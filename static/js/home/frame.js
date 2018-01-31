@@ -28,7 +28,7 @@ $(document).ready( function() {
 		w.postMessage("Hello");
 	}
 	if(from == 0)
-		resize('frame');
+		$('#favorite_content').css('left',$(window).width());
 
 	//delete animation
 	if(home != 1){
@@ -64,7 +64,7 @@ $(window).resize(function (){
 	}
 
 	if(from == 0)
-		resize('frame');
+		$('#favorite_content').css('left',$(window).width());
 });
 function switch_screen(init,from,to){
 	var size = $(window).width();

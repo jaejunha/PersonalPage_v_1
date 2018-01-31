@@ -2,34 +2,8 @@
 {% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="{% static 'js/home/resize.js' %}?ver=0.1"></script>
-<script>
-$(document).ready( function() {
-	resize('favorite');
-
-});
-$(window).resize(function (){
-	resize('favorite');
-});
-</script>
-<style>
-	.desc{
-		display: table;
-		background-color: #cccccc;
-		font-size: 15pt;	
-		color: #ffffff;	
-		z-index: 0;	
-	}
-	.desc div{
-		display: table-cell;
-		vertical-align : middle;
-		text-align:center;
-	}
-	.favi{
-		position: absolute;	
-		display: inline;
-	}
-</style>
+<script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.1"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/favorite.css' %}?ver=0.1"/>
 </head>
 <body>
 	<p id="main">
@@ -37,9 +11,9 @@ $(window).resize(function (){
 		{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
 			{% if forloop.counter <= 4 %}
-			<div class="icon" style="margin-left:4.5%;margin-right:4.5%;">
+			<div class="icon">
 			{% else %}
-			<div class="icon" style="margin-top:5%; margin-left:4.5%;margin-right:4.5%;">
+			<div class="icon" style="margin-top:5%;">
 			{% endif %}
     				{% with n=forloop.counter|stringformat:"s" %}
 				{% with 'site/Website'|add:n|add:'.png' as image %}

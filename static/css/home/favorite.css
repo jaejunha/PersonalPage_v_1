@@ -1,0 +1,20 @@
+.desc{
+	display: table;
+	background-color: #cccccc;
+	font-size: 15pt;	
+	color: #ffffff;	
+	z-index: 0;	
+	}
+.desc div{
+	display: table-cell;
+	vertical-align : middle;
+	text-align:center;
+}
+.favi{
+	position: absolute;	
+	display: inline;
+}
+.icon{
+	margin-left:4.5%;
+	margin-right:4.5%;
+}
