@@ -5,7 +5,7 @@
 	background-color:rgba(255,255,255,0.5);
 	color:#ffffff;
   }
-	.exercise{
+.exercise{
 	margin:auto;
 	width:700;
 	height:500px;
@@ -13,7 +13,7 @@
 	border: 1px solid white;
 	border-radius:3px;
 }
-	.exercise_desc{
+.exercise_desc{
 	margin:auto;
 	margin-bottom:100px;
 	padding:10px;

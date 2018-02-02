@@ -98,6 +98,22 @@
 		height: 450px;
 		margin:0 auto;
   	}
+	.exercise{
+		margin:auto;
+		width:700;
+		height:500px;
+		background-color:rgba(255,255,255,0.5);
+		border: 1px solid white;
+		border-radius:3px;
+	}
+	.exercise_desc{
+		margin:auto;
+		padding:10px;
+		width:700;
+		height:auto;
+		background-color:#ffffff;
+		color:#666666;
+	}
 	.me table:nth-of-type(2){
 		table-layout:fixed;
 		width:100%;
@@ -168,6 +184,9 @@
 		setSize();
 		setAlphaAnimation();
 
+		var d = new Date();	
+		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());	
+
 		var text = "<br>{{intro.0}}{{intro.1}}<br>{{intro.2}}<br>{{intro.3}}";
 		$('.introduce').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 
@@ -224,6 +243,8 @@
 		var width = $(window).width();
                 $('.calendar').css('width',width-10);
                 GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
+		$(".exercise").css('width',$('.calendar').width());	
+		$(".exercise_desc").css('width',$('.calendar').width()-16);	
                 $('.feed').css('width',width-15);
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
@@ -305,6 +326,10 @@
 		<br>
 		Excercise<br>
 		<hr>
+		<div class="exercise"></div>
+		<br>
+		<div class="exercise_desc">There is no record</div>
+		<br>
 	</div>
 	<div class ="me">
 		<span class="title">Me</span><br>
