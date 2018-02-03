@@ -12,14 +12,14 @@
 		height:500px;
 		color:#ffffff;
 		font-weight:bold;
-		font-size:20pt;
+		font-size:1em;
 	}
 	.exercise_calendar a{
 		text-decoration:none;
 		color:#565656;
 	}
 	.exercise_calendar tr:nth-child(1){
-		font-size:30pt;
+		font-size:1.5em;
 	}
 	.exercise_calendar tr:nth-child(1)  td:nth-child(1){
 		padding-left:10%;
@@ -31,7 +31,7 @@
 	.exercise_calendar tr:nth-child(1) td:nth-child(2){
 		padding-left:4%;
 		text-align:center;
-		font-size:30pt;
+		font-size:1em;
 	}
 	.exercise_calendar tr:nth-child(2){
 		text-align:center;
@@ -41,7 +41,7 @@
 		text-align:left;
 	}
 	.exercise_calendar tr:nth-child(n+3) td:nth-child(1){
-		font-size:15pt;
+		font-size:1em;
 		color:#333333;
 	}
 	.exercise_calendar tr:nth-child(n+3) td:nth-child(n+1){
@@ -114,10 +114,8 @@ function make_calendar(year, month){
 					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#c6e48b');
 					$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').hover(function() {
 						$('.exercise_desc').html(year+"."+(month+1)+"."+$(this).text()+"<br><br>"+contents[$(this).text()-1]);
-						document.body.style.cursor="Pointer"
 					}, function(){
     						$('.exercise_desc').html("There is no record");
-						document.body.style.cursor="Default"
 					});
 				}
 			}
@@ -126,10 +124,8 @@ function make_calendar(year, month){
 				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#c6e48b');
 				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').hover(function() {
 					$('.exercise_desc').html(year+"."+(month+1)+"."+$(this).text()+"<br><br>"+contents[$(this).text()-1]);
-					document.body.style.cursor="Pointer"
 				}, function(){
     					$('.exercise_desc').html("There is no record");
-					document.body.style.cursor="Default"
 				});
 			}
 		}
