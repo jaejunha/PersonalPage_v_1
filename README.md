@@ -2,10 +2,10 @@
 [![Python](https://img.shields.io/badge/Python-v2.7-blue.svg)]() [![Django](https://img.shields.io/badge/Django-v1.11.5-blue.svg)]()  
 This is personal page to introduce myself.  
 
----  
+---
 <img src="https://github.com/jaejunha/PersonalPage/blob/master/screenshot/20180104.png?raw=true">  
 
----  
+---
 
 # Member  
 
@@ -44,8 +44,34 @@ static/personal/img/profile.jpg
 ```
 ---
 # Coding Convention  
+In most cases, upper-case letters concatenates words.  
+When defining variables, an underline character separate role from sentences.   
+- variable  
 ```
+object_noun
+  ex)div_content
+  
+role_noun()
+  ex)switch_home
+  
+role_adjectiveNoun
+  ex)switch_LongMenu
 ```
+- fucntion  
+```
+verbAdjectiveNoun()
+
+verbNoun()
+  ex)initScreen()
+
+isVariable()
+  ex)isSwitch_home()
+  
+setVariable()
+
+getVariable()
+```
+---
 # Refer  
 - Git chart  
 ```
