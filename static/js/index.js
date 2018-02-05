@@ -3,7 +3,7 @@ $(document).ready( function() {
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 	if(isMobile)
 		location.href='mobile';
-		switch_menu('home');
+		switchMenu('home');
 		var bar = new ProgressBar.Circle(container, {
 			strokeWidth: 6,
   			easing: 'easeInOut',
@@ -17,7 +17,7 @@ $(document).ready( function() {
 		bar.animate(1.0);
 		setTimeout(function(){$("#screen").remove();}, 1500);
 });
-function switch_menu(to){
+function switchMenu(to){
 	$('header a').css('color','#555555');
 	if(to=='home'){
 		$('#content').load('home/frame');
@@ -31,4 +31,6 @@ function switch_menu(to){
 		$('#content').load('portfolio/frame');
 		$('header a:nth-child(3)').css('color','#ffffff');
 	}
+	$('#content').css('opacity','0');
+	$('#content').animate({opacity:1}, 1000);
 }
