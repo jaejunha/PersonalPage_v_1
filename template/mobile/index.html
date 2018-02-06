@@ -3,7 +3,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<META HTTP-EQUIV="refresh" CONTENT="60">
 <title>dreamline91's page</title>
 <link rel="shortcut icon" type="image/x-icon" href="{% static 'personal/img/bird.png' %}"/>
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One" rel="stylesheet">
@@ -186,7 +185,15 @@
 		setAlphaAnimation();
 
 		var d = new Date();	
-		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());	
+		loadActivity(d);	
+		
+		if(window.Worker){
+			var w = new Worker("/static/js/home/worker_activity.js");
+        		w.onmessage = function(event) {
+        			loadActivity(d);
+        		};
+			w.postMessage("Hello");
+		}
 
 		var text = "<br>{{intro.0}}{{intro.1}}<br>{{intro.2}}<br>{{intro.3}}";
 		$('.introduce').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
@@ -243,7 +250,6 @@
 	function setSize(){
 		var width = $(window).width();
                 $('.calendar').css('width',width-10);
-                GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 		$(".exercise").css('width',$('.calendar').width());	
 		$(".exercise_desc").css('width',$('.calendar').width()-16);	
                 $('.feed').css('width',width-15);
@@ -287,6 +293,12 @@
 			$('.'+name+' td:nth-child(1) a').text(status.replace('-','+'));
 			$('.'+name.replace('history','content')).css('display','none');
 		}
+	}
+	function loadActivity(d){
+		$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha');
+		GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
+
+		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());
 	}
 </script>
 </head>
