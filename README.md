@@ -48,14 +48,14 @@ In most cases, upper-case letters concatenates words.
 When defining variables, an underline character separate role from sentences.   
 - variable  
 ```
-object_noun
+type_noun
   ex)div_content
   
-role_noun()
-  ex)switch_home
+type_roleNoun()
+  ex)int_switchHome
   
-role_adjectiveNoun
-  ex)switch_LongMenu
+type_roleAdjectiveNoun
+  ex)int_switchLongMenu
 ```
 - fucntion  
 ```
@@ -65,7 +65,7 @@ verbNoun()
   ex)initScreen()
 
 isVariable()
-  ex)isSwitch_home()
+  ex)isSwitchHome()
   
 setVariable()
 

@@ -20,7 +20,7 @@
 		color:#ffffff;
 		text-decoration: none;	
 	}
-	.happy_content{
+	.div_happyContent{
 		background:rgba(255,255,255,0.5);
 		border:solid 1 white;
 		padding:10px;
@@ -41,23 +41,23 @@
 <script>
 	var year;
 	var value;
-	var happy_year = new Array({{happy|length}});
-	var happy_company = new Array({{happy|length}});
-	var happy_content = new Array({{happy|length}});
-	var happy_value = new Array({{happy|length}});
+	var array_year = new Array({{happy|length}});
+	var array_company = new Array({{happy|length}});
+	var array_content = new Array({{happy|length}});
+	var array_value = new Array({{happy|length}});
 	$(document).ready( function() {
 		$("table a").click(function(){
-			expand($(this).parent().parent().attr('class'));
+			expandTable($(this).parent().parent().attr('class'));
 		});
 		{% for h in happy %}
-			happy_year[{{forloop.counter0}}]={{h.0}};
-			happy_company[{{forloop.counter0}}]="{{h.1}}";
-			happy_content[{{forloop.counter0}}]="{{h.2}}";
-			happy_value[{{forloop.counter0}}]={{h.3}};
+			array_year[{{forloop.counter0}}]={{h.0}};
+			array_company[{{forloop.counter0}}]="{{h.1}}";
+			array_content[{{forloop.counter0}}]="{{h.2}}";
+			array_value[{{forloop.counter0}}]={{h.3}};
 		{% endfor %}
 	});
 
-	function expand(name){
+	function expandTable(name){
 		var status=$('.'+name+' td:nth-child(1) a').text();
 		if(status.indexOf('▶')>-1){
 			$('.'+name+' td:nth-child(1) a').text(status.replace('▶','▼'));
@@ -89,15 +89,15 @@
 	<br>
 	<span style="font-size:20pt;">Happy Graph</span><br>
 	<br>
-	<div class="ct-chart ct-square" style="height:300px;"></div>
+	<div class="ct-chart ct-square" style="height:300px; overflow-y:hidden;"></div>
 	<script>
 		var chart = new Chartist.Line('.ct-chart', {
-  		labels: happy_year,
+  		labels: array_year,
   		
 		// Naming the series with the series object array notation
   		series: [{
     			name: 'happy',
-    			data: happy_value}]}, {
+    			data: array_value}]}, {
   		fullWidth: false,
   // Within the series options you can use the series names
   // to specify configuration that will only be used for the
@@ -126,14 +126,14 @@
   		var index = $(this).index()-2;
   		year = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
   		value = $(this).attr('ct:value');
-		var text = '<b>'+year+'</b><br>'+happy_company[year-{{happy.0.0}}]+'<br><br>'+happy_content[year-{{happy.0.0}}];
+		var text = '<b>'+year+'</b><br>'+array_company[year-{{happy.0.0}}]+'<br><br>'+array_content[year-{{happy.0.0}}];
 		text = text.replace(/&lt;/g,'<');
 		text = text.replace(/&gt;/g,'>');
-		$('.happy_content').html(text);
+		$('.div_happyContent').html(text);
 	});
 	/* refer : https://codepen.io/adrianparr/pen/QEjyLx */
 	</script>
-	<div class="happy_content">
+	<div class="div_happyContent">
 		<b>Alert</b><br>
 		<br>
 		If you want to see content of happy graph<br>
