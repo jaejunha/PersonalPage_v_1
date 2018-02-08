@@ -32,4 +32,8 @@ function switchMenu(to){
 		$('#content').load('portfolio/frame');
 		$('header a:nth-child(3)').css('color','#ffffff');
 	}
+	else if(to=='reference'){
+		$('#content').load('reference/frame');
+		$('header a:nth-child(7)').css('color','#ffffff');
+	}
 }

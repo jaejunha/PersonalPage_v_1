@@ -30,5 +30,7 @@ urlpatterns = [
 	url(r'^portfolio/program', views.portfolio_program, name='portfolio_program'),
 	url(r'^portfolio/art', views.portfolio_art, name='portfolio_art'),
 	url(r'^portfolio/marathon', views.portfolio_marathon, name='portfolio_marathon'),
+	url(r'^reference/frame', views.reference_frame, name='reference_frame'),
+	url(r'^reference/reference', views.reference_reference, name='reference_reference'),
 	url(r'^.+$', views.not_found, name='not_found'),
 ]

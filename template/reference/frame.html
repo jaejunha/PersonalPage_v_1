@@ -3,8 +3,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?ver=0.1"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/menu.css' %}?ver=0.2"/>
-<script type="text/javascript" src="{% static 'js/portfolio/portfolio.js' %}?ver=0.1"></script>
 <style>
 	body{
 		background:#000000;
@@ -20,29 +18,23 @@
 	}
 	#inner_content::-webkit-scrollbar {
 		width:10px;
-	} 
+	}
 	#inner_content::-webkit-scrollbar-thumb {
 		background:#fff;
                 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
                 border-radius:10px;
-	}
+        } 
 </style>
 <script type="text/javascript">
 	$(document).ready( function() {
 		var size = $(window).height() - $('#inner_content').offset().top;
 		$('#inner_content').css('height',size+'px');
-		
-		$('#program').css('color','#ffffff');
-		$('#program').css('opacity',1);
-		$('#inner_content').load('portfolio/program');
+		$('#inner_content').load('reference/reference');
 	});
 		</script>
 </head>
 <body>	
-	<font id="title">Portfolio</font>
-	<a id="marathon" href="javascript:switch_screen('marathon');">Marathon</a>
-	<a id="art" href="javascript:switch_screen('art');">Art</a>
-	<a id="program" href="javascript:switch_screen('program');">Program</a>
+	<font id="title">Reference</font>
 	<hr/>
 	<div id="inner_content"></div>
 </body>
