@@ -57,6 +57,8 @@ var portfolio_before = 1;
 var portfolio_init = 0;
 
 $(document).ready(function(){
+	$('#content').animate({opacity:1}, 1000);
+
 	var text='';
 	{% for p in program_experience %}
 	text+='<tr><td>';

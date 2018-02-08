@@ -46,6 +46,7 @@
 	var array_content = new Array({{happy|length}});
 	var array_value = new Array({{happy|length}});
 	$(document).ready( function() {
+		$('#content').animate({opacity:1}, 1000);
 		$("table a").click(function(){
 			expandTable($(this).parent().parent().attr('class'));
 		});

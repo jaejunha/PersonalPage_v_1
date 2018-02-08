@@ -19,6 +19,7 @@ $(document).ready( function() {
 });
 function switchMenu(to){
 	$('header a').css('color','#555555');
+	$('#content').css('opacity','0');
 	if(to=='home'){
 		$('#content').load('home/frame');
 		$('header a:nth-child(1)').css('color','#ffffff');
@@ -31,6 +32,4 @@ function switchMenu(to){
 		$('#content').load('portfolio/frame');
 		$('header a:nth-child(3)').css('color','#ffffff');
 	}
-	$('#content').css('opacity','0');
-	$('#content').animate({opacity:1}, 1000);
 }
