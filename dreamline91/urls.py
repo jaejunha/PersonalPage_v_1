@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.http import HttpResponse
 from . import views
 
 urlpatterns = [
@@ -32,5 +33,6 @@ urlpatterns = [
 	url(r'^portfolio/marathon', views.portfolio_marathon, name='portfolio_marathon'),
 	url(r'^reference/frame', views.reference_frame, name='reference_frame'),
 	url(r'^reference/reference', views.reference_reference, name='reference_reference'),
+	url(r'^robots.txt', lambda x: HttpResponse("User-agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
 	url(r'^.+$', views.not_found, name='not_found'),
 ]
