@@ -62,9 +62,15 @@
 </style>
 <script>
 var year, month;
+var int_todayYear, int_todayMonth, int_todayDay;
 $(document).ready( function() {
 	$(".exercise_calendar").css('width',$('.calendar').width());
-	
+
+	var date_today = new Date();
+	int_todayYear = date_today.getFullYear();
+	int_todayMonth = date_today.getMonth();
+	int_todayDay = date_today.getDate();	
+
 	year = {{year}};
 	month = {{month}};
 	make_calendar(year,month);	
@@ -106,7 +112,6 @@ function make_calendar(year, month){
 		if(i%8==7) text+="</tr>";
 	}
 	$(".exercise_calendar").html(text);
-
 	for(var i=0,j=1;j<=contents.length;i++){
 		if(i/7<1){
 			if(i%7 >= start){
@@ -121,8 +126,8 @@ function make_calendar(year, month){
 			}
 		}else{
 			if(contents[j++-1]!=undefined){
-				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').css('background','#c6e48b');
-				$('.exercise_calendar tr:nth-of-type('+Math.floor(i/7+3)+') td:nth-of-type('+Math.floor(i%7+1)+')').hover(function() {
+				$('.exercise_calendar tr:nth-of-type('+Math.floor((i-1)/7+3)+') td:nth-of-type('+((i-1)%7+2)+')').css('background','#c6e48b');
+				$('.exercise_calendar tr:nth-of-type('+Math.floor((i-1)/7+3)+') td:nth-of-type('+((i-1)%7+2)+')').hover(function() {
 					$('.exercise_desc').html(year+"."+(month+1)+"."+$(this).text()+"<br><br>"+contents[$(this).text()-1]);
 				}, function(){
     					$('.exercise_desc').html("There is no record");
@@ -130,6 +135,8 @@ function make_calendar(year, month){
 			}
 		}
 	}
+	if(int_todayYear == year && int_todayMonth == month)
+		$('.exercise_calendar tr:nth-of-type('+Math.floor((int_todayDay+start-1)/7+3)+') td:nth-of-type('+((int_todayDay+start-1)%7+1)+')').css('border','2px dotted #ffffff');	
 }
 function pre_month(){
 	if(month-- == 0){
