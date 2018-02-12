@@ -33,6 +33,10 @@ static/personal/img/bird.png
 ```
 static/personal/img/profile.jpg  
 ```
+- portfolio image  
+```
+static/personal/img/program/*.jpg  
+```
 ---
 # Install  
 - pip install selenium  
