@@ -295,7 +295,7 @@
 		}
 	}
 	function loadActivity(d){
-		$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha');
+		$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha?date='+d.getFullYear()+''+d.getMonth()+''+d.getDate());
 		GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 
 		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());
