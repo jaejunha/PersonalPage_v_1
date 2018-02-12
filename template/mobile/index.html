@@ -180,6 +180,8 @@
 	var happy_content = new Array({{happy|length}});
 	var happy_value = new Array({{happy|length}});
 
+	var int_gitChartMinutes = 0;
+
 	$(document).ready( function() {
 		setSize();
 		setAlphaAnimation();
@@ -295,7 +297,11 @@
 		}
 	}
 	function loadActivity(d){
-		$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha?date='+d.getFullYear()+''+d.getMonth()+''+d.getDate());
+		if(int_gitChartMinutes++==0){ 
+			$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha?date='+d.getTime());
+			if(int_gitChartMinutes == 10)
+				int_gitChartMinutes = 0;
+		}
 		GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 
 		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());
