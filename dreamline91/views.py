@@ -65,7 +65,7 @@ def home_calendar(request):
 	year = request.GET.get('year');
 	month = request.GET.get('month');
 	exercise = get_exercise(year,month)
-	return render(request,'home/calendar.html', {'year':year, 'month':month, 'exercise':exercise})
+	return render(request,'home/calendar.html', {'exercise':exercise})
 
 def about_frame(request):
 	return render(request,'about/frame.html')

@@ -61,7 +61,6 @@
 	}
 </style>
 <script>
-var year, month;
 var int_todayYear, int_todayMonth, int_todayDay;
 $(document).ready( function() {
 	$(".exercise_calendar").css('width',$('.calendar').width());
@@ -71,9 +70,7 @@ $(document).ready( function() {
 	int_todayMonth = date_today.getMonth();
 	int_todayDay = date_today.getDate();	
 
-	year = {{year}};
-	month = {{month}};
-	make_calendar(year,month);	
+	make_calendar(int_currentYear,int_currentMonth);	
 });
 $(document).resize( function() {
 	$(".exercise_calendar").css('width',$('.calendar').width());
@@ -139,18 +136,18 @@ function make_calendar(year, month){
 		$('.exercise_calendar tr:nth-of-type('+Math.floor((int_todayDay+start-1)/7+3)+') td:nth-of-type('+((int_todayDay+start-1)%7+1)+')').css('border','2px dotted #ffffff');	
 }
 function pre_month(){
-	if(month-- == 0){
-		month = 11;
-		year = year - 1;
+	if(int_currentMonth-- == 0){
+		int_currentMonth = 11;
+		int_currentYear--;
 	}
-	$(".exercise").load('home/calendar?year='+year+'&month='+month);
+	$(".exercise").load('home/calendar?year='+int_currentYear+'&month='+int_currentMonth);
 }
 function post_month(){
-	if(month++ == 11){
-		month = 0;
-		year = year + 1;
+	if(int_currentMonth++ == 11){
+		int_currentMonth = 0;
+		int_currentYear++;
 	}
-	$(".exercise").load('home/calendar?year='+year+'&month='+month);
+	$(".exercise").load('home/calendar?year='+int_currentYear+'&month='+int_currentMonth);
 }
 </script>
 </head>
