@@ -67,6 +67,12 @@
 		color:#ffffff;
 		text-decoration:none;
 	}
+	button{
+		width:100px;
+		border-radius: 5px;
+		background:#ffffff;
+		font-weight:bold;
+	}
 	.plate{
 		overflow:hidden;
 		background: rgba(255,255,255,0.5);
@@ -168,7 +174,7 @@
 <script>
 	var activity, me;
 	var scroll;
-	var offset;
+	var int_topOffset;
 
 	var portfolio_before = 1;
 	var portfolio_init = 0;
@@ -268,7 +274,7 @@
 			$('html').scrollTop(0);
 		};
 
-            	offset = $(window).height()/2;
+            	int_topOffset = $(window).height()/2;
 
 		activity = $('.activity').offset().top;
 		$('.activity').css('opacity',0);
@@ -277,9 +283,9 @@
 		
 		$(window).scroll(function(){
           	      scroll = $(this).scrollTop();
-                if( scroll + offset >= activity ) 
+                if( scroll + int_topOffset >= activity ) 
                   	$(".activity").animate({ opacity : "1" },1000);
-                if( scroll + offset >= me )
+                if( scroll + int_topOffset >= me )
                         $(".me").animate({ opacity : "1" },1000);
 
             	});
@@ -315,6 +321,8 @@
 		Dreamline91's Page
 	</header>
 	<div class="introduce"></div>
+	<br>
+	<button type="button" onclick="location.href='https://github.com/jaejunha/til/wiki'">TIL</button>&nbsp;<button type="button" onclick="location.href='https://github.com/jaejunha'">GitHub</button><br>
 	<br>
 	<span class="title">My Favorite Site</span><br>
 	<hr>
