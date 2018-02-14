@@ -179,7 +179,10 @@
 	var portfolio_before = 1;
 	var portfolio_init = 0;
 
-	var year;
+	var int_currentYear;
+	var int_currentMonth;
+
+	var int_happyYear;
 	var value;
 	var happy_year = new Array({{happy|length}});
 	var happy_company = new Array({{happy|length}});
@@ -193,12 +196,14 @@
 		setAlphaAnimation();
 
 		var d = new Date();	
-		loadActivity(d);	
+		int_currentYear = d.getFullYear();
+		int_currentMonth = d.getMonth();
+		loadActivity(int_currentYear,int_currentMonth);	
 		
 		if(window.Worker){
 			var w = new Worker("/static/js/home/worker_activity.js");
         		w.onmessage = function(event) {
-        			loadActivity(d);
+				loadActivity(int_currentYear,int_currentMonth);
         		};
 			w.postMessage("Hello");
 		}
@@ -302,15 +307,16 @@
 			$('.'+name.replace('history','content')).css('display','none');
 		}
 	}
-	function loadActivity(d){
+	function loadActivity(year, month){
 		if(int_gitChartMinutes++==0){ 
+			var d = new Date();
 			$('.calendar').attr('src','http://ghchart.rshah.org/jaejunha?date='+d.getTime());
 			if(int_gitChartMinutes == 10)
 				int_gitChartMinutes = 0;
 		}
 		GitHubActivity.feed({ username: 'jaejunha', selector: '.feed' });
 
-		$(".exercise").load('home/calendar?year='+d.getFullYear()+'&month='+d.getMonth());
+		$(".exercise").load('home/calendar?year='+year+'&month='+month);
 	}
 </script>
 </head>
@@ -410,9 +416,9 @@
 		$('.ct-chart-line .ct-series-a line, .ct-chart-line .ct-series-b line, .ct-chart-bar .ct-series-c line').css('stroke','#ff0000');		
 		$(this).css('stroke','#ffffff');
   		var index = $(this).index()-2;
-  		year = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
+  		int_happyYear = $(this).closest('.ct-chart-line').find('.ct-labels foreignobject:nth-child('+(index+1)+') span').text();
   		value = $(this).attr('ct:value');
-		var text = '<b>'+year+'</b><br>'+happy_company[year-{{happy.0.0}}]+'<br><br>'+happy_content[year-{{happy.0.0}}];
+		var text = '<b>'+int_happyYear+'</b><br>'+happy_company[int_happyYear-{{happy.0.0}}]+'<br><br>'+happy_content[int_happyYear-{{happy.0.0}}];
 		text = text.replace(/&lt;/g,'<');
 		text = text.replace(/&gt;/g,'>');
 		$('.happy_content').html(text);
