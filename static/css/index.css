@@ -1,4 +1,4 @@
-body{
+body,html{
 	overflow-y:hidden; 
 	overflow-x:hidden;
 	font-family:'Montserrat', sans-serif;
@@ -66,41 +66,38 @@ body{
 
 #content{
 	margin:100px; 
-	margin-top:50px; 
+	margin-top:40px; 
 	min-width:1200px;
 }
-
-.bar{
+.ul_outerMenu{
+	margin:10px;
+	display: table;
 	opacity:0;
-	position: relative;
-	min-width:1200px;
-	margin-left:10px;
-	margin-right:10px;
-	top:10px;
-	line-height:60px;
 	background-color: rgba(255,255,255,0.8);
-	text-align:center;
-   	vertical-align: middle;
 	border-radius: 5px;
-	font-size: 18pt;
-	color:#dddddd;
+	list-style-type: none;
+	text-align:center;
 	animation: appear 1s;
 	animation-delay: 3.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-
-.bar > a{
+.li_outerMenu{
+  	display: table-cell;
+	width:13%;
+	line-height:60px;
+	font-size: 18pt;
+   	vertical-align: middle;
+}
+.li_outerMenu > a{
 	text-decoration: none;
-	margin-left: 40px;
-	margin-right: 40px;
 	color:#555555;
 }
-.bar > a:hover{
+.li_outerMenu > a:hover{
 	text-decoration: underline; 
 	color: #ffffff
 }
-.logo{
+.img_logo{
 	opacity:0;
 	position: absolute;
 	width: 48px;

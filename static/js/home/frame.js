@@ -32,6 +32,8 @@ $(document).ready( function() {
 
 	//delete animation
 	if(home != 1){
+		$('#font_title').css('animation','appear_tab 0s');
+		$('#font_title').css('opacity','1');	
 		$('#favorite').css('animation','appear_tab 0s');
 		$('#favorite').css('opacity','1');
 		$('#activity').css('animation','appear_tab 0s');

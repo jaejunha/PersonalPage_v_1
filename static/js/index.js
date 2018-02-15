@@ -16,6 +16,9 @@ $(document).ready( function() {
 		
 		bar.animate(1.0);
 		setTimeout(function(){$("#screen").remove();}, 1500);
+
+		var int_menuWidth = $(window).width()-$('.img_logo').width()-10; 
+		$('.ul_outerMenu').css('width',int_menuWidth);
 });
 function switchMenu(to){
 	$('header a').css('color','#555555');
