@@ -17,26 +17,23 @@ $(document).ready( function() {
 		bar.animate(1.0);
 		setTimeout(function(){$("#screen").remove();}, 1500);
 
-		var int_menuWidth = $(window).width()-$('.img_logo').width()-10; 
-		$('.ul_outerMenu').css('width',int_menuWidth);
+		var int_menuWidth = $(window).width()-10; 
+		$('header').css('width',int_menuWidth);
 });
 function switchMenu(to){
-	$('header a').css('color','#555555');
+
 	$('#content').css('opacity','0');
+
 	if(to=='home'){
 		$('#content').load('home/frame');
-		$('header a:nth-child(1)').css('color','#ffffff');
 	}
 	else if(to=='about'){
 		$('#content').load('about/frame');
-		$('header a:nth-child(2)').css('color','#ffffff');
 	}
 	else if(to=='portfolio'){
 		$('#content').load('portfolio/frame');
-		$('header a:nth-child(3)').css('color','#ffffff');
 	}
 	else if(to=='reference'){
 		$('#content').load('reference/frame');
-		$('header a:nth-child(7)').css('color','#ffffff');
 	}
 }

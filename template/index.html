@@ -31,29 +31,40 @@
 		<div id="canvas"></div>
 		<div id="loading"></div>
 		<img id="background" src="{% static 'personal/img/background.jpg' %}"/>
-		<ul class="ul_outerMenu">
-			<li class="li_outerMenu">
-				<a href="javascript:switchMenu('home');">Home</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="javascript:switchMenu('about');">About Me</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="javascript:switchMenu('portfolio');home--;">Portfolio</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="javascript:switchMenu('research');">Research</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="https://github.com/jaejunha/TIL/wiki" target="_blank">Today I Learned</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="https://github.com/jaejunha" target="_blank">GitHub</a>
-			</li>
-			<li class="li_outerMenu">
-				<a href="javascript:switchMenu('reference');">Reference</a>
-			</li>
-		</ul>
+		<header>
+			<ul class="ul_outerMenu">
+				<li class="li_outerMenu">
+					<a href="javascript:switchMenu('home');">Home</a>
+					<ul class="ul_innerMenu">
+                      		     		<li class="li_innerMenu"><a href="#">Activity</a></li>
+             			        	<li class="li_innerMenu"><a href="#">Favorite</a></li>
+                        		</ul>
+				</li>
+				<li class="li_outerMenu">
+					<a href="javascript:switchMenu('about');">About Me</a>
+				</li>
+				<li class="li_outerMenu">
+					<a href="javascript:switchMenu('portfolio');home--;">Portfolio</a>
+					<ul class="ul_innerMenu">
+                           			<li class="li_innerMenu"><a href="#">Program</a></li>
+             		        		<li class="li_innerMenu"><a href="#">Art</a></li>
+             		        		<li class="li_innerMenu"><a href="#">Marathon</a></li>
+                        		</ul>
+				</li>
+				<li class="li_outerMenu">
+					<a href="javascript:switchMenu('research');">Research</a>
+				</li>
+				<li class="li_outerMenu">
+					<a href="https://github.com/jaejunha/TIL/wiki" target="_blank">TIL</a>
+				</li>
+				<li class="li_outerMenu">
+					<a href="https://github.com/jaejunha" target="_blank">GitHub</a>
+				</li>
+				<li class="li_outerMenu">
+					<a href="javascript:switchMenu('reference');">Reference</a>
+				</li>
+			</ul>
+		</header>
 		<a href="/">
 			<img class="img_logo" src="{% static 'personal/img/min_picture.jpg' %}">	
 		</a>

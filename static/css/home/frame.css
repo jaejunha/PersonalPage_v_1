@@ -58,8 +58,3 @@ hr {
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-#activity:hover, #favorite:hover{
-	opacity: 1;
-	text-decoration: underline;
-	color: #ffffff;
-}
