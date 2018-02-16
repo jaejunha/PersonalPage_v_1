@@ -1,4 +1,5 @@
 var home = 1;
+var string_subMenu;
 $(document).ready( function() {
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 	if(isMobile)
@@ -19,9 +20,13 @@ $(document).ready( function() {
 
 		var int_menuWidth = $(window).width()-20; 
 		$('header').css('width',int_menuWidth);
+		for(var i=1;i<=7;i++)
+			$('.li_outerMenu:nth-of-type('+i+')').css('width',$('.li_outerMenu:nth-of-type('+i+')').width()+85);
+		
 });
-function switchMenu(to){
+function switchMenu(to,sub){
 
+	string_subMenu = '';
 	$('#content').css('opacity','0');
 
 	if(to=='home'){
@@ -31,9 +36,16 @@ function switchMenu(to){
 		$('#content').load('about/frame');
 	}
 	else if(to=='portfolio'){
+		string_subMenu = 'program';		
+		if(sub)
+			string_subMenu = sub;
 		$('#content').load('portfolio/frame');
 	}
 	else if(to=='reference'){
 		$('#content').load('reference/frame');
+	}
+
+	if(to!='home'){
+		home--;
 	}
 }

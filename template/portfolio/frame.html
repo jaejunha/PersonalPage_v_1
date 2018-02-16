@@ -3,8 +3,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?ver=0.1"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/menu.css' %}?ver=0.2"/>
-<script type="text/javascript" src="{% static 'js/portfolio/portfolio.js' %}?ver=0.1"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/menu.css' %}?ver=0.3"/>
+<script type="text/javascript" src="{% static 'js/portfolio/portfolio.js' %}?ver=0.2"></script>
 <style>
 	body{
 		background:#000000;
@@ -32,17 +32,17 @@
 		var size = $(window).height() - $('#inner_content').offset().top;
 		$('#inner_content').css('height',size+'px');
 		
-		$('#program').css('color','#ffffff');
-		$('#program').css('opacity',1);
-		$('#inner_content').load('portfolio/program');
+		$('.a_'+string_subMenu).css('color','#ffffff');
+		$('.a_'+string_subMenu).css('opacity',1);
+		$('#inner_content').load('portfolio/'+string_subMenu);
 	});
-		</script>
+</script>
 </head>
 <body>	
 	<font id="title">Portfolio</font>
-	<a id="marathon" href="javascript:switch_screen('marathon');">Marathon</a>
-	<a id="art" href="javascript:switch_screen('art');">Art</a>
-	<a id="program" href="javascript:switch_screen('program');">Program</a>
+	<a class="a_marathon" href="javascript:switchSubMenu('marathon');">Marathon</a>
+	<a class="a_art" href="javascript:switchSubMenu('art');">Art</a>
+	<a class="a_program" href="javascript:switchSubMenu('program');">Program</a>
 	<hr/>
 	<div id="inner_content"></div>
 </body>

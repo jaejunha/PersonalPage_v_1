@@ -91,7 +91,6 @@ header{
 }
 .li_outerMenu{
 	float:left;
-	padding: 0px 40px 0px 40px;
 	font-size: 18pt;
 	line-height:60px;
 }
@@ -122,8 +121,11 @@ header{
 	list-style-type: none;
 }
 .li_innerMenu{	
-	padding:5px 0 5px 0;
+	padding: 0px 42.5px 0px 42.5px;
 	float:none;
+}
+.li_innerMenu:hover{	
+	background:#aaaaaa;
 }
 .img_logo{
 	opacity:0;
