@@ -17,7 +17,7 @@ $(document).ready( function() {
 		bar.animate(1.0);
 		setTimeout(function(){$("#screen").remove();}, 1500);
 
-		var int_menuWidth = $(window).width()-10; 
+		var int_menuWidth = $(window).width()-20; 
 		$('header').css('width',int_menuWidth);
 });
 function switchMenu(to){

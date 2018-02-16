@@ -65,17 +65,15 @@ body,html{
 }
 
 #content{
-	margin:100px;
-	margin-top:110px;
+	margin:40px 100px 0px 100px;
 	min-width:1200px;
+	z-index:0;
 }
 header{
-	position: absolute;
 	display: block;
 	border-radius: 5px;
 	background-color: rgba(255,255,255,0.8);
-	margin:5px;
-	top:5px;
+	margin:10px 0px 5px 10px;
 	height:60px;
 	opacity:0;
 	animation: appear 1s;
@@ -91,16 +89,22 @@ header{
 }
 .li_outerMenu{
 	float:left;
-	width:14%;
-	line-height:60px;
+	padding: 0px 40px 0px 40px;
 	font-size: 18pt;
+	border-left:1.5px solid #888888;
+	line-height:60px;
+}
+
+.li_outerMenu:nth-of-type(1){
+	margin:0px 0px 0px 30px;
+	border-left:none;
 }
 .li_outerMenu:hover{
 	background:#aaaaaa;
 }
+
 .li_outerMenu:hover .ul_innerMenu{		 
 	display: block;
-	background:#aaaaaa;
 }
 
 .li_outerMenu a{
@@ -112,14 +116,15 @@ header{
 }
 
 .ul_innerMenu{
-	margin:0;
 	padding:0;
+	margin: 0;
+	font-size: 14pt;
 	display:none;
 	list-style-type: none;
-	backgroud-color: #ffffff;
+	z-index:1;
 }
 .li_innerMenu{
-	backgroud-color: #ffffff;
+	float:none;
 }
 .img_logo{
 	opacity:0;
