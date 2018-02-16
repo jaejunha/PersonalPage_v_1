@@ -23,7 +23,7 @@ $(document).ready( function() {
         	w.onmessage = function(event) {
 			clearInterval(switch_blink);
 			if(init == 1 && home >= 0)
-			from=switch_screen(init--,from,'activity');
+			from=switchSubMenu(init--,'activity');
         	};
 		w.postMessage("Hello");
 	}
@@ -53,6 +53,10 @@ $(document).ready( function() {
 		}, 750);
 	}
 	home--;
+	if(string_subMenu != 'home'){
+		from = -1;
+		from = switchSubMenu(init--,string_subMenu);
+	}
 });
 $(window).resize(function (){
 	if(init == 1){
@@ -68,7 +72,7 @@ $(window).resize(function (){
 	if(from == 0)
 		$('#favorite_content').css('left',$(window).width());
 });
-function switch_screen(init,from,to){
+function switchSubMenu(init,to){
 	var size = $(window).width();
 	var margin = 100;
 	var favorite_content = $('#favorite_content');
@@ -77,14 +81,15 @@ function switch_screen(init,from,to){
 	var activity = $('#activity');
 	var favorite = $('#favorite');
 
-	if(init == 1){		
-		intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
+	if(from < 0){
+		if(init == 1)
+			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
 		if(to == 'activity'){			
-			activity_content.animate({ left:margin+'px'},1500);
+			activity_content.css('left',margin+'px');
 		}
 		else{
-			activity_content.css('left',-size+margin+'px');	
-			favorite_content.animate({ left:margin+'px'},1500);
+			activity_content.css('left',(-size+margin)+'px');	
+			favorite_content.css('left',margin+'px');
 		}
 		if(to == 'activity'){
 			activity.css('color','#ffffff');
@@ -95,26 +100,48 @@ function switch_screen(init,from,to){
 			activity.css('color','#aaaaaa');
 			favorite.css('color','#ffffff');
 			return 1;
-		}
-       	}
+		}	
+	}
 	else{
-		if(to == 'activity'){
-			if(from == 0)
+		if(init == 1){		
+			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
+			if(to == 'activity'){			
+				activity_content.animate({ left:margin+'px'},1500);
+			}
+			else{
+				activity_content.css('left',-size+margin+'px');	
+				favorite_content.animate({ left:margin+'px'},1500);
+			}
+			if(to == 'activity'){
+				activity.css('color','#ffffff');
+				favorite.css('color','#aaaaaa');
 				return 0;
-			activity_content.animate({ left:margin+'px'},1500);
-			favorite_content.animate({ left:size+margin+'px'},1500);
-			activity.css('color','#ffffff');
-			favorite.css('color','#aaaaaa');
-			return 0;
-		}
-		else{
-			if(from == 1)
+			}
+			else{
+				activity.css('color','#aaaaaa');
+				favorite.css('color','#ffffff');
 				return 1;
-			activity_content.animate({ left:-size+margin+'px'},1500);
-			favorite_content.animate({ left:margin+'px'},1500);
-			activity.css('color','#aaaaaa');
-			favorite.css('color','#ffffff');
-			return 1;
+			}
+       		}
+		else{
+			if(to == 'activity'){
+				if(from == 0)
+					return 0;
+				activity_content.animate({ left:margin+'px'},1500);
+				favorite_content.animate({ left:size+margin+'px'},1500);
+				activity.css('color','#ffffff');
+				favorite.css('color','#aaaaaa');
+				return 0;
+			}
+			else{
+				if(from == 1)
+					return 1;
+				activity_content.animate({ left:-size+margin+'px'},1500);
+				favorite_content.animate({ left:margin+'px'},1500);
+				activity.css('color','#aaaaaa');
+				favorite.css('color','#ffffff');
+				return 1;
+			}
 		}
 	}
 }

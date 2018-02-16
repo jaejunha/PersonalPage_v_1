@@ -3,12 +3,12 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home/frame.css' %}?ver=0.4"/>
-<script type="text/javascript" src="{% static 'js/home/frame.js' %}?ver=0.5"></script>
+<script type="text/javascript" src="{% static 'js/home/frame.js' %}?ver=0.6"></script>
 </head>
 <body>	
 	<font id="font_title">Dreamline91's Page</font>
-	<a id="favorite" href="javascript:from = switch_screen(init--,from,'favorite');clearInterval(switch_blink);">Favorite</a>
-	<a id="activity" href="javascript:from = switch_screen(init--,from,'activity');clearInterval(switch_blink);">Activity</a>
+	<a id="favorite" href="javascript:from = switchSubMenu(init--,'favorite');clearInterval(switch_blink);">Favorite</a>
+	<a id="activity" href="javascript:from = switchSubMenu(init--,'activity');clearInterval(switch_blink);">Activity</a>
 	<hr/>
 	<div id="intro_content"></div>
 	<div id="favorite_content"></div>

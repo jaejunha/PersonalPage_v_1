@@ -30,6 +30,9 @@ function switchMenu(to,sub){
 	$('#content').css('opacity','0');
 
 	if(to=='home'){
+		string_subMenu='home';
+		if(sub)
+			string_subMenu = sub;
 		$('#content').load('home/frame');
 	}
 	else if(to=='about'){
