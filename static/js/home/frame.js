@@ -1,4 +1,4 @@
-var init = 1;
+var bool_introWorking = true;
 var from = 0;//0:activity1:favorite
 var blink = 0;//activity button blink
 var switch_blink;//blink switch
@@ -22,8 +22,8 @@ $(document).ready( function() {
 		var w = new Worker("/static/js/home/worker_frame.js");
         	w.onmessage = function(event) {
 			clearInterval(switch_blink);
-			if(init == 1 && home >= 0)
-			from=switchSubMenu(init--,'activity');
+			if(bool_introWorking && home >= 0)
+			from=switchSubMenu('activity');
         	};
 		w.postMessage("Hello");
 	}
@@ -55,11 +55,11 @@ $(document).ready( function() {
 	home--;
 	if(string_subMenu != 'home'){
 		from = -1;
-		from = switchSubMenu(init--,string_subMenu);
+		from = switchSubMenu(string_subMenu);
 	}
 });
 $(window).resize(function (){
-	if(init == 1){
+	if(bool_introWorking){
 		var width = $(window).width();
 		$('#favorite_content').css('left',width+'px');
 		$('#activity_content').css('left',width+'px');
@@ -72,7 +72,7 @@ $(window).resize(function (){
 	if(from == 0)
 		$('#favorite_content').css('left',$(window).width());
 });
-function switchSubMenu(init,to){
+function switchSubMenu(to){
 	var size = $(window).width();
 	var margin = 100;
 	var favorite_content = $('#favorite_content');
@@ -82,8 +82,10 @@ function switchSubMenu(init,to){
 	var favorite = $('#favorite');
 
 	if(from < 0){
-		if(init == 1)
+		if(bool_introWorking){
+			bool_introWorking = false;
 			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
+		}
 		if(to == 'activity'){			
 			activity_content.css('left',margin+'px');
 		}
@@ -103,7 +105,8 @@ function switchSubMenu(init,to){
 		}	
 	}
 	else{
-		if(init == 1){		
+		if(bool_introWorking){	
+			bool_introWorking = false;	
 			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
 			if(to == 'activity'){			
 				activity_content.animate({ left:margin+'px'},1500);
