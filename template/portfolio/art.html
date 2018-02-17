@@ -9,12 +9,31 @@
 		font-family:'Montserrat', sans-serif;
 		font-size:15pt;
 	}
-	table td:nth-child(1){
+	.table_experience td:nth-child(1){
 		font-weight:bold;
 		width:200px;
 	}
 	b{
 		color:#ffff00;
+	}
+	.table_artController td{
+		border:2px solid #ffffff;
+		text-align:center;
+	}
+	.table_artController td:nth-of-type(1),.table_artController td:nth-of-type(6) {
+		border:2px solid rgba(255,255,255,0.5);
+		background:#dcdcdc;
+		color:#555;
+		font-size:30px;
+	}
+	.table_artController td:nth-of-type(1) {
+		border-top-left-radius: 10px;
+	}
+	.table_artController td:nth-of-type(6) {
+		border-top-right-radius: 10px;
+	}
+	.div_artWork{
+		border:2px solid #ffffff;
 	}
 </style>
 <script>
@@ -28,12 +47,32 @@ $(document).ready(function(){
 	text+="{{a.0}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td><td>';
 	text+="{{a.1}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td></tr>';
 	{% endfor %}
-	$('.experience').html(text);	
+	
+	$('.table_experience').html(text);
+
+	$('.table_artController').css('width',$('#inner_content').width());
+	$('.table_artController tr td:nth-of-type(1)').css('width',30);
+	$('.table_artController tr td:nth-of-type(6)').css('width',30);
+	$('.table_artController tr td:nth-of-type(1)').css('height',$('.table_artController tr td:nth-of-type(2)').width()/3);
 });
 </script>
 </head>
 <body>
-	<table class="experience"></table>
+	<table class="table_experience"></table>
 	<br>
+	<center>
+		<table class="table_artController">
+			<tr>
+				<td><</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>></td>
+			</tr>
+		</table>
+		<div class="div_artWork"></div>
+		<div style="text-align:left;"><span style="font-size:20pt;">Description</span></div>
+	</center>
 </body>
 </html>
