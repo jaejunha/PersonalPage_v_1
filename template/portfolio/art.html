@@ -25,12 +25,24 @@
 		background:#dcdcdc;
 		color:#555;
 		font-size:30px;
+		margin:0;
+		padding:0;
 	}
 	.table_artController td:nth-of-type(1) {
 		border-top-left-radius: 10px;
 	}
 	.table_artController td:nth-of-type(6) {
 		border-top-right-radius: 10px;
+	}
+	.table_artController td{
+		position:relative;
+		overflow:hidden;
+	}
+	.table_artController img{
+		position:absolute;
+		left:0;
+		top:-50%;
+		width:100%;
 	}
 	.div_artWork{
 		border:2px solid #ffffff;
@@ -53,7 +65,15 @@ $(document).ready(function(){
 	$('.table_artController').css('width',$('#inner_content').width());
 	$('.table_artController tr td:nth-of-type(1)').css('width',30);
 	$('.table_artController tr td:nth-of-type(6)').css('width',30);
-	$('.table_artController tr td:nth-of-type(1)').css('height',$('.table_artController tr td:nth-of-type(2)').width()/3);
+	$('.table_artController').css('height',$('.table_artController tr td:nth-of-type(2)').width()/3);
+	{% for i in "xxxx" %}
+	{% with n=forloop.counter|stringformat:"s" %}
+	{% with 'personal/img/program/'|add:n|add:'.jpg' as image %}
+		$('.table_artController td:nth-of-type('+({{forloop.counter}}+1)+') img').attr("src","{% static image %}");
+	{% endwith %}
+	{% endwith %}
+	{% endfor %}
+	$('.table_artController').css('height',int_controlImgHeight);
 });
 </script>
 </head>
@@ -61,13 +81,16 @@ $(document).ready(function(){
 	<table class="table_experience"></table>
 	<br>
 	<center>
+		<span style="font-size:40pt">CAUTION</span><br>
+		Art is just hobby. So, I don't hope you evaluate my works!<br>
+		<br> 
 		<table class="table_artController">
 			<tr>
 				<td><</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><img/></td>
+				<td><img/></td>
+				<td><img/></td>
+				<td><img/></td>
 				<td>></td>
 			</tr>
 		</table>
