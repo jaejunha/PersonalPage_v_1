@@ -44,11 +44,15 @@
 		top:-50%;
 		width:100%;
 	}
-	.div_artWork{
+	.img_artWork{
 		border:2px solid #ffffff;
 	}
 </style>
 <script>
+	var int_previewOffset = 0;
+	var string_staticPath="{% static '/' %}";
+	var int_maxPreviewOffset = 5-4;
+	var int_artWorkCursor = 1;
 $(document).ready(function(){
 	$('#content').animate({opacity:1}, 1000);
 	$('#inner_content').animate({opacity:1}, 1000);
@@ -62,19 +66,62 @@ $(document).ready(function(){
 	
 	$('.table_experience').html(text);
 
-	$('.table_artController').css('width',$('#inner_content').width());
+	$('.table_artController').css('width',$('#inner_content').width()-50);
+	$('.img_artWork').css('width',$('#inner_content').width()-50);
+
 	$('.table_artController tr td:nth-of-type(1)').css('width',30);
 	$('.table_artController tr td:nth-of-type(6)').css('width',30);
 	$('.table_artController').css('height',$('.table_artController tr td:nth-of-type(2)').width()/3);
-	{% for i in "xxxx" %}
-	{% with n=forloop.counter|stringformat:"s" %}
-	{% with 'personal/img/program/'|add:n|add:'.jpg' as image %}
-		$('.table_artController td:nth-of-type('+({{forloop.counter}}+1)+') img').attr("src","{% static image %}");
-	{% endwith %}
-	{% endwith %}
-	{% endfor %}
-	$('.table_artController').css('height',int_controlImgHeight);
+
+	int_previewOffset = 0;
+	updateArtWork(int_artWorkCursor);
+
+	$(".table_artController tr td:nth-of-type(1)").click(function(){
+		if(int_previewOffset!=0){
+			int_previewOffset--;
+			updateArtWork(int_artWorkCursor);
+		}
+		
+		changeCursor();
+	});
+	$(".table_artController tr td:nth-of-type(6)").click(function(){
+		if(int_previewOffset!=int_maxPreviewOffset){
+			int_previewOffset++;
+			updateArtWork(int_artWorkCursor);
+		}
+		
+		changeCursor();
+	});
+	$(".table_artController tr td:nth-of-type(n)").click(function(){
+		if($(this)[0].cellIndex%5!=0){
+			int_artWorkCursor = $(this)[0].cellIndex+int_previewOffset; 
+			updateArtWork(int_artWorkCursor);	
+		}
+	});
+
+	$(".table_artController tr td:nth-of-type(n+1)").css('cursor', 'pointer');
+	$(".table_artController tr td:nth-of-type(1)").css('cursor','default');
 });
+
+
+function updateArtWork(index){
+	for(var i=1;i<=4;i++)
+		$('.table_artController td:nth-of-type('+(i+1)+') img').attr("src",string_staticPath+"personal/img/program/"+(i+int_previewOffset)+".jpg");
+	
+	$('.img_artWork').attr('src',string_staticPath+"personal/img/program/"+index+".jpg");
+}
+function changeCursor(){
+	if(int_previewOffset==0)
+		$('.table_artController tr td:nth-of-type(1)').css('cursor', 'default');
+	else
+		$('.table_artController tr td:nth-of-type(1)').css('cursor', 'pointer');
+		
+	if(int_previewOffset==int_maxPreviewOffset)
+		$('.table_artController tr td:nth-of-type(6)').css('cursor', 'default');
+	else
+		$('.table_artController tr td:nth-of-type(6)').css('cursor', 'pointer');
+}
+
 </script>
 </head>
 <body>
@@ -94,7 +141,11 @@ $(document).ready(function(){
 				<td>></td>
 			</tr>
 		</table>
-		<div class="div_artWork"></div>
+		<br>
+		<hr style="margin:25px;">
+		<br>
+		<img class="img_artWork"></img><br>
+		<br>
 		<div style="text-align:left;"><span style="font-size:20pt;">Description</span></div>
 	</center>
 </body>
