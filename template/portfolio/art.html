@@ -9,6 +9,9 @@
 		font-family:'Montserrat', sans-serif;
 		font-size:15pt;
 	}
+	.table_artController {
+		width:80%;
+	}
 	.table_experience td:nth-child(1){
 		font-weight:bold;
 		width:200px;
@@ -17,6 +20,8 @@
 		color:#ffff00;
 	}
 	.table_artController td{
+		position:relative;
+		overflow:hidden;
 		border:2px solid #ffffff;
 		text-align:center;
 	}
@@ -34,10 +39,6 @@
 	.table_artController td:nth-of-type(6) {
 		border-top-right-radius: 10px;
 	}
-	.table_artController td{
-		position:relative;
-		overflow:hidden;
-	}
 	.table_artController img{
 		position:absolute;
 		left:0;
@@ -45,7 +46,12 @@
 		width:100%;
 	}
 	.img_artWork{
+		width:80%;
 		border:2px solid #ffffff;
+	}
+	.div_desc{
+		text-align:left;
+		margin:0 0 50px 0;
 	}
 </style>
 <script>
@@ -65,9 +71,6 @@ $(document).ready(function(){
 	{% endfor %}
 	
 	$('.table_experience').html(text);
-
-	$('.table_artController').css('width',$('#inner_content').width()-50);
-	$('.img_artWork').css('width',$('#inner_content').width()-50);
 
 	$('.table_artController tr td:nth-of-type(1)').css('width',30);
 	$('.table_artController tr td:nth-of-type(6)').css('width',30);
@@ -129,7 +132,7 @@ function changeCursor(){
 	<br>
 	<center>
 		<span style="font-size:40pt">CAUTION</span><br>
-		Art is just hobby. So, I don't hope you evaluate my works!<br>
+		Art is just my hobby. So, I don't hope you evaluate my works!<br>
 		<br> 
 		<table class="table_artController">
 			<tr>
@@ -142,11 +145,9 @@ function changeCursor(){
 			</tr>
 		</table>
 		<br>
-		<hr style="margin:25px;">
-		<br>
 		<img class="img_artWork"></img><br>
 		<br>
-		<div style="text-align:left;"><span style="font-size:20pt;">Description</span></div>
+		<div class="div_desc"><span style="font-size:20pt;">Description</span></div>
 	</center>
 </body>
 </html>
