@@ -27,6 +27,7 @@ $(document).ready( function() {
 function switchMenu(to,sub){
 
 	string_subMenu = '';
+	$('.span_loading').css('display','block');
 	$('#content').css('opacity','0');
 
 	if(to=='home'){

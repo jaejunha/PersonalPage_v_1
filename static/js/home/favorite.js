@@ -1,4 +1,6 @@
 $(document).ready( function() {
+	$('.span_loading').css('display','none');
+
 	resize();
 });
 $(window).resize(function (){

@@ -2,6 +2,8 @@ var int_currentYear;
 var int_currentMonth;
 
 $(document).ready( function() {
+	$('.span_loading').css('display','none');
+
 	$(".feed").css('width',$('.calendar').width());
 	$('#main').css('width',$(window).width()-200);
 
