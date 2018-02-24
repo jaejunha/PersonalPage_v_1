@@ -12,6 +12,8 @@
 		<a href="{{url}}" target="_blank">
 			{% if forloop.counter <= 4 %}
 			<div class="icon">
+			{% elif forloop.last %}
+			<div class="icon" style="margin-top:5%;margin-bottom:50px;">
 			{% else %}
 			<div class="icon" style="margin-top:5%;">
 			{% endif %}
