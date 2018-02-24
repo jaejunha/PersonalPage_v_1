@@ -133,7 +133,7 @@ function make_calendar(year, month){
 		}
 	}
 	if(int_todayYear == year && int_todayMonth == month)
-		$('.exercise_calendar tr:nth-of-type('+Math.floor((int_todayDay+start-1)/7+3)+') td:nth-of-type('+((int_todayDay+start-1)%7+1)+')').css('border','2px dotted #ffffff');	
+		$('.exercise_calendar tr:nth-of-type('+Math.floor((int_todayDay+start-2)/7+3)+') td:nth-of-type('+((int_todayDay+start-2)%7+2)+')').css('border','2px dotted #ffffff');	
 }
 function pre_month(){
 	if(int_currentMonth-- == 0){
