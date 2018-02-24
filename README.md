@@ -33,9 +33,13 @@ static/personal/img/bird.png
 ```
 static/personal/img/profile.jpg  
 ```
-- portfolio image  
+- portfolio program image  
 ```
 static/personal/img/program/*.jpg  
+```
+- portfolio art image
+```
+static/personal/img/art/*.jpg
 ```
 ---
 # Install  
