@@ -171,6 +171,47 @@
   		stroke: rgba(255,255,255,0.5);
   		stroke-width: 2px;
 	}
+	.table_artController {
+		width:60%;
+	}
+	.table_experience td:nth-child(1){
+		font-weight:bold;
+		width:200px;
+	}
+	.table_artController td{
+		position:relative;
+		overflow:hidden;
+		border:2px solid #ffffff;
+		text-align:center;
+	}
+	.table_artController td:nth-of-type(1),.table_artController td:nth-of-type(6) {
+		border:2px solid rgba(255,255,255,0.5);
+		background:#dcdcdc;
+		color:#555;
+		font-size:30px;
+		margin:0;
+		padding:0;
+	}
+	.table_artController td:nth-of-type(1) {
+		border-top-left-radius: 10px;
+	}
+	.table_artController td:nth-of-type(6) {
+		border-top-right-radius: 10px;
+	}
+	.table_artController img{
+		position:absolute;
+		left:0;
+		top:-50%;
+		width:100%;
+	}
+	.img_artWork{
+		width:60%;
+		border:2px solid #ffffff;
+	}
+	.div_desc{
+		text-align:left;
+		margin:0 0 50px 0;
+	}
 </style>
 <script>
 	var activity, me;
@@ -191,6 +232,11 @@
 	var happy_value = new Array({{happy|length}});
 
 	var int_gitChartMinutes = 0;
+
+	var int_previewOffset = 0;
+	var string_staticPath="{% static '/' %}";
+	var int_maxPreviewOffset = 22-4;
+	var int_artWorkCursor = 1;
 
 	$(document).ready( function() {
 		setSize();
@@ -259,7 +305,60 @@
 		/* Don't move this function */
 		$('.ui-coverflow-wrapper').css('height',$('#coverflow img').height());
 		/* Don't move this function */
+
+		$('.table_artController tr td:nth-of-type(1)').css('width',30);
+		$('.table_artController tr td:nth-of-type(6)').css('width',30);
+		$('.table_artController').css('height',$('.table_artController tr td:nth-of-type(2)').width()/3);
+
+		int_previewOffset = 0;
+		updateArtWork(int_artWorkCursor);
+
+		$(".table_artController tr td:nth-of-type(1)").click(function(){
+			if(int_previewOffset!=0){
+				int_previewOffset--;
+				updateArtWork(int_artWorkCursor);
+			}
+		
+			changeCursor();
+		});
+		$(".table_artController tr td:nth-of-type(6)").click(function(){
+			if(int_previewOffset!=int_maxPreviewOffset){
+				int_previewOffset++;
+				updateArtWork(int_artWorkCursor);
+			}
+		
+			changeCursor();
+		});
+		$(".table_artController tr td:nth-of-type(n)").click(function(){
+			if($(this)[0].cellIndex%5!=0){
+				int_artWorkCursor = $(this)[0].cellIndex+int_previewOffset; 
+				updateArtWork(int_artWorkCursor);	
+			}
+		});
+
+		$(".table_artController tr td:nth-of-type(n+1)").css('cursor', 'pointer');
+		$(".table_artController tr td:nth-of-type(1)").css('cursor','default');
 	});
+
+
+	function updateArtWork(index){
+		for(var i=1;i<=4;i++)
+			$('.table_artController td:nth-of-type('+(i+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i+int_previewOffset)+".jpg");
+	
+		$('.img_artWork').attr('src',string_staticPath+"personal/img/art/"+index+".jpg");
+	}
+
+	function changeCursor(){
+		if(int_previewOffset==0)
+			$('.table_artController tr td:nth-of-type(1)').css('cursor', 'default');
+		else
+			$('.table_artController tr td:nth-of-type(1)').css('cursor', 'pointer');
+		
+		if(int_previewOffset==int_maxPreviewOffset)
+			$('.table_artController tr td:nth-of-type(6)').css('cursor', 'default');
+		else
+			$('.table_artController tr td:nth-of-type(6)').css('cursor', 'pointer');
+	}
 
 	function setSize(){
 		var width = $(window).width();
@@ -481,9 +580,25 @@
 		<hr>
 		<table class="experience"></table>
 		<br>
-		<div>
-			<img src="http://placehold.it/400x300" onclick="javascript:portfolio_now=0;"/>
-		</div>
+		<center>
+		<span style="font-size:40pt">CAUTION</span><br>
+		Art is just my hobby. So, I don't hope you evaluate my works!<br>
+		<br> 
+		<table class="table_artController">
+			<tr>
+				<td><</td>
+				<td><img/></td>
+				<td><img/></td>
+				<td><img/></td>
+				<td><img/></td>
+				<td>></td>
+			</tr>
+		</table>
+		<br>
+		<img class="img_artWork"></img><br>
+		<br>
+		<div class="div_desc"><span style="font-size:20pt;">Description</span></div>
+	</center>
 		Marathon<br>
 		<hr>
 		<table class="experience"></table>
