@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
 from models import *
+import os
 
 def not_found(request):
 	return render(request,'404.html')
@@ -85,7 +86,8 @@ def portfolio_program(request):
 
 def portfolio_art(request):
 	art_experience = get_experience('art')
-	return render(request,'portfolio/art.html', {'art_experience':art_experience})
+	int_artWorkCount = len(os.walk('./static/personal/img/art').next()[2])
+	return render(request,'portfolio/art.html', {'art_experience':art_experience,'int_artWorkCount':int_artWorkCount})
 
 def portfolio_marathon(request):
 	marathon_experience = get_experience('marathon')
