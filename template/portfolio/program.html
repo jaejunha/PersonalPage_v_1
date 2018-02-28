@@ -78,7 +78,10 @@ $(document).ready(function(){
                 select: function(event, ui){
 			portfolio_before = ui.index;
 			$(".desc .name").text(ui.index+" item");
-			var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg";
+
+			var date = new Date();
+			var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
+			var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg?date="+string_date;
 			$(".image").html("<img src=\""+path+"\"/>");
 		//	$(".desc table tr:nth-child(1) td:nth-child(2)").text(ui.index);
 		}

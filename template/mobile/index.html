@@ -343,10 +343,13 @@
 
 
 	function updateArtWork(index){
+		var date = new Date();
+		var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
+
 		for(var i=1;i<=4;i++)
-			$('.table_artController td:nth-of-type('+(i+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i+int_previewOffset)+".jpg");
+			$('.table_artController td:nth-of-type('+(i+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i+int_previewOffset)+".jpg?date="+string_date);
 	
-		$('.img_artWork').attr('src',string_staticPath+"personal/img/art/"+index+".jpg");
+		$('.img_artWork').attr('src',string_staticPath+"personal/img/art/"+index+".jpg?date="+string_date);
 	}
 
 	function changeCursor(){
