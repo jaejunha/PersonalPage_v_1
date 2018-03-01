@@ -31,9 +31,11 @@ def index(request):
 		happy = get_happy()
 		history = get_history()
 		program_experience = get_experience('program')
+		int_programWorkCount = len(os.walk('./static/personal/img/program').next()[2])
 		art_experience = get_experience('art')
+		int_artWorkCount = len(os.walk('./static/personal/img/art').next()[2])
 		marathon_experience = get_experience('marathon')
-		return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience, 'art_experience':art_experience, 'marathon_experience':marathon_experience})
+		return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience,'int_programWorkCount':int_programWorkCount, 'art_experience':art_experience,'int_artWorkCount':int_artWorkCount, 'marathon_experience':marathon_experience})
 	else:
 		return render(request,'index.html')
 
@@ -44,9 +46,11 @@ def m_index(request):
 	happy = get_happy()
 	history = get_history()
 	program_experience = get_experience('program')
+	int_programWorkCount = len(os.walk('./static/personal/img/program').next()[2])
 	art_experience = get_experience('art')
+	int_artWorkCount = len(os.walk('./static/personal/img/art').next()[2])
 	marathon_experience = get_experience('marathon')
-	return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience, 'art_experience':art_experience, 'marathon_experience':marathon_experience})
+	return render(request,'mobile/index.html', {'intro':intro, 'favorite':favorite, 'personal':personal, 'happy':happy, 'history':history, 'program_experience':program_experience,'int_programWorkCount':int_programWorkCount, 'art_experience':art_experience,'int_artWorkCount':int_artWorkCount, 'marathon_experience':marathon_experience})
 
 def home_frame(request):
 	return render(request,'home/frame.html')
@@ -82,7 +86,8 @@ def portfolio_frame(request):
 
 def portfolio_program(request):
 	program_experience = get_experience('program')
-	return render(request,'portfolio/program.html', {'program_experience':program_experience})
+	int_programWorkCount = len(os.walk('./static/personal/img/program').next()[2])
+	return render(request,'portfolio/program.html', {'program_experience':program_experience, 'int_programWorkCount':int_programWorkCount})
 
 def portfolio_art(request):
 	art_experience = get_experience('art')

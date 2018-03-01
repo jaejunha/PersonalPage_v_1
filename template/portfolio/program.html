@@ -72,6 +72,14 @@ $(document).ready(function(){
 	text+="{{p.1}}".replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</td></tr>';
 	{% endfor %}
 	$('.experience').html(text);	
+	
+	text='';
+	var string_staticPath="{% static '/' %}";
+	var date = new Date();
+	var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
+	for(var i=1;i<={{int_programWorkCount}};i++)
+		text+='<img src="'+string_staticPath+'personal/img/program/'+i+'.jpg?date='+string_date+'"/>';
+	$('#coverflow').html(text);
 
 	$('#coverflow').coverflow({
                 active: 1,
@@ -79,9 +87,7 @@ $(document).ready(function(){
 			portfolio_before = ui.index;
 			$(".desc .name").text(ui.index+" item");
 
-			var date = new Date();
-			var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
-			var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg?date="+string_date;
+			var path=string_staticPath+'personal/img/program/'+(ui.index+1)+'.jpg?date='+string_date;
 			$(".image").html("<img src=\""+path+"\"/>");
 		//	$(".desc table tr:nth-child(1) td:nth-child(2)").text(ui.index);
 		}
@@ -94,13 +100,7 @@ $(document).ready(function(){
 	<br>
 	<div class="coverflow_upper">My works</div>
 	<div>
-	       <div id="coverflow">
-			<img src="{% static 'personal/img/program/1.jpg' %}"/>
-			<img src="{% static 'personal/img/program/2.jpg' %}"/>
-			<img src="{% static 'personal/img/program/3.jpg' %}"/>
-			<img src="{% static 'personal/img/program/4.jpg' %}"/>
-			<img src="{% static 'personal/img/program/5.jpg' %}"/>
-		</div>
+	       <div id="coverflow"></div>
 	</div><br>
 	<span style="font-size:20pt;">Description</span></br>
 	<br>

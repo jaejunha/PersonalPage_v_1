@@ -236,7 +236,7 @@
 
 	var int_previewOffset = 0;
 	var string_staticPath="{% static '/' %}";
-	var int_maxPreviewOffset = 22-4;
+	var int_maxPreviewOffset = {{int_artWorkCount}}-4;
 	var int_artWorkCursor = 1;
 
 	$(document).ready( function() {
@@ -294,11 +294,20 @@
 		$('.experience:nth-of-type(3)').html(text);
 
 
+		text='';
+		var string_staticPath="{% static '/' %}";
+		var date = new Date();
+		var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
+		var int_screenWidth = $(window).width();
+		for(var i=1;i<={{int_programWorkCount}};i++)
+			text+='<img src="'+string_staticPath+'personal/img/program/'+i+'.jpg?date='+string_date+'" width=\"'+(int_screenWidth/4)+'\" height=\"'+(int_screenWidth/5)+'\"/>';
+		$('#coverflow').html(text);
+
 		$('#coverflow').coverflow({
           		active: 2,
                 	select: function(event, ui){
 				portfolio_before = ui.index;
-				var path="{% static 'personal/img/program/' %}"+(ui.index+1)+".jpg";
+				var path=string_staticPath+'personal/img/program/'+(ui.index+1)+'.jpg?date='+string_date;
 				$(".coverflow_img").html("<img src=\""+path+"\"/ width=\"100%\">");
 			}
 		});
@@ -372,8 +381,6 @@
                 $('.feed').css('width',width-15);
 		$('.me img').css('width',width-10);
 		$('.me img').css('height',width-10);
-		$('#coverflow img').css('width',width/4);
-		$('#coverflow img').css('height',width/5);
 		$('.happy_container').css('width',width-10);
 	}
 	
@@ -570,13 +577,7 @@
 		<table class="experience"></table>
 		<br>
 		<div>
-	       		<div id="coverflow">
-				<img src="{% static 'personal/img/program/1.jpg' %}"/>
-				<img src="{% static 'personal/img/program/2.jpg' %}"/>
-				<img src="{% static 'personal/img/program/3.jpg' %}"/>
-				<img src="{% static 'personal/img/program/4.jpg' %}"/>
-				<img src="{% static 'personal/img/program/5.jpg' %}"/>
-	      		</div>
+	       		<div id="coverflow"></div>
 		</div>
 		<br>
 		<div class="coverflow_img"></div>
