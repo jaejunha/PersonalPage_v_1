@@ -14,7 +14,7 @@ $(document).ready( function() {
 	$('#activity_content').css('left',width+'px');
 	$('#activity_content').css('width',(width-200)+'px');
 
-	var height = $(window).height() - $('#content').offset().top;
+	var height = $(window).height() - $('#div_content').offset().top;
 	$('#activity_content').css('height',height+'px');
 	$('#favorite_content').css('height',height+'px');
 

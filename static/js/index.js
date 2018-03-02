@@ -28,25 +28,25 @@ function switchMenu(to,sub){
 
 	string_subMenu = '';
 	$('.span_loading').css('display','block');
-	$('#content').css('opacity','0');
+	$('#div_content').css('opacity','0');
 
 	if(to=='home'){
 		string_subMenu='home';
 		if(sub)
 			string_subMenu = sub;
-		$('#content').load('home/frame');
+		$('#div_content').load('home/frame');
 	}
 	else if(to=='about'){
-		$('#content').load('about/frame');
+		$('#div_content').load('about/frame');
 	}
 	else if(to=='portfolio'){
 		string_subMenu = 'program';		
 		if(sub)
 			string_subMenu = sub;
-		$('#content').load('portfolio/frame');
+		$('#div_content').load('portfolio/frame');
 	}
 	else if(to=='reference'){
-		$('#content').load('reference/frame');
+		$('#div_content').load('reference/frame');
 	}
 
 	if(to!='home'){
