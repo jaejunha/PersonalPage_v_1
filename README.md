@@ -52,8 +52,6 @@ static/personal/img/art/*.jpg
 ```
 ---
 # Coding Convention  
-In most cases, upper-case letters concatenates words.  
-When defining variables, an underline character separate role from sentences.   
 - variable  
 ```
 type_noun

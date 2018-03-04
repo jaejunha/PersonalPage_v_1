@@ -237,7 +237,7 @@
 	var int_previewOffset = 0;
 	var string_staticPath="{% static '/' %}";
 	var int_maxPreviewOffset = {{int_artWorkCount}}-4;
-	var int_artWorkCursor = 1;
+	var int_artWorkCursor = {{int_artWorkCount}};
 
 	$(document).ready( function() {
 		setSize();
@@ -341,7 +341,7 @@
 		});
 		$(".table_artController tr td:nth-of-type(n)").click(function(){
 			if($(this)[0].cellIndex%5!=0){
-				int_artWorkCursor = $(this)[0].cellIndex+int_previewOffset; 
+				int_artWorkCursor = {{int_artWorkCount}}-($(this)[0].cellIndex+int_previewOffset-1); 
 				updateArtWork(int_artWorkCursor);	
 			}
 		});
@@ -355,8 +355,8 @@
 		var date = new Date();
 		var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
 
-		for(var i=1;i<=4;i++)
-			$('.table_artController td:nth-of-type('+(i+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i+int_previewOffset)+".jpg?date="+string_date);
+		for(var i={{int_artWorkCount}}, j=1;j<=4;i--,j++)
+		$('.table_artController td:nth-of-type('+(j+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i-int_previewOffset)+".jpg?date="+string_date);
 	
 		$('.img_artWork').attr('src',string_staticPath+"personal/img/art/"+index+".jpg?date="+string_date);
 	}
