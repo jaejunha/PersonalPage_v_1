@@ -98,12 +98,6 @@ def portfolio_marathon(request):
 	marathon_experience = get_experience('marathon')
 	return render(request,'portfolio/marathon.html', {'marathon_experience':marathon_experience})
 
-def reference_frame(request):
-	return render(request,'reference/frame.html')
-
-def reference_reference(request):
-	return render(request,'reference/reference.html')
-
 def get_intro():
 	intro = []
         result = Intro.objects.filter()
