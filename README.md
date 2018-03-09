@@ -17,6 +17,10 @@ This is personal page to introduce myself.
 
 ---
 # Path  
+- favicon image  
+```
+static/personal/img/favicon.ico 
+```
 - logo image  
 ```
 static/personal/img/min_picture.jpg  
