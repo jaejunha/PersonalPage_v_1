@@ -5,7 +5,7 @@ $(document).ready( function() {
 	if(isMobile)
 		location.href='mobile';
 		switchMenu('home');
-		var bar = new ProgressBar.Circle(container, {
+		var bar = new ProgressBar.Circle(div_container, {
 			strokeWidth: 6,
   			easing: 'easeInOut',
   			duration: 1000,
@@ -16,7 +16,7 @@ $(document).ready( function() {
 		});
 		
 		bar.animate(1.0);
-		setTimeout(function(){$("#screen").remove();}, 1500);
+		setTimeout(function(){$("#div_screen").remove();}, 1500);
 
 		var int_menuWidth = $(window).width()-20; 
 		$('header').css('width',int_menuWidth);

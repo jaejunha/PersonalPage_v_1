@@ -6,14 +6,14 @@ body,html{
 	height:100%;
 	margin:0;
 }
-#canvas{
+#div_canvas{
 	position:absolute; 
 	background:#ffffff; 
 	width:100%; 
 	height:100%; 
 	z-index:-1;
 }
-#screen{ 
+#div_screen{ 
 	position:absolute; 
 	top:0%;
 	width:100%; 
@@ -25,7 +25,7 @@ body,html{
 
 	background:#000000;
 }
-#container {
+#div_container {
 	position:absolute;
 	top:0;
 	bottom:0;
@@ -35,7 +35,11 @@ body,html{
   	width: 200px;
   	height: 200px;
 }
-#loading{
+#span_loading{
+	display:none; 
+	margin:10px;
+}
+#div_loading{
 	opacity:0;
 	position: absolute;
 	left: 45%;
@@ -51,7 +55,7 @@ body,html{
 	z-index: -1;
 }
 
-#background{
+#img_background{
 	position:absolute;
 	min-width:1200px;
 	width:100%;
