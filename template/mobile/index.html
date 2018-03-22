@@ -355,9 +355,10 @@
 		var date = new Date();
 		var string_date = ''+date.getFullYear()+''+date.getMonth()+''+date.getDate();
 
-		for(var i={{int_artWorkCount}}, j=1;j<=4;i--,j++)
-		$('.table_artController td:nth-of-type('+(j+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i-int_previewOffset)+".jpg?date="+string_date);
-	
+		for(var i={{int_artWorkCount}}, j=1;j<=4;i--,j++){
+			$('.table_artController td:nth-of-type('+(j+1)+') img').attr("src","");
+			$('.table_artController td:nth-of-type('+(j+1)+') img').attr("src",string_staticPath+"personal/img/art/"+(i-int_previewOffset)+".jpg?date="+string_date);
+		}
 		$('.img_artWork').attr('src',string_staticPath+"personal/img/art/"+index+".jpg?date="+string_date);
 	}
 
