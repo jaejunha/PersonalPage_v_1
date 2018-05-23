@@ -95,7 +95,6 @@ header{
 }
 .li_outerMenu{
 	float:left;
-	font-size: 18pt;
 	line-height:60px;
 }
 .li_outerMenu:nth-of-type(1){
@@ -120,7 +119,6 @@ header{
 .ul_innerMenu{
 	padding:0;
 	margin: 0;
-	font-size: 14pt;
 	display:none;
 	list-style-type: none;
 }
