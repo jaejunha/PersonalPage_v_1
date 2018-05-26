@@ -1,7 +1,9 @@
 var bool_introWorking = true;
-var from = 0;//0:activity1:favorite
-var blink = 0;//activity button blink
-var switch_blink;//blink switch
+var from = 0;			//0:activity1:favorite
+var blink = 0;			//activity button blink
+var switch_blink;		//blink switch
+var int_margin = 100;
+var int_width;
 
 $(document).ready( function() {
 	var width = $(window).width();
@@ -59,22 +61,36 @@ $(document).ready( function() {
 	}
 });
 $(window).resize(function (){
+	int_width = $(window).width();
+	var int_height = $(window).height() - $('#activity_content').offset().top;
+	/*	While intro is running			*
+	 *	Order: index | activity | favorite	*/
 	if(bool_introWorking){
-		var width = $(window).width();
-		$('#favorite_content').css('left',width+'px');
-		$('#activity_content').css('left',width+'px');
-		$('#activity_content').css('width',(width-200)+'px');
+		$('#favorite_content').css('left',int_width+'px');
+		$('#activity_content').css('left',int_width+'px');
+		$('#activity_content').css('width',(int_width - 2*int_margin)+'px');
+	}
+	/*	When intro is ended			*/
+	else{
+		$('#activity_content').css('width',(int_width - 2*int_margin)+'px');
 
-		var height = $(window).height() - $('#activity_content').offset().top;
-		$('#activity_content').css('height',height+'px');
+	 	/*	Order: favorite | activity	*/
+		if(from == 1){
+			$('#activity_content').css('left',-int_width + int_margin + 'px');
+			$('#favorite_content').css('left',int_margin+'px');
+		}
+		/*	Order: activity | favorite	*/
+		else{
+			$('#activity_content').css('left',int_margin+'px');
+			$('#favorite_content').css('left',int_width+'px');
+		}
 	}
 
-	if(from == 0)
-		$('#favorite_content').css('left',$(window).width());
+	$('#activity_content').css('height',int_height+'px');
+	$('#favorite_content').css('height',int_height+'px');
 });
 function switchSubMenu(to){
-	var size = $(window).width();
-	var margin = 100;
+	int_width = $(window).width();
 	var favorite_content = $('#favorite_content');
 	var activity_content = $('#activity_content');
 	var intro_content = $('#intro_content');
@@ -87,11 +103,11 @@ function switchSubMenu(to){
 			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
 		}
 		if(to == 'activity'){			
-			activity_content.css('left',margin+'px');
+			activity_content.css('left',int_margin + 'px');
 		}
 		else{
-			activity_content.css('left',(-size+margin)+'px');	
-			favorite_content.css('left',margin+'px');
+			activity_content.css('left',(-int_width + int_margin)+'px');	
+			favorite_content.css('left',int_margin+'px');
 		}
 		if(to == 'activity'){
 			activity.css('color','#ffffff');
@@ -109,11 +125,11 @@ function switchSubMenu(to){
 			bool_introWorking = false;	
 			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
 			if(to == 'activity'){			
-				activity_content.animate({ left:margin+'px'},1500);
+				activity_content.animate({ left:int_margin+'px'},1500);
 			}
 			else{
-				activity_content.css('left',-size+margin+'px');	
-				favorite_content.animate({ left:margin+'px'},1500);
+				activity_content.css('left',-int_width+int_margin+'px');	
+				favorite_content.animate({ left:int_margin+'px'},1500);
 			}
 			if(to == 'activity'){
 				activity.css('color','#ffffff');
@@ -130,8 +146,8 @@ function switchSubMenu(to){
 			if(to == 'activity'){
 				if(from == 0)
 					return 0;
-				activity_content.animate({ left:margin+'px'},1500);
-				favorite_content.animate({ left:size+margin+'px'},1500);
+				activity_content.animate({ left:int_margin + 'px'},1500);
+				favorite_content.animate({ left:int_width + int_margin+'px'},1500);
 				activity.css('color','#ffffff');
 				favorite.css('color','#aaaaaa');
 				return 0;
@@ -139,8 +155,8 @@ function switchSubMenu(to){
 			else{
 				if(from == 1)
 					return 1;
-				activity_content.animate({ left:-size+margin+'px'},1500);
-				favorite_content.animate({ left:margin+'px'},1500);
+				activity_content.animate({ left:-int_width + int_margin + 'px'},1500);
+				favorite_content.animate({ left:int_margin + 'px'},1500);
 				activity.css('color','#aaaaaa');
 				favorite.css('color','#ffffff');
 				return 1;
