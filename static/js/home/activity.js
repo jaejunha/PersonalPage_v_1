@@ -21,14 +21,19 @@ $(document).ready( function() {
 			loadActivity(int_currentYear, int_currentMonth);
         	};
 		w.postMessage("Hello");
-	}		
+	}
+	
+	alertWidth();		
 });
 
-$(document).resize( function() {
-	$('#main').css('width',$(window).width()-200);
-
-	$(".exercise_desc").css('width',$('.calendar').width()-16);
+$(window).resize( function() {
+	alertWidth();
 });
+
+function alertWidth(){
+	if($(window).width() < 950)
+		alert('Width of screen is very short!');	
+}
 
 function loadActivity(year, month){
 	GitHubCalendar(".calendar", "jaejunha");
