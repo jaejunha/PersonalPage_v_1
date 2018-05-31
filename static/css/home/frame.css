@@ -3,7 +3,7 @@ body{
 	color:#ffffff;
 }
 #activity_content{
-	overflow-x:auto;
+	overflow-x:hidden;
 	overflow-y:auto;
 }
 #activity_content::-webkit-scrollbar {

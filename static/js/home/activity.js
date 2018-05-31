@@ -32,7 +32,9 @@ $(window).resize( function() {
 
 function alertWidth(){
 	if($(window).width() < 950)
-		alert('Width of screen is very short!');	
+		$('#activity_content').css('visibility','hidden');
+	else
+		$('#activity_content').css('visibility','visible');
 }
 
 function loadActivity(year, month){
