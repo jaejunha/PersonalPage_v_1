@@ -59,6 +59,7 @@ function switchMenu(to,sub){
 		$('#div_content').load('home/frame');
 	}
 	else if(to=='about'){
+		string_subMenu='about';
 		$('#div_content').load('about/frame');
 	}
 	else if(to=='portfolio'){

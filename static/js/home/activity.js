@@ -23,18 +23,19 @@ $(document).ready( function() {
 		w.postMessage("Hello");
 	}
 	
-	alertWidth();		
+	hideContent();		
 });
 
 $(window).resize( function() {
-	alertWidth();
+	if(string_subMenu=='home')
+		hideContent();
 });
 
-function alertWidth(){
+function hideContent(){
 	if($(window).width() < 950)
-		$('#activity_content').css('visibility','hidden');
+		$('#div_activity').css('visibility','hidden');
 	else
-		$('#activity_content').css('visibility','visible');
+		$('#div_activity').css('visibility','visible');
 }
 
 function loadActivity(year, month){

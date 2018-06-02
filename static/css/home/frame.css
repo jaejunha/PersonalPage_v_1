@@ -2,25 +2,25 @@ body{
 	background:#000000;
 	color:#ffffff;
 }
-#activity_content{
+#div_activity{
 	overflow-x:hidden;
 	overflow-y:auto;
 }
-#activity_content::-webkit-scrollbar {
+#div_activity::-webkit-scrollbar {
 	width:10px;
 }
-#activity_content::-webkit-scrollbar-thumb {
+#div_activity::-webkit-scrollbar-thumb {
 	background:#fff;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 	border-radius:10px;
 }
-#favorite_content{
+#div_favorite{
 	overflow-y:auto;
 }
-#favorite_content::-webkit-scrollbar {
+#div_favorite::-webkit-scrollbar {
 	width:10px;
 }  
-#favorite_content::-webkit-scrollbar-thumb{
+#div_favorite::-webkit-scrollbar-thumb{
 	background:#fff;
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 	border-radius:10px;
@@ -33,7 +33,7 @@ body{
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-#activity, #favorite{
+#a_activity, #a_favorite{
 	opacity: 0;
 	margin: 20px 10px 0 10px;
 	float:right;

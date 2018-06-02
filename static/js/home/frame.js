@@ -6,53 +6,54 @@ var int_margin = 100;
 var int_width;
 
 $(document).ready( function() {
-	int_width = $(window).width();
 	initContent();
 	resizeContent();
 	resizeTop();
 	initAnimation();
 });
 $(window).resize(function (){
-	int_width = $(window).width();
-	resizeContent();
-	resizeTop();
+	if(string_subMenu=='home'){
+		resizeContent();
+		resizeTop();
+	}
 });
 
 function initContent(){
-	$('#intro_content').load('home/intro');
-	$('#favorite_content').load('home/favorite');
-	$('#favorite_content').css('position','absolute');
-	$('#activity_content').load('home/activity');
-	$('#activity_content').css('position','absolute');
+	$('#div_intro').load('home/intro');
+	$('#div_favorite').load('home/favorite');
+	$('#div_favorite').css('position','absolute');
+	$('#div_activity').load('home/activity');
+	$('#div_activity').css('position','absolute');
 }
 function resizeContent(){
-	var int_height = $(window).height() - $('#activity_content').offset().top;
+	int_width = $(window).width();
+	var int_height = $(window).height() - $('#div_activity').offset().top;
 
 	/*	While intro is running			*
 	 *	Order: index | activity | favorite	*/
 	if(bool_introWorking){
-		$('#favorite_content').css('left',int_width+'px');
-		$('#activity_content').css('left',int_width+'px');
-		$('#activity_content').css('width',(int_width - 2*int_margin)+'px');
+		$('#div_favorite').css('left',int_width+'px');
+		$('#div_activity').css('left',int_width+'px');
+		$('#div_activity').css('width',(int_width - 2*int_margin)+'px');
 	}
 	/*	When intro is ended			*/
 	else{
-		$('#activity_content').css('width',(int_width - 2*int_margin)+'px');
+		$('#div_activity').css('width',(int_width - 2*int_margin)+'px');
 
 	 	/*	Order: favorite | activity	*/
 		if(from == 1){
-			$('#activity_content').css('left',-int_width + int_margin + 'px');
-			$('#favorite_content').css('left',int_margin+'px');
+			$('#div_activity').css('left',-int_width + int_margin + 'px');
+			$('#div_favorite').css('left',int_margin+'px');
 		}
 		/*	Order: activity | favorite	*/
 		else{
-			$('#activity_content').css('left',int_margin+'px');
-			$('#favorite_content').css('left',int_width+'px');
+			$('#div_activity').css('left',int_margin+'px');
+			$('#div_favorite').css('left',int_width+'px');
 		}
 	}
 
-	$('#activity_content').css('height',int_height+'px');
-	$('#favorite_content').css('height',int_height+'px');
+	$('#div_activity').css('height',int_height+'px');
+	$('#div_favorite').css('height',int_height+'px');
 }
 
 function resizeTop(){
@@ -61,8 +62,8 @@ function resizeTop(){
 
 	$('#div_content').css('width',int_width-2*int_margin);
 	$('#font_title').css('font-size',0.02*int_width+'pt');
-	$('#activity').css('font-size',0.01*int_width+'pt');
-	$('#favorite').css('font-size',0.01*int_width+'pt');
+	$('#a_activity').css('font-size',0.01*int_width+'pt');
+	$('#a_favorite').css('font-size',0.01*int_width+'pt');
 }
 
 function initAnimation(){
@@ -80,10 +81,10 @@ function initAnimation(){
 	if(home != 1){
 		$('#font_title').css('animation','appear_tab 0s');
 		$('#font_title').css('opacity','1');	
-		$('#favorite').css('animation','appear_tab 0s');
-		$('#favorite').css('opacity','1');
-		$('#activity').css('animation','appear_tab 0s');
-		$('#activity').css('opacity','1');
+		$('#a_favorite').css('animation','appear_tab 0s');
+		$('#a_favorite').css('opacity','1');
+		$('#a_activity').css('animation','appear_tab 0s');
+		$('#a_activity').css('opacity','1');
 		$('hr').css('animation','appear_tab 0s');
 		$('hr').css('opacity','1');	
 		$('#title').css('animation','appear_tab 0s');
@@ -93,9 +94,9 @@ function initAnimation(){
 		switch_blink = setInterval(function() {
 		blink++;
 		if(blink % 2 == 1)
-			$('#activity').css('color','#ffffff');
+			$('#a_activity').css('color','#ffffff');
 		else
-			$('#activity').css('color','#aaaaaa');
+			$('#a_activity').css('color','#aaaaaa');
 		}, 750);
 	}
 	home--;
@@ -107,23 +108,23 @@ function initAnimation(){
 
 function switchSubMenu(to){
 	int_width = $(window).width();
-	var favorite_content = $('#favorite_content');
-	var activity_content = $('#activity_content');
-	var intro_content = $('#intro_content');
-	var activity = $('#activity');
-	var favorite = $('#favorite');
+	var div_favorite = $('#div_favorite');
+	var div_activity = $('#div_activity');
+	var div_intro = $('#div_intro');
+	var activity = $('#a_activity');
+	var favorite = $('#a_favorite');
 
 	if(from < 0){
 		if(bool_introWorking){
 			bool_introWorking = false;
-			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
+			div_intro.animate({ opacity:0},1500,function(){div_intro.remove();});
 		}
 		if(to == 'activity'){			
-			activity_content.css('left',int_margin + 'px');
+			div_activity.css('left',int_margin + 'px');
 		}
 		else{
-			activity_content.css('left',(-int_width + int_margin)+'px');	
-			favorite_content.css('left',int_margin+'px');
+			div_activity.css('left',(-int_width + int_margin)+'px');	
+			div_favorite.css('left',int_margin+'px');
 		}
 		if(to == 'activity'){
 			activity.css('color','#ffffff');
@@ -139,13 +140,13 @@ function switchSubMenu(to){
 	else{
 		if(bool_introWorking){	
 			bool_introWorking = false;	
-			intro_content.animate({ opacity:0},1500,function(){intro_content.remove();});
+			div_intro.animate({ opacity:0},1500,function(){div_intro.remove();});
 			if(to == 'activity'){			
-				activity_content.animate({ left:int_margin+'px'},1500);
+				div_activity.animate({ left:int_margin+'px'},1500);
 			}
 			else{
-				activity_content.css('left',-int_width+int_margin+'px');	
-				favorite_content.animate({ left:int_margin+'px'},1500);
+				div_activity.css('left',-int_width+int_margin+'px');	
+				div_favorite.animate({ left:int_margin+'px'},1500);
 			}
 			if(to == 'activity'){
 				activity.css('color','#ffffff');
@@ -162,8 +163,8 @@ function switchSubMenu(to){
 			if(to == 'activity'){
 				if(from == 0)
 					return 0;
-				activity_content.animate({ left:int_margin + 'px'},1500);
-				favorite_content.animate({ left:int_width + int_margin+'px'},1500);
+				div_activity.animate({ left:int_margin + 'px'},1500);
+				div_favorite.animate({ left:int_width + int_margin+'px'},1500);
 				activity.css('color','#ffffff');
 				favorite.css('color','#aaaaaa');
 				return 0;
@@ -171,8 +172,8 @@ function switchSubMenu(to){
 			else{
 				if(from == 1)
 					return 1;
-				activity_content.animate({ left:-int_width + int_margin + 'px'},1500);
-				favorite_content.animate({ left:int_margin + 'px'},1500);
+				div_activity.animate({ left:-int_width + int_margin + 'px'},1500);
+				div_favorite.animate({ left:int_margin + 'px'},1500);
 				activity.css('color','#aaaaaa');
 				favorite.css('color','#ffffff');
 				return 1;
