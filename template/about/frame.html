@@ -4,39 +4,12 @@
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?ver=0.1"/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/about/menu.css' %}?ver=0.1"/>
-<style>
-	body{
-		background:#000000;
-		color:#ffffff;
-	}
-	pre {	white-space: pre-wrap;
-		font-size:15pt; 
-		font-family:'Montserrat', sans-serif;
-		margin-bottom:-10pt;
-	}
-	#inner_content{
-		overflow-y:auto;
-	}
-	#inner_content::-webkit-scrollbar {
-		width:10px;
-	}
-	#inner_content::-webkit-scrollbar-thumb {
-		background:#fff;
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-                border-radius:10px;
-        } 
-</style>
-<script type="text/javascript">
-	$(document).ready( function() {
-		var size = $(window).height() - $('#div_content').offset().top;
-		$('#inner_content').css('height',size+'px');
-		$('#inner_content').load('about/personal');
-	});
-		</script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/about/frame.css' %}?ver=0.1"/>
+<script type="text/javascript" src="{% static 'js/about/frame.js' %}?ver=0.1"></script>
 </head>
 <body>	
 	<font id="title">Me</font>
 	<hr/>
-	<div id="inner_content"></div>
+	<div id="div_inner"></div>
 </body>
 </html>

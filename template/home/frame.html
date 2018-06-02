@@ -2,16 +2,16 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/frame.css' %}?ver=0.7"/>
-<script type="text/javascript" src="{% static 'js/home/frame.js' %}?ver=1.1"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/frame.css' %}?ver=0.8"/>
+<script type="text/javascript" src="{% static 'js/home/frame.js' %}?ver=1.2"></script>
 </head>
 <body>	
 	<font id="font_title">Dreamline91's Page</font>
-	<a id="favorite" href="javascript:from = switchSubMenu('favorite');clearInterval(switch_blink);">Favorite</a>
-	<a id="activity" href="javascript:from = switchSubMenu('activity');clearInterval(switch_blink);">Activity</a>
+	<a id="a_favorite" href="javascript:from = switchSubMenu('favorite');clearInterval(switch_blink);">Favorite</a>
+	<a id="a_activity" href="javascript:from = switchSubMenu('activity');clearInterval(switch_blink);">Activity</a>
 	<hr/>
-	<div id="intro_content"></div>
-	<div id="favorite_content"></div>
-	<div id="activity_content"></div>
+	<div id="div_intro"></div>
+	<div id="div_favorite"></div>
+	<div id="div_activity"></div>
 </body>
 </html>

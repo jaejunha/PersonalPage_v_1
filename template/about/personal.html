@@ -2,42 +2,8 @@
 {% load staticfiles %}
 <html>
 <head>
-<style>
-	body{
-		background:#000000;
-		color:#ffffff;
-		font-family:'Montserrat', sans-serif;
-		font-size:15pt;
-	}
-	td{
-		vertical-align:top;
-	}
-	tr td:nth-child(1){
-		width:200px;
-		font-weight:bold;
-	}
-	td a, td a:hover{
-		color:#ffffff;
-		text-decoration: none;	
-	}
-	.div_happyContent{
-		background:rgba(255,255,255,0.5);
-		border:solid 1 white;
-		padding:10px;
-		border-width: 2px;
-		border-color: #fff;
-		border-style: solid;
-		border-radius:5px;
-	}
-	.ct-horizontal, .ct-vertical {
-    		color:#ffffff;
-	}
-	.ct-grid {
-  		stroke: rgba(255,255,255,0.5);
-  		stroke-width: 2px;
-	}
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/about/personal.css' %}?ver=0.1"/>
+<script type="text/javascript" src="{% static 'js/about/personal.js' %}?ver=0.1"></script>
 <script>
 	var year;
 	var value;
@@ -59,19 +25,6 @@
 			array_value[{{forloop.counter0}}]={{h.3}};
 		{% endfor %}
 	});
-
-	function expandTable(name){
-		var status=$('.'+name+' td:nth-child(1) a').text();
-		if(status.indexOf('▶')>-1){
-			$('.'+name+' td:nth-child(1) a').text(status.replace('▶','▼'));
-			$('.'+name.replace('history','content')).css('display','');
-			$('.'+name.replace('history','content')).css('font-size','12pt');
-		}
-		else{
-			$('.'+name+' td:nth-child(1) a').text(status.replace('▼','▶'));
-			$('.'+name.replace('history','content')).css('display','none');
-		}
-	}
 </script>
 </head>
 <body>
