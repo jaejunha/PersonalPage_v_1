@@ -59,7 +59,7 @@ function resizeContent(){
 function resizeTop(){
 	if(int_width < 650){
 		$('#a_activity').css('display','none');
-		$('#a_favorite').css('display','none');	
+		$('#a_favorite').css('display','none');
 	}else{
 		$('#a_activity').css('display','block');
 		$('#a_favorite').css('display','block');

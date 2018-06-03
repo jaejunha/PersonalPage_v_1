@@ -1,9 +1,7 @@
-#title{
+#font_title{
 	font-family: 'Poiret One', cursive;
 	font-size: 30pt;
-	width:300px; 
-	}
+}
 hr { 
 	border: solid 1px #aaaaaa;
-	margin-top:20px;
 }

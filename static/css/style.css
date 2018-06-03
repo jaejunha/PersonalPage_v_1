@@ -1,14 +1,8 @@
-#title{
+#font_title{
 	font-family:'Poiret One', cursive; 
-	font-size: 27pt;
-	width:300px;
-	animation: appear_tab 10s; 
-	animation-fill-mode: both;  
-	}
+	font-size: 30pt;
+}
 
 hr { 
 	border: solid 1px #aaaaaa;
-	margin-top:20px;
-	animation: appear_tab 10s; 
-	animation-fill-mode: both; 
 }
