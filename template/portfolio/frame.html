@@ -2,47 +2,16 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?ver=0.1"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/menu.css' %}?ver=0.3"/>
-<script type="text/javascript" src="{% static 'js/portfolio/portfolio.js' %}?ver=0.3"></script>
-<style>
-	body{
-		background:#000000;
-		color:#ffffff;
-	}
-	pre {	white-space: pre-wrap;
-		font-size:15pt; 
-		font-family:'Montserrat', sans-serif;
-		margin-bottom:-10pt;
-	}
-	#div_inner{
-		overflow-y:auto;
-	}
-	#div_inner::-webkit-scrollbar {
-		width:10px;
-	} 
-	#div_inner::-webkit-scrollbar-thumb {
-		background:#fff;
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-                border-radius:10px;
-	}
-</style>
-<script type="text/javascript">
-	$(document).ready( function() {
-		var size = $(window).height() - $('#div_content').offset().top;
-		$('#div_inner').css('height',size+'px');
-		
-		$('.a_'+string_subMenu).css('color','#ffffff');
-		$('.a_'+string_subMenu).css('opacity',1);
-		$('#div_inner').load('portfolio/'+string_subMenu);
-	});
-</script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?ver=0.2"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/portfolio/frame.css' %}?ver=0.1"/>
+<script type="text/javascript" src="{% static 'js/portfolio/frame.js' %}?ver=0.1"></script>
+<script type="text/javascript" src="{% static 'js/portfolio/portfolio.js' %}?ver=0.4"></script>
 </head>
 <body>	
-	<font id="title">Portfolio</font>
-	<a class="a_marathon" href="javascript:switchSubMenu('marathon');">Marathon</a>
-	<a class="a_art" href="javascript:switchSubMenu('art');">Art</a>
-	<a class="a_program" href="javascript:switchSubMenu('program');">Program</a>
+	<font id="font_title">Portfolio</font>
+	<a id="a_marathon" href="javascript:switchSubMenu('marathon');">Marathon</a>
+	<a id="a_art" href="javascript:switchSubMenu('art');">Art</a>
+	<a id="a_program" href="javascript:switchSubMenu('program');">Program</a>
 	<hr/>
 	<div id="div_inner"></div>
 </body>
