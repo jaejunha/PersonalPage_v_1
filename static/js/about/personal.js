@@ -1,3 +1,8 @@
+$(document).ready( function() {
+	if(string_subMenu=='about')
+		hideContent();
+});
+
 $(window).resize( function() {
 	if(string_subMenu=='about')
 		hideContent();

@@ -7,9 +7,11 @@ var int_width;
 
 $(document).ready( function() {
 	initContent();
-	resizeContent();
-	resizeTop();
-	initAnimation();
+	setTimeout(function() {  
+		resizeContent();
+		resizeTop();
+		initAnimation();
+	}, 100);
 });
 $(window).resize(function (){
 	if(string_subMenu=='home'){

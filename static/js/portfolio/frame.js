@@ -4,8 +4,10 @@ var int_margin = 100;
 $(document).ready( function() {
 
 	initContent();
-	resizeContent();
-	resizeTop();
+	setTimeout(function() {  
+		resizeContent();
+		resizeTop();
+	}, 100);
 });
 
 $(window).resize(function (){
