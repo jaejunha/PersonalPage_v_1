@@ -12,7 +12,7 @@ $(window).resize(function (){
 
 function resize(){
 	int_width = $(window).width()-2*int_margin;
-	$('#main').css('width',int_width);
+	$('#p_main').css('width',int_width);
 
 	$('a').css('text-decoration','none');
 

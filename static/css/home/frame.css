@@ -3,6 +3,7 @@ body{
 	color:#ffffff;
 }
 #div_activity{
+	position:absolute;
 	overflow-x:hidden;
 	overflow-y:auto;
 }
@@ -15,6 +16,7 @@ body{
 	border-radius:10px;
 }
 #div_favorite{
+	position:absolute;
 	overflow-y:auto;
 }
 #div_favorite::-webkit-scrollbar {

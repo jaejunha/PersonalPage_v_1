@@ -1,5 +1,7 @@
 var int_width;
-var int_margin = 100;
+var int_height;
+var int_marginLeft = 100;
+var int_marginTop = 40;
 
 $(document).ready( function() {
 	initContent();
@@ -22,11 +24,11 @@ function initContent(){
 
 function resizeContent(){
 	int_width = $(window).width();
-	var int_height = $(window).height() - $('#div_inner').offset().top;	
-$('#div_inner').css('width',(int_width - 2*int_margin)+'px');
-	$('#div_inner').css('height',int_height+'px');
+	int_height = $(window).height();	
+	$('#div_inner').css('width', (int_width - 2*int_marginLeft)+'px');
+	$('#div_inner').css('height', (int_height - $('hr').offset().top +$('hr').height()+ int_marginTop) +'px');
 }
 function resizeTop(){
 	if(int_width > 650)
-		$('hr').css('width',int_width-2*int_margin);
+		$('hr').css('width',int_width-2*int_marginLeft);
 }

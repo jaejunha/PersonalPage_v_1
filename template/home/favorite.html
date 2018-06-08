@@ -2,11 +2,11 @@
 {% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.3"></script>
+<script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.4"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home/favorite.css' %}?ver=0.2"/>
 </head>
 <body>
-	<p id="main">
+	<p id="p_main">
 		<span style="font-size:20pt;">My favorite sites</span>
 		{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">

@@ -1,5 +1,7 @@
 var int_width;
-var int_margin = 100;
+var int_height;
+var int_marginLeft = 100;
+var int_marginTop = 40;
 
 $(document).ready( function() {
 
@@ -25,10 +27,10 @@ function initContent(){
 
 function resizeContent(){
 	int_width = $(window).width();
-	var int_height = $(window).height() - $('#div_inner').offset().top;
+	int_height = $(window).height();
 
-	$('#div_inner').css('width',(int_width - 2*int_margin)+'px');
-	$('#div_inner').css('height',int_height+'px');
+	$('#div_inner').css('width',(int_width - 2*int_marginLeft)+'px');
+	$('#div_inner').css('height',int_height - $('hr').offset().top+ $('hr').height() + int_marginTop +'px');
 }
 
 function resizeTop(){
@@ -40,9 +42,9 @@ function resizeTop(){
 		$('#a_program').css('display','block');
 		$('#a_art').css('display','block');
 		$('#a_marathon').css('display','block');
-		$('hr').css('width',int_width-2*int_margin);
+		$('hr').css('width',int_width-2*int_marginLeft);
 
-		$('#div_content').css('width',int_width-2*int_margin);
+		$('#div_content').css('width',int_width-2*int_marginLeft);
 		$('#a_program').css('font-size',0.01*int_width+'pt');
 		$('#a_program').css('margin-top',$('#font_title').height()-$('#a_program').height());
 		$('#a_art').css('font-size',0.01*int_width+'pt');
