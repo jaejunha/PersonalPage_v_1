@@ -1,4 +1,4 @@
-$(document).ready( function() {
+ï»¿$(document).ready( function() {
 	if(string_subMenu=='about')
 		hideContent();
 });
@@ -16,13 +16,13 @@ function hideContent(){
 
 function expandTable(name){
 	var status=$('.'+name+' td:nth-child(1) a').text();
-	if(status.indexOf('¢º')>-1){
-		$('.'+name+' td:nth-child(1) a').text(status.replace('¢º','¡å'));
+	if(status.indexOf('â–¶')>-1){
+		$('.'+name+' td:nth-child(1) a').text(status.replace('â–¶','â–¼'));
 		$('.'+name.replace('history','content')).css('display','');
 		$('.'+name.replace('history','content')).css('font-size','12pt');
 	}
 	else{
-		$('.'+name+' td:nth-child(1) a').text(status.replace('¡å','¢º'));
+		$('.'+name+' td:nth-child(1) a').text(status.replace('â–¼','â–¶'));
 		$('.'+name.replace('history','content')).css('display','none');
 	}
 }

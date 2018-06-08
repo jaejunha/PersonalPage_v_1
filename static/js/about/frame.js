@@ -1,4 +1,4 @@
-var int_width;
+﻿var int_width;
 var int_height;
 var int_marginLeft = 100;
 var int_marginTop = 40;
