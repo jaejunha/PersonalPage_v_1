@@ -15,9 +15,7 @@
 		font-weight:bold;
 		width:200px;
 	}
-	b{
-		color:#ffff00;
-	}
+	b{ color:#ffff00; }
 	.coverflow_upper{
 		display:block;
 		width:70%;
@@ -38,9 +36,7 @@
 		background: -webkit-radial-gradient(ellipse, rgba(0,0,0,1), rgba(255,255,255,0));
 		background: radial-gradient(ecllipse, rgba(0,0,0,1), rgba(255,255,255,0));
 	}
-        .ui-state-active{
-       		border: 0px;
-	}
+        .ui-state-active{ border: 0px; }
 	#coverflow img{
 		width: 400px;
 		height: 300px;
@@ -51,9 +47,7 @@
 		display:block;
 		margin:auto;
 	}
-	.desc{
-		margin:0 0 50px 0;
-	}
+	.div_detail{ margin:0 0 50px 0; }
 </style>
 <script>
 var portfolio_before = 1;
@@ -85,11 +79,11 @@ $(document).ready(function(){
                 active: 1,
                 select: function(event, ui){
 			portfolio_before = ui.index;
-			$(".desc .name").text(ui.index+" item");
+			$(".div_detail .name").text(ui.index+" item");
 
 			var path=string_staticPath+'personal/img/program/'+(ui.index+1)+'.jpg?date='+string_date;
 			$(".image").html("<img src=\""+path+"\"/>");
-		//	$(".desc table tr:nth-child(1) td:nth-child(2)").text(ui.index);
+		//	$(".div_detail table tr:nth-child(1) td:nth-child(2)").text(ui.index);
 		}
 	});
 });
@@ -102,9 +96,9 @@ $(document).ready(function(){
 	<div>
 	       <div id="coverflow"></div>
 	</div><br>
-	<span style="font-size:20pt;">Description</span></br>
+	<span style="font-size:20pt;">div_detailription</span></br>
 	<br>
-	<div class="desc">
+	<div class="div_detail">
 		<span class="name" style="font-size:20pt;"></span><br>
 		<br>
 		<div class="image">
