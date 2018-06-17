@@ -11,7 +11,7 @@
 	var static_intro2 = "{{intro.2}}";
 	var static_intro3 = "{{intro.3}}";
 </script>
-<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=0.1"></script>
+<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=0.2"></script>
 </head>
 <body>	
 	<p id="first"></p>
@@ -26,11 +26,12 @@
 		if(home == 1)
 			setTimeout(function() { loadThree(); }, 1000);
 		else{
-			bool_star = true;
+			index_star = 0;
 			index_bird = 0;
 			loadThree();
 		}
 		function loadThree(){
+			bool_animate = true;
 			time_start = new Date().getTime();
 
 			clock = new THREE.Clock();

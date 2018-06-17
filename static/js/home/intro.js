@@ -1,11 +1,9 @@
 var clock, camera, scene, renderer;
 
-var mixer_star, mixer_bird;
-var action;
-
+/* mixers and bool_animate are located at index.js */
+var action_star, action_bird;
+var index_star = 0, index_bird = 0;
 var time_start;
-var bool_star = true;
-
 var int_threeScale = 1.5;
 
 $(document).ready( function() {
@@ -34,19 +32,20 @@ function loadStar(){
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
 		mixer_star = new THREE.AnimationMixer(model);
-		action = new Array(geometry.animations.length);
+		action_star = new Array(geometry.animations.length);
 
-		for(var i = 0; i < action.length; i++){
-			action[i] = mixer_star.clipAction(geometry.animations[i]);
-			action[i].setEffectiveWeight(1);
-			action[i].enabled = true;
-			action[i].setLoop(THREE.LoopOnce, 0);
-    			action[i].play();
+		for(var i = 0; i < action_star.length; i++){
+			action_star[i] = mixer_star.clipAction(geometry.animations[i]);
+			action_star[i].setEffectiveWeight(1);
+			action_star[i].enabled = true;
+			if(i == 0)
+				action_star[i].setLoop(THREE.LoopOnce, 0);
 		}
 		scene.add(model);
 		window.addEventListener('resize', onWindowResize, false);
 
-		animate_star();
+    		action_star[index_star].play();
+		animate();
 	});
 }
 
@@ -55,26 +54,31 @@ function loadBird(){
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
 		mixer_bird = new THREE.AnimationMixer(model);
-		action = new Array(geometry.animations.length);
-		for(var i = 0; i < action.length; i++){
-			action[i] = mixer_bird.clipAction(geometry.animations[i]);
-			action[i].setEffectiveWeight(1);
-			action[i].enabled = true;
+		action_bird = new Array(geometry.animations.length);
+		for(var i = 0; i < action_bird.length; i++){
+			action_bird[i] = mixer_bird.clipAction(geometry.animations[i]);
+			action_bird[i].setEffectiveWeight(1);
+			action_bird[i].enabled = true;
 		}
 		scene.add(model);
 
 		window.addEventListener('resize', onWindowResize, false);
 
-    		action[index_bird].play();
-		animate_bird();
+    		action_bird[index_bird].play();
+		animate();
 	});
 }
 
-function changeAction () {
-	var from = action[index_bird].play();
-	index_bird++;
-	index_bird %= action.length;
-	var to = action[index_bird].play();
+function changeAction (type) {
+	var from, to;
+	if(type == 0){
+		from = action_star[index_star - 1].play();
+		to = action_star[index_star].play();
+	}
+	else{
+		from = action_bird[index_bird - 1].play();
+		to = action_bird[index_bird].play();
+	}
 
   	from.enabled = true;
   	to.enabled = true;
@@ -95,28 +99,27 @@ function onWindowResize () {
 	$('#div_threejs canvas').css('margin-left',int_marginLeft+'px');
 }
 
-function animate_star() {
-	if(bool_star){
-		if(new Date().getTime() - time_start < 2000){
-			requestAnimationFrame(animate_star);
-			mixer_star.update(clock.getDelta());
- 			renderer.render(scene, camera);
+function animate() {
+	if(bool_animate == false)
+		return ;
+	requestAnimationFrame(animate);
+	if(mixer_star != undefined){
+		if(index_star == 0){
+			if(new Date().getTime() - time_start > 2000){
+				loadBird();
+				mixer_star = undefined;
+			}
 		}
-		else{
-			bool_star = false;
-			loadBird();
-		}
+		mixer_star.update(clock.getDelta());
 	}
-}
-
-function animate_bird() {
-	if(index_bird >= 0){
+	if(mixer_bird != undefined){
 		if(index_bird == 0){
-			if(new Date().getTime() - time_start < 4000)
-				changeAction();
+			if(new Date().getTime() - time_start < 4000){
+				index_bird++;
+				changeAction(1);
+			}
 		}
-		requestAnimationFrame(animate_bird);
 		mixer_bird.update(clock.getDelta());
-		renderer.render(scene, camera);
 	}
+	renderer.render(scene, camera);
 }

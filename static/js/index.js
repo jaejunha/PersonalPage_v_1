@@ -1,6 +1,7 @@
 var home = 1;
 var string_subMenu;
-var index_bird = 0;
+var mixer_star, mixer_bird;
+var bool_animate = false;
 
 $(document).ready( function() {
 	checkMobile();
@@ -49,9 +50,10 @@ function resizeHeader(){
 }
 
 function switchMenu(to,sub){
-	if(home!=1)
-		index_bird = -1;
-
+	if(home!=1){
+		bool_animate = false;
+		mixer_star = mixer_bird = undefined;
+	}
 	string_subMenu = '';
 	$('.span_loading').css('display','block');
 	$('#div_content').css('opacity','0');

@@ -122,6 +122,8 @@ function initAnimation(){
 }
 
 function switchSubMenu(to){
+	bool_animate = false;
+
 	int_width = $(window).width();
 	var div_favorite = $('#div_favorite');
 	var div_activity = $('#div_activity');
