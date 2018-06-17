@@ -1,5 +1,7 @@
 var home = 1;
 var string_subMenu;
+var index_bird = 0;
+
 $(document).ready( function() {
 	checkMobile();
 	showIntro();
@@ -47,6 +49,8 @@ function resizeHeader(){
 }
 
 function switchMenu(to,sub){
+	if(home!=1)
+		index_bird = -1;
 
 	string_subMenu = '';
 	$('.span_loading').css('display','block');

@@ -57,6 +57,8 @@ function resizeContent(){
 	}
 	$('#div_activity').css('height',int_height-$('hr').offset().top+$('hr').height()+int_marginTop+'px');
 	$('#div_favorite').css('height',int_height-$('hr').offset().top+$('hr').height()+int_marginTop+'px');
+	$('#div_activity').css('top',$('hr').offset().top+$('hr').height()+int_marginTop+'px');
+	$('#div_favorite').css('top',$('hr').offset().top+$('hr').height()+int_marginTop+'px');
 }
 
 function resizeTop(){
@@ -102,7 +104,6 @@ function initAnimation(){
 		$('hr').css('animation','appear_tab 0s');
 		$('hr').css('opacity','1');	
 		$('#title').css('animation','appear_tab 0s');
-		$('#bird').css('animation','appear_bird 0s');
 		clearInterval(switch_blink);
 	}else{
 		switch_blink = setInterval(function() {
