@@ -2,46 +2,16 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=0.4"/>
-<script type="text/javascript">
-	
-	$(document).ready( function() {
-		$('.span_loading').css('display','none');
-		$('#div_content').animate({opacity:1}, 1000);
-		//delete animation
-		if(home < 0){
-			$('#bird').css('animation','appear_bird 0s');
-			$('#bird').css('top','40%');
-			$('#bird').css('left','30%');
-			$('#bird').css('opacity','1');
-			$('#gradation').css('animation','appear_gradation 0s');
-			$('#gradation').css('transform','scale(2,2)');
-			$('#gradation').css('left','30%');
-			$('#gradation').css('opacity','0.6');
-			$('#first').css('animation','appear_introduce 0s');
-			$('#first').css('opacity','1');
-			$('#second').css('animation','appear_introduce 0s');
-			$('#second').css('opacity','1');
-			$('#third').css('animation','appear_introduce 0s');
-			$('#third').css('opacity','1');
-			$('#fourth').css('animation','appear_introduce 0s');
-			$('#fourth').css('opacity','1');
-		}
-		var text = "{{intro.0}}";
-		$('#first').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-		text="{{intro.1}}";
-		$('#second').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-		text="{{intro.2}}";
-		$('#third').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-		text="{{intro.3}}";
-		$('#fourth').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-	});
-	$(window).resize(function (){
-		if(from == 0)
-			resize('frame');
-	});
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=0.5"/>
+<script>
+	var static_star = "{% static 'personal/model/star.json' %}";
+	var static_bird = "{% static 'personal/model/bird.json' %}";
+	var static_intro0 = "{{intro.0}}";
+	var static_intro1 = "{{intro.1}}";
+	var static_intro2 = "{{intro.2}}";
+	var static_intro3 = "{{intro.3}}";
 </script>
+<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=0.1"></script>
 </head>
 <body>	
 	<p id="first"></p>
@@ -50,8 +20,48 @@
 	<p id="third"><br>
 	</p>
 	<p id="fourth"></p>
-	</div>	
-	<img id="gradation" src="{% static 'img/gradation.png' %}"/>
-	<img id="bird" src="{% static 'personal/img/bird.png' %}"/>
+	</div>
+	<div id="div_threejs"></div>
+	<script>
+		if(home == 1)
+			setTimeout(function() { loadThree(); }, 1000);
+		else{
+			bool_star = true;
+			index_bird = 0;
+			loadThree();
+		}
+		function loadThree(){
+			time_start = new Date().getTime();
+
+			clock = new THREE.Clock();
+			scene = new THREE.Scene();
+
+			renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+			renderer.setPixelRatio(window.devicePixelRatio);
+			var int_width = $(window).width()-200;
+			var int_height = $(window).height()-$('header').offset().top-$('header').height()-$('#div_content').offset().top-$('#div_content').height();
+			var int_marginTop = -int_height*(int_threeScale - 1);
+			var int_marginLeft = -int_width*(int_threeScale - 1)/2;
+			$('#div_threejs').css('height',int_height);
+			renderer.setSize(int_width*int_threeScale, int_height*int_threeScale);
+
+			$('#div_threejs').append(renderer.domElement);
+			$('#div_threejs').css('overflow','hidden');
+			$('#div_threejs canvas').css('margin-top',int_marginTop+'px');
+			$('#div_threejs canvas').css('margin-left',int_marginLeft+'px');
+
+			camera = new THREE.PerspectiveCamera(60, int_width / int_height, 0.1, 1000);
+			camera.position.set(0, 10, 25);
+
+			 var ambient = new THREE.AmbientLight(0xffffff, 1);
+	  		scene.add(ambient);
+
+			var spot = new THREE.SpotLight(0xFFFFFF);
+			spot.position.set(-45,90,30);  
+			scene.add(spot); 
+
+			loadStar();			
+		}
+	</script>
 </body>
 </html>

@@ -29,9 +29,13 @@ static/personal/img/min_picture.jpg
 ```
 static/personal/img/background.jpg  
 ```
-- intro bird image  
+- bird 3D model  
 ```
-static/personal/img/bird.png  
+static/personal/model/bird.json  
+```
+- star 3D model  
+```
+static/personal/model/star.json  
 ```
 - profile image  
 ```
@@ -95,6 +99,14 @@ http://caseyscarborough.com/projects/github-activity/
 - jQuery  
 ```
 https://jquery.com/download/  
+```
+- Three.js
+```
+https://threejs.org 
+```
+- Blender export
+```
+http://unboring.net/workflows/animation.html 
 ```
 - Chartist  
 ```
