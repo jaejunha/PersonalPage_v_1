@@ -3,18 +3,19 @@ var clock, camera, scene, renderer;
 /* mixers and bool_animate are located at index.js */
 var action_star, action_bird;
 var index_star = 0, index_bird = 0;
-var time_start;
+var time_start, time_now;
 var int_threeScale = 1.5;
+var double_delta;
 
 $(document).ready( function() {
 	$('.span_loading').css('display','none');
 	$('#div_content').animate({opacity:1}, 1000);
 
-	if(home < 0){
-			$('#first').css('animation-delay','5s');
-			$('#second').css('animation-delay','5.6s');
-			$('#third').css('animation-delay','6.1s');
-			$('#fourth').css('animation-delay','6.6s');
+	if(home < 1){
+			$('#first').css('animation-delay','4.6s');
+			$('#second').css('animation-delay','5.1s');
+			$('#third').css('animation-delay','5.6s');
+			$('#fourth').css('animation-delay','6.1s');
 	}
 
 	$('#first').html(static_intro0.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
@@ -38,8 +39,7 @@ function loadStar(){
 			action_star[i] = mixer_star.clipAction(geometry.animations[i]);
 			action_star[i].setEffectiveWeight(1);
 			action_star[i].enabled = true;
-			if(i == 0)
-				action_star[i].setLoop(THREE.LoopOnce, 0);
+			action_star[i].setLoop(THREE.LoopOnce, 0);
 		}
 		scene.add(model);
 		window.addEventListener('resize', onWindowResize, false);
@@ -69,20 +69,20 @@ function loadBird(){
 	});
 }
 
-function changeAction (type) {
+function changeAction (type, sec) {
 	var from, to;
-	if(type == 0){
+	if(type == 'star'){
 		from = action_star[index_star - 1].play();
 		to = action_star[index_star].play();
 	}
-	else{
+	else if(type == 'bird'){
 		from = action_bird[index_bird - 1].play();
 		to = action_bird[index_bird].play();
 	}
 
   	from.enabled = true;
   	to.enabled = true;
-	from.crossFadeTo(to, 4);
+	from.crossFadeTo(to, sec);
 }
 
 function onWindowResize () {
@@ -102,24 +102,48 @@ function onWindowResize () {
 function animate() {
 	if(bool_animate == false)
 		return ;
-	requestAnimationFrame(animate);
+	double_delta = clock.getDelta();
+	time_now = new Date().getTime();
 	if(mixer_star != undefined){
 		if(index_star == 0){
-			if(new Date().getTime() - time_start > 2000){
+			if(time_now - time_start > 2000){
+				index_star = -1;
 				loadBird();
-				mixer_star = undefined;
 			}
 		}
-		mixer_star.update(clock.getDelta());
+		else if(index_star == -1){
+			if(time_now - time_start > 5000){
+				index_star = 1;
+				changeAction('star', 0.2);
+			}
+		}
+		else if(index_star == 1){
+			if(time_now - time_start > 7000)
+				mixer_star = undefined;
+		}
+		mixer_star.update(double_delta);
 	}
 	if(mixer_bird != undefined){
 		if(index_bird == 0){
-			if(new Date().getTime() - time_start < 4000){
+			if(time_now - time_start > 3000){
 				index_bird++;
-				changeAction(1);
+				changeAction('bird', 0.2);
 			}
 		}
-		mixer_bird.update(clock.getDelta());
+		else if(index_bird == 1){
+			if(time_now - time_start > 5000){
+				index_bird++;
+				changeAction('bird', 0.2);
+			}
+		}
+		else if(index_bird == 2){
+			if(time_now - time_start > 7000){
+				index_bird++;
+				changeAction('bird', 0.2);
+			}
+		}
+		mixer_bird.update(double_delta);
 	}
+	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
