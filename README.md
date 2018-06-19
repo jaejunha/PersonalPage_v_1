@@ -87,6 +87,8 @@ getVariable()
 ```
 ---
 # Refer  
+I stored opensources at `static/external`   
+<br>
 - Git chart  
 ```
 http://ghchart.rshah.org  
