@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=0.5"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=0.6"/>
 <script>
 	var static_star = "{% static 'personal/model/star.json' %}";
 	var static_bird = "{% static 'personal/model/bird.json' %}";
@@ -40,20 +40,16 @@
 			renderer.setPixelRatio(window.devicePixelRatio);
 			var int_width = $(window).width()-200;
 			var int_height = $(window).height()-$('header').offset().top-$('header').height()-$('#div_content').offset().top-$('#div_content').height();
-			var int_marginTop = -int_height*(int_threeScale - 1);
-			var int_marginLeft = -int_width*(int_threeScale - 1)/2;
 			$('#div_threejs').css('height',int_height);
-			renderer.setSize(int_width*int_threeScale, int_height*int_threeScale);
+			renderer.setSize(int_width, int_height);
 
 			$('#div_threejs').append(renderer.domElement);
 			$('#div_threejs').css('overflow','hidden');
-			$('#div_threejs canvas').css('margin-top',int_marginTop+'px');
-			$('#div_threejs canvas').css('margin-left',int_marginLeft+'px');
 
-			camera = new THREE.PerspectiveCamera(60, int_width / int_height, 0.1, 1000);
-			camera.position.set(0, 10, 25);
+			camera = new THREE.OrthographicCamera( -int_width / 50, int_width / 50, int_height / 50, -int_height / 50, - 1000, 1000);
+			camera.position.set(0, 5, 100);
 
-			 var ambient = new THREE.AmbientLight(0xffffff, 1);
+			var ambient = new THREE.AmbientLight(0xffffff, 1);
 	  		scene.add(ambient);
 
 			var spot = new THREE.SpotLight(0xFFFFFF);

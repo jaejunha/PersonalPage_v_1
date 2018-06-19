@@ -4,7 +4,9 @@ var clock, camera, scene, renderer;
 var action_star, action_bird;
 var index_star = 0, index_bird = 0;
 var time_start, time_now;
-var int_threeScale = 1.5;
+
+var vec_x = new THREE.Vector3(1, 0, 0); 
+var double_degree = Math.PI / 180;
 var double_delta;
 var double_frame = 2500/6;
 
@@ -54,6 +56,7 @@ function loadBird(){
 	new THREE.JSONLoader().load(static_bird, function (geometry, materials) {
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model.rotateOnAxis(vec_x, 15 * double_degree);
 		mixer_bird = new THREE.AnimationMixer(model);
 		action_bird = new Array(geometry.animations.length);
 		for(var i = 0; i < action_bird.length; i++){
@@ -89,15 +92,10 @@ function changeAction (type) {
 function onWindowResize () {
 	var int_width = $(window).width() - 200;
 	var int_height = $(window).height()-$('header').offset().top-$('header').height()-$('#div_content').offset().top-$('#div_content').height();
-	camera.aspect = int_width / int_height;
 	camera.updateProjectionMatrix();
 			
-	var int_marginTop = -int_height*(int_threeScale - 1);
-	var int_marginLeft = -int_width*(int_threeScale - 1)/2;
 	$('#div_threejs').css('height',int_height);
-	renderer.setSize(int_width*int_threeScale, int_height*int_threeScale);
-	$('#div_threejs canvas').css('margin-top',int_marginTop+'px');
-	$('#div_threejs canvas').css('margin-left',int_marginLeft+'px');
+	renderer.setSize(int_width, int_height);
 }
 
 function animate() {
