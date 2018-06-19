@@ -15,10 +15,10 @@ $(document).ready( function() {
 	$('#div_content').animate({opacity:1}, 1000);
 
 	if(home < 1){
-			$('#first').css('animation-delay','4.6s');
-			$('#second').css('animation-delay','5.1s');
-			$('#third').css('animation-delay','5.6s');
-			$('#fourth').css('animation-delay','6.1s');
+			$('#first').css('animation-delay','6.1s');
+			$('#second').css('animation-delay','6.7s');
+			$('#third').css('animation-delay','7.3s');
+			$('#fourth').css('animation-delay','7.9s');
 	}
 
 	$('#first').html(static_intro0.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
