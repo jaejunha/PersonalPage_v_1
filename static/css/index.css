@@ -44,10 +44,6 @@ body,html{
 #div_loading{
 	opacity:0;
 	position: absolute;
-	left: 45%;
-	top: 40%;
-	width: 10%;                              
- 	height: 20%;        
 	background: #000000;                      
  	border-radius: 50%;                        
 	animation: loading 4s; 

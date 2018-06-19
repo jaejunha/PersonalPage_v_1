@@ -7,6 +7,7 @@ $(document).ready( function() {
 	checkMobile();
 	showIntro();
 	resizeHeader();
+	resizeLoadingCircle();
 });
 
 $(window).resize(function() {
@@ -81,4 +82,15 @@ function switchMenu(to,sub){
 	if(to!='home'){
 		home--;
 	}
+}
+
+function resizeLoadingCircle(){
+	var div_loading = $('#div_loading');
+	var int_width = $(window).width();
+	var int_height = $(window).height();
+	var int_radius = Math.max(int_width, int_height) / 5;
+	div_loading.css('width', int_radius);
+	div_loading.css('height', int_radius);
+	div_loading.css('left', (int_width - int_radius)/2);
+	div_loading.css('top', (int_height - int_radius)/2);        
 }
