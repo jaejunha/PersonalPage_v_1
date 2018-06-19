@@ -6,6 +6,7 @@ var index_star = 0, index_bird = 0;
 var time_start, time_now;
 var int_threeScale = 1.5;
 var double_delta;
+var double_frame = 2500/6;
 
 $(document).ready( function() {
 	$('.span_loading').css('display','none');
@@ -69,7 +70,7 @@ function loadBird(){
 	});
 }
 
-function changeAction (type, sec) {
+function changeAction (type) {
 	var from, to;
 	if(type == 'star'){
 		from = action_star[index_star - 1].play();
@@ -82,7 +83,7 @@ function changeAction (type, sec) {
 
   	from.enabled = true;
   	to.enabled = true;
-	from.crossFadeTo(to, sec);
+	from.crossFadeTo(to, 0);
 }
 
 function onWindowResize () {
@@ -106,40 +107,40 @@ function animate() {
 	time_now = new Date().getTime();
 	if(mixer_star != undefined){
 		if(index_star == 0){
-			if(time_now - time_start > 2000){
+			if(time_now - time_start > 5*double_frame){
 				index_star = -1;
 				loadBird();
 			}
 		}
 		else if(index_star == -1){
-			if(time_now - time_start > 5000){
+			if(time_now - time_start > 13*double_frame){
 				index_star = 1;
-				changeAction('star', 0.2);
+				changeAction('star');
 			}
 		}
 		else if(index_star == 1){
-			if(time_now - time_start > 7000)
+			if(time_now - time_start > 17*double_frame)
 				mixer_star = undefined;
 		}
 		mixer_star.update(double_delta);
 	}
 	if(mixer_bird != undefined){
 		if(index_bird == 0){
-			if(time_now - time_start > 3000){
+			if(time_now - time_start > 9*double_frame){
 				index_bird++;
-				changeAction('bird', 0.2);
+				changeAction('bird');
 			}
 		}
 		else if(index_bird == 1){
-			if(time_now - time_start > 5000){
+			if(time_now - time_start > 13*double_frame){
 				index_bird++;
-				changeAction('bird', 0.2);
+				changeAction('bird');
 			}
 		}
 		else if(index_bird == 2){
-			if(time_now - time_start > 7000){
+			if(time_now - time_start > 17*double_frame){
 				index_bird++;
-				changeAction('bird', 0.2);
+				changeAction('bird');
 			}
 		}
 		mixer_bird.update(double_delta);
