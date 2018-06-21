@@ -15,10 +15,10 @@ $(document).ready( function() {
 	$('#div_content').animate({opacity:1}, 1000);
 
 	if(home < 1){
-			$('#first').css('animation-delay','6.1s');
-			$('#second').css('animation-delay','6.7s');
-			$('#third').css('animation-delay','7.3s');
-			$('#fourth').css('animation-delay','7.9s');
+			$('#first').css('animation-delay','5.1s');
+			$('#second').css('animation-delay','5.7s');
+			$('#third').css('animation-delay','6.3s');
+			$('#fourth').css('animation-delay','6.9s');
 	}
 
 	$('#first').html(static_intro0.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
@@ -111,13 +111,13 @@ function animate() {
 			}
 		}
 		else if(index_star == -1){
-			if(time_now - time_start > 13*double_frame){
+			if(time_now - time_start > 9*double_frame){
 				index_star = 1;
 				changeAction('star');
 			}
 		}
 		else if(index_star == 1){
-			if(time_now - time_start > 17*double_frame)
+			if(time_now - time_start > 13*double_frame)
 				mixer_star = undefined;
 		}
 		mixer_star.update(double_delta);
@@ -131,12 +131,6 @@ function animate() {
 		}
 		else if(index_bird == 1){
 			if(time_now - time_start > 13*double_frame){
-				index_bird++;
-				changeAction('bird');
-			}
-		}
-		else if(index_bird == 2){
-			if(time_now - time_start > 17*double_frame){
 				index_bird++;
 				changeAction('bird');
 			}

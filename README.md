@@ -89,12 +89,12 @@ getVariable()
 # Refer  
 I stored opensources at `static/external`   
 <br>
-- Git chart  
+- Git Chart  
 ```
 http://ghchart.rshah.org  
 https://github.com/IonicaBizau/github-calendar  
 ```
-- Git activity  
+- Git Activity  
 ```
 http://caseyscarborough.com/projects/github-activity/  
 ```
@@ -106,7 +106,7 @@ https://jquery.com/download/
 ```
 https://threejs.org 
 ```
-- Blender export
+- Blender Export
 ```
 http://unboring.net/workflows/animation.html 
 ```
@@ -114,19 +114,19 @@ http://unboring.net/workflows/animation.html
 ```
 //cdn.jsdelivr.net/chartist.js/latest/chartist.min.js  
 ```
-- coverflow  
+- Coverflow  
 ```
 https://coverflowjs.github.io/coverflow/  
 ```
-- octicons.css  
+- Octicons.css  
 ```
 http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css  
 ```
-- mustache.js  
+- Mustache.js  
 ```
 http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js  
 ```
-- progressbar.js  
+- Progressbar.js  
 ```
 https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js  
 ```
@@ -146,7 +146,7 @@ pip install selenium
 ```
 http://phantomjs.org/download.html  
 ```
-- markdown badge  
+- Markdown Badge  
 ```
 http://shields.io/  
 ```

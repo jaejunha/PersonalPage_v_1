@@ -8,7 +8,7 @@
 	font-size:27pt;           
 	opacity:0;
 	animation: appear 1s; 
-	animation-delay:7.0s;
+	animation-delay:6.0s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
@@ -24,21 +24,21 @@
 #second{
 	opacity:0;      
 	animation: appear 1s; 
-	animation-delay:7.6s;
+	animation-delay:6.6s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
 #third{
 	opacity:0;      
 	animation: appear 1s; 
-	animation-delay:8.2s;
+	animation-delay:7.2s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
 #fourth{
 	opacity:0;      
 	animation: appear 1s; 
-	animation-delay:8.8s;
+	animation-delay:7.8s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
