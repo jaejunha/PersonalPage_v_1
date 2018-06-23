@@ -1,4 +1,4 @@
-var clock, camera, scene, renderer;
+var clock, camera, scene, renderer, orbit;
 
 /* mixers and bool_animate are located at index.js */
 var action_star, action_bird;
@@ -35,6 +35,7 @@ function loadStar(){
 	new THREE.JSONLoader().load(static_star, function (geometry, materials) {
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model.position.set(0, -4, 0);
 		mixer_star = new THREE.AnimationMixer(model);
 		action_star = new Array(geometry.animations.length);
 
@@ -56,6 +57,7 @@ function loadBird(){
 	new THREE.JSONLoader().load(static_bird, function (geometry, materials) {
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model.position.set(0, -4, 0);
 		model.rotateOnAxis(vec_x, 15 * double_degree);
 		mixer_bird = new THREE.AnimationMixer(model);
 		action_bird = new Array(geometry.animations.length);
@@ -138,5 +140,6 @@ function animate() {
 		mixer_bird.update(double_delta);
 	}
 	requestAnimationFrame(animate);
+	orbit.update();
 	renderer.render(scene, camera);
 }
