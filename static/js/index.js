@@ -1,7 +1,25 @@
 var home = 1;
 var string_subMenu;
-var mixer_star, mixer_bird;
+
+/* related to Three.js */
+var mixer_star, mixer_bird, mixer_text;
 var bool_animate = false;
+
+const ANI_WAIT = -1;
+
+const ANI_STAR_ACTION1 = 0;
+const ANI_STAR_ACTION2 = 1;
+
+const ANI_BIRD_ACTION1 = 0;
+const ANI_BIRD_ACTION2 = 1;
+const ANI_BIRD_ACTION3 = 2;
+
+const ANI_TEXT_ACTION1 = 0;
+
+const AXIS_X = new THREE.Vector3(1, 0, 0); 
+const DEGREE = Math.PI / 180;
+const FRAME = 2500/6;
+/* related to Three.js */
 
 $(document).ready( function() {
 	checkMobile();
@@ -53,7 +71,7 @@ function resizeHeader(){
 function switchMenu(to,sub){
 	if(home!=1){
 		bool_animate = false;
-		mixer_star = mixer_bird = undefined;
+		mixer_star = mixer_bird = mixer_text = undefined;
 	}
 	string_subMenu = '';
 	$('.span_loading').css('display','block');

@@ -1,14 +1,16 @@
+/* some variables related to Three.js are located at index.js */
 var clock, camera, scene, renderer, orbit;
 
-/* mixers and bool_animate are located at index.js */
-var action_star, action_bird;
-var index_star = 0, index_bird = 0;
+var action_star, action_bird, action_text;
+var index_star = ANI_STAR_ACTION1;
+var index_bird = ANI_BIRD_ACTION1;
+var index_text = ANI_WAIT;
 var time_start, time_now;
 
-var vec_x = new THREE.Vector3(1, 0, 0); 
-var double_degree = Math.PI / 180;
 var double_delta;
-var double_frame = 2500/6;
+var double_opacity = 0;
+var material_text;
+/* some variables related to Three.js are located at index.js */
 
 $(document).ready( function() {
 	$('.span_loading').css('display','none');
@@ -58,7 +60,7 @@ function loadBird(){
 		materials.forEach(function (material) { material.skinning = true; });
 		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
 		model.position.set(0, -4, 0);
-		model.rotateOnAxis(vec_x, 15 * double_degree);
+		model.rotateOnAxis(AXIS_X, 15 * DEGREE);
 		mixer_bird = new THREE.AnimationMixer(model);
 		action_bird = new Array(geometry.animations.length);
 		for(var i = 0; i < action_bird.length; i++){
@@ -71,7 +73,28 @@ function loadBird(){
 		window.addEventListener('resize', onWindowResize, false);
 
     		action_bird[index_bird].play();
-		animate();
+	});
+}
+
+function loadText(){
+	new THREE.JSONLoader().load(static_text, function (geometry, materials) {
+		materials.forEach(function (material) { material.skinning = true; });
+		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model.position.set(0, -4, 0);
+		material_text = materials[0];
+		material_text.transparent = true;
+		material_text.opacity = 0;
+		mixer_text = new THREE.AnimationMixer(model);
+		action_text = new Array(geometry.animations.length);
+		for(var i = 0; i < action_text.length; i++){
+			action_text[i] = mixer_text.clipAction(geometry.animations[i]);
+			action_text[i].setEffectiveWeight(1);
+			action_text[i].enabled = true;
+			action_text[i].setLoop(THREE.LoopOnce, 0);
+		}
+		scene.add(model);
+
+		window.addEventListener('resize', onWindowResize, false);
 	});
 }
 
@@ -106,38 +129,57 @@ function animate() {
 	double_delta = clock.getDelta();
 	time_now = new Date().getTime();
 	if(mixer_star != undefined){
-		if(index_star == 0){
-			if(time_now - time_start > 5*double_frame){
-				index_star = -1;
+		if(index_star == ANI_STAR_ACTION1){
+			if(time_now - time_start > 5 * FRAME){
+				index_star = ANI_WAIT;
 				loadBird();
 			}
 		}
-		else if(index_star == -1){
-			if(time_now - time_start > 9*double_frame){
-				index_star = 1;
+		else if(index_star == ANI_WAIT){
+			if(time_now - time_start > 9 * FRAME){
+				index_star = ANI_STAR_ACTION2;
 				changeAction('star');
 			}
 		}
-		else if(index_star == 1){
-			if(time_now - time_start > 13*double_frame)
+		else if(index_star == ANI_STAR_ACTION2){
+			if(time_now - time_start > 13 * FRAME){
 				mixer_star = undefined;
-		}
-		mixer_star.update(double_delta);
-	}
-	if(mixer_bird != undefined){
-		if(index_bird == 0){
-			if(time_now - time_start > 9*double_frame){
-				index_bird++;
-				changeAction('bird');
+				index_star++;
 			}
 		}
-		else if(index_bird == 1){
-			if(time_now - time_start > 13*double_frame){
-				index_bird++;
+		if(index_star <= ANI_STAR_ACTION2)
+			mixer_star.update(double_delta);
+	}
+	if(mixer_bird != undefined){
+		if(index_bird == ANI_BIRD_ACTION1){
+			if(time_now - time_start > 9 * FRAME){
+				index_bird = ANI_BIRD_ACTION2;
+				changeAction('bird');
+				double_opacity = 0;
+				loadText();
+			}
+		}
+		else if(index_bird == ANI_BIRD_ACTION2){
+			if(time_now - time_start > 13 * FRAME){
+				index_bird = ANI_BIRD_ACTION3;
 				changeAction('bird');
 			}
 		}
 		mixer_bird.update(double_delta);
+	}
+	if(mixer_text != undefined){
+		if(index_text == ANI_WAIT){
+			if(time_now - time_start > 12*FRAME){
+				index_text = ANI_TEXT_ACTION1;
+				action_text[index_text].play();
+			}
+		}else if(index_text == ANI_TEXT_ACTION1){	
+			if(double_opacity <= 1.0){
+				double_opacity += 0.01;
+				material_text.opacity = Math.sin(double_opacity);
+			}
+		}
+		mixer_text.update(double_delta);
 	}
 	requestAnimationFrame(animate);
 	orbit.update();
