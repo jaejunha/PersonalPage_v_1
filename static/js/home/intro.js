@@ -1,5 +1,5 @@
 /* some variables related to Three.js are located at index.js */
-var clock, camera, scene, renderer, orbit;
+var clock, camera, scene, renderer, orbit, particles;
 
 var action_star, action_bird, action_text;
 var index_star = ANI_STAR_ACTION1;
@@ -9,7 +9,7 @@ var time_start, time_now;
 
 var double_delta;
 var double_opacity = 0;
-var material_text;
+var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
 $(document).ready( function() {
@@ -123,6 +123,16 @@ function onWindowResize () {
 	renderer.setSize(int_width, int_height);
 }
 
+function updateSnow(){
+	for(var i = int_particleCount - 1, particle; i >= 0; i--) {
+		particle = particles.vertices[i];
+		if (particle.y < -50) 
+			particle.y = 50;
+		particle.y += particle.velocity.y;
+	}
+	particles.verticesNeedUpdate = true;
+};
+
 function animate() {
 	if(bool_animate == false)
 		return ;
@@ -184,4 +194,5 @@ function animate() {
 	requestAnimationFrame(animate);
 	orbit.update();
 	renderer.render(scene, camera);
+	updateSnow();
 }
