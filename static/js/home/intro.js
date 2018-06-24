@@ -116,7 +116,7 @@ function changeAction (type) {
 
 function onWindowResize () {
 	var int_width = $(window).width() - 200;
-	var int_height = $(window).height()-$('header').offset().top-$('header').height()-$('#div_content').offset().top-$('#div_content').height();
+	var int_height = $(window).height()-120;
 	camera.updateProjectionMatrix();
 			
 	$('#div_threejs').css('height',int_height);

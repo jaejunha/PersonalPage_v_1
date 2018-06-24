@@ -42,7 +42,7 @@
 			renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 			renderer.setPixelRatio(window.devicePixelRatio);
 			var int_width = $(window).width()-200;
-			var int_height = $(window).height()-$('header').offset().top-$('header').height()-$('#div_content').offset().top-$('#div_content').height();
+			var int_height = $(window).height()-120;
 			$('#div_threejs').css('height',int_height);
 			renderer.setSize(int_width, int_height);
 
@@ -53,7 +53,7 @@
 			camera.position.set(0, 5, 100);
 
 			orbit = new THREE.OrbitControls(camera, renderer.domElement);
-			orbit.minZoom = 0.25;
+			orbit.minZoom = 0.5;
 			orbit.maxZoom = 1.5;
 
 			var ambient = new THREE.AmbientLight(0xffffff, 1);
@@ -64,18 +64,18 @@
 			scene.add(spot); 
 
 			particles = new THREE.Geometry;
-			for (var i = 0, particle, x, y, z, nx = int_width / 12 , mx = nx * 2, ny = int_height / 18, my = ny * 2, nz = int_width / 18, mz = 2 * nz ; i < int_particleCount; i++) {
+			for (var i = 0, particle, x, y, z, nx = int_width / 24 , mx = nx * 2, ny = int_height / 36, my = ny * 2, nz = int_width / 36, mz = 2 * nz ; i < int_particleCount; i++) {
 				x = Math.random() * mx - nx;
 				y = Math.random()* my - ny;
 				z = Math.random()* mz - nz;
 				particle = new THREE.Vector3(x, y, z);
 				particle.velocity = {};
-				particle.velocity.y = - 0.9 * Math.random() - 0.1;
+				particle.velocity.y = - 0.7 * Math.random() - 0.1;
 				particles.vertices.push(particle);
 			}
 			material_particle = new THREE.PointsMaterial({
-				color: 0xFFFFFF,
-				size: 2,
+				size: 4,
+				map: THREE.ImageUtils.loadTexture("{% static 'img/snow.png' %}"),
 				blending: THREE.AdditiveBlending,
 				depthTest: false,
 				transparent: true
