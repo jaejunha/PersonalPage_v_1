@@ -5,10 +5,12 @@ var action_star, action_bird, action_text;
 var index_star = ANI_STAR_ACTION1;
 var index_bird = ANI_BIRD_ACTION1;
 var index_text = ANI_WAIT;
+var index_snow = ANI_WAIT;
 var time_start, time_now;
 
 var double_delta;
-var double_opacity = 0;
+var opacity_snow = 0;
+var opacity_text = 0;
 var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
@@ -98,6 +100,36 @@ function loadText(){
 	});
 }
 
+function loadSnow(){
+	var int_width = $(window).width() - 200;
+	var int_height = $(window).height()-120;
+	var nx = int_width / 24;
+	var mx = nx * 2;
+	var ny = int_height / 36;
+	var my = ny * 2;
+	var nz = int_width / 36;
+	var mz = nz * 2;
+	particles = new THREE.Geometry;
+	for (var i = 0, particle, x, y, z; i < int_particleCount; i++) {
+		x = Math.random() * mx - nx;
+		y = Math.random()* my - ny;
+		z = Math.random()* mz - nz;
+		particle = new THREE.Vector3(x, y, z);
+		particle.velocity = {};
+		particle.velocity.y = - 0.4 * Math.random() - 0.1;
+		particles.vertices.push(particle);
+	}
+	material_particle = new THREE.PointsMaterial({
+		size: 4,
+		map: new THREE.TextureLoader().load(static_snow),
+		blending: THREE.AdditiveBlending,
+		depthTest: true,
+		transparent: true
+	});
+	scene.add(new THREE.Points(particles, material_particle));
+	index_snow++;
+}
+
 function changeAction (type) {
 	var from, to;
 	if(type == 'star'){
@@ -124,10 +156,12 @@ function onWindowResize () {
 }
 
 function updateSnow(){
+	var int_height = $(window).height()-120;
+	var double_limit = int_height * 0.03;
 	for(var i = int_particleCount - 1, particle; i >= 0; i--) {
 		particle = particles.vertices[i];
-		if (particle.y < -50) 
-			particle.y = 50;
+		if (particle.y < -double_limit) 
+			particle.y = double_limit;
 		particle.y += particle.velocity.y;
 	}
 	particles.verticesNeedUpdate = true;
@@ -143,6 +177,7 @@ function animate() {
 			if(time_now - time_start > 5 * FRAME){
 				index_star = ANI_WAIT;
 				loadBird();
+				loadSnow();
 			}
 		}
 		else if(index_star == ANI_WAIT){
@@ -165,7 +200,7 @@ function animate() {
 			if(time_now - time_start > 9 * FRAME){
 				index_bird = ANI_BIRD_ACTION2;
 				changeAction('bird');
-				double_opacity = 0;
+				opacity_text = 0;
 				loadText();
 			}
 		}
@@ -184,9 +219,9 @@ function animate() {
 				action_text[index_text].play();
 			}
 		}else if(index_text == ANI_TEXT_ACTION1){	
-			if(double_opacity <= 1.0){
-				double_opacity += 0.01;
-				material_text.opacity = Math.sin(double_opacity);
+			if(opacity_text <= 1.0){
+				opacity_text += 0.01;
+				material_text.opacity = Math.sin(opacity_text);
 			}
 		}
 		mixer_text.update(double_delta);
@@ -194,5 +229,11 @@ function animate() {
 	requestAnimationFrame(animate);
 	orbit.update();
 	renderer.render(scene, camera);
-	updateSnow();
+	if(index_snow != ANI_WAIT){
+		if(opacity_snow <= 1.0){
+			opacity_snow += 0.01;
+			material_particle.opacity = Math.sin(opacity_snow);
+		}
+		updateSnow();
+	}
 }

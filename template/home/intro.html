@@ -7,12 +7,13 @@
 	var static_star = "{% static 'personal/model/star.json' %}";
 	var static_bird = "{% static 'personal/model/bird.json' %}";
 	var static_text = "{% static 'personal/model/text.json' %}";
+	var static_snow = "{% static 'img/snow.png' %}";
 	var static_intro0 = "{{intro.0}}";
 	var static_intro1 = "{{intro.1}}";
 	var static_intro2 = "{{intro.2}}";
 	var static_intro3 = "{{intro.3}}";
 </script>
-<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=0.8"></script>
+<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=0.9"></script>
 </head>
 <body>	
 	<p id="first"></p>
@@ -30,6 +31,7 @@
 			index_star = ANI_STAR_ACTION1;
 			index_bird = ANI_BIRD_ACTION1;
 			index_text = ANI_WAIT;
+			index_snow = ANI_WAIT;
 			loadThree();
 		}
 		function loadThree(){
@@ -63,24 +65,7 @@
 			spot.position.set(-45,90,30);  
 			scene.add(spot); 
 
-			particles = new THREE.Geometry;
-			for (var i = 0, particle, x, y, z, nx = int_width / 24 , mx = nx * 2, ny = int_height / 36, my = ny * 2, nz = int_width / 36, mz = 2 * nz ; i < int_particleCount; i++) {
-				x = Math.random() * mx - nx;
-				y = Math.random()* my - ny;
-				z = Math.random()* mz - nz;
-				particle = new THREE.Vector3(x, y, z);
-				particle.velocity = {};
-				particle.velocity.y = - 0.7 * Math.random() - 0.1;
-				particles.vertices.push(particle);
-			}
-			material_particle = new THREE.PointsMaterial({
-				size: 4,
-				map: THREE.ImageUtils.loadTexture("{% static 'img/snow.png' %}"),
-				blending: THREE.AdditiveBlending,
-				depthTest: false,
-				transparent: true
-			});
-			scene.add(new THREE.Points(particles, material_particle));
+			
 
 			loadStar();			
 		}

@@ -5,7 +5,7 @@ var string_subMenu;
 var mixer_star, mixer_bird, mixer_text;
 var bool_animate = false;
 
-const int_particleCount = 1000;
+const int_particleCount = 200;
 
 const ANI_WAIT = -1;
 
