@@ -3,6 +3,9 @@
 <html>
 <head>
 <script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.5"></script>
+<script>
+	var t = new Date().getTime() / 86400000;
+</script>
 <link rel="stylesheet" type="text/css" href="{% static 'css/home/favorite.css' %}?ver=0.2"/>
 </head>
 <body>
@@ -21,7 +24,7 @@
 				{% with 'site/Website'|add:n|add:'.png' as image %}
 				{% with 'site/'|add:n as favi %}
 				<img src="{% static image %}" alt=""/>
-				<div class="desc"><div><img class="favi" src="{% static favi %}" alt=""/>{{name}}</div></div>
+				<div class="desc"><div><img class="favi" src="{% static favi %}"  alt=""/>{{name}}</div></div>
 				{% endwith %}
 				{% endwith %}
 				{% endwith %}

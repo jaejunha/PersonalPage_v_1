@@ -57,8 +57,8 @@ function resizeContent(){
 	}
 	$('#div_activity').css('height',int_height-$('hr').offset().top+$('hr').height()+int_marginTop+'px');
 	$('#div_favorite').css('height',int_height-$('hr').offset().top+$('hr').height()+int_marginTop+'px');
-	$('#div_activity').css('top',$('hr').offset().top+$('hr').height()+int_marginTop+'px');
-	$('#div_favorite').css('top',$('hr').offset().top+$('hr').height()+int_marginTop+'px');
+	$('#div_activity').css('top',$('hr').offset().top+$('hr').height()+'px');
+	$('#div_favorite').css('top',$('hr').offset().top+$('hr').height()+'px');
 }
 
 function resizeTop(){
