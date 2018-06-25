@@ -20,7 +20,7 @@ def web():
 	url = []
 	print 'working...'
 	url = reset_url(url)
-	browser = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
+	browser = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
 	browser.set_window_size(1920, 1080)
 	i = 1
 	for u in url:
