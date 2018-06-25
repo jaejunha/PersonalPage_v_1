@@ -1,92 +1,27 @@
 #first{
 	position: absolute;
-	margin-right:100px;
-	text-align:right;
+	margin: 20px 100px 0 0;
 	right:0px;
-	font-family: 'Poiret One', cursive;
-	margin-top:20px;
-	font-size:27pt;           
+	text-align:right;
+	font-family: 'Poiret One', cursive;     
 	opacity:0;
+
 	animation: appear 1s; 
 	animation-delay:6.0s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
-#detail{
-	position:absolute;
-	margin-top:100px;
-	margin-right:100px;
-	left:60%;
-	font-family: 'Poiret One', cursive; 
-	font-size:18pt;   
-	text-align:justify;             
-}
 #second{
-	opacity:0;      
+	position:absolute;
+	margin: 100px 100px 0 0;
+	left: 60%;
+	text-align:justify;       
+	font-family: 'Poiret One', cursive; 
+	opacity:0;   
+
 	animation: appear 1s; 
 	animation-delay:6.6s;
    	animation-fill-mode: forwards;
-   	-webkit-animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;     
 }
-#third{
-	opacity:0;      
-	animation: appear 1s; 
-	animation-delay:7.2s;
-   	animation-fill-mode: forwards;
-   	-webkit-animation-fill-mode: forwards;
-}
-#fourth{
-	opacity:0;      
-	animation: appear 1s; 
-	animation-delay:7.8s;
-   	animation-fill-mode: forwards;
-   	-webkit-animation-fill-mode: forwards;
-}
-p b{    
-	color:#ffff00;  
-}	
-@keyframes appear_bird{
-	0%{	
-		top:100%;
-		left:50%;  
-	}
-	55%{	
-		top:40%;	
-		left:50%;
-	}
-	97%{
-		top:40%;	
-		left:50%;
-		opacity:1;
-	}
-	100%{
-		top:40%;
-		left:30%;
-		opacity:1;
-	}
-}
-@keyframes appear_gradation{
-	0%{
-		opacity:0;
-		left:50%;
-	}
-	37%{
-		opacity:0;
-		left:50%;
-	}
-	55%{
-		opacity:0.8;
-		left:50%;
-		transform: scale(1.2,1.2);
-	}
-	97%{
-		opacity:0.6;
-		left:50%;
-		transform: scale(2,2);
-	}
-	100%{
-		transform: scale(2,2);
-		left:30%;
-		opacity:0.6;
-	}
-}
+p b{ color:#ffff00; }	

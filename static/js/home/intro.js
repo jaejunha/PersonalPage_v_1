@@ -14,6 +14,8 @@ var opacity_text = 0;
 var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
+var bool_font = false;
+
 $(document).ready( function() {
 	$('.span_loading').css('display','none');
 	$('#div_content').animate({opacity:1}, 1000);
@@ -21,19 +23,38 @@ $(document).ready( function() {
 	if(home < 1){
 			$('#first').css('animation-delay','5.1s');
 			$('#second').css('animation-delay','5.7s');
-			$('#third').css('animation-delay','6.3s');
-			$('#fourth').css('animation-delay','6.9s');
 	}
 
 	$('#first').html(static_intro0.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 	$('#second').html(static_intro1.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-	$('#third').html(static_intro2.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
-	$('#fourth').html(static_intro3.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
+
+	resizeFont();
 });
 $(window).resize(function (){
 	if(from == 0)
 		resize('frame');
+	resizeFont();
 });
+
+function resizeFont(){
+	var int_width = $(window).width();
+	if(int_width < 800){
+		$('#first').css('display', 'none');
+		$('#second').css('display', 'none');
+		bool_font = true;
+	}else{
+		if(bool_font == true){
+			bool_font = false;
+			$('#first').css('display', 'block');
+			$('#second').css('display', 'block');
+			$('#first').css('animation-delay', '0s');
+			$('#second').css('animation-delay', '0s');
+		}
+		$('#first').css('font-size', 0.015 * int_width + 'pt');
+		$('#second').css('font-size', 0.01 * int_width + 'pt');
+	}	
+	
+}
 
 function loadStar(){
 	new THREE.JSONLoader().load(static_star, function (geometry, materials) {
@@ -50,7 +71,6 @@ function loadStar(){
 			action_star[i].setLoop(THREE.LoopOnce, 0);
 		}
 		scene.add(model);
-		window.addEventListener('resize', onWindowResize, false);
 
     		action_star[index_star].play();
 		animate();
@@ -71,8 +91,6 @@ function loadBird(){
 			action_bird[i].enabled = true;
 		}
 		scene.add(model);
-
-		window.addEventListener('resize', onWindowResize, false);
 
     		action_bird[index_bird].play();
 	});
@@ -95,8 +113,6 @@ function loadText(){
 			action_text[i].setLoop(THREE.LoopOnce, 0);
 		}
 		scene.add(model);
-
-		window.addEventListener('resize', onWindowResize, false);
 	});
 }
 
@@ -144,15 +160,6 @@ function changeAction (type) {
   	from.enabled = true;
   	to.enabled = true;
 	from.crossFadeTo(to, 0);
-}
-
-function onWindowResize () {
-	var int_width = $(window).width() - 200;
-	var int_height = $(window).height()-120;
-	camera.updateProjectionMatrix();
-			
-	$('#div_threejs').css('height',int_height);
-	renderer.setSize(int_width, int_height);
 }
 
 function updateSnow(){

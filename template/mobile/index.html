@@ -28,6 +28,7 @@
 	.introduce{
 		font-family: 'Poiret One', cursive;
 		font-size:13pt;
+		text-align: justify;
 	}
 	.title{
 		font-family: 'Poiret One', cursive;
@@ -256,7 +257,7 @@
 			w.postMessage("Hello");
 		}
 
-		var text = "<br>{{intro.0}}{{intro.1}}<br>{{intro.2}}<br>{{intro.3}}";
+		var text = "<br>{{intro.0}}<br>{{intro.1}}";
 		$('.introduce').html(text.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 
 		$(".me table:nth-of-type(2) a").click(function(){
