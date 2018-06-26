@@ -25,3 +25,15 @@
    	-webkit-animation-fill-mode: forwards;     
 }
 p b{ color:#ffff00; }	
+#img_habit{
+	position: absolute;
+	margin: 0 100px 5px 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0;
+
+	animation: appear 1s; 
+	animation-delay:7.2s;
+   	animation-fill-mode: forwards;
+   	-webkit-animation-fill-mode: forwards;   
+}

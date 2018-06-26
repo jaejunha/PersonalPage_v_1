@@ -23,17 +23,20 @@ $(document).ready( function() {
 	if(home < 1){
 			$('#first').css('animation-delay','5.1s');
 			$('#second').css('animation-delay','5.7s');
+			$('#img_habit').css('animation-delay','6.3s');
 	}
 
 	$('#first').html(static_intro0.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 	$('#second').html(static_intro1.replace(/&lt;/g,"<").replace(/&gt;/g,">"));
 
 	resizeFont();
+	resizeHabit();
 });
 $(window).resize(function (){
 	if(from == 0)
 		resize('frame');
 	resizeFont();
+	resizeHabit();
 });
 
 function resizeFont(){
@@ -54,6 +57,11 @@ function resizeFont(){
 		$('#second').css('font-size', 0.01 * int_width + 'pt');
 	}	
 	
+}
+
+function resizeHabit(){
+	var int_width = $(window).width();
+	$('#img_habit').css('width', 0.3 * int_width);
 }
 
 function loadStar(){

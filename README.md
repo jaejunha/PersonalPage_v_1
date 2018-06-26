@@ -37,6 +37,10 @@ static/personal/model/bird.json
 ```
 static/personal/model/star.json  
 ```
+- habit image  
+```
+static/personal/img/habit.png  
+```
 - profile image  
 ```
 static/personal/img/profile.jpg  
