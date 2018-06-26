@@ -24,16 +24,7 @@ def web():
 	browser.set_window_size(1920, 1080)
 	i = 1
 	for u in url:
-		t = ''
-		response = requests.get(u)
-		for l in link.findall(response.text):
-			if l.find('icon') >= 0 or l.find('short')>=0:
-				for h in href.findall(l):
-					t = process_url(u,h)
-		if t == '':
-			t = infer_url(u)
-		save_favicon(i,t)
-		print t                       
+		get_favicon(u,i)   
 		save_capture(browser,u,i)
 		i = i+1
 
@@ -58,38 +49,47 @@ def process_url(u,h):
 	if t.find('http') <0:
                 t = u+h[6:].replace('"','')
 
-	if t.find('github.com')>-1 and t.find('?raw=true')>-1:
-		t = t.replace('?raw=true','')
-		user = t.split('github.com/')[1].split('/')[0]
-		path = t.split('blob/')[1]
-		t = 'https://raw.githubusercontent.com/'+user+'/'+user+'.github.io/'+path
 	return t
 
-def infer_url(u):
-	t=''
-	if u.find('naver.com')>-1:
-		t = u.split('.')[0]+'.naver.com/favicon.ico'
-	elif u.find('google.com')>-1:
-		if u.find('drive')>-1:
-			t = 'https://www.google.com/drive/static/images/drive/favicon.ico'
-		elif u.find('spreadsheets')>-1:
-			t = 'https://ssl.gstatic.com/docs/spreadsheets/favicon_jfk2.png'
-		elif u.find('calendar')>-1:
-			t = 'https://calendar.google.com/googlecalendar/images/favicon_v2014_4.ico'
-	return t
-
+def get_favicon(u,i):
+	t = u
+	while t.rfind('/') != t.rfind('//')+1:
+		t = t[:t.rfind('/')]
+	t = t+'/favicon.ico'
+	if save_favicon(i,t) == False:
+		response = requests.get(u)
+		for l in link.findall(response.text):
+			if l.find('"icon"') >=0 or l.find('"shortcut icon"') >= 0:
+				if len(href.findall(l)) > 0:
+					t = process_url(u,href.findall(l)[0])
+					if save_favicon(i,t) == True:
+						break
 def save_favicon(i,t):
-	if t:
-		down = file('static/site/'+str(i), "wb")
-       		image = urllib.urlopen(t)
-        	while True:
-        		buf = image.read(100000000)
-                	if len(buf) == 0:
-                		break
-                	down.write(buf)
-        	down.close()
-        	image.close()
+	image = urllib.urlopen(t)
+	down = file('static/site/'+str(i), "wb")
+	sum = 0
+	length = 0
+	ok = True
 
+	while True:
+		buf = image.read(100000000)
+		
+		if buf.find('html') >= 0:
+			ok = False
+			break
+		
+		length = len(buf)
+		sum += length
+
+		if length == 0:
+			break
+		
+		down.write(buf)
+	down.close()
+	image.close()
+	if sum == 0:
+		ok = False
+	return ok
 
 def save_capture(browser,u,i):
 	print 'working at '+u
@@ -110,4 +110,3 @@ def save_capture(browser,u,i):
 		region.paste(im, (0,0,im.size[0],im.size[1]),mask=im)
         region.thumbnail((min/5, min/5))
         region.save('static/site/Website'+str(i)+'.png')
-
