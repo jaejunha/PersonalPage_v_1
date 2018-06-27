@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=1.0"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=1.1"/>
 <script>
 	var static_star = "{% static 'personal/model/star.json' %}?ver=0.1";
 	var static_bird = "{% static 'personal/model/bird.json' %}?ver=0.1";
@@ -11,12 +11,12 @@
 	var static_intro0 = "{{intro.0}}";
 	var static_intro1 = "<br>{{intro.1}}";
 </script>
-<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=1.1"></script>
+<script type="text/javascript" src="{% static 'js/home/intro.js' %}?ver=1.2"></script>
 </head>
 <body>	
 	<p id="first"></p>
 	<p id="second"></p>
-	<img id="img_habit" src="{% static 'personal/img/habit.png' %}?ver=0.1">
+	<img id="img_habit" src="{% static 'personal/img/habit.png' %}?ver=0.2">
 	<div id="div_threejs"></div>
 	<script>
 		if(home == 1)
@@ -58,8 +58,6 @@
 			var spot = new THREE.SpotLight(0xFFFFFF);
 			spot.position.set(-45,90,30);  
 			scene.add(spot); 
-
-			
 
 			loadStar();			
 		}

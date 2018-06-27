@@ -61,7 +61,7 @@ function resizeFont(){
 
 function resizeHabit(){
 	var int_width = $(window).width();
-	$('#img_habit').css('width', 0.3 * int_width);
+	$('#img_habit').css('width', 0.4 * int_width - 100);
 }
 
 function loadStar(){
