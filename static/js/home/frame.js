@@ -75,9 +75,9 @@ function resizeTop(){
 		$('hr').css('width',int_width-2*int_marginLeft);
 
 		$('#div_content').css('width',int_width-2*int_marginLeft);
-		$('#a_activity').css('font-size',0.01*int_width+'pt');
+		$('#a_activity').css('font-size', Math.min(19, 0.01 * int_width)+'pt');
 		$('#a_activity').css('margin-top',$('#font_title').height()-$('#a_activity').height());
-		$('#a_favorite').css('font-size',0.01*int_width+'pt');
+		$('#a_favorite').css('font-size', Math.min(19, 0.01 * int_width)+'pt');
 		$('#a_favorite').css('margin-top',$('#font_title').height()-$('#a_favorite').height());
 	}
 }

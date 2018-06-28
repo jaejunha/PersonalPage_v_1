@@ -15,6 +15,7 @@ var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
 var bool_font = false;
+var bool_img = false;
 
 $(document).ready( function() {
 	$('.span_loading').css('display','none');
@@ -61,7 +62,21 @@ function resizeFont(){
 
 function resizeHabit(){
 	var int_width = $(window).width();
+	var int_height = $(window).height();
+	var int_textBottom = $('#second').offset().top+$('#second').height();
 	$('#img_habit').css('width', 0.4 * int_width - 100);
+	var int_imgHeight = $('#img_habit').height();
+	
+	if(int_height - int_textBottom < int_imgHeight + 20){
+		$('#img_habit').css('display', 'none');
+		bool_img = true;
+	}else{
+		if(bool_img == true){
+			bool_img = false;
+			$('#img_habit').css('animation-delay', '0s');
+			$('#img_habit').css('display', 'block');
+		}
+	}
 }
 
 function loadStar(){

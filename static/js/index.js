@@ -1,3 +1,6 @@
+var int_width;
+var int_height;
+
 var home = 1;
 var string_subMenu;
 
@@ -57,10 +60,11 @@ function showIntro(){
 }
 
 function resizeHeader(){
-	var int_menuWidth = $(window).width()-20;
+	int_width = $(window).width();
+	var int_menuWidth = int_width - 20;
 	var int_contentWidth = (int_menuWidth - 100) / 7;
-	var int_outerFontSize = $(window).width() * 0.009 + 1;
-	var int_innerFontSize = $(window).width() * 0.007 + 1;
+	var int_outerFontSize = Math.min(19, int_width * 0.009 + 1);
+	var int_innerFontSize = Math.min(15, int_width * 0.007 + 1);
 
 	$('header').css('width',int_menuWidth);
 	$('.li_outerMenu').css('font-size', int_outerFontSize+'pt');
@@ -105,9 +109,9 @@ function switchMenu(to,sub){
 }
 
 function resizeLoadingCircle(){
+	int_width = $(window).width();
+	int_height = $(window).height();
 	var div_loading = $('#div_loading');
-	var int_width = $(window).width();
-	var int_height = $(window).height();
 	var int_radius = Math.max(int_width, int_height) / 5;
 	div_loading.css('width', int_radius);
 	div_loading.css('height', int_radius);

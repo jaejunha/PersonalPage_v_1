@@ -45,11 +45,11 @@ function resizeTop(){
 		$('hr').css('width',int_width-2*int_marginLeft);
 
 		$('#div_content').css('width',int_width-2*int_marginLeft);
-		$('#a_program').css('font-size',0.01*int_width+'pt');
+		$('#a_program').css('font-size', Math.min(19, 0.01 * int_width)+'pt');
 		$('#a_program').css('margin-top',$('#font_title').height()-$('#a_program').height());
-		$('#a_art').css('font-size',0.01*int_width+'pt');
+		$('#a_art').css('font-size', Math.min(19, 0.01 * int_width)+'pt');
 		$('#a_art').css('margin-top',$('#font_title').height()-$('#a_art').height());
-		$('#a_marathon').css('font-size',0.01*int_width+'pt');
+		$('#a_marathon').css('font-size', Math.min(19, 0.01*int_width)+'pt');
 		$('#a_marathon').css('margin-top',$('#font_title').height()-$('#a_marathon').height());
 	}
 }
