@@ -1,19 +1,19 @@
-.desc{
+.div_desc{
 	display: table;
 	background-color: #cccccc;
 	color: #ffffff;	
 	z-index: 0;	
 	}
-.desc div{
+.div_desc div{
 	display: table-cell;
 	vertical-align : middle;
 	text-align:center;
 }
-.favi{
+.img_favicon{
 	position: absolute;	
 	display: inline;
 }
-.icon{
+.div_icon{
 	margin-left:4.5%;
 	margin-right:4.5%;
 }

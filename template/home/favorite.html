@@ -2,11 +2,9 @@
 {% load staticfiles %}
 <html>
 <head>
-<script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.5"></script>
-<script>
-	var t = new Date().getTime() / 86400000;
-</script>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/favorite.css' %}?ver=0.2"/>
+<script type="text/javascript" src="{% static 'js/home/favorite.js' %}?ver=0.6"></script>
+<script>	var t = Math.floor(new Date().getTime() / 86400000);</script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/favorite.css' %}?ver=0.3"/>
 </head>
 <body>
 	<p id="p_main">
@@ -14,21 +12,26 @@
 		{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
 			{% if forloop.counter <= 4 %}
-			<div class="icon">
+			<div class="div_icon">
 			{% elif forloop.last %}
-			<div class="icon" style="margin-top:5%;margin-bottom:50px;">
+			<div class="div_icon" style="margin-top:5%;margin-bottom:50px;">
 			{% else %}
-			<div class="icon" style="margin-top:5%;">
+			<div class="div_icon" style="margin-top:5%;">
 			{% endif %}
     				{% with n=forloop.counter|stringformat:"s" %}
 				{% with 'site/Website'|add:n|add:'.png' as image %}
-				{% with 'site/'|add:n as favi %}
-				<img src="{% static image %}" alt=""/>
-				<div class="desc"><div><img class="favi" src="{% static favi %}"  alt=""/>{{name}}</div></div>
+				{% with 'site/'|add:n as favicon %}
+				<img class="img_screenshot"/>
+				<div class="div_desc"><div><img class="img_favicon"/>{{name}}</div></div>	
+				<script>
+					$('.img_screenshot')[{{ forloop.counter0 }}].src ="{% static image %}?t="+t;
+					$('.img_favicon')[{{ forloop.counter0 }}].src ="{% static favicon %}?t="+t;
+					
+				</script>
 				{% endwith %}
 				{% endwith %}
 				{% endwith %}
-				<div class="gradation"></div>
+				<div class="div_gradation"></div>
 			</div>
 		</a>
 		{%endfor%}
