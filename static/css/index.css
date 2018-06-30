@@ -8,6 +8,7 @@ body,html{
 	margin:0;
 	top: 0;
 }
+a{ text-decoration: none; }
 #div_canvas{
 	position:absolute; 
 	background:#ffffff; 

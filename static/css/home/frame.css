@@ -40,7 +40,6 @@ body{
 	opacity: 0;
 	margin: 0px 10px 0 10px;
 	float:right;
-	text-decoration: none;
 	color: #aaaaaa;
 	animation: appear 1s; 
 	animation-delay: 4s;

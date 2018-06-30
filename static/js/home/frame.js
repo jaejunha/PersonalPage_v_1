@@ -24,11 +24,14 @@ $(window).resize(function (){
 
 function initContent(){
 	$('#div_intro').load('home/intro');
-	$('#div_favorite').load('home/favorite');
-	$('#div_favorite').css('position','absolute');
-	$('#div_activity').load('home/activity');
-	$('#div_activity').css('position','absolute');
+	if(home < 1){
+		$('#div_favorite').load('home/favorite');
+		$('#div_favorite').css('position','absolute');
+		$('#div_activity').load('home/activity');
+		$('#div_activity').css('position','absolute');
+	}
 }
+	
 function resizeContent(){
 	int_width = $(window).width();	
 	int_height = $(window).height();
@@ -87,8 +90,11 @@ function initAnimation(){
 		var w = new Worker("/static/js/home/worker_frame.js");
         		w.onmessage = function(event) {
 			clearInterval(switch_blink);
-			if(bool_introWorking && home >= 0)
-			from=switchSubMenu('activity');
+			if(bool_introWorking && home >= 0){
+				from=switchSubMenu('activity');
+				$('#div_favorite').load('home/favorite');
+				$('#div_activity').load('home/activity');
+			}
         		};
 		w.postMessage("Hello");
 	}
@@ -157,6 +163,8 @@ function switchSubMenu(to){
 	else{
 		if(bool_introWorking){	
 			bool_introWorking = false;	
+			$('#div_favorite').load('home/favorite');
+			$('#div_activity').load('home/activity');
 			div_intro.animate({ opacity:0},1500,function(){div_intro.remove();});
 			if(to == 'activity'){			
 				div_activity.animate({ left:int_marginLeft+'px'},1500);
