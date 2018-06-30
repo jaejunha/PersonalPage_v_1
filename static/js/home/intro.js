@@ -70,6 +70,9 @@ function resizeHabit(){
 	if(int_height - int_textBottom < int_imgHeight + 20){
 		$('#img_habit').css('display', 'none');
 		bool_img = true;
+	}else if(int_width < 800){
+		$('#img_habit').css('display', 'none');
+		bool_img = true;
 	}else{
 		if(bool_img == true){
 			bool_img = false;
@@ -92,6 +95,7 @@ function loadStar(){
 			action_star[i].setEffectiveWeight(1);
 			action_star[i].enabled = true;
 			action_star[i].setLoop(THREE.LoopOnce, 0);
+			action_star[i].clampWhenFinished = true;
 		}
 		scene.add(model);
 
@@ -216,14 +220,7 @@ function animate() {
 				changeAction('star');
 			}
 		}
-		else if(index_star == ANI_STAR_ACTION2){
-			if(time_now - time_start > 13 * FRAME){
-				mixer_star = undefined;
-				index_star++;
-			}
-		}
-		if(index_star <= ANI_STAR_ACTION2)
-			mixer_star.update(double_delta);
+		mixer_star.update(double_delta);
 	}
 	if(mixer_bird != undefined){
 		if(index_bird == ANI_BIRD_ACTION1){
