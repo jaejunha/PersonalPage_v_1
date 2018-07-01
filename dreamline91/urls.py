@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.http import HttpResponse
+from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
+	url(r'^favicon\.ico$', RedirectView.as_view(url='/static/personal/img/favicon.ico', permanent=True)),
 	url(r'^mobile',views.m_index, name='m_index'),
 	url(r'^home/frame', views.home_frame, name='home_frame'),
 	url(r'^home/intro', views.home_intro, name='home_intro'),
@@ -31,6 +33,5 @@ urlpatterns = [
 	url(r'^portfolio/program', views.portfolio_program, name='portfolio_program'),
 	url(r'^portfolio/art', views.portfolio_art, name='portfolio_art'),
 	url(r'^portfolio/marathon', views.portfolio_marathon, name='portfolio_marathon'),
-	url(r'^robots.txt', lambda x: HttpResponse("User-agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
 	url(r'^.+$', views.not_found, name='not_found'),
 ]
