@@ -34,8 +34,6 @@ $(document).ready( function() {
 	resizeHabit();
 });
 $(window).resize(function (){
-	if(from == 0)
-		resize('frame');
 	resizeFont();
 	resizeHabit();
 });
