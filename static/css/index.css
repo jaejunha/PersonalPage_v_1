@@ -38,11 +38,14 @@ a{ text-decoration: none; }
   	width: 200px;
   	height: 200px;
 }
-#span_loading{
-	display:none; 
-	margin:10px;
-}
 #div_loading{
+	display: none; 
+	margin:10px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#div_circle{
 	opacity:0;
 	position: absolute;
 	background: #000000;                      

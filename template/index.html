@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
 		<link rel="stylesheet" href="{% static 'external/chartist.min.css' %}">
 		<link rel="stylesheet" href="{% static 'external/github-activity-0.1.5.min.css' %}"> 
-		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?ver=1.6"/>  
+		<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}?ver=1.7"/>  
 
 		<script type="text/javascript" src="{% static 'external/jquery-3.2.1.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'external/chartist.min.js' %}"></script>
@@ -27,11 +27,11 @@
 		<script type="text/javascript" src="{% static 'external/github-calendar.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'external/progressbar.js' %}"></script>
 		<script type="text/javascript" src="{% static 'external/coverflow.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'js/index.js' %}?ver=2.2"></script>
+		<script type="text/javascript" src="{% static 'js/index.js' %}?ver=2.3"></script>
 	</head>
 	<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 		<div id="div_canvas"></div>
-		<div id="div_loading"></div>
+		<div id="div_circle"></div>
 		<img id="img_background" src="{% static 'personal/img/background.jpg' %}"/>
 		<header>
 			<ul class="ul_outerMenu">
@@ -71,7 +71,45 @@
 				<img class="img_logo" src="{% static 'personal/img/min_picture.jpg' %}">	
 			</a>
 		</header>
-		<span class="span_loading">Screen is being loaded<br>Wait Please...</span>
+		<div id="div_loading"></div>
+		<script>
+			var int_scale = 0;
+			loadLoading();
+			function loadLoading(){
+
+				var scene = new THREE.Scene();
+
+				var int_width = $('#div_loading').width();
+				var int_height = $('#div_loading').height();
+
+				var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+				renderer.setPixelRatio(window.devicePixelRatio);
+				renderer.setSize(int_width, int_height);
+
+				$('#div_loading').append(renderer.domElement);
+				$('#div_loading').css('overflow','hidden');
+
+				var camera = new THREE.OrthographicCamera( -int_width / 50, int_width / 50, int_height / 50, -int_height / 50, - 1000, 1000);
+				camera.position.set(0, 0, 0);
+			
+				var geometry = new THREE.SphereGeometry( 1, 16, 16 );
+				var lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true } );
+				var line = new THREE.LineSegments( geometry, lineMaterial );
+				scene.add(line);
+
+				var render = function () {
+					requestAnimationFrame(render);
+					int_scale += 3;
+					line.scale.x = 1 + 0.2 * Math.sin(int_scale * DEGREE);
+					line.scale.y = 1 + 0.2 * Math.sin(int_scale * DEGREE);
+					line.scale.z = 1 + 0.2 * Math.sin(int_scale * DEGREE);
+					line.rotation.x += 2 * DEGREE;
+					line.rotation.y += 2 * DEGREE;
+					renderer.render(scene, camera);
+				};
+				render();
+			}
+		</script>
 		<div id="div_content"></div>
 		<br>
 		<br>

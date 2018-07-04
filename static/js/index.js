@@ -80,7 +80,7 @@ function switchMenu(to,sub){
 		mixer_star = mixer_bird = mixer_text = undefined;
 	}
 	string_subMenu = '';
-	$('.span_loading').css('display','block');
+	$('#div_loading').css('display','block');
 	$('#div_content').css('opacity','0');
 
 	if(to=='home'){
@@ -111,10 +111,10 @@ function switchMenu(to,sub){
 function resizeLoadingCircle(){
 	int_width = $(window).width();
 	int_height = $(window).height();
-	var div_loading = $('#div_loading');
+	var div_circle = $('#div_circle');
 	var int_radius = Math.max(int_width, int_height) / 5;
-	div_loading.css('width', int_radius);
-	div_loading.css('height', int_radius);
-	div_loading.css('left', (int_width - int_radius)/2);
-	div_loading.css('top', (int_height - int_radius)/2);        
+	div_circle.css('width', int_radius);
+	div_circle.css('height', int_radius);
+	div_circle.css('left', (int_width - int_radius)/2);
+	div_circle.css('top', (int_height - int_radius)/2);        
 }

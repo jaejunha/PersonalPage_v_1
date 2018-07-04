@@ -18,7 +18,7 @@ var bool_font = false;
 var bool_img = false;
 
 $(document).ready( function() {
-	$('.span_loading').css('display','none');
+	$('#div_loading').css('display','none');
 	$('#div_content').animate({opacity:1}, 1000);
 
 	if(home < 1){
