@@ -74,24 +74,24 @@
 		background:#ffffff;
 		font-weight:bold;
 	}
-	.plate{
+	#div_favorite{
 		overflow:hidden;
 		background: rgba(255,255,255,0.5);
 		width:auto;
 		height:auto;
 		border-radius: 5px;
 	}
-	.shortcut{
+	.div_icon{
 		float:left; 
 		margin:10px;
 		text-align:center;
 		width:60px;
 		text-overflow: ellipsis;
 	}
-	.shortcut img{
+	.div_icon img{
 		height:60px;
 	}
-	.shortcut span{
+	.div_icon span{
 		width:60px;
 		height:20px;
 		text-overflow: ellipsis;
@@ -216,6 +216,8 @@
 	}
 </style>
 <script>
+	var time_t;
+	
 	var activity, me;
 	var scroll;
 	var int_topOffset;
@@ -243,6 +245,8 @@
 	$(document).ready( function() {
 		setSize();
 		setAlphaAnimation();
+
+		time_t = Math.floor(new Date().getTime() / 86400000);
 
 		var d = new Date();	
 		int_currentYear = d.getFullYear();
@@ -445,15 +449,19 @@
 	<br>
 	<span class="title">My Favorite Site</span><br>
 	<hr>
-	<div class="plate">
+	<div id="div_favorite">
 	{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
     			{% with n=forloop.counter|stringformat:"s" %}
-			{% with 'site/'|add:n as favi %}
-			<div class="shortcut">
-				<img src="{% static favi %}" onerror="this.src='{% static 'img/alt.png' %}'"/>
+			{% with 'site/'|add:n as favicon %}
+			<div class="div_icon">
+				<img class="img_favicon"/>
 				<span>{{name}}</span>
 			</div>
+			<script>
+				$('.img_favicon')[{{ forloop.counter0 }}].src ="{% static favicon %}?t="+time_t;
+				$('.img_favicon')[{{ forloop.counter0 }}].alt ="{% static 'img/alt.png' %}";	
+			</script>
 			{% endwith %}
 			{% endwith %}
 		</a>
