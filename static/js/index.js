@@ -22,6 +22,7 @@ const ANI_BIRD_ACTION3 = 2;
 const ANI_TEXT_ACTION1 = 0;
 
 const AXIS_X = new THREE.Vector3(1, 0, 0); 
+const AXIS_Y = new THREE.Vector3(0, 1, 0); 
 const DEGREE = Math.PI / 180;
 const FRAME = 2500/6;
 /* related to Three.js */

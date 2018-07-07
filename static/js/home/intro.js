@@ -3,7 +3,7 @@ var clock, camera, scene, renderer, orbit, particles;
 
 var action_star, action_bird, action_text;
 var index_star = ANI_STAR_ACTION1;
-var index_bird = ANI_BIRD_ACTION1;
+var indeint_bird = ANI_BIRD_ACTION1;
 var index_text = ANI_WAIT;
 var index_snow = ANI_WAIT;
 var time_start, time_now;
@@ -11,6 +11,8 @@ var time_start, time_now;
 var double_delta;
 var opacity_snow = 0;
 var opacity_text = 0;
+var int_bird = 0;
+var model_bird;
 var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
@@ -105,19 +107,19 @@ function loadStar(){
 function loadBird(){
 	new THREE.JSONLoader().load(static_bird, function (geometry, materials) {
 		materials.forEach(function (material) { material.skinning = true; });
-		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
-		model.position.set(0, -4, 0);
-		model.rotateOnAxis(AXIS_X, 15 * DEGREE);
-		mixer_bird = new THREE.AnimationMixer(model);
+		model_bird = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model_bird.position.set(0, -4, 0);
+		model_bird.rotateOnAxis(AXIS_X, 15 * DEGREE);
+		mixer_bird = new THREE.AnimationMixer(model_bird);
 		action_bird = new Array(geometry.animations.length);
 		for(var i = 0; i < action_bird.length; i++){
 			action_bird[i] = mixer_bird.clipAction(geometry.animations[i]);
 			action_bird[i].setEffectiveWeight(1);
 			action_bird[i].enabled = true;
 		}
-		scene.add(model);
+		scene.add(model_bird);
 
-    		action_bird[index_bird].play();
+    		action_bird[indeint_bird].play();
 	});
 }
 
@@ -178,8 +180,8 @@ function changeAction (type) {
 		to = action_star[index_star].play();
 	}
 	else if(type == 'bird'){
-		from = action_bird[index_bird - 1].play();
-		to = action_bird[index_bird].play();
+		from = action_bird[indeint_bird - 1].play();
+		to = action_bird[indeint_bird].play();
 	}
 
   	from.enabled = true;
@@ -221,18 +223,24 @@ function animate() {
 		mixer_star.update(double_delta);
 	}
 	if(mixer_bird != undefined){
-		if(index_bird == ANI_BIRD_ACTION1){
+		if(indeint_bird == ANI_BIRD_ACTION1){
 			if(time_now - time_start > 9 * FRAME){
-				index_bird = ANI_BIRD_ACTION2;
+				indeint_bird = ANI_BIRD_ACTION2;
 				changeAction('bird');
 				opacity_text = 0;
 				loadText();
 			}
 		}
-		else if(index_bird == ANI_BIRD_ACTION2){
+		else if(indeint_bird == ANI_BIRD_ACTION2){
 			if(time_now - time_start > 13 * FRAME){
-				index_bird = ANI_BIRD_ACTION3;
+				indeint_bird = ANI_BIRD_ACTION3;
 				changeAction('bird');
+			}
+		}
+		if(indeint_bird == ANI_BIRD_ACTION3){
+			if(int_bird++ <= 20){
+				model_bird.rotateOnAxis(AXIS_Y, 1 * DEGREE);
+				model_bird.position.set(0, -4 + int_bird / 20, 0);
 			}
 		}
 		mixer_bird.update(double_delta);
