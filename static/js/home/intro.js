@@ -11,8 +11,7 @@ var time_start, time_now;
 var double_delta;
 var opacity_snow = 0;
 var opacity_text = 0;
-var int_bird = 0;
-var model_bird;
+var x_camera = 0;
 var material_text, material_particle;
 /* some variables related to Three.js are located at index.js */
 
@@ -107,17 +106,17 @@ function loadStar(){
 function loadBird(){
 	new THREE.JSONLoader().load(static_bird, function (geometry, materials) {
 		materials.forEach(function (material) { material.skinning = true; });
-		model_bird = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
-		model_bird.position.set(0, -4, 0);
-		model_bird.rotateOnAxis(AXIS_X, 15 * DEGREE);
-		mixer_bird = new THREE.AnimationMixer(model_bird);
+		var model = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+		model.position.set(0, -4, 0);
+		model.rotateOnAxis(AXIS_X, 15 * DEGREE);
+		mixer_bird = new THREE.AnimationMixer(model);
 		action_bird = new Array(geometry.animations.length);
 		for(var i = 0; i < action_bird.length; i++){
 			action_bird[i] = mixer_bird.clipAction(geometry.animations[i]);
 			action_bird[i].setEffectiveWeight(1);
 			action_bird[i].enabled = true;
 		}
-		scene.add(model_bird);
+		scene.add(model);
 
     		action_bird[indeint_bird].play();
 	});
@@ -238,9 +237,9 @@ function animate() {
 			}
 		}
 		if(indeint_bird == ANI_BIRD_ACTION3){
-			if(int_bird++ <= 20){
-				model_bird.rotateOnAxis(AXIS_Y, 1 * DEGREE);
-				model_bird.position.set(0, -4 + int_bird / 20, 0);
+			if(time_now - time_start > 14 * FRAME){
+				if(x_camera >= -30)
+					camera.position.set(x_camera--, 5, 100);
 			}
 		}
 		mixer_bird.update(double_delta);
