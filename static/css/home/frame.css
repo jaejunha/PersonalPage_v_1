@@ -32,7 +32,7 @@ body{
 	font-family: 'Poiret One', cursive;
 	font-size: 30pt;
 	animation: appear 1s; 
-	animation-delay: 4s;
+	animation-delay: 5.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
@@ -42,7 +42,7 @@ body{
 	float:right;
 	color: #aaaaaa;
 	animation: appear 1s; 
-	animation-delay: 4s;
+	animation-delay: 5.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
@@ -50,7 +50,7 @@ hr {
 	opacity: 0;
 	border: solid 1px #aaaaaa;
 	animation: appear 1s; 
-	animation-delay: 4s;
+	animation-delay: 5.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }

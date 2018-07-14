@@ -7,7 +7,7 @@
 	opacity:0;
 
 	animation: appear 1s; 
-	animation-delay:6.0s;
+	animation-delay:7.5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 }
@@ -20,7 +20,7 @@
 	opacity:0;   
 
 	animation: appear 1s; 
-	animation-delay:6.6s;
+	animation-delay:8.1s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;     
 }
@@ -33,7 +33,7 @@ p b{ color:#ffff00; }
 	opacity: 0;
 
 	animation: appear 1s; 
-	animation-delay:7.2s;
+	animation-delay:8.7s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;   
 }

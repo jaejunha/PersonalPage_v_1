@@ -17,11 +17,11 @@ a{ text-decoration: none; }
 	z-index:-1;
 }
 #div_screen{ 
-	position:absolute; 
+	position: absolute; 
 	top:0%;
 	width:100%; 
 	height:100%;
-	animation: screen 1.5s; 
+	animation: screen 3s; 
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index:1;
@@ -29,14 +29,15 @@ a{ text-decoration: none; }
 	background:#000000;
 }
 #div_container {
-	position:absolute;
-	top:0;
+	position: absolute;
+	top:60%;
 	bottom:0;
 	left:0;
 	right:0;
 	margin:auto;
-  	width: 200px;
-  	height: 200px;
+	width: 100%;
+	text-align: center;
+	font-size: 15pt;
 }
 #div_loading{
 	display: none; 
@@ -51,7 +52,7 @@ a{ text-decoration: none; }
 	background: #000000;                      
  	border-radius: 50%;                        
 	animation: loading 4s; 
-	animation-delay: 1.5s;
+	animation-delay: 3s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index: -1;
@@ -64,7 +65,7 @@ a{ text-decoration: none; }
 	height:100%;
 	opacity:0;
 	animation: background 4s; 
-	animation-delay: 1.5s;
+	animation-delay: 3s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index: -1;
@@ -83,7 +84,7 @@ header{
 	height:60px;
 	opacity:0;
 	animation: appear 1s;
-	animation-delay: 3.5s;
+	animation-delay: 5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index:1;
@@ -140,7 +141,7 @@ header{
 	border-radius:24px;
 	background-image:url('../personal/img/min_picture.jpg');
 	animation: appear 1s;
-	animation-delay: 3.5s;
+	animation-delay: 5s;
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index:2;

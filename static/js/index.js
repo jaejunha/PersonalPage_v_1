@@ -1,10 +1,16 @@
 var int_width;
 var int_height;
 
+var string_welcome = "Welcome To My Page!"
+var int_welcome = 0;
+var timer_welcome;
+
 var home = 1;
 var string_subMenu;
 
 /* related to Three.js */
+var int_scale = 0;
+
 var mixer_star, mixer_bird, mixer_text;
 var bool_animate = false;
 
@@ -46,18 +52,19 @@ function checkMobile(){
 
 function showIntro(){
 	switchMenu('home');
-	var bar = new ProgressBar.Circle(div_container, {
-		strokeWidth: 6,
-  		easing: 'easeInOut',
-  		duration: 1000,
-  		color: '#FFFFFF',
-		trailColor: '#555',
-		trailWidth: 2,
-  		svgStyle: null
-	});
-		
-	bar.animate(1.0);
-	setTimeout(function(){$("#div_screen").remove();}, 1500);
+	typeString();
+	setTimeout(function(){$("#div_screen").remove();}, 3000);
+}
+
+function typeString(){ 
+	$('#div_container').html(string_welcome.substring(0, int_welcome) + "_");
+	int_welcome++;
+	timer_welcome = setTimeout('typeString()', 50);
+
+	if(string_welcome.length < int_welcome){
+		$('#div_container').html(string_welcome);	
+		clearTimeout(timer_welcome);
+	}
 }
 
 function resizeHeader(){
@@ -118,4 +125,38 @@ function resizeLoadingCircle(){
 	div_circle.css('height', int_radius);
 	div_circle.css('left', (int_width - int_radius)/2);
 	div_circle.css('top', (int_height - int_radius)/2);        
+}
+
+function loadSphere(name){
+	var scene = new THREE.Scene();
+
+	int_width = $('#'+name).width();
+	int_height = $('#'+name).height();
+
+	var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(int_width, int_height);
+
+	$('#'+name).append(renderer.domElement);
+	$('#'+name).css('overflow','hidden');
+
+	var camera = new THREE.OrthographicCamera( -int_width / 50, int_width / 50, int_height / 50, -int_height / 50, - 1000, 1000);
+	camera.position.set(0, 0, 0);
+			
+	var geometry = new THREE.SphereGeometry( 1, 16, 16 );
+	var lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true } );
+	var line = new THREE.LineSegments( geometry, lineMaterial );
+	scene.add(line);
+
+	var render = function () {
+		requestAnimationFrame(render);
+		int_scale += 2;
+		line.scale.x = 1 + 0.3 * Math.sin(int_scale * DEGREE);
+		line.scale.y = 1 + 0.3 * Math.sin(int_scale * DEGREE);
+		line.scale.z = 1 + 0.3 * Math.sin(int_scale * DEGREE);
+		line.rotation.x += 2 * DEGREE;
+		line.rotation.y += 2 * DEGREE;
+		renderer.render(scene, camera);
+	};
+	render();
 }

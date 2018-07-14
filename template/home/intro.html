@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=1.1"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/intro.css' %}?ver=1.2"/>
 <script>
 	var static_star = "{% static 'personal/model/star.json' %}?ver=0.1";
 	var static_bird = "{% static 'personal/model/bird.json' %}?ver=0.2";
@@ -20,7 +20,7 @@
 	<div id="div_threejs"></div>
 	<script>
 		if(home == 1)
-			setTimeout(function() { loadThree(); }, 1000);
+			setTimeout(function() { loadThree(); }, 2500);
 		else{
 			index_star = ANI_STAR_ACTION1;
 			index_bird = ANI_BIRD_ACTION1;

@@ -93,6 +93,10 @@ getVariable()
 # Refer  
 I stored opensources at `static/external`   
 <br>
+- Typing Animation  
+```
+http://superkts.pe.kr/helper/view.php?seq=V&seq=3 
+```
 - Git Chart  
 ```
 http://ghchart.rshah.org  
@@ -133,10 +137,6 @@ http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
 - Mustache.js  
 ```
 http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js  
-```
-- Progressbar.js  
-```
-https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js  
 ```
 - Montserrat(font)  
 ```
