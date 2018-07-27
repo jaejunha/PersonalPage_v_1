@@ -57,12 +57,12 @@ function showIntro(){
 }
 
 function typeString(){ 
-	$('#div_container').html(string_welcome.substring(0, int_welcome) + "_");
+	$('#span_typing').html(string_welcome.substring(0, int_welcome) + "_");
 	int_welcome++;
 	timer_welcome = setTimeout('typeString()', 50);
 
 	if(string_welcome.length < int_welcome){
-		$('#div_container').html(string_welcome);	
+		$('#span_typing').html(string_welcome);	
 		clearTimeout(timer_welcome);
 	}
 }

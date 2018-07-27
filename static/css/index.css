@@ -25,28 +25,16 @@ a{ text-decoration: none; }
    	animation-fill-mode: forwards;
    	-webkit-animation-fill-mode: forwards;
 	z-index:1;
-
+	display: table;
 	background:#000000;
 }
-#div_screen img{ 
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-}
-#div_container {
-	position: absolute;
-	top:60%;
-	bottom:0;
-	left:0;
-	right:0;
-	margin:auto;
-	width: 100%;
+#div_screen div{
+	display: table-cell;
+	vertical-align: middle; 
 	text-align: center;
 	font-size: 15pt;
 }
+
 #div_loading{
 	display: none; 
 	margin:10px;
