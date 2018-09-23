@@ -59,8 +59,10 @@ static/personal/img/art/*.jpg
 ```
 ---
 # Install  
-- pip install selenium  
-- download PhantomJS from web  
+- pip install selenium   
+- pip install image  
+- pip install requests  
+- download PhantomJS from web   
 ---
 # Crontab  
 ```
