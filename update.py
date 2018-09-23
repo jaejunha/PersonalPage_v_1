@@ -25,6 +25,7 @@ def web():
 	for u in url:
 		get_favicon(u,i)   
 		save_capture(browser,u,i)
+		os.remove('static/site/'+str(i)+'.png')
 		i = i+1
 
 def main():
@@ -64,12 +65,13 @@ def get_favicon(u,i):
 def save_favicon(i,t):
 	image = requests.get(t, stream=True, allow_redirects=True)
 	ok = True
-	if image.headers['Content-length'] == '0':
-		ok = False
+#	print image
+#	if image.headers['Content-length'] == '0':
+#		ok = False
 	if image.status_code != 200:
 		ok = False		
 	if ok == True:
-		open('static/site/'+str(i), 'wb').write(image.content)
+		open('static/site/Icon'+str(i), 'wb').write(image.content)
 	del image
 	return ok
 

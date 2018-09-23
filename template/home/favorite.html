@@ -20,7 +20,7 @@
 			{% endif %}
     				{% with n=forloop.counter|stringformat:"s" %}
 				{% with 'site/Website'|add:n|add:'.png' as image %}
-				{% with 'site/'|add:n as favicon %}
+				{% with 'site/Icon'|add:n as favicon %}
 				<img class="img_screenshot"/>
 				<div class="div_desc"><div><img class="img_favicon"/>{{name}}</div></div>	
 				<script>
