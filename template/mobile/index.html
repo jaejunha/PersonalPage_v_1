@@ -453,7 +453,7 @@
 	{% for url, name in favorite %}
 		<a href="{{url}}" target="_blank">
     			{% with n=forloop.counter|stringformat:"s" %}
-			{% with 'site/'|add:n as favicon %}
+			{% with 'site/Icon'|add:n as favicon %}
 			<div class="div_icon">
 				<img class="img_favicon"/>
 				<span>{{name}}</span>
