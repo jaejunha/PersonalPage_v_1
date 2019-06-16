@@ -3,7 +3,7 @@
 This is personal page to introduce myself.  
 
 ---
-<img src="https://github.com/jaejunha/PersonalPage/blob/master/screenshot/20180712.png?raw=true">  
+<img src="https://github.com/jaejunha/PersonalPage_v_1/blob/master/screenshot/20180712.png?raw=true">  
 
 ---
 
